@@ -1,5 +1,8 @@
 # spring-book
 
+[![star](https://gitee.com/easyspring/spring-book/badge/star.svg?theme=dark)](https://gitee.com/easyspring/spring-book/stargazers)
+[![fork](https://gitee.com/easyspring/spring-book/badge/fork.svg?theme=dark)](https://gitee.com/easyspring/spring-book/members)
+
 #### 项目介绍
 为 spring 的开发者提供丰富的组件封装
 
