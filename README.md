@@ -1,3 +1,6 @@
+
+<a href='https://gitee.com/easyspring/spring-book/stargazers'><img src='https://gitee.com/easyspring/spring-book/badge/star.svg?theme=gray' alt='star'></img></a>
+
 # spring-book
 
 #### 项目介绍
