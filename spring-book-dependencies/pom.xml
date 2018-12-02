@@ -119,10 +119,22 @@
             </dependency>
 
             <!--应用本地自己封装的 jar 文件-->
-            <!--&lt;!&ndash;base-mybatis&ndash;&gt;-->
+            <!--base-data-mybatis-->
+            <dependency>
+                <groupId>com.bcdbook.framework</groupId>
+                <artifactId>base-data-mybatis</artifactId>
+                <version>${base.version}</version>
+                <!--<systemPath>${basedir}/../spring-book-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
+            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.bcdbook.framework</groupId>-->
+                <!--<artifactId>framework-test</artifactId>-->
+                <!--<version>${base.version}</version>-->
+                <!--<systemPath>${basedir}/../spring-book-framework/framework-test/pom.xml</systemPath>-->
+            <!--</dependency>-->
             <!--<dependency>-->
                 <!--<groupId>net.abcbook.framework</groupId>-->
-                <!--<artifactId>base-mybatis</artifactId>-->
+                <!--<artifactId>base-d</artifactId>-->
                 <!--<scope>system</scope>-->
                 <!--<version>0.0.1-SNAPSHOT</version>-->
                 <!--<systemPath>${basedir}/libs/base-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
