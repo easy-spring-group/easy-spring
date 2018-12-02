@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>framework-base</artifactId>
+        <groupId>com.bcdbook.framework</groupId>
+        <version>${base.version}</version>
+    </parent>
+
+    <artifactId>base-data-mybatis</artifactId>
+    <!--打包方式-->
+    <packaging>jar</packaging>
+
+    <!--项目名称-->
+    <name>Framework Base Data MyBatis</name>
+    <!--项目简介-->
+    <description>Framework Base Data MyBatis</description>
+    <!--项目连接地址-->
+    <url>http://framework.bcdbook.com</url>
+
+    <!--引入 jar 包依赖-->
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--工具-->
+        <!--lombok插件-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>

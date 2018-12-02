@@ -19,17 +19,13 @@
     <modules>
         <module>framework-base</module>
         <module>framework-common</module>
+        <module>framework-test</module>
     </modules>
 
     <!--项目名称-->
-    <name>Spring Book Framework</name>
+    <name>Framework</name>
     <!--项目简介-->
-    <description>Spring Book Framework</description>
+    <description>Framework</description>
     <!--项目连接地址-->
     <url>http://framework.bcdbook.com</url>
-
-    <!--子集模块中分别定义自己的版本号-->
-    <properties>
-        <base.version>0.0.1-SNAPSHOT</base.version>
-    </properties>
 </project>

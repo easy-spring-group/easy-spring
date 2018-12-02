@@ -4,22 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
+        <artifactId>spring-book-dependencies</artifactId>
         <groupId>com.bcdbook.framework</groupId>
-        <artifactId>spring-book-framework</artifactId>
         <version>${base.version}</version>
+        <relativePath>../spring-book-dependencies</relativePath>
     </parent>
 
-    <artifactId>framework-base</artifactId>
+    <artifactId>spring-book-samples</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
     <!--项目名称-->
-    <name>Framework Base</name>
+    <name>Spring Book Service</name>
     <!--项目简介-->
-    <description>Framework Base</description>
+    <description>Spring Book Service</description>
     <!--项目连接地址-->
     <url>http://framework.bcdbook.com</url>
 
-    <modules>
-        <module>base-data-mybatis</module>
-    </modules>
 </project>

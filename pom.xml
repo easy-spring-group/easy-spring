@@ -20,6 +20,7 @@
         <module>spring-book-service</module>
         <module>spring-book-manage</module>
         <module>spring-book-business</module>
+        <module>spring-book-samples</module>
     </modules>
 
     <!--项目名称-->
