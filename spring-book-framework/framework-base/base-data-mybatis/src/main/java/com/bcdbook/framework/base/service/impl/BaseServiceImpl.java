@@ -2,20 +2,47 @@ package com.bcdbook.framework.base.service.impl;
 
 import com.bcdbook.framework.base.mapper.BaseMapper;
 import com.bcdbook.framework.base.model.BaseModel;
+import com.bcdbook.framework.base.properties.BasePageProperties;
 import com.bcdbook.framework.base.service.BaseService;
 import com.bcdbook.framework.common.snowflake.SnowflakeHelp;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
+/**
+ * 基础单表查询的 service 实现类
+ *
+ * @author summer
+ * @date 2018-12-03 20:22
+ * @version V1.0.0-RELEASE
+ */
 public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> implements BaseService<T> {
 
+    /**
+     * 注入自定义的通用 mapper 的接口
+     */
+    @SuppressWarnings("all")
     @Autowired
     private M mapper;
 
+    /**
+     * 注入全局唯一 id 生成的工具类
+     */
+    @SuppressWarnings("all")
     @Autowired
     private SnowflakeHelp snowflakeHelp;
+
+    /**
+     * 注入分页的配置
+     */
+    @Autowired
+    private BasePageProperties basePageProperties;
 
     /**
      * 在执行插入之前由我们自己处理 id 的生成
@@ -51,18 +78,21 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         // 设置对象的伪删除标识为未删除状态
         entity.setDeleted(T.DELETED_FALSE);
 
+        // 受影响的数据条数
+        int changeSize;
         /*
          * 根据传入的对象是否有 id 来选择执行添加操作还是修改操作
          * 如果有 id, 说明这是已有数据, 则执行添加操作, 否则执行修改操作
          */
         if(StringUtils.isEmpty(entity.getId())){
             perInsert(entity);
-            mapper.insertSelective(entity);
+            changeSize = mapper.insertSelective(entity);
         } else {
-            mapper.updateByPrimaryKeySelective(entity);
+            changeSize = mapper.updateByPrimaryKeySelective(entity);
         }
 
-        return entity;
+        // 如果添加或者更新的数量大于 0, 说明有被修改的数据, 则返回修改后的对象, 否则返回空
+        return changeSize > 0  ? entity : null;
     }
 
 
@@ -84,10 +114,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         // 设置对象的伪删除标识为未删除状态
         entity.setDeleted(T.DELETED_FALSE);
 
+        // 插入之前的操作
         perInsert(entity);
-        mapper.insert(entity);
 
-        return entity;
+        // 执行插入操作
+        int changeSize = mapper.insert(entity);
+
+        // 受影响的数据数量大于 0, 说明有被修改的数据, 则返回修改后的对象, 否则返回空
+        return changeSize > 0 ? entity : null;
     }
 
     /**
@@ -101,6 +135,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      */
     @Override
     public T insertSelective(T entity){
+        // 参数合法性校验
         if(entity == null){
             return null;
         }
@@ -108,10 +143,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         // 设置对象的伪删除标识为未删除状态
         entity.setDeleted(T.DELETED_FALSE);
 
+        // 插入之前的操作
         perInsert(entity);
-        mapper.insertSelective(entity);
 
-        return entity;
+        // 执行插入操作
+        int changeSize = mapper.insertSelective(entity);
+
+        // 受影响的数据数量大于 0, 说明有被修改的数据, 则返回修改后的对象, 否则返回空
+        return changeSize > 0 ? entity : null;
     }
 
     /**
@@ -129,12 +168,16 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         if(id == null){
             return null;
         }
+        // 获取要删除的对象
         T entity = mapper.selectByPrimaryKey(id);
+        // 如果对象不存在, 则返回 null
         if (entity == null) {
             return null;
         }
+        // 如果对象存在, 设置当前对象的状态为删除状态
         entity.setDeleted(T.DELETED_TRUE);
 
+        // 执行修改操作
         return mapper.updateByPrimaryKeySelective(entity);
     }
 
@@ -159,12 +202,15 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
         // 从数据库中获取相关对象
         T dbEntity = getByParameters(entity);
+        // 如果对象不存在, 则返回 null
         if(dbEntity == null){
             return null;
         }
 
+        // 设置对象的删除状态为已删除
         dbEntity.setDeleted(T.DELETED_TRUE);
 
+        // 执行修改操作
         return mapper.updateByPrimaryKeySelective(dbEntity);
     }
 
@@ -183,6 +229,8 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         if(id == null){
             return null;
         }
+
+        // 执行真实删除
         return mapper.deleteByPrimaryKey(id);
     }
 
@@ -202,6 +250,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return null;
         }
 
+        // 执行真实删除
         return mapper.delete(entity);
     }
 
@@ -216,16 +265,19 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      */
     @Override
     public T updateAll(T entity) {
+        // 参数合法性校验
         if(entity == null || entity.getId() == null){
             return null;
         }
 
-        // 防止误标示删除
+        // 防止误删除
         entity.setDeleted(null);
 
-        mapper.updateByPrimaryKey(entity);
+        // 执行修改操作
+        int changeSize = mapper.updateByPrimaryKey(entity);
 
-        return entity;
+        // 受影响的数据量大于 0, 则返回修改后的对象, 否则返回空
+        return changeSize > 0 ? entity : null;
     }
 
     /**
@@ -244,16 +296,13 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return null;
         }
 
-        // 防止误标示删除
+        // 防止误删除
         entity.setDeleted(null);
 
-        int result = mapper.updateByPrimaryKeySelective(entity);
-        // 当无法正常更新时返回 null
-        if(result < 1){
-            return null;
-        }
+        int changeSize = mapper.updateByPrimaryKeySelective(entity);
 
-        return entity;
+        // 如果影响的数据量大于 0, 则返回修改后的对象, 否则返回空
+        return changeSize > 0 ? entity : null;
     }
 
     /**
@@ -272,6 +321,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return null;
         }
 
+        // 执行查询操作
         T entity = mapper.selectByPrimaryKey(id);
 
         // 伪删除查询
@@ -299,8 +349,10 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return null;
         }
 
+        // 设置删除状态为未删除
         entity.setDeleted(T.DELETED_FALSE);
 
+        // 执行查询并返回结果
         return mapper.selectOne(entity);
     }
 
@@ -315,10 +367,12 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      */
     @Override
     public T getAllByParameters(T entity){
+        // 参数合法性校验
         if(entity == null){
             return null;
         }
 
+        // 执行查询并返回结果
         return mapper.selectOne(entity);
     }
 
@@ -338,8 +392,10 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return null;
         }
 
+        // 设置删除状态为未删除
         entity.setDeleted(T.DELETED_FALSE);
 
+        // 执行查询并返回结果
         return mapper.select(entity);
     }
 
@@ -359,319 +415,376 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return null;
         }
 
+        // 执行查询并返回结果
         return mapper.select(entity);
     }
 
-//    /**
-//     * @author summer
-//     * @date 2017/12/29 下午3:43
-//     * @param entity 用于封装条件的实体类
-//     * @return com.github.pagehelper.Page<T>
-//     * @description 根据传入的实体条件 / 页码 / 每页显示的数据量
-//     * 查询出符合条件的分页对象
-//     */
-//    @Override
-//    public Page<T> findPage(T entity){
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        entity.setDeleted(T.DELETED_FALSE);
-//
-//        Page<T> page = PageHelper.startPage(entity.getPageNum(), entity.getPageSize());
-//        mapper.select(entity);
-//
-//        return page;
-//    }
-//
-//    /**
-//     * @author summer
-//     * @date 2018/8/21 下午2:00
-//     * @description 根据传入的查询条件查询出所有满足条件的信息, 并进行分页, 不会自动过滤被标记成已删除的数据
-//     * @param entity
-//     * @return com.github.pagehelper.Page<T>
-//     * @version V1.0.0-RELEASE
-//     */
-//    @Override
-//    public Page<T> findPageAll(T entity){
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        Page<T> page = PageHelper.startPage(entity.getPageNum(), entity.getPageSize());
-//        mapper.select(entity);
-//
-//        return page;
-//    }
-//
-//    /**
-//     * @author summer
-//     * @date 2017/12/29 下午3:43
-//     * @param entity 用于封装条件的实体类
-//     * @param orderBy 排序方式 例如: "update_time desc"
-//     * @return com.github.pagehelper.Page<T>
-//     * @description 根据传入的实体条件 / 页码 / 每页显示的数据量
-//     * 查询出符合条件的分页对象
-//     */
-//    @Override
-//    public Page<T> findPage(T entity, String orderBy){
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        entity.setDeleted(T.DELETED_FALSE);
-//
-//        Page<T> page = PageHelper.startPage(entity.getPageNum(), entity.getPageSize(), orderBy);
-//        mapper.select(entity);
-//
-//        return page;
-//    }
-//
-//    /**
-//     * @author summer
-//     * @date 2018/8/21 下午2:03
-//     * @description 完全根据查询条件查询符合条件的分页信息, 不会自动过滤被标记成删除的字段
-//     * @param entity 条件实体
-//     * @param orderBy 排序方式
-//     * @return com.github.pagehelper.Page<T>
-//     * @version V1.0.0-RELEASE
-//     */
-//    public Page<T> findPageAll(T entity, String orderBy){
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        Page<T> page = PageHelper.startPage(entity.getPageNum(), entity.getPageSize(), orderBy);
-//        mapper.select(entity);
-//
-//        return page;
-//    }
-//
-//    /**
-//     * @author summer
-//     * @date 2017/12/29 下午3:43
-//     * @param entity 用于封装条件的实体类
-//     * @param pageable 排序方式
-//     * @return com.github.pagehelper.Page<T>
-//     * @description 根据传入的实体条件 / 页码 / 每页显示的数据量
-//     * 查询出符合条件的分页对象
-//     */
-//    @Override
-//    public Page<T> findPage(T entity, Pageable pageable) {
-//        // 校验实体对象
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        entity.setDeleted(T.DELETED_FALSE);
-//
-//        // 校验排序对象
-//        if(pageable == null){
-//            return findPage(entity);
-//        }
-//
-//        Integer pageSize = pageable.getPageSize();
-//        pageSize = (pageSize == null || pageSize <= 0) ? T.PAGE_SIZE_DEFAULT : pageSize;
-//        Integer pageNumber = pageable.getPageNumber();
-//        pageNumber = (pageNumber == null || pageNumber <= 0) ? T.PAGE_NUM_DEFAULT : pageNumber;
-//
-//        // 设置分页信息
-//        entity.setPageSize(pageSize);
-//        entity.setPageNum(pageNumber);
-//
-//        // 如果没有排序值
-//        if(pageable.getSort().isUnsorted()){
-//            return findPage(entity);
-//        }
-//
-//        // 返回有排序值的结果
-//        return findPage(entity, getOrderBy(pageable.getSort()));
-//    }
-//
-//    /**
-//     * @author summer
-//     * @date 2018/8/21 下午2:06
-//     * @description 完全根据查询条件查询出符合条件的分页信息, 不会过滤掉被标记成已删除的数据
-//     * @param entity 实体条件
-//     * @param pageable 分页信息
-//     * @return com.github.pagehelper.Page<T>
-//     * @version V1.0.0-RELEASE
-//     */
-//    @Override
-//    public Page<T> findPageAll(T entity, Pageable pageable) {
-//        // 校验实体对象
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        // 校验排序对象
-//        if(pageable == null){
-//            return findPageAll(entity);
-//        }
-//
-//        Integer pageSize = pageable.getPageSize();
-//        pageSize = (pageSize <= 0) ? T.PAGE_SIZE_DEFAULT : pageSize;
-//        Integer pageNumber = pageable.getPageNumber();
-//        pageNumber = (pageNumber <= 0) ? T.PAGE_NUM_DEFAULT : pageNumber;
-//
-//        // 设置分页信息
-//        entity.setPageSize(pageSize);
-//        entity.setPageNum(pageNumber);
-//
-//        // 如果没有排序值
-//        if(pageable.getSort().isUnsorted()){
-//            return findPageAll(entity);
-//        }
-//
-//        // 返回有排序值的结果
-//        return findPageAll(entity, getOrderBy(pageable.getSort()));
-//    }
-//
-//    /**
-//     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-//     * 查询出符合条件的分页对象 (包括分页信息的详情)
-//     * @author summer
-//     * @date 2017/12/29 下午3:43
-//     * @param entity 用于封装条件的实体类
-//     * @return com.github.pagehelper.PageInfo<T>
-//     */
-//    @Override
-//    public PageInfo<T> findPageInfo(T entity) {
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        Page<T> page = findPage(entity);
-//        PageInfo<T> pageInfo = null;
-//        if(page != null){
-//            pageInfo = new PageInfo<>(page);
-//        }
-//
-//        return pageInfo;
-//    }
-//
-//
-//    /**
-//     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-//     * 查询出符合条件的分页对象 (包括分页信息详情)
-//     * @author summer
-//     * @date 2017/12/29 下午3:43
-//     * @param entity 用于封装条件的实体类
-//     * @param orderBy 排序方式 例如: "update_time desc"
-//     * @return com.github.pagehelper.PageInfo<T>
-//     */
-//    @Override
-//    public PageInfo<T> findPageInfo(T entity, String orderBy) {
-//        // 参数校验
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        // 查询分页信息
-//        Page<T> page = findPage(entity, orderBy);
-//        PageInfo<T> pageInfo = null;
-//        if(page != null){
-//            pageInfo = new PageInfo<>(page);
-//        }
-//
-//        return pageInfo;
-//    }
-//
-//    /**
-//     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-//     * 查询出符合条件的分页对象 (包括分页信息详情)
-//     * @author summer
-//     * @date 2017/12/29 下午3:43
-//     * @param entity 用于封装条件的实体类
-//     * @param pageable 排序方式
-//     * @return com.github.pagehelper.PageInfo<T>
-//     */
-//    @Override
-//    public PageInfo<T> findPageInfo(T entity, Pageable pageable) {
-//        // 参数校验
-//        if(entity == null){
-//            return null;
-//        }
-//
-//        // 根据条件查询分页信息
-//        Page<T> page = findPage(entity, pageable);
-//        PageInfo<T> pageInfo = null;
-//        if(page != null){
-//            pageInfo = new PageInfo<>(page);
-//        }
-//
-//        return pageInfo;
-//    }
-//
-//    /**
-//     * @author summer
-//     * @date 2018/8/22 上午11:02
-//     * @description 根据传入的查询条件, 查询出符合条件的数据的数量
-//     * @param entity 查询条件
-//     * @return java.lang.Integer
-//     * @version V1.0.0-RELEASE
-//     */
-//    @Override
-//    public Integer count(T entity){
-//        if(entity == null){
-//            return 0;
-//        }
-//
-//        entity.setDeleted(T.DELETED_FALSE);
-//
-//        return mapper.selectCount(entity);
-//    }
-//
-//    /**
-//     * @author summer
-//     * @date 2018/8/22 上午11:02
-//     * @description 根据传入的查询条件, 查询出符合条件的数据的数量
-//     * 不会自动过滤掉被标记成已删除的数据
-//     * @param entity 查询条件
-//     * @return java.lang.Integer
-//     * @version V1.0.0-RELEASE
-//     */
-//    @Override
-//    public Integer countAll(T entity){
-//        if(entity == null){
-//            return 0;
-//        }
-//
-//        return mapper.selectCount(entity);
-//    }
-//
-//
-//
-//    /**
-//     * @author summer
-//     * @date 2018/8/21 上午2:04
-//     * @description 根据传入的排序对象, 获取排序结构的字符串
-//     * @param sort 排序对象
-//     * @return java.lang.String
-//     * @version V1.0.0-RELEASE
-//     */
-//    @Override
-//    public String getOrderBy(Sort sort){
-//        if(sort == null || sort.isUnsorted()){
-//            return "";
-//        }
-//
-//        StringBuilder orderBy = new StringBuilder(" ");
-//        Integer count = 0;
-//        // 拼接排序条件
-//        for(Sort.Order order : sort){
-//            String property = order.getProperty();
-//            String direction = order.getDirection().name();
-//            if(count > 0){
-//                orderBy.append(", ");
-//            }
-//            orderBy.append(property);
-//            orderBy.append(" ");
-//            orderBy.append(direction);
-//
-//            count++;
-//        }
-//
-//        return orderBy.toString();
-//    }
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象
+     *
+     * @author summer
+     * @date 2018-12-03 20:27
+     * @param entity 用于封装条件的实体类
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Page<T> findPage(T entity){
+        // 参数合法性校验
+        if(entity == null){
+            return null;
+        }
+
+        // 设置删除状态为未删除
+        entity.setDeleted(T.DELETED_FALSE);
+
+        // 封装自动分页信息
+        Page<T> page = PageHelper.startPage(basePageProperties.getDefaultPageNumber(),
+                basePageProperties.getDefaultPageSize());
+        // 执行查询
+        mapper.select(entity);
+
+        // 返回查询结果
+        return page;
+    }
+
+    /**
+     * 根据传入的查询条件查询出所有满足条件的信息, 并进行分页,
+     * 不会自动过滤被标记成已删除的数据
+     *
+     * @author summer
+     * @date 2018-12-03 20:28
+     * @param entity 用于封装条件的实体类
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Page<T> findPageAll(T entity){
+        // 参数合法性校验
+        if(entity == null){
+            return null;
+        }
+
+        // 封装自动分页信息
+        Page<T> page = PageHelper.startPage(basePageProperties.getDefaultPageNumber(),
+                basePageProperties.getDefaultPageSize());
+        // 执行查询
+        mapper.select(entity);
+
+        // 返回查询结果
+        return page;
+    }
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象
+     *
+     * @author summer
+     * @date 2018-12-03 20:58
+     * @param entity 用于封装条件的实体类
+     * @param orderBy 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Page<T> findPage(T entity, String orderBy){
+        // 参数校验
+        if(entity == null){
+            return null;
+        }
+
+        // 设置删除状态为未删除
+        entity.setDeleted(T.DELETED_FALSE);
+
+        // 封装分页信息
+        Page<T> page = PageHelper.startPage(basePageProperties.getDefaultPageNumber(),
+                basePageProperties.getDefaultPageSize(),
+                orderBy);
+        // 执行查询
+        mapper.select(entity);
+
+        // 返回查询结果
+        return page;
+    }
+
+    /**
+     * 完全根据查询条件查询符合条件的分页信息, 不会自动过滤被标记成删除的字段
+     *
+     * @author summer
+     * @date 2018-12-03 20:58
+     * @param entity 用于封装条件的实体类
+     * @param orderBy 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Page<T> findPageAll(T entity, String orderBy){
+        // 参数合法性校验
+        if(entity == null){
+            return null;
+        }
+
+        // 封装分页信息
+        Page<T> page = PageHelper.startPage(basePageProperties.getDefaultPageNumber(),
+                basePageProperties.getDefaultPageSize(),
+                orderBy);
+        // 执行查询
+        mapper.select(entity);
+
+        // 返回查询结果
+        return page;
+    }
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象
+     *
+     * @author summer
+     * @date 2018-12-03 21:07
+     * @param entity 用于封装条件的实体类
+     * @param pageable 分页条件  例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Page<T> findPage(T entity, Pageable pageable) {
+        return findPage(entity, pageable, true);
+    }
+
+    /**
+     * 完全根据查询条件查询出符合条件的分页信息, 不会过滤掉被标记成已删除的数据
+     *
+     * @author summer
+     * @date 2018-12-03 22:16
+     * @param entity 实体条件
+     * @param pageable 分页信息
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Page<T> findPageAll(T entity, Pageable pageable) {
+        return findPage(entity, pageable, false);
+    }
+
+    /**
+     * 分页查询的封装
+     *
+     * @author summer
+     * @date 2018-12-03 22:09
+     * @param entity 查询条件实体
+     * @param pageable 分页信息
+     * @param excludeDeleted 是否排序被标记成删除的字段
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    private Page<T> findPage(T entity, Pageable pageable, boolean excludeDeleted) {
+        // 校验实体对象
+        if(entity == null){
+            return null;
+        }
+
+        // 如果排除伪删除字段
+        if (excludeDeleted) {
+            // 设置删除状态为 false, 只查询未被标记删除的
+            entity.setDeleted(T.DELETED_FALSE);
+        }
+
+        // 校验分页对象, 如果分页对象为空, 则执行普通查询
+        if(pageable == null){
+            return findPage(entity);
+        }
+
+        /*
+         * 获取分页信息, 并重新初始化值
+         */
+        // 获取每页显示数量
+        int pageSize = pageable.getPageSize();
+        pageSize = pageSize <= 0 ? basePageProperties.getDefaultPageSize() : pageSize;
+        // 获取页码
+        int pageNumber = pageable.getPageNumber();
+        pageNumber = pageNumber <= 0 ? basePageProperties.getDefaultPageNumber() : pageNumber;
+        // 获取传入的排序数据
+        String orderBy = getOrderBy(pageable.getSort());
+
+        // 封装分页信息
+        Page<T> page = PageHelper.startPage(pageSize, pageNumber, orderBy);
+        // 执行查询
+        mapper.select(entity);
+
+        // 返回查询结果
+        return page;
+    }
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息的详情)
+     *
+     * @author summer
+     * @date 2018-12-03 22:18
+     * @param entity 用于封装条件的实体类
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> findPageInfo(T entity) {
+        // 参数合法性校验
+        if(entity == null){
+            return null;
+        }
+
+        // 执行分页查询
+        Page<T> page = findPage(entity);
+
+        // 封装并返回分页详情信息
+        return buildPageInfo(page);
+    }
+
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息详情)
+     *
+     * @author summer
+     * @date 2018-12-03 22:19
+     * @param entity 用于封装条件的实体类
+     * @param orderBy 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> findPageInfo(T entity, String orderBy) {
+        // 参数校验
+        if(entity == null){
+            return null;
+        }
+
+        // 查询分页信息
+        Page<T> page = findPage(entity, orderBy);
+
+        // 封装并返回分页详情信息
+        return buildPageInfo(page);
+    }
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息详情)
+     *
+     * @author summer
+     * @date 2018-12-03 22:26
+     * @param entity 用于封装条件的实体类
+     * @param pageable 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> findPageInfo(T entity, Pageable pageable) {
+        // 参数校验
+        if(entity == null){
+            return null;
+        }
+
+        // 根据条件查询分页信息
+        Page<T> page = findPage(entity, pageable);
+
+        // 封装并返回分页详情信息
+        return buildPageInfo(page);
+    }
+
+    /**
+     * 封装分页信息为分页详情信息对象
+     *
+     * @author summer
+     * @date 2018-12-03 22:22
+     * @param page 分页信息对象
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    private PageInfo<T> buildPageInfo(Page<T> page){
+        // 参数校验
+        if (page == null) {
+            return null;
+        }
+
+        // 创建并返回分页详情对象
+        return new PageInfo<>(page);
+    }
+
+    /**
+     * 根据传入的查询条件, 查询出符合条件的数据的数量
+     *
+     * @author summer
+     * @date 2018-12-03 22:27
+     * @param entity 查询条件
+     * @return java.lang.Integer
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Integer count(T entity){
+        // 参数校验
+        if(entity == null){
+            return 0;
+        }
+
+        // 忽略已删除的数据
+        entity.setDeleted(T.DELETED_FALSE);
+
+        // 执行计数查询
+        return mapper.selectCount(entity);
+    }
+
+    /**
+     * 根据传入的查询条件, 查询出符合条件的数据的数量
+     * 不会自动过滤掉被标记成已删除的数据
+     *
+     * @author summer
+     * @date 2018-12-03 22:29
+     * @param entity 查询条件
+     * @return java.lang.Integer
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Integer countAll(T entity){
+        // 参数校验
+        if(entity == null){
+            return 0;
+        }
+
+        // 执行计数查询并返回结果
+        return mapper.selectCount(entity);
+    }
+
+    /**
+     * 根据传入的排序对象, 获取排序结构的字符串
+     *
+     * @author summer
+     * @date 2018-12-03 22:32
+     * @param sort 排序对象
+     * @return java.lang.String
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public String getOrderBy(Sort sort){
+        if(sort == null || sort.isUnsorted()){
+            return null;
+        }
+
+        StringBuilder orderBy = new StringBuilder(" ");
+        int count = 0;
+        // 拼接排序条件
+        for(Sort.Order order : sort){
+            String property = order.getProperty();
+            String direction = order.getDirection().name();
+            if(count > 0){
+                orderBy.append(", ");
+            }
+            orderBy.append(property);
+            orderBy.append(" ");
+            orderBy.append(direction);
+
+            count++;
+        }
+
+        return orderBy.toString();
+    }
 }

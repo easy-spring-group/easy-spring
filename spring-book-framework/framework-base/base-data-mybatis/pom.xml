@@ -28,6 +28,14 @@
             <groupId>com.bcdbook.framework</groupId>
             <artifactId>common-snowflake</artifactId>
         </dependency>
+
+        <!--引入 spring 自定义配置的 jar-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!--引入通用 mapper 的 jar-->
         <dependency>
             <groupId>org.springframework.data</groupId>
