@@ -12,5 +12,5 @@ public interface SnowflakePropertiesKeyConstant {
     /**
      * snowflake 配置参数的前缀
      */
-    String SNOWFLAKE_PROPERTIES_PREFIX = "book.framework.base.snowflake";
+    String SNOWFLAKE_PROPERTIES_PREFIX = "book.framework.common.snowflake";
 }
