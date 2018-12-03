@@ -8,6 +8,7 @@
     <parent>
         <artifactId>spring-book-build</artifactId>
         <groupId>com.bcdbook.framework</groupId>
+        <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../</relativePath>
     </parent>
@@ -48,14 +49,6 @@
     </developers>
 
     <properties>
-        <!--项目编码及版本-->
-        <!--源码编码-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--编译文件编码-->
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!--java版本-->
-        <java.version>1.8</java.version>
-
         <!--封装的 jar 包及组件的版本-->
         <!--framework base 模块的版本-->
         <!--<book-framework.versoin>0.0.1-SNAPSHOT</book-framework.versoin>-->
@@ -119,10 +112,19 @@
             </dependency>
 
             <!--应用本地自己封装的 jar 文件-->
+            <!--base 模块-->
             <!--base-data-mybatis-->
             <dependency>
                 <groupId>com.bcdbook.framework</groupId>
                 <artifactId>base-data-mybatis</artifactId>
+                <version>${base.version}</version>
+                <!--<systemPath>${basedir}/../spring-book-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
+            </dependency>
+
+            <!--common 模块-->
+            <dependency>
+                <groupId>com.bcdbook.framework</groupId>
+                <artifactId>common-snowflake</artifactId>
                 <version>${base.version}</version>
                 <!--<systemPath>${basedir}/../spring-book-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
             </dependency>

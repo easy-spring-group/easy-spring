@@ -32,6 +32,13 @@
     <!--编码, 版本-->
     <properties>
         <base.version>0.0.1-SNAPSHOT</base.version>
+        <!--项目编码及版本-->
+        <!--源码编码-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--编译文件编码-->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--java版本-->
+        <java.version>1.8</java.version>
     </properties>
 
     <!--配置资源仓库-->
@@ -110,4 +117,18 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

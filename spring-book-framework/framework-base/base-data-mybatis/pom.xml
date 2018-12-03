@@ -7,6 +7,7 @@
     <parent>
         <artifactId>framework-base</artifactId>
         <groupId>com.bcdbook.framework</groupId>
+        <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
 
@@ -23,10 +24,28 @@
 
     <!--引入 jar 包依赖-->
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
+        <dependency>
+            <groupId>com.bcdbook.framework</groupId>
+            <artifactId>common-snowflake</artifactId>
+        </dependency>
+        <!--引入通用 mapper 的 jar-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
+        </dependency>
+        <!--引入 page helper 的 jar-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <!--引入阿里的连接池配置-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
         </dependency>
 
         <!--工具-->

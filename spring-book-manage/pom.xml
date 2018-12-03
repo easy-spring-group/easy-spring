@@ -6,6 +6,7 @@
     <parent>
         <artifactId>spring-book-dependencies</artifactId>
         <groupId>com.bcdbook.framework</groupId>
+        <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../spring-book-dependencies</relativePath>
     </parent>

@@ -5,6 +5,7 @@
     <parent>
         <groupId>com.bcdbook.framework</groupId>
         <artifactId>spring-book-framework</artifactId>
+        <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -18,5 +19,8 @@
     <description>Framework Common</description>
     <!--项目连接地址-->
     <url>http://framework.bcdbook.com</url>
+    <modules>
+        <module>common-snowflake</module>
+    </modules>
 
 </project>
