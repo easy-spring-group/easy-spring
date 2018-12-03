@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.bcdbook.framework</groupId>
-        <artifactId>spring-book-framework</artifactId>
+        <artifactId>spring-book-test</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
@@ -16,7 +16,8 @@
 
     <!--子模块-->
     <modules>
-        <module>framework-test-base-data-mybatis</module>
+        <module>framework-base-data-mybatis-test</module>
+        <module>framework-common-snowflake-test</module>
     </modules>
 
     <!--项目名称-->
@@ -27,7 +28,7 @@
     <url>http://framework.bcdbook.com</url>
 
     <dependencies>
-        <!--引入 springboot start 的配置-->
+        <!--引入 springboot start 所以, 其下的所有测试均在 springboot 环境下进行-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

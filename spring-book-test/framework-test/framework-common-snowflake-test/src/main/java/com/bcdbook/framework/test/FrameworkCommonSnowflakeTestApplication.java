@@ -13,12 +13,12 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "com.bcdbook.framework.base",
+        "com.bcdbook.framework.common",
         "com.bcdbook.framework.test"
 })
-public class FrameworkTestBaseDataMybatisApplication {
+public class FrameworkCommonSnowflakeTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FrameworkTestBaseDataMybatisApplication.class, args);
+        SpringApplication.run(FrameworkCommonSnowflakeTestApplication.class, args);
     }
 }

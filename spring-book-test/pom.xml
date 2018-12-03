@@ -2,8 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <artifactId>spring-book-dependencies</artifactId>
         <groupId>com.bcdbook.framework</groupId>
@@ -11,21 +9,21 @@
         <version>${base.version}</version>
         <relativePath>../spring-book-dependencies</relativePath>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-book-framework</artifactId>
+    <artifactId>spring-book-test</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
 
     <!--子模块-->
     <modules>
-        <module>framework-base</module>
-        <module>framework-common</module>
     </modules>
 
     <!--项目名称-->
-    <name>Framework</name>
+    <name>Spring Book Test</name>
     <!--项目简介-->
-    <description>Framework</description>
+    <description>Spring Book Test</description>
     <!--项目连接地址-->
     <url>http://framework.bcdbook.com</url>
+
 </project>

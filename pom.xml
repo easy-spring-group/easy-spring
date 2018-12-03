@@ -21,6 +21,7 @@
         <module>spring-book-manage</module>
         <module>spring-book-business</module>
         <module>spring-book-samples</module>
+        <module>spring-book-test</module>
     </modules>
 
     <!--项目名称-->

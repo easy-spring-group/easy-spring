@@ -7,15 +7,14 @@
         <artifactId>framework-test</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
-        <relativePath>../../framework-test</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
-    <groupId>com.bcdbook.framework</groupId>
-    <artifactId>framework-test-base-data-mybatis</artifactId>
+    <artifactId>framework-base-data-mybatis-test</artifactId>
     <packaging>jar</packaging>
 
-    <name>Framework Test Base Data Mybatis</name>
-    <description>Framework Test Base Data Mybatis</description>
+    <name>Framework Base Data Mybatis Test</name>
+    <description>Framework Base Data Mybatis Test</description>
 
     <dependencies>
         <!--引入自己定义的 jar-->
@@ -25,11 +24,6 @@
         </dependency>
 
         <!--springboot 基础 jar-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -79,6 +73,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
