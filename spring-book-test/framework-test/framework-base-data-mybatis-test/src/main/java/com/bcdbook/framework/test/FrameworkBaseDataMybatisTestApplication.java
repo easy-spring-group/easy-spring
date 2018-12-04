@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {
         "com.bcdbook.framework.base",
+        "com.bcdbook.framework.common",
         "com.bcdbook.framework.test"
 })
 public class FrameworkBaseDataMybatisTestApplication {

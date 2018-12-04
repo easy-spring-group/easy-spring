@@ -31,6 +31,11 @@ mybatis:
     #开启驼峰命名法的匹配
     mapUnderscoreToCamelCase: true
 
+
+logging:
+  level:
+    com.bcdbook.framework.test.mapper: trace
+
 #mappers 多个接口时逗号隔开
 #mapper.mappers=tk.mybatis.mapper.common.Mapper
 mapper:

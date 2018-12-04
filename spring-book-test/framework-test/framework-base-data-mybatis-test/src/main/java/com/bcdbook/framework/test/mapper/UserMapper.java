@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 /**
- * TODO
+ * 用户对象的 mapper
  *
  * @author summer
  * @date 2018-12-03 00:35

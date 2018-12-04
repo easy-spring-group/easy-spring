@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * TODO
+ * 用户对象的 controller
  *
  * @author summer
  * @date 2018-12-03 00:39
@@ -24,11 +24,11 @@ public class UserController {
     private UserService userService;
 
     /**
-     * TODO
+     * 添加用户的方法
      *
      * @author summer
      * @date 2018-12-03 00:40
-     * @param user
+     * @param user 想要添加的用户对象
      * @return com.bcdbook.framework.test.model.User
      * @version V1.0.0-RELEASE
      */
