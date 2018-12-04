@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -37,6 +38,7 @@ public class BaseModel implements Serializable {
     /**
      * id 主键
      */
+    @Id
     private Long id;
     /**
      * 创建时间

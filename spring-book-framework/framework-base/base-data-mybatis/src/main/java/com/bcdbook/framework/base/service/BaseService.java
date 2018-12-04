@@ -60,10 +60,10 @@ public interface BaseService<T> {
      * @author summer
      * @date 2018-12-02 23:50
      * @param id 将要删除(伪删除) 的数据的 id
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
-    Integer delete(Long id);
+    int delete(Long id);
 
     /**
      * 根据数据的条件对象删除(伪删除)数据的方法
@@ -71,10 +71,10 @@ public interface BaseService<T> {
      * @author summer
      * @date 2018-12-02 23:50
      * @param entity 将要删除(伪删除) 的数据的 条件对象
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
-    Integer deleteSelective(T entity);
+    int deleteSelective(T entity);
 
     /**
      * 根据对象的主键, 删除对应的数据对象
@@ -82,10 +82,10 @@ public interface BaseService<T> {
      * @author summer
      * @date 2018-12-02 23:51
      * @param id 将要删除的数据的 id
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
-    Integer realDelete(Long id);
+    int realDelete(Long id);
 
     /**
      * 根据实体条件删除对应的数据
@@ -93,10 +93,10 @@ public interface BaseService<T> {
      * @author summer
      * @date 2018-12-02 23:51
      * @param entity 筛选条件(使用等号过滤)
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
-    Integer realDeleteSelective(T entity);
+    int realDeleteSelective(T entity);
 
     /**
      * 用于更新数据的方法
@@ -294,10 +294,10 @@ public interface BaseService<T> {
      * @author summer
      * @date 2018-12-03 22:27
      * @param entity 查询条件
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
-    Integer count(T entity);
+    int count(T entity);
 
     /**
      * 根据传入的查询条件, 查询出符合条件的数据的数量
@@ -306,10 +306,10 @@ public interface BaseService<T> {
      * @author summer
      * @date 2018-12-03 22:29
      * @param entity 查询条件
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
-    Integer countAll(T entity);
+    int countAll(T entity);
 
     /**
      * 根据传入的排序对象, 获取排序结构的字符串

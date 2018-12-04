@@ -11,6 +11,8 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
@@ -159,20 +161,20 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2018-12-02 23:50
      * @param id 将要删除(伪删除) 的数据的 id
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
     @Override
-    public Integer delete(Long id){
+    public int delete(Long id){
         // 参数合法性校验
         if(id == null){
-            return null;
+            return 0;
         }
         // 获取要删除的对象
         T entity = mapper.selectByPrimaryKey(id);
         // 如果对象不存在, 则返回 null
         if (entity == null) {
-            return null;
+            return 0;
         }
         // 如果对象存在, 设置当前对象的状态为删除状态
         entity.setDeleted(T.DELETED_TRUE);
@@ -187,31 +189,51 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2018-12-02 23:50
      * @param entity 将要删除(伪删除) 的数据的 条件对象
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
     @Override
-    public Integer deleteSelective(T entity){
+    @Transactional(rollbackFor = Exception.class)
+    public int deleteSelective(T entity){
         // 参数合法性校验
         if(entity == null){
-            return null;
+            return 0;
         }
 
         // 查询条件中强制加入删除标识为未删除
         entity.setDeleted(T.DELETED_FALSE);
 
-        // 从数据库中获取相关对象
-        T dbEntity = getByParameters(entity);
-        // 如果对象不存在, 则返回 null
-        if(dbEntity == null){
-            return null;
+        // 从数据库中获取所有符合条件的相关对象
+        List<T> entityList = list(entity);
+        // 如果实体的集合为空, 则直接返回 0
+        if (CollectionUtils.isEmpty(entityList)) {
+            return 0;
         }
 
-        // 设置对象的删除状态为已删除
-        dbEntity.setDeleted(T.DELETED_TRUE);
+        // 定义修改的数据量
+        int changeSize = 0;
+        // 定义执行删除的数量
+        int deletedSize = 0;
+        // 循环处理每一条数据
+        for (T entityInner : entityList) {
+            // 对集合中的数据进行校验
+            if (entityInner == null) {
+                continue;
+            }
 
-        // 执行修改操作
-        return mapper.updateByPrimaryKeySelective(dbEntity);
+            // 设置删除状态为已删除
+            entityInner.setDeleted(T.DELETED_TRUE);
+
+            // 执行删除操作(伪删除)
+            deletedSize = mapper.updateByPrimaryKey(entityInner);
+            // 如果大于 0 说明有数据被删除了
+            if (deletedSize > 0) {
+                changeSize++;
+            }
+            deletedSize = 0;
+        }
+
+        return changeSize;
     }
 
     /**
@@ -220,14 +242,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2018-12-02 23:51
      * @param id 将要删除的数据的 id
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
     @Override
-    public Integer realDelete(Long id){
+    public int realDelete(Long id){
         // 参数合法性校验
         if(id == null){
-            return null;
+            return 0;
         }
 
         // 执行真实删除
@@ -240,14 +262,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2018-12-02 23:51
      * @param entity 筛选条件(使用等号过滤)
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
     @Override
-    public Integer realDeleteSelective(T entity){
+    public int realDeleteSelective(T entity){
         // 参数合法性校验
         if(entity == null){
-            return null;
+            return 0;
         }
 
         // 执行真实删除
@@ -716,11 +738,11 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2018-12-03 22:27
      * @param entity 查询条件
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
     @Override
-    public Integer count(T entity){
+    public int count(T entity){
         // 参数校验
         if(entity == null){
             return 0;
@@ -740,11 +762,11 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2018-12-03 22:29
      * @param entity 查询条件
-     * @return java.lang.Integer
+     * @return int
      * @version V1.0.0-RELEASE
      */
     @Override
-    public Integer countAll(T entity){
+    public int countAll(T entity){
         // 参数校验
         if(entity == null){
             return 0;
