@@ -1,4 +1,4 @@
-package com.bcdbook.framework.base.data.mybatis.puls.test;
+package com.bcdbook.framework.base.data.mybatis.plus.test;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

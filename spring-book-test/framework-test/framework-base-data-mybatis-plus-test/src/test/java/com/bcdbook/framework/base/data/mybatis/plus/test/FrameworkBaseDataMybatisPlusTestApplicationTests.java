@@ -1,4 +1,4 @@
-package com.bcdbook.framework.base.data.mybatis.test;
+package com.bcdbook.framework.base.data.mybatis.plus.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -21,3 +21,7 @@ spring:
     url: jdbc:mysql://${book.mysql.server-host}:${book.mysql.port}/${book.mysql.database}?characterEncoding=utf-8&useSSL=false
     username: ${book.mysql.username}
     password: ${book.mysql.password}
+
+logging:
+  level:
+    com.bcdbook.framework.base.data.mybatis.plus.test.mapper: trace
