@@ -11,7 +11,6 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -36,7 +35,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     /**
      * 注入全局唯一 id 生成的工具类
      */
-    @SuppressWarnings("all")
     @Autowired
     private SnowflakeHelp snowflakeHelp;
 
@@ -193,7 +191,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @version V1.0.0-RELEASE
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public int deleteSelective(T entity){
         // 参数合法性校验
         if(entity == null){
@@ -213,7 +210,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         // 定义修改的数据量
         int changeSize = 0;
         // 定义执行删除的数量
-        int deletedSize = 0;
+        int deletedSize;
         // 循环处理每一条数据
         for (T entityInner : entityList) {
             // 对集合中的数据进行校验
@@ -230,7 +227,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             if (deletedSize > 0) {
                 changeSize++;
             }
-            deletedSize = 0;
         }
 
         return changeSize;
@@ -292,8 +288,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return null;
         }
 
+        // 根据 id 从数据库中获取符合条件的对象
+        T dbEntity = get(entity.getId());
+        if (dbEntity == null) {
+            return null;
+        }
+
         // 防止误删除
-        entity.setDeleted(null);
+        entity.setDeleted(dbEntity.getDeleted());
 
         // 执行修改操作
         int changeSize = mapper.updateByPrimaryKey(entity);
@@ -630,7 +632,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         String orderBy = getOrderBy(pageable.getSort());
 
         // 封装分页信息
-        Page<T> page = PageHelper.startPage(pageSize, pageNumber, orderBy);
+        Page<T> page = PageHelper.startPage(pageNumber, pageSize, orderBy);
         // 执行查询
         mapper.select(entity);
 
@@ -657,6 +659,30 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
         // 执行分页查询
         Page<T> page = findPage(entity);
+
+        // 封装并返回分页详情信息
+        return buildPageInfo(page);
+    }
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息的详情), 不排除被标记成删除的数据
+     *
+     * @author summer
+     * @date 2018-12-05 20:26
+     * @param entity 用于封装条件的实体类
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> findPageInfoAll(T entity){
+        // 参数合法性校验
+        if(entity == null){
+            return null;
+        }
+
+        // 执行分页查询
+        Page<T> page = findPageAll(entity);
 
         // 封装并返回分页详情信息
         return buildPageInfo(page);
@@ -690,6 +716,31 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
     /**
      * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息详情), 不排除被标记成删除的数据
+     *
+     * @author summer
+     * @date 2018-12-03 22:19
+     * @param entity 用于封装条件的实体类
+     * @param orderBy 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> findPageInfoAll(T entity, String orderBy) {
+        // 参数校验
+        if(entity == null){
+            return null;
+        }
+
+        // 查询分页信息
+        Page<T> page = findPageAll(entity, orderBy);
+
+        // 封装并返回分页详情信息
+        return buildPageInfo(page);
+    }
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
      * 查询出符合条件的分页对象 (包括分页信息详情)
      *
      * @author summer
@@ -708,6 +759,31 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
         // 根据条件查询分页信息
         Page<T> page = findPage(entity, pageable);
+
+        // 封装并返回分页详情信息
+        return buildPageInfo(page);
+    }
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息详情), 不排除被标记成删除的数据
+     *
+     * @author summer
+     * @date 2018-12-03 22:26
+     * @param entity 用于封装条件的实体类
+     * @param pageable 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> findPageInfoAll(T entity, Pageable pageable) {
+        // 参数校验
+        if(entity == null){
+            return null;
+        }
+
+        // 根据条件查询分页信息
+        Page<T> page = findPageAll(entity, pageable);
 
         // 封装并返回分页详情信息
         return buildPageInfo(page);

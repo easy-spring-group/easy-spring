@@ -34,7 +34,7 @@ mybatis:
 
 logging:
   level:
-    com.bcdbook.framework.test.mapper: trace
+    com.bcdbook.framework.base.data.mybatis.test.mapper: trace
 
 #mappers 多个接口时逗号隔开
 #mapper.mappers=tk.mybatis.mapper.common.Mapper

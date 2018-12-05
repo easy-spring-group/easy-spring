@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -63,6 +64,7 @@ public interface BaseService<T> {
      * @return int
      * @version V1.0.0-RELEASE
      */
+    @Transactional(rollbackFor = Exception.class)
     int delete(Long id);
 
     /**
@@ -74,6 +76,7 @@ public interface BaseService<T> {
      * @return int
      * @version V1.0.0-RELEASE
      */
+    @Transactional(rollbackFor = Exception.class)
     int deleteSelective(T entity);
 
     /**
@@ -85,6 +88,7 @@ public interface BaseService<T> {
      * @return int
      * @version V1.0.0-RELEASE
      */
+    @Transactional(rollbackFor = Exception.class)
     int realDelete(Long id);
 
     /**
@@ -96,6 +100,7 @@ public interface BaseService<T> {
      * @return int
      * @version V1.0.0-RELEASE
      */
+    @Transactional(rollbackFor = Exception.class)
     int realDeleteSelective(T entity);
 
     /**
@@ -107,6 +112,7 @@ public interface BaseService<T> {
      * @return T
      * @version V1.0.0-RELEASE
      */
+    @Transactional(rollbackFor = Exception.class)
     T updateAll(T entity);
 
     /**
@@ -265,6 +271,18 @@ public interface BaseService<T> {
 
     /**
      * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息的详情), 不排除被标记成删除的数据
+     *
+     * @author summer
+     * @date 2018-12-05 20:26
+     * @param entity 用于封装条件的实体类
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    PageInfo<T> findPageInfoAll(T entity);
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
      * 查询出符合条件的分页对象 (包括分页信息详情)
      *
      * @author summer
@@ -278,6 +296,19 @@ public interface BaseService<T> {
 
     /**
      * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息详情), 不排除被标记成删除的数据
+     *
+     * @author summer
+     * @date 2018-12-03 22:19
+     * @param entity 用于封装条件的实体类
+     * @param orderBy 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    PageInfo<T> findPageInfoAll(T entity, String orderBy);
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
      * 查询出符合条件的分页对象
      *
      * @author summer
@@ -287,6 +318,19 @@ public interface BaseService<T> {
      * @return com.github.pagehelper.Page<T>
      */
     PageInfo<T> findPageInfo(T entity, Pageable pageable);
+
+    /**
+     * 根据传入的实体条件 / 页码 / 每页显示的数据量
+     * 查询出符合条件的分页对象 (包括分页信息详情), 不排除被标记成删除的数据
+     *
+     * @author summer
+     * @date 2018-12-03 22:26
+     * @param entity 用于封装条件的实体类
+     * @param pageable 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
+     * @return com.github.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    PageInfo<T> findPageInfoAll(T entity, Pageable pageable);
 
     /**
      * 根据传入的查询条件, 查询出符合条件的数据的数量
