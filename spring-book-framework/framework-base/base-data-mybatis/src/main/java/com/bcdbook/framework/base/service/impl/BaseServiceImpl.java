@@ -8,6 +8,7 @@ import com.bcdbook.framework.common.snowflake.SnowflakeHelp;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -15,6 +16,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 基础单表查询的 service 实现类
@@ -364,10 +366,11 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @date 2018-12-02 23:54
      * @param entity 用于封装查询条件的实体
      * @return T
+     * @throws MyBatisSystemException 当查询出多条数据时会抛出此异常
      * @version V1.0.0-RELEASE
      */
     @Override
-    public T getByParameters(T entity){
+    public T getByParameters(T entity) throws MyBatisSystemException{
         // 参数合法性校验
         if(entity == null){
             return null;
@@ -387,10 +390,11 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @date 2018-12-02 23:54
      * @param entity 查询条件
      * @return T
+     * @throws MyBatisSystemException 当查询出多条数据时会抛出此异常
      * @version V1.0.0-RELEASE
      */
     @Override
-    public T getAllByParameters(T entity){
+    public T getAllByParameters(T entity) throws MyBatisSystemException {
         // 参数合法性校验
         if(entity == null){
             return null;
@@ -863,6 +867,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      */
     @Override
     public String getOrderBy(Sort sort){
+        // 参数合法性校验
         if(sort == null || sort.isUnsorted()){
             return null;
         }
@@ -884,5 +889,25 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         }
 
         return orderBy.toString();
+    }
+
+    /**
+     * 根据传入的 sql 查询出 map 对象
+     *
+     * @author summer
+     * @date 2018-12-05 22:28
+     * @param sql 想要执行的 sql
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Map<String, Object> selectMap(String sql){
+        // 参数合法性校验
+        if (StringUtils.isEmpty(sql)) {
+            return null;
+        }
+
+        // 执行查询, 并返回查询结果
+        return mapper.selectMap(sql);
     }
 }

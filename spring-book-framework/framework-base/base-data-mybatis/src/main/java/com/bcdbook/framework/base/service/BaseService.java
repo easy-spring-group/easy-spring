@@ -2,12 +2,21 @@ package com.bcdbook.framework.base.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
+/**
+ * 通用的 service 类
+ *
+ * @author summer
+ * @date 2018-12-05 23:15
+ * @version V1.0.0-RELEASE
+ */
 public interface BaseService<T> {
 
     /**
@@ -146,9 +155,10 @@ public interface BaseService<T> {
      * @date 2018-12-02 23:54
      * @param entity 用于封装查询条件的实体
      * @return T
+     * @throws MyBatisSystemException 当查询出多条数据时会抛出此异常
      * @version V1.0.0-RELEASE
      */
-    T getByParameters(T entity);
+    T getByParameters(T entity) throws MyBatisSystemException;
 
     /**
      * 完全根据查询条件进行查询, 不会自动排查被标记成已删除的记录
@@ -157,9 +167,10 @@ public interface BaseService<T> {
      * @date 2018-12-02 23:54
      * @param entity 查询条件
      * @return T
+     * @throws MyBatisSystemException 当查询出多条数据时会抛出此异常
      * @version V1.0.0-RELEASE
      */
-    T getAllByParameters(T entity);
+    T getAllByParameters(T entity) throws MyBatisSystemException;
 
     /**
      * 根据传入的实体对象条件, 查询出符合条件的数据的集合
@@ -365,4 +376,15 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     String getOrderBy(Sort sort);
+
+    /**
+     * 根据传入的 sql 查询出 map 对象
+     *
+     * @author summer
+     * @date 2018-12-05 22:28
+     * @param sql 想要执行的 sql
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     * @version V1.0.0-RELEASE
+     */
+    Map<String, Object> selectMap(String sql);
 }

@@ -516,7 +516,7 @@ public class UserServiceImplTest {
         user.setName(name);
         user.setDeleted(null);
 
-        User userResult= userService.getAllByParameters(user);
+        User userResult = userService.getAllByParameters(user);
         assertNotNull(userResult);
     }
 
@@ -1226,5 +1226,20 @@ public class UserServiceImplTest {
         assertEquals(0, count);
     }
 
+
+//    /**
+//     * 测试直接使用 sql 的查询(查询出 map 对象)
+//     *
+//     * @author summer
+//     * @date 2018-12-05 22:33
+//     * @return void
+//     * @version V1.0.0-RELEASE
+//     */
+//    @Test
+//    public void selectMap(){
+//        String sql = "select * from tab_user";
+//        Map<String, Object> resultMap = userService.selectMap(sql);
+//        assertTrue(!CollectionUtils.isEmpty(resultMap));
+//    }
 
 }

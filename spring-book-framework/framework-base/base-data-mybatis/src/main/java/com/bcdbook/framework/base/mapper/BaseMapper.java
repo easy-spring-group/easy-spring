@@ -14,5 +14,6 @@ import tk.mybatis.mapper.common.base.BaseSelectMapper;
 public interface BaseMapper<T>  extends
         Mapper<T>,
         MySqlMapper<T>,
-        BaseSelectMapper<T> {
+        BaseSelectMapper<T>,
+        BaseCurrentMapper {
 }
