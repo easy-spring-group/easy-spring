@@ -2,27 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.bcdbook.framework</groupId>
         <artifactId>framework-test</artifactId>
-        <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>framework-base-data-mybatis-test</artifactId>
+    <artifactId>framework-base-data-mybatis-plus-test</artifactId>
     <packaging>jar</packaging>
 
-    <name>Framework Base Data Mybatis Test</name>
-    <description>Framework Base Data Mybatis Test</description>
+    <name>Framework Base Data Mybatis Plus Test</name>
+    <description>Demo project for Spring Boot</description>
 
     <dependencies>
-        <!--引入自己定义的 jar-->
-        <dependency>
-            <groupId>com.bcdbook.framework</groupId>
-            <artifactId>base-data-mybatis</artifactId>
-        </dependency>
-
         <!--springboot 基础 jar-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -33,25 +27,22 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--数据库连接-->
-        <!--mysql 连接驱动-->
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.spring.boot</groupId>-->
+            <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+            <!--<version>1.3.2</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.0.6</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!--mybatis 支持-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
-        <!--分页插件-->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-        </dependency>
 
-        <!--工具-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -77,4 +68,6 @@
             </plugin>
         </plugins>
     </build>
+
+
 </project>

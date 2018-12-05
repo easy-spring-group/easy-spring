@@ -1,4 +1,4 @@
-package com.bcdbook.framework.test.model;
+package com.bcdbook.framework.base.data.mybatis.test.model;
 
 import com.bcdbook.framework.base.model.BaseModel;
 import lombok.Data;

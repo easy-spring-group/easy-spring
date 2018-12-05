@@ -1,9 +1,9 @@
-package com.bcdbook.framework.test.service.impl;
+package com.bcdbook.framework.base.data.mybatis.test.service.impl;
 
+import com.bcdbook.framework.base.data.mybatis.test.model.User;
 import com.bcdbook.framework.base.service.impl.BaseServiceImpl;
-import com.bcdbook.framework.test.mapper.UserMapper;
-import com.bcdbook.framework.test.model.User;
-import com.bcdbook.framework.test.service.UserService;
+import com.bcdbook.framework.base.data.mybatis.test.mapper.UserMapper;
+import com.bcdbook.framework.base.data.mybatis.test.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,7 +1,7 @@
-package com.bcdbook.framework.test.service;
+package com.bcdbook.framework.base.data.mybatis.test.service;
 
+import com.bcdbook.framework.base.data.mybatis.test.model.User;
 import com.bcdbook.framework.base.service.BaseService;
-import com.bcdbook.framework.test.model.User;
 
 /**
  * 用户对象的 service

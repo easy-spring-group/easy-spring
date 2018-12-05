@@ -1,7 +1,7 @@
-package com.bcdbook.framework.test.web;
+package com.bcdbook.framework.base.data.mybatis.test.web;
 
-import com.bcdbook.framework.test.model.User;
-import com.bcdbook.framework.test.service.UserService;
+import com.bcdbook.framework.base.data.mybatis.test.model.User;
+import com.bcdbook.framework.base.data.mybatis.test.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

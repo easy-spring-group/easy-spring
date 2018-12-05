@@ -1,7 +1,7 @@
-package com.bcdbook.framework.test.mapper;
+package com.bcdbook.framework.base.data.mybatis.test.mapper;
 
+import com.bcdbook.framework.base.data.mybatis.test.model.User;
 import com.bcdbook.framework.base.mapper.BaseMapper;
-import com.bcdbook.framework.test.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 

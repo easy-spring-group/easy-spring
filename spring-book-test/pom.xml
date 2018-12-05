@@ -17,6 +17,7 @@
 
     <!--子模块-->
     <modules>
+        <module>framework-test</module>
     </modules>
 
     <!--项目名称-->

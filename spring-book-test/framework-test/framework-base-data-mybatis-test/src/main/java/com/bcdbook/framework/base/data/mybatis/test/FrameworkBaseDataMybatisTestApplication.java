@@ -1,4 +1,4 @@
-package com.bcdbook.framework.test;
+package com.bcdbook.framework.base.data.mybatis.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
