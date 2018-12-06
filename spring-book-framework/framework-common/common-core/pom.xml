@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>framework-common</artifactId>
+        <groupId>com.bcdbook.framework</groupId>
+        <!--suppress MavenPropertyInParent -->
+        <version>${base.version}</version>
+    </parent>
+
+    <artifactId>common-core</artifactId>
+
+    <!--打包方式-->
+    <packaging>jar</packaging>
+    <!--项目名称-->
+    <name>Framework Common Core</name>
+    <!--项目简介-->
+    <description>Framework Common Core</description>
+    <!--项目连接地址-->
+    <url>http://framework.bcdbook.com</url>
+
+    <dependencies>
+        <!--添加 spring 的核心 jar-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
