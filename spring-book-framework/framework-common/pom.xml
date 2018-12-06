@@ -21,6 +21,7 @@
     <url>http://framework.bcdbook.com</url>
     <modules>
         <module>common-snowflake</module>
+        <module>common-core</module>
     </modules>
 
 </project>
