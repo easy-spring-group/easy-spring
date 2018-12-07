@@ -5,6 +5,7 @@ import com.bcdbook.framework.base.model.BaseModel;
 import com.bcdbook.framework.base.properties.BasePageProperties;
 import com.bcdbook.framework.base.service.BaseService;
 import com.bcdbook.framework.common.snowflake.SnowflakeHelp;
+import com.bcdbook.framework.utils.BeanUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -15,6 +16,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -59,6 +63,26 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     public void perInsert(T entity) {
         // 设置 id
         entity.setId(snowflakeHelp.nextId());
+    }
+
+    /**
+     * 使用 sql 语句进行插入操作
+     *
+     * @author summer
+     * @date 2018-12-06 16:45
+     * @param sql 想要执行的 sql
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public int insertUseSql(String sql){
+        // 执行参数校验
+        if (StringUtils.isEmpty(sql)) {
+            return 0;
+        }
+
+        // 执行查询并返回结果
+        return mapper.insertUseSql(sql);
     }
 
     /**
@@ -153,6 +177,26 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
         // 受影响的数据数量大于 0, 说明有被修改的数据, 则返回修改后的对象, 否则返回空
         return changeSize > 0 ? entity : null;
+    }
+
+    /**
+     * 根据传入的 sql 执行删除操作, 并返回影响的数据条数
+     *
+     * @author summer
+     * @date 2018-12-06 16:50
+     * @param sql 将要执行的 sql 语句
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public int deleteUseSql(String sql){
+        // 参数校验
+        if (StringUtils.isEmpty(sql)){
+            return 0;
+        }
+
+        // 执行删除并返回结果
+        return mapper.deleteUseSql(sql);
     }
 
     /**
@@ -275,6 +319,26 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     }
 
     /**
+     * 根据传入的 sql 执行更新操作并返回影响的数据条数
+     *
+     * @author summer
+     * @date 2018-12-06 16:53
+     * @param sql 想要执行的 sql
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public int updateUseSql(String sql){
+        // 执行参数校验
+        if (StringUtils.isEmpty(sql)) {
+            return 0;
+        }
+
+        // 执行更新操作并返回结果
+        return mapper.updateUseSql(sql);
+    }
+
+    /**
      * 用于更新数据的方法
      *
      * @author summer
@@ -329,6 +393,62 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
         // 如果影响的数据量大于 0, 则返回修改后的对象, 否则返回空
         return changeSize > 0 ? entity : null;
+    }
+
+    /**
+     * 根据传入的 sql 查询出 map 对象
+     *
+     * @author summer
+     * @date 2018-12-05 22:28
+     * @param sql 想要执行的 sql
+     * @throws MyBatisSystemException 期待查询出一个对象, 如果查询出多个对象, 会抛出此异常
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Map<String, Object> selectMapUseSql(String sql) throws MyBatisSystemException{
+        // 参数合法性校验
+        if (StringUtils.isEmpty(sql)) {
+            return null;
+        }
+
+        // 执行查询, 并返回查询结果
+        return mapper.selectMapUseSql(sql);
+    }
+
+    /**
+     * 根据传入的 sql 和对象, 查询出对应的数据对象
+     *
+     * @author summer
+     * @date 2018-12-06 16:57
+     * @param sql 想要执行的 sql
+     * @param beanClass 想要返回的数据对象
+     * @throws IllegalAccessException 反射异常
+     * @throws InstantiationException 实例化异常
+     * @throws InvocationTargetException 转换时的数据类型异常
+     * @throws MyBatisSystemException 期待查询出一个对象, 如果查询出多个对象, 会抛出此异常
+     * @throws IOException 执行对象转换的时候可能出现的的 io 异常
+     * @return B
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public <B> B selectMapUseSql(String sql, Class<B> beanClass)
+            throws IllegalAccessException, InstantiationException,
+            InvocationTargetException, MyBatisSystemException, IOException {
+        // 参数校验
+        if (StringUtils.isEmpty(sql) || beanClass == null) {
+            return null;
+        }
+
+        // 执行查询
+        Map<String, Object> resultMap = mapper.selectMapUseSql(sql);
+        // 对查询的结果进行检查
+        if (CollectionUtils.isEmpty(resultMap)) {
+            return null;
+        }
+
+        // 执行转换并返回数据
+        return BeanUtils.mapToBean(resultMap, beanClass, true);
     }
 
     /**
@@ -402,6 +522,72 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
         // 执行查询并返回结果
         return mapper.selectOne(entity);
+    }
+
+    /**
+     * 根据传入的 sql 查询出对应的数据集合
+     *
+     * @author summer
+     * @date 2018-12-06 17:05
+     * @param sql 将要执行的 sql
+     * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public List<Map<String, Object>> selectListUseSql(String sql){
+        // 参数合法性校验
+        if (StringUtils.isEmpty(sql)) {
+            return null;
+        }
+
+        // 执行查询并返回结果
+        return mapper.selectListUseSql(sql);
+    }
+
+    /**
+     * 根据传入的 sql 查询出符合条件的集合对象
+     *
+     * @author summer
+     * @date 2018-12-06 17:10
+     * @param sql 将要执行的 sql
+     * @param beanClass 想要返回的对象的 class
+     * @throws IllegalAccessException 反射异常
+     * @throws InstantiationException 实例化异常
+     * @throws InvocationTargetException 转换时的数据类型异常
+     * @throws MyBatisSystemException 期待查询出一个对象, 如果查询出多个对象, 会抛出此异常
+     * @throws IOException 执行对象转换的时候可能出现的的 io 异常
+     * @return java.util.List<B>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public <B> List<B> selectListUseSql(String sql, Class<B> beanClass)
+            throws IllegalAccessException, InstantiationException, InvocationTargetException, MyBatisSystemException, IOException {
+        // 参数合法性校验
+        if (StringUtils.isEmpty(sql) || beanClass == null) {
+            return null;
+        }
+
+        // 执行查询操作
+        List<Map<String, Object>> mapList = mapper.selectListUseSql(sql);
+        // 对返回的数据进行合法性校验
+        if (CollectionUtils.isEmpty(mapList)) {
+            return null;
+        }
+
+        // 定义返回对象集合
+        List<B> bList = new ArrayList<>();
+        // 循环查询出的 map 对象
+        for (Map<String, Object> mapInner : mapList){
+            // 忽略可能存在的空值
+            if (CollectionUtils.isEmpty(mapInner)) {
+                continue;
+            }
+
+            // 添加到返回数据集合中
+            bList.add(BeanUtils.mapToBean(mapInner, beanClass, true));
+        }
+
+        return bList;
     }
 
     /**
@@ -891,23 +1077,4 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         return orderBy.toString();
     }
 
-    /**
-     * 根据传入的 sql 查询出 map 对象
-     *
-     * @author summer
-     * @date 2018-12-05 22:28
-     * @param sql 想要执行的 sql
-     * @return java.util.Map<java.lang.String,java.lang.Object>
-     * @version V1.0.0-RELEASE
-     */
-    @Override
-    public Map<String, Object> selectMap(String sql){
-        // 参数合法性校验
-        if (StringUtils.isEmpty(sql)) {
-            return null;
-        }
-
-        // 执行查询, 并返回查询结果
-        return mapper.selectMap(sql);
-    }
 }

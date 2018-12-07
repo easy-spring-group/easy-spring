@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +32,16 @@ public interface BaseService<T> {
      */
     void perInsert(T entity);
 
+    /**
+     * 使用 sql 语句进行插入操作
+     *
+     * @author summer
+     * @date 2018-12-06 16:45
+     * @param sql 想要执行的 sql
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    int insertUseSql(String sql);
 
     /**
      * 用于保存数据的方法, 如果 id 为空则执行添加操作, 否则执行修改操作
@@ -63,6 +75,17 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     T insertSelective(T entity);
+
+    /**
+     * 根据传入的 sql 执行删除操作, 并返回影响的数据条数
+     *
+     * @author summer
+     * @date 2018-12-06 16:50
+     * @param sql 将要执行的 sql 语句
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    int deleteUseSql(String sql);
 
     /**
      * 根据数据的 id 删除(伪删除)数据的方法
@@ -113,6 +136,17 @@ public interface BaseService<T> {
     int realDeleteSelective(T entity);
 
     /**
+     * 根据传入的 sql 执行更新操作并返回影响的数据条数
+     *
+     * @author summer
+     * @date 2018-12-06 16:53
+     * @param sql 想要执行的 sql
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    int updateUseSql(String sql);
+
+    /**
      * 用于更新数据的方法
      *
      * @author summer
@@ -134,6 +168,37 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     T updateSelective(T entity);
+
+    /**
+     * 根据传入的 sql 查询出 map 对象
+     *
+     * @author summer
+     * @date 2018-12-05 22:28
+     * @param sql 想要执行的 sql
+     * @throws MyBatisSystemException 期待查询出一个对象, 如果查询出多个对象, 会抛出此异常
+     * @return java.util.Map<java.lang.String,java.lang.Object>
+     * @version V1.0.0-RELEASE
+     */
+    Map<String, Object> selectMapUseSql(String sql) throws MyBatisSystemException;
+
+    /**
+     * 根据传入的 sql 和对象, 查询出对应的数据对象
+     *
+     * @author summer
+     * @date 2018-12-06 16:57
+     * @param sql 想要执行的 sql
+     * @param beanClass 想要返回的数据对象
+     * @throws IllegalAccessException 反射异常
+     * @throws InstantiationException 实例化异常
+     * @throws InvocationTargetException 转换时的数据类型异常
+     * @throws MyBatisSystemException 期待查询出一个对象, 如果查询出多个对象, 会抛出此异常
+     * @throws IOException 执行对象转换的时候可能出现的的 io 异常
+     * @return B
+     * @version V1.0.0-RELEASE
+     */
+    <B> B selectMapUseSql(String sql, Class<B> beanClass)
+            throws IllegalAccessException, InstantiationException,
+            InvocationTargetException, MyBatisSystemException, IOException;
 
     /**
      * 根据 id 查询对应的对象
@@ -171,6 +236,36 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     T getAllByParameters(T entity) throws MyBatisSystemException;
+
+    /**
+     * 根据传入的 sql 查询出对应的数据集合
+     *
+     * @author summer
+     * @date 2018-12-06 17:05
+     * @param sql 将要执行的 sql
+     * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
+     * @version V1.0.0-RELEASE
+     */
+    List<Map<String, Object>> selectListUseSql(String sql);
+
+    /**
+     * 根据传入的 sql 查询出符合条件的集合对象
+     *
+     * @author summer
+     * @date 2018-12-06 17:10
+     * @param sql 将要执行的 sql
+     * @param beanClass 想要返回的对象的 class
+     * @throws IllegalAccessException 反射异常
+     * @throws InstantiationException 实例化异常
+     * @throws InvocationTargetException 转换时的数据类型异常
+     * @throws MyBatisSystemException 期待查询出一个对象, 如果查询出多个对象, 会抛出此异常
+     * @throws IOException 执行对象转换的时候可能出现的的 io 异常
+     * @return java.util.List<B>
+     * @version V1.0.0-RELEASE
+     */
+    <B> List<B> selectListUseSql(String sql, Class<B> beanClass)
+            throws IllegalAccessException, InstantiationException, InvocationTargetException,
+            MyBatisSystemException, IOException;
 
     /**
      * 根据传入的实体对象条件, 查询出符合条件的数据的集合
@@ -376,15 +471,4 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     String getOrderBy(Sort sort);
-
-    /**
-     * 根据传入的 sql 查询出 map 对象
-     *
-     * @author summer
-     * @date 2018-12-05 22:28
-     * @param sql 想要执行的 sql
-     * @return java.util.Map<java.lang.String,java.lang.Object>
-     * @version V1.0.0-RELEASE
-     */
-    Map<String, Object> selectMap(String sql);
 }

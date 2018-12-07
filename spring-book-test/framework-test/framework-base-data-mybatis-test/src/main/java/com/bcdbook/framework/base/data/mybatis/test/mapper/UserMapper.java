@@ -3,7 +3,6 @@ package com.bcdbook.framework.base.data.mybatis.test.mapper;
 import com.bcdbook.framework.base.data.mybatis.test.model.User;
 import com.bcdbook.framework.base.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
 
 /**
  * 用户对象的 mapper
@@ -13,6 +12,5 @@ import org.springframework.stereotype.Component;
  * @version V1.0.0-RELEASE
  */
 @Mapper
-@Component
 public interface UserMapper extends BaseMapper<User> {
 }

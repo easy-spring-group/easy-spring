@@ -18,8 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -63,6 +66,22 @@ public class UserServiceImplTest {
         assertTrue(user.getId() > 0);
     }
 
+    /**
+     * 直接执行 sql 语句的插入方法
+     *
+     * @author summer
+     * @date 2018-12-07 22:59
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void insertUseSql(){
+        // 定义 sql 语句
+        String sql = "INSERT INTO tab_user (id, name, user_code) VALUES ('11223344', 'sql-insert', 'code')";
+
+        int i = userService.insertUseSql(sql);
+        assertTrue(i > 0);
+    }
 
     /**
      * 插入或更新数据的测试(测试插入)
@@ -176,6 +195,22 @@ public class UserServiceImplTest {
         assertNotNull(userResult);
         assertNotNull(userResult.getId());
         assertEquals(nameInsertSelective, userResult.getName());
+    }
+
+    /**
+     * 根据传入的 sql 执行删除操作, 并返回影响的数据条数
+     *
+     * @author summer
+     * @date 2018-12-07 23:01
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void deleteUseSql(){
+        String sql = "delete from tab_user where name = 'test-delete-use-sql'";
+
+        int i = userService.deleteUseSql(sql);
+        assertEquals(2, i);
     }
 
     /**
@@ -312,6 +347,23 @@ public class UserServiceImplTest {
     }
 
     /**
+     * 根据传入的 sql 执行更新操作并返回影响的数据条数
+     *
+     * @author summer
+     * @date 2018-12-07 23:05
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void updateUseSql(){
+        String sql = "UPDATE tab_user set user_code = '111' WHERE `name` = 'test-update-use-sql'";
+
+        int i = userService.updateUseSql(sql);
+        assertEquals(2, i);
+
+    }
+
+    /**
      * 全字段更新的测试
      *
      * @author summer
@@ -409,6 +461,42 @@ public class UserServiceImplTest {
 
         User userResult = userService.updateAll(user);
         assertNull(userResult);
+    }
+
+    /**
+     * 根据传入的 sql 查询出 map 对象
+     *
+     * @author summer
+     * @date 2018-12-07 23:11
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void selectMapUseSql(){
+        String name = "test-get-one";
+        String sql = "select * from tab_user where id = '1428117721710602'";
+        Map<String, Object> resultMap = userService.selectMapUseSql(sql);
+        assertTrue(!CollectionUtils.isEmpty(resultMap));
+        assertEquals(name, resultMap.get("name"));
+    }
+
+
+    /**
+     * 根据传入的 sql 和对象, 查询出对应的数据对象
+     *
+     * @author summer
+     * @date 2018-12-07 23:11
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void getBeanUseSql()
+            throws IllegalAccessException, InvocationTargetException, InstantiationException, IOException {
+        Long id = 1428117721710602L;
+        String sql = "select * from tab_user where id = '1428117721710602'";
+        User user = userService.selectMapUseSql(sql, User.class);
+        assertNotNull(user);
+        assertEquals(id, user.getId());
     }
 
     /**
@@ -557,6 +645,46 @@ public class UserServiceImplTest {
 
         User userResult= userService.getAllByParameters(user);
         assertNotNull(userResult);
+    }
+
+    /**
+     * 根据传入的 sql 查询出对应的数据集合
+     *
+     * @author summer
+     * @date 2018-12-07 23:56
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void selectListUseSql(){
+        Integer testSize = 2;
+        Long id = 1428117721710601L;
+        String sql = "select * from tab_user where name = 'test-get' ORDER BY user_code ASC";
+        List<Map<String, Object>> mapList = userService.selectListUseSql(sql);
+        assertNotNull(mapList);
+        Integer resultSize = mapList.size();
+        assertEquals(testSize, resultSize);
+        assertEquals(id, Long.valueOf(mapList.get(0).get("id").toString()));
+    }
+
+    /**
+     * 根据传入的 sql 查询出符合条件的集合对象
+     *
+     * @author summer
+     * @date 2018-12-07 23:56
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void listBeanUseSql() throws InvocationTargetException, IOException, InstantiationException, IllegalAccessException {
+        Integer testSize = 2;
+        Long id = 1428117721710601L;
+        String sql = "select * from tab_user where name = 'test-get' ORDER BY user_code ASC";
+        List<User> userList = userService.selectListUseSql(sql, User.class);
+        assertNotNull(userList);
+        Integer resultSize = userList.size();
+        assertEquals(testSize, resultSize);
+        assertEquals(id, userList.get(0).getId());
     }
 
     /**
@@ -1226,20 +1354,39 @@ public class UserServiceImplTest {
         assertEquals(0, count);
     }
 
+    /**
+     * 测试直接使用 sql 的查询(查询出 map 对象)
+     *
+     * @author summer
+     * @date 2018-12-05 22:33
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void selectMap(){
+        String sql = "select * from tab_user where name = 'test-get-one'";
+        Map<String, Object> resultMap = userService.selectMapUseSql(sql);
+        assertTrue(!CollectionUtils.isEmpty(resultMap));
+        assertNotNull(resultMap.get("name"));
+        assertEquals("test-get-one", resultMap.get("name"));
+    }
 
 //    /**
-//     * 测试直接使用 sql 的查询(查询出 map 对象)
+//     * 测试直接使用 sql 的查询(查询出 Object 对象)
 //     *
 //     * @author summer
-//     * @date 2018-12-05 22:33
+//     * @date 2018-12-06 22:33
 //     * @return void
 //     * @version V1.0.0-RELEASE
 //     */
 //    @Test
-//    public void selectMap(){
-//        String sql = "select * from tab_user";
-//        Map<String, Object> resultMap = userService.selectMap(sql);
-//        assertTrue(!CollectionUtils.isEmpty(resultMap));
+//    public void selectObject(){
+//        String sql = "select * from tab_user where name = 'test-get-one'";
+//
+//        User userResult = userService.selectObject(sql, new User());
+//        assertNotNull(userResult);
+//        assertNotNull(userResult.getName());
+//        assertEquals("test-get-one", userResult.getName());
 //    }
 
 }
