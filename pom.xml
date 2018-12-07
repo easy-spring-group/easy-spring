@@ -32,7 +32,7 @@
     <!--项目编码,java 及 jar 包的版本-->
     <!--编码, 版本-->
     <properties>
-        <base.version>0.0.2-SNAPSHOT</base.version>
+        <base.version>0.0.3-SNAPSHOT</base.version>
         <!--项目编码及版本-->
         <!--源码编码-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
