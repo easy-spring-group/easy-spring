@@ -18,7 +18,7 @@ public class StringUtils {
     /**
      * 定义空字符串的常量
      */
-    public static final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = "";
     /**
      * 定义 getter 的匹配模板
      */
