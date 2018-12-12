@@ -1,6 +1,5 @@
 package com.bcdbook.framework.base.properties;
 
-import com.bcdbook.framework.base.constant.BasePagePropertiesKeyConstant;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@ConfigurationProperties(prefix = BasePagePropertiesKeyConstant.PAGE_PROPERTIES_PREFIX)
+@ConfigurationProperties(prefix = "book.framework.base.page")
 @Component
 public class BasePageProperties {
 

@@ -7,7 +7,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * 基础实体类
+ * 扩展后的基础实体类
  *
  * @author summer
  * @date 2018-12-02 16:12
@@ -18,9 +18,14 @@ import lombok.experimental.Accessors;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class BaseModelSort extends BaseModel {
+public class ExtensionBaseModel extends BaseModel {
 
     private static final long serialVersionUID = 8075527264641207256L;
+
+    /**
+     * 定义最小的排序值
+     */
+    public static final int MIN_SORT_SIZE = 0;
 
     /**
      * 排序字段
