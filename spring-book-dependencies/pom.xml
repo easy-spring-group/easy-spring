@@ -69,6 +69,10 @@
         <page.helper.version>1.2.10</page.helper.version>
         <!--阿里连接池 druid 版本-->
         <druid.version>1.1.0</druid.version>
+        <!--mybatis plus 版本-->
+        <mybatisplus.version>3.0.6</mybatisplus.version>
+        <!--velocity 版本-->
+        <velocity.version>1.7</velocity.version>
 
         <!--API 文档-->
         <!--swagger 版本-->
@@ -184,6 +188,30 @@
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${mapper.spring-boot-starter.version}</version>
+            </dependency>
+            <!--mybatis plus springboot 连接的版本-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+            <!--mybatis plus 的版本-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+            <!--mybatis plus 代码生成器的版本-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+            <!--velocity 模板-->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>${velocity.version}</version>
             </dependency>
 
             <!--RESTFull API 文档插件-->
