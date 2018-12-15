@@ -20,7 +20,7 @@
     <!--项目简介-->
     <description>Framework Base Data MyBatis</description>
     <!--项目连接地址-->
-    <url>http://framework.bcdbook.com</url>
+    <url>http://springbook.bcdbook.com/</url>
 
     <!--引入 jar 包依赖-->
     <dependencies>

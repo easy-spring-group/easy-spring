@@ -20,7 +20,7 @@
     <!--项目简介-->
     <description>Framework Common Core</description>
     <!--项目连接地址-->
-    <url>http://framework.bcdbook.com</url>
+    <url>http://springbook.bcdbook.com/</url>
 
     <dependencies>
         <!--添加 spring 的核心 jar-->

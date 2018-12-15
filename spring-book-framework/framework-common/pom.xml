@@ -18,7 +18,7 @@
     <!--项目简介-->
     <description>Framework Common</description>
     <!--项目连接地址-->
-    <url>http://framework.bcdbook.com</url>
+    <url>http://springbook.bcdbook.com/</url>
     <modules>
         <module>common-snowflake</module>
         <module>common-core</module>
