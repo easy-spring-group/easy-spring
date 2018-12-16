@@ -5,7 +5,7 @@ module.exports = {
   // 部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。
   base: '/',
   // 网站的标题，它将会被用作所有页面标题的前缀，同时，默认主题下，它将显示在导航栏（navbar）上。
-  title: 'SpringBook',
+  title: 'EasySpring',
   // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中。
   description: 'Just playing around',
   // 指定 vuepress build 的输出目录。

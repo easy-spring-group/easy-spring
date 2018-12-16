@@ -10,7 +10,7 @@ yarn docs:build
 cd docs/.vuepress/dist
 
 # 如果是发布到自定义域名
-echo 'springbook.bcdbook.com' > CNAME
+echo 'easyspring.bcdbook.com' > CNAME
 
 git init
 git add -A
