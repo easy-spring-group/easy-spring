@@ -21,24 +21,30 @@ module.exports = {
    */
   themeConfig : {
     nav: [
-      { text: '指南', link: '/' },
-      { text: '整体架构', link: '/tags/' },
+      { text: '指南', link: '/guide/' },
+      { text: '整体架构', link: '/framework/' },
       { text: 'Framework',
         items: [
-          { text: '前端', link: '/categories/frontEnd' },
-          { text: '后台', link: '/categories/backEnd' },
+          { text: 'Base', link: '/framework/base/' },
+          { text: 'Common', link: '/framework/common/' },
         ]
       },
-      { text: 'Gitee', link: 'https://gitlab.com/lixian13149999无背景-256-23253A.png' },
+      { text: 'Gitee', link: 'https://gitee.com/easyspring/spring-book'},
     ],
     logo: '/head.png',
+    // sidebar: [
+    //     '/',
+    //     '/framework/common/',
+    //     ['/framework/base/', 'Explicit link text']
+    // ],
     sidebar: 'auto',
+    displayAllHeaders: true,
     //搜索
     search: true,
     searchMaxSuggestions: 10,
-    sidebarDepth : 2,
+    sidebarDepth : 3,
     // 最后更新时间
-    lastUpdated: 'Last Updated', // string | boolean
+    lastUpdated: '上次更新时间', // string | boolean
   },
 
   /**
