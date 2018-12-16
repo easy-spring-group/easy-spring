@@ -8,7 +8,7 @@
     <!--项目组名称-->
     <groupId>com.bcdbook.framework</groupId>
     <!--项目标识-->
-    <artifactId>spring-book-build</artifactId>
+    <artifactId>easy-spring-build</artifactId>
     <!--项目版本-->
     <version>${base.version}</version>
     <!--jar 包管理方式-->
@@ -16,18 +16,18 @@
 
     <!--子模块-->
     <modules>
-        <module>spring-book-framework</module>
-        <module>spring-book-service</module>
-        <module>spring-book-manage</module>
-        <module>spring-book-business</module>
-        <module>spring-book-samples</module>
-        <module>spring-book-test</module>
+        <module>easy-spring-framework</module>
+        <module>easy-spring-service</module>
+        <module>easy-spring-manage</module>
+        <module>easy-spring-business</module>
+        <module>easy-spring-samples</module>
+        <module>easy-spring-test</module>
     </modules>
 
     <!--项目名称-->
-    <name>Spring Book Build</name>
+    <name>Easy Spring Build</name>
     <!--项目简介-->
-    <description>Spring Book Build</description>
+    <description>Easy Spring Build</description>
 
     <!--项目编码,java 及 jar 包的版本-->
     <!--编码, 版本-->

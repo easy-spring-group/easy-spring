@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>easy-spring-dependencies</artifactId>
+        <groupId>com.bcdbook.framework</groupId>
+        <!--suppress MavenPropertyInParent -->
+        <version>${base.version}</version>
+        <relativePath>../easy-spring-dependencies</relativePath>
+    </parent>
+
+    <artifactId>easy-spring-service</artifactId>
+    <!--打包方式-->
+    <packaging>pom</packaging>
+    <!--项目名称-->
+    <name>Easy Spring Service</name>
+    <!--项目简介-->
+    <description>Easy Spring Service</description>
+    <!--项目连接地址-->
+    <url>http://springbook.bcdbook.com/</url>
+</project>
