@@ -7,7 +7,7 @@ module.exports = {
   // 网站的标题，它将会被用作所有页面标题的前缀，同时，默认主题下，它将显示在导航栏（navbar）上。
   title: 'EasySpring',
   // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中。
-  description: 'Just playing around',
+  description: '简洁编码, 从现在开始.',
   // 指定 vuepress build 的输出目录。
   // dest: '.vuepress/dist',
 
@@ -21,18 +21,15 @@ module.exports = {
    */
   themeConfig : {
     nav: [
-      { text: '首页', link: '/' },
       { text: '指南', link: '/' },
-      { text: 'Categories',
+      { text: '整体架构', link: '/tags/' },
+      { text: 'Framework',
         items: [
           { text: '前端', link: '/categories/frontEnd' },
           { text: '后台', link: '/categories/backEnd' },
-          { text: 'Essay', link: '/categories/essay' },
-          { text: 'Other', link: '/categories/other' }
         ]
       },
-      { text: '标签', link: '/tags/' },
-      { text: 'Git', link: 'https://gitlab.com/lixian13149999无背景-256-23253A.png' },
+      { text: 'Gitee', link: 'https://gitlab.com/lixian13149999无背景-256-23253A.png' },
     ],
     logo: '/head.png',
     sidebar: 'auto',
