@@ -29,6 +29,7 @@ module.exports = {
           { text: 'Common', link: '/framework/common/' },
         ]
       },
+      { text: 'API', link: 'https://apidoc.gitee.com/easyspring/spring-book'},
       { text: 'Gitee', link: 'https://gitee.com/easyspring/spring-book'},
     ],
     logo: '/head.png',
