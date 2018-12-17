@@ -19,7 +19,7 @@
     <!--项目简介-->
     <description>Framework Common Snowflake</description>
     <!--项目连接地址-->
-    <url>http://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.bcdbook.com/</url>
 
     <dependencies>
         <!--引入 spring boot 的基础包-->

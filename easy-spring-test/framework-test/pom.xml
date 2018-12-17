@@ -25,7 +25,7 @@
     <!--项目简介-->
     <description>Framework Test</description>
     <!--项目连接地址-->
-    <url>http://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.bcdbook.com/</url>
 
     <dependencies>
         <!--引入 springboot start 所以, 其下的所有测试均在 springboot 环境下进行-->
