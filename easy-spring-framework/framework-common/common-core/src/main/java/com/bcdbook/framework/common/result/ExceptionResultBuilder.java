@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface ExceptionResultBuilder {
 
+    String beanName = "exceptionResultBuilder";
+
     /**
      * 封装异常返回对象
      *

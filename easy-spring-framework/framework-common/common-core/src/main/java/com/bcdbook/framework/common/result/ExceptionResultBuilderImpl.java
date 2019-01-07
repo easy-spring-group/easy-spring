@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 封装异常返回对象的实现类
+ * 注意: 在覆盖这个方法的时候, 需要设定组件的名字为 ExceptionResultBuilder.beanName
  *
  * @author summer
  * @date 2019-01-07 22:51
  * @version V1.0.0-RELEASE
  */
 @Component
-@ConditionalOnMissingBean(ExceptionResultBuilder.class)
+@ConditionalOnMissingBean(name = ExceptionResultBuilder.beanName)
 public class ExceptionResultBuilderImpl implements ExceptionResultBuilder {
 
     /**
