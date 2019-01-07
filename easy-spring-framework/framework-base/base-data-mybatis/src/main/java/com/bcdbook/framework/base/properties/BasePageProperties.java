@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@ConfigurationProperties(prefix = "book.framework.base.page")
+@ConfigurationProperties(prefix = "easy-spring.framework.base.page")
 @Component
 public class BasePageProperties {
 

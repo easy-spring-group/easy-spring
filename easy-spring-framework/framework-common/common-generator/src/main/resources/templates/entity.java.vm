@@ -1,8 +1,10 @@
 package ${package.Entity};
 
-#foreach($pkg in ${table.importPackages})
-import ${pkg};
-#end
+import com.bcdbook.framework.base.model.BaseModel;
+import com.fasterxml.jackson.annotation.JsonView;
+###foreach($pkg in ${table.importPackages})
+##import ${pkg};
+###end
 #if(${swagger2})
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,13 +15,23 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 #end
 
+import javax.persistence.Table;
+import java.util.Date;
+
+##/**
+## * <p>
+## * $!{table.comment}
+## * </p>
+## *
+## * @author ${author}
+## * @since ${date}
+## */
 /**
- * <p>
- * $!{table.comment}
- * </p>
+ * $!{table.comment} 对象
  *
  * @author ${author}
- * @since ${date}
+ * @date ${date}
+ * @version V1.0.0-RELEASE
  */
 #if(${entityLombokModel})
 @Data
@@ -31,10 +43,10 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 #end
 #if(${table.convert})
-@TableName("${table.name}")
+@Table(name = "${table.name}")
 #end
 #if(${swagger2})
-@ApiModel(value="${entity}对象", description="$!{table.comment}")
+@ApiModel(value="${entity} 对象", description="$!{table.comment}")
 #end
 #if(${superEntityClass})
 public class ${entity} extends ${superEntityClass}#if(${activeRecord})<${entity}>#end {
@@ -88,6 +100,7 @@ public class ${entity} implements Serializable {
 #if(${logicDeleteFieldName}==${field.name})
     @TableLogic
 #end
+    @JsonView(SimpleView.class)
     private ${field.propertyType} ${field.propertyName};
 #end
 ## ----------  END 字段循环遍历  ----------

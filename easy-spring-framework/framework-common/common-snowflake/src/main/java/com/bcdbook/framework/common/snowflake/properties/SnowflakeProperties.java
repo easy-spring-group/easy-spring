@@ -1,6 +1,5 @@
 package com.bcdbook.framework.common.snowflake.properties;
 
-import com.bcdbook.framework.common.snowflake.constant.SnowflakePropertiesKeyConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode
-@ConfigurationProperties(prefix = SnowflakePropertiesKeyConstant.SNOWFLAKE_PROPERTIES_PREFIX)
+@ConfigurationProperties(prefix = "easy-spring.framework.common.snowflake")
 @Component
 public class SnowflakeProperties {
 

@@ -22,6 +22,30 @@ import java.util.Map;
  */
 public class Generator {
 
+    /** 生成文件的输出目录 */
+    private static final String GLOBAL_CONFIG_OUTPUT_DIR = "/Users/summer/workspace/works/yinbao/risk-management-build/risk-management/src/main/java";
+    /** mysql 的 xml 文件输出路径 */
+    private static final String MAPPER_XML_OUTPUT_DIR = "/Users/summer/workspace/works/yinbao/risk-management-build/risk-management/src/main/resources/mapper";
+
+    /** 数据源连接地址 */
+    private static final String DATA_SOURCE_CONFIG_URL = "jdbc:mysql://localhost:3306/risk_management?useUnicode=true&characterEncoding=utf-8";
+    /** 驱动器 */
+    private static final String DATA_SOURCE_CONFIG_DRIVER_NAME = "com.mysql.jdbc.Driver";
+    /** 用户名 */
+    private static final String DATA_SOURCE_CONFIG_USERNAME = "root";
+    /** 密码 */
+    private static final String DATA_SOURCE_CONFIG_PASSWORD = "123123";
+
+    /** 表前缀 */
+    private static final String[] STRATEGY_CONFIG_TABLE_PREFIX = {"sys", "bus"};
+    /** 想要生成的表 */
+    private static final String[] STRATEGY_CONFIG_INCLUDE = {"sys_user", "sys_role", "sys_permission"};
+
+    /** 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名 */
+    private static final String PACKAGE_CONFIG_PARENT = "com.yinbaochina.management.risk";
+    /** 父包模块名 */
+    private static final String PACKAGE_CONFIG_MODULE_NAME = "system";
+
     /**
      * 启动生成的 main 方法
      *
@@ -82,19 +106,19 @@ public class Generator {
         GlobalConfig globalConfig = new GlobalConfig();
 
         // 生成文件的输出目录
-        globalConfig.setOutputDir("/Users/summer/workspace/gitee/easy-spring/easy-spring-framework/framework-common/common-generator/src/main/java");
+        globalConfig.setOutputDir(GLOBAL_CONFIG_OUTPUT_DIR);
         // 是否覆盖已有文件 [false]
         globalConfig.setFileOverride(true);
         // 是否打开输出目录 [true]
         globalConfig.setOpen(true);
         // 是否在 xml 中添加二级缓存配置 [false]
-        globalConfig.setEnableCache(true);
+        globalConfig.setEnableCache(false);
         // 开发人员 [null]
         globalConfig.setAuthor("summer");
         // 开启 Kotlin 模式 [false]
         globalConfig.setKotlin(false);
         // 开启 swagger2 模式 [false]
-        globalConfig.setSwagger2(false);
+        globalConfig.setSwagger2(true);
         // 开启 ActiveRecord 模式 [false]
         globalConfig.setActiveRecord(false);
         // 开启 BaseResultMap [false]
@@ -159,13 +183,13 @@ public class Generator {
 //            }
 //        });
         // 驱动连接的URL
-        dataSourceConfig.setUrl("jdbc:mysql://192.168.8.106:3306/design_home?useUnicode=true&characterEncoding=utf-8");
+        dataSourceConfig.setUrl(DATA_SOURCE_CONFIG_URL);
         // 驱动名称
-        dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
+        dataSourceConfig.setDriverName(DATA_SOURCE_CONFIG_DRIVER_NAME);
         // 数据库连接用户名
-        dataSourceConfig.setUsername("root");
+        dataSourceConfig.setUsername(DATA_SOURCE_CONFIG_USERNAME);
         // 数据库连接密码
-        dataSourceConfig.setPassword("123123");
+        dataSourceConfig.setPassword(DATA_SOURCE_CONFIG_PASSWORD);
 
         return dataSourceConfig;
     }
@@ -190,12 +214,12 @@ public class Generator {
         // 数据库表字段映射到实体的命名策略, 未指定按照 naming 执行
         // strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
         // 表前缀
-        strategyConfig.setTablePrefix("sys", "bus");
+        strategyConfig.setTablePrefix(STRATEGY_CONFIG_TABLE_PREFIX);
         // 字段前缀
         // strategyConfig.setFieldPrefix("user", "role");
 
         // 自定义实体，公共字段
-        strategyConfig.setSuperEntityColumns(new String[] { "id", "create_time", "update_time", "is_deleted" });
+        strategyConfig.setSuperEntityColumns(new String[] { "id", "create_time", "update_time", "deleted" });
 
         // 自定义继承的 Entity 类全称，带包名
         strategyConfig.setSuperEntityClass("com.bcdbook.framework.base.model.BaseModel");
@@ -209,7 +233,7 @@ public class Generator {
         // strategyConfig.setSuperServiceImplClass("com.bcdbook.framework.base.web.BaseController");
 
         // 需要包含的表名，允许正则表达式（与exclude二选一配置）
-        strategyConfig.setInclude("sys_user", "sys_role");
+        strategyConfig.setInclude(STRATEGY_CONFIG_INCLUDE);
         // 需要排除的表名，允许正则表达式
         // strategyConfig.setExclude("sys_user", "sys_role");
 
@@ -248,9 +272,9 @@ public class Generator {
     private PackageConfig generatePackageConfig(){
         PackageConfig packageConfig = new PackageConfig();
         // 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名
-        packageConfig.setParent("com.bcdbook.common.generator");
+        packageConfig.setParent(PACKAGE_CONFIG_PARENT);
         // 父包模块名
-        packageConfig.setModuleName("test");
+        packageConfig.setModuleName(PACKAGE_CONFIG_MODULE_NAME);
 
         // Entity 包名
         packageConfig.setEntity("model");
@@ -300,7 +324,7 @@ public class Generator {
         // mapper 模板
         // templateConfig.setMapper(null);
         // mapper xml 模板
-        // templateConfig.setXml(null);
+         templateConfig.setXml(null);
 
         return templateConfig;
     }
@@ -336,7 +360,7 @@ public class Generator {
         // 定义自定义模板及输出文件的集合, 用于封装自定义输出文件
         List<FileOutConfig> fileOutConfigList = new ArrayList<>();
         // 调整 xml 生成及输出目录
-//        fileOutConfigList.add(getMapperFileOutConfig());
+        fileOutConfigList.add(getMapperFileOutConfig());
 
         // 把自定义的输出文件加入到自定义配置中
         injectionConfig.setFileOutConfigList(fileOutConfigList);
@@ -361,11 +385,11 @@ public class Generator {
     * @version V1.0.0-RELEASE
     */
     private FileOutConfig getMapperFileOutConfig(){
-        return new FileOutConfig() {
+        return new FileOutConfig("/templates/mapper.xml.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
-//                return FL_MAPPER_OUT_PUT_URL + "/" + PC_MODULE_NAME + "/" + tableInfo.getEntityName() + "Mapper.xml";
-                return null;
+                return MAPPER_XML_OUTPUT_DIR + "/" + PACKAGE_CONFIG_MODULE_NAME + "/" + tableInfo.getEntityName() + "Mapper.xml";
+//                return null;
             }
         };
     }
