@@ -1,4 +1,4 @@
-package com.bcdbook.framework.utils;
+package com.bcdbook.framework.common.utils;
 
 import java.util.regex.Pattern;
 

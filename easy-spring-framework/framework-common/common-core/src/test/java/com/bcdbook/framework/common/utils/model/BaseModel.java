@@ -1,4 +1,4 @@
-package com.bcdbook.framework.utils.model;
+package com.bcdbook.framework.common.utils.model;
 
 import java.io.Serializable;
 import java.util.Date;

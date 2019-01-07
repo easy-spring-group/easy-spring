@@ -5,7 +5,7 @@ import com.bcdbook.framework.base.model.BaseModel;
 import com.bcdbook.framework.base.properties.BasePageProperties;
 import com.bcdbook.framework.base.service.BaseService;
 import com.bcdbook.framework.common.snowflake.SnowflakeHelp;
-import com.bcdbook.framework.utils.BeanUtils;
+import com.bcdbook.framework.common.utils.BeanUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

@@ -1,6 +1,6 @@
-package com.bcdbook.framework.utils;
+package com.bcdbook.framework.common.utils;
 
-import com.bcdbook.framework.utils.model.User;
+import com.bcdbook.framework.common.utils.model.User;
 import org.junit.Test;
 
 import java.io.IOException;
