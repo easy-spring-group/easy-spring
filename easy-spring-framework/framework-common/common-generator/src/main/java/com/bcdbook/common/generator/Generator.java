@@ -39,7 +39,8 @@ public class Generator {
     /** 表前缀 */
     private static final String[] STRATEGY_CONFIG_TABLE_PREFIX = {"sys", "bus"};
     /** 想要生成的表 */
-    private static final String[] STRATEGY_CONFIG_INCLUDE = {"sys_user", "sys_role", "sys_permission"};
+    private static final String[] STRATEGY_CONFIG_INCLUDE =
+            {"sys_user", "sys_role", "sys_permission", "sys_user_role", "sys_role_permission"};
 
     /** 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名 */
     private static final String PACKAGE_CONFIG_PARENT = "com.yinbaochina.management.risk";

@@ -34,6 +34,10 @@ public enum ErrorResultEnum implements CodeEnumInteger{
     /** cookie 已过期或被禁用 */
     USER_COOKIE_EXPIRED(351, "cookie已过期或被禁用", "cookie已过期或被禁用"),
 
+    /**
+     * 4XX 错误
+     */
+    PARAMETER_ERROR(410, "参数校验有误", "传入的参数和所需的参数不匹配"),
 
     /**
      * 5XX 错误

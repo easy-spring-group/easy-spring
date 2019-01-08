@@ -1,7 +1,7 @@
 package com.bcdbook.framework.common.handler;
 
 import com.bcdbook.framework.common.properties.CommonExceptionProperties;
-import com.bcdbook.framework.common.result.ErrorResult;
+import com.bcdbook.framework.common.result.ErrorResultAbstract;
 import com.bcdbook.framework.common.result.ExceptionResult;
 import com.bcdbook.framework.common.result.ExceptionResultBuilder;
 import lombok.extern.slf4j.Slf4j;
@@ -96,10 +96,10 @@ public class CommonExceptionHandler {
      * @date 2019-01-07 18:16
      * @param response 返回对象
      * @param exceptionResult 异常返回对象
-     * @return com.bcdbook.framework.result.ErrorResult
+     * @return com.bcdbook.framework.result.ErrorResultAbstract
      * @version V1.0.0-RELEASE
      */
-    private ErrorResult getErrorResult(HttpServletResponse response, ExceptionResult exceptionResult){
+    private ErrorResultAbstract getErrorResult(HttpServletResponse response, ExceptionResult exceptionResult){
         // 设置返回状态码
         response.setStatus(exceptionResult.getHttpStatus().value());
 

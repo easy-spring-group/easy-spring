@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface ExceptionResultBuilder {
 
-    String beanName = "exceptionResultBuilder";
+    String BEAN_NAME = "exceptionResultBuilder";
 
     /**
      * 封装异常返回对象

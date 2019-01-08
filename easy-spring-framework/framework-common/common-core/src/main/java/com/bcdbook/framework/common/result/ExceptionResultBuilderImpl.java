@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version V1.0.0-RELEASE
  */
 @Component
-@ConditionalOnMissingBean(name = ExceptionResultBuilder.beanName)
+@ConditionalOnMissingBean(name = ExceptionResultBuilder.BEAN_NAME)
 public class ExceptionResultBuilderImpl implements ExceptionResultBuilder {
 
     /**
@@ -35,6 +35,7 @@ public class ExceptionResultBuilderImpl implements ExceptionResultBuilder {
     public ExceptionResult builder(HttpServletRequest request, HttpServletResponse response, Exception exception){
         // 创建错误返回信息
         ErrorResult errorResult = ErrorResult.error(ErrorResultEnum.ERROR);
+        errorResult.setDetails(exception.getMessage());
 
         // 创建异常返回对象
         ExceptionResult exceptionResult = new ExceptionResult();

@@ -24,6 +24,6 @@ public class ExceptionResult {
     /**
      * 错误返回信息
      */
-    private ErrorResult errorResult;
+    private ErrorResultAbstract errorResult;
 
 }

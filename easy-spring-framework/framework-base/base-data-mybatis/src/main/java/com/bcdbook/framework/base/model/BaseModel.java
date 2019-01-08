@@ -30,11 +30,15 @@ public class BaseModel implements Serializable {
     /**
      * 声明简单视图
      */
-    public interface SimpleView {};
+    public interface SimpleView {}
     /**
      * 声明详细视图
      */
-    public interface DetailView extends SimpleView {};
+    public interface DetailView extends SimpleView {}
+    /**
+     * 声明私密视图
+     */
+    public interface SecretView extends DetailView {}
 
     /**
      * 删除标识 -- 已删除

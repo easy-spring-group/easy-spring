@@ -22,5 +22,5 @@ public abstract class ErrorResultAbstract {
     /**
      * 错误详情
      */
-    private String details;
+    private Object details;
 }

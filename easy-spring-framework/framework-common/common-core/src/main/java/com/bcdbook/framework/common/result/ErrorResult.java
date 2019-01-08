@@ -24,6 +24,21 @@ public class ErrorResult extends ErrorResultAbstract {
      * 根据传入的异常信息对象, 创建错误返回对象的方法
      *
      * @author summer
+     * @date 2019-01-08 13:27
+     * @param commonException 异常信息对象
+     * @param details 错误的详细信息
+     * @return com.bcdbook.framework.common.result.ErrorResult
+     * @version V1.0.0-RELEASE
+     */
+    public static ErrorResult error(CommonException commonException, Object details){
+        // 封装错误返回信息并返回
+        return getErrorResult(commonException.getCode(), commonException.getMessage(), details);
+    }
+
+    /**
+     * 根据传入的异常信息对象, 创建错误返回对象的方法
+     *
+     * @author summer
      * @date 2019-01-07 16:12
      * @param commonException 异常信息对象
      * @return com.bcdbook.framework.result.ErrorResult
@@ -32,7 +47,7 @@ public class ErrorResult extends ErrorResultAbstract {
     public static ErrorResult error(CommonException commonException){
         // 封装错误返回信息并返回
         return getErrorResult(commonException.getCode(), commonException.getMessage(),
-                commonException.getStackTrace().toString());
+                commonException.getStackTrace());
     }
 
     /**
@@ -73,7 +88,7 @@ public class ErrorResult extends ErrorResultAbstract {
      * @return com.bcdbook.framework.result.ErrorResult
      * @version V1.0.0-RELEASE
      */
-    public static ErrorResult error(String errorMessage, String details) {
+    public static ErrorResult error(String errorMessage, Object details) {
         // 创建错误返回信息
         return getErrorResult(ErrorResultEnum.ERROR.getCode(), errorMessage, details);
     }
@@ -91,7 +106,7 @@ public class ErrorResult extends ErrorResultAbstract {
      */
     private static ErrorResult getErrorResult(Integer errorCode,
                                          String errorMessage,
-                                         String details) {
+                                         Object details) {
         // 创建错误返回对象
         ErrorResult errorResult = new ErrorResult();
         // 设置通用的错误码
