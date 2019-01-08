@@ -38,6 +38,8 @@ public enum ErrorResultEnum implements CodeEnumInteger{
      * 4XX 错误
      */
     PARAMETER_ERROR(410, "参数校验有误", "传入的参数和所需的参数不匹配"),
+    /** 传入的必要参数为空 */
+    PARAMETER_IS_EMPTY(411, "必要参数为空", "传入的参数和所需的参数不匹配"),
 
     /**
      * 5XX 错误

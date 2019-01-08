@@ -6,7 +6,10 @@ import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
+import tk.mybatis.mapper.weekend.Fn;
 
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -19,6 +22,7 @@ import java.util.Map;
  * @date 2018-12-05 23:15
  * @version V1.0.0-RELEASE
  */
+@Validated
 public interface BaseService<T> {
 
     /**
@@ -460,6 +464,38 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     int countAll(T entity);
+
+    /**
+     * 验证对应的数据是否已经存在
+     *
+     * @author summer
+     * @date 2019-01-08 16:20
+     * @param function 想要验证的字段
+     * @param value 需要验证的值
+     * @param clazz 需要验证的类
+     * @return boolean
+     * @version V1.0.0-RELEASE
+     */
+    boolean valueExist(@NotNull(message = "需要验证的字段不能为空") Fn<T, Object> function,
+                       Object value,
+                       @NotNull(message = "需要验证的对象实体不能为空") Class<T> clazz);
+
+    /**
+     * 在排除自身的情况下检查对应的值是否存在
+     *
+     * @author summer
+     * @date 2019-01-08 16:27
+     * @param function 想要验证的字段
+     * @param value 需要验证的值
+     * @param id 自身的 id
+     * @param clazz 需要验证的类
+     * @return boolean
+     * @version V1.0.0-RELEASE
+     */
+    boolean valueExistWithoutSelf(@NotNull(message = "需要验证的字段不能为空") Fn<T, Object> function,
+                                  Object value,
+                                  Long id,
+                                  @NotNull(message = "需要验证的对象实体不能为空") Class<T> clazz);
 
     /**
      * 根据传入的排序对象, 获取排序结构的字符串

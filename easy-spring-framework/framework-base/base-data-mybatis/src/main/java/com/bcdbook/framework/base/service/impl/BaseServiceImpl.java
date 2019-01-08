@@ -15,6 +15,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+import tk.mybatis.mapper.weekend.Fn;
+import tk.mybatis.mapper.weekend.Weekend;
+import tk.mybatis.mapper.weekend.WeekendCriteria;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -1041,6 +1044,66 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         // 执行计数查询并返回结果
         return mapper.selectCount(entity);
     }
+
+    /**
+     * 验证对应的数据是否已经存在
+     *
+     * @author summer
+     * @date 2019-01-08 16:20
+     * @param function 想要验证的字段
+     * @param value 需要验证的值
+     * @param clazz 需要验证的类
+     * @return boolean
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public boolean valueExist(Fn<T, Object> function, Object value, Class<T> clazz){
+        // 创建查询条件
+        Weekend<T> weekend = Weekend.of(clazz);
+        // 封装查询条件
+        WeekendCriteria<T, Object> weekendCriteria = weekend.weekendCriteria();
+        // 设置查询条件
+        weekendCriteria.andEqualTo(function, value);
+
+        // 查询符合条件的数据
+        return mapper.selectByExample(weekend).size() > 0;
+    }
+
+    /**
+     * 在排除自身的情况下检查对应的值是否存在
+     *
+     * @author summer
+     * @date 2019-01-08 16:27
+     * @param function 想要验证的字段
+     * @param value 需要验证的值
+     * @param id 自身的 id
+     * @param clazz 需要验证的类
+     * @return boolean
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public boolean valueExistWithoutSelf(Fn<T, Object> function, Object value, Long id, Class<T> clazz){
+        /*
+         * id 不存在的情况
+         */
+        if(id == null || id < 0) {
+            // 返回不考虑 id 的校验
+            return valueExist(function, value, clazz);
+        } else {
+            // 创建查询条件
+            Weekend<T> weekend = Weekend.of(clazz);
+            // 封装查询条件
+            WeekendCriteria<T, Object> weekendCriteria = weekend.weekendCriteria();
+            // 设置查询条件
+            weekendCriteria.andEqualTo(function, value);
+            // 设置 id 不相同
+            weekendCriteria.andNotEqualTo(T::getId, id);
+
+            // 查询符合条件的数据
+            return mapper.selectByExample(weekend).size() > 0;
+        }
+    }
+
 
     /**
      * 根据传入的排序对象, 获取排序结构的字符串

@@ -23,12 +23,7 @@ import java.util.stream.Collectors;
 public class ValidationException extends CommonException {
 
     /**
-     * 验证不通过的字段集合
-     */
-    private List<ValidationFieldError> validationFieldErrorList;
-
-    /**
-     * 公共异常类的构造方法
+     * 数据校验的异常类的构造方法
      *
      * @author summer
      * @date 2019-01-07 16:54
@@ -47,6 +42,18 @@ public class ValidationException extends CommonException {
                     return new ValidationFieldError(fieldError.getField(), fieldError.getDefaultMessage());
                 }).collect(Collectors.toList());
 
-        this.validationFieldErrorList = validationFieldErrorList;
+        this.setDetails(validationFieldErrorList);
+    }
+
+    /**
+     * 数据校验的异常类的构造方法
+     *
+     * @author summer
+     * @date 2019-01-08 17:04
+     * @param message 异常信息
+     * @version V1.0.0-RELEASE
+     */
+    public ValidationException(String message){
+        super(message);
     }
 }
