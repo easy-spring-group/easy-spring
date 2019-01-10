@@ -64,11 +64,11 @@ public class CommonException extends RuntimeException {
         this.code = ErrorResultEnum.ERROR.getCode();
     }
 
-    protected void setDetails(Object details) {
-        this.details = details;
-    }
-
     protected void setCode(Integer code) {
         this.code = code;
+    }
+
+    protected void setDetails(Object details) {
+        this.details = details;
     }
 }

@@ -7,8 +7,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -40,6 +43,32 @@ public class ValidationException extends CommonException {
                 .filter(Objects::nonNull)
                 .map(fieldError -> {
                     return new ValidationFieldError(fieldError.getField(), fieldError.getDefaultMessage());
+                }).collect(Collectors.toList());
+
+        this.setDetails(validationFieldErrorList);
+    }
+
+    /**
+     * 根据传入的 ConstraintViolationException 封装自定义的数据校验异常
+     *
+     * @author summer
+     * @date 2019-01-10 16:39
+     * @param constraintViolationException 约束不匹配的异常对象
+     * @version V1.0.0-RELEASE
+     */
+    public ValidationException(ConstraintViolationException constraintViolationException){
+        super(ErrorResultEnum.PARAMETER_ERROR);
+
+        // 获取错误的字段
+        Set<ConstraintViolation<?>> constraintViolationSet = constraintViolationException.getConstraintViolations();
+
+        // 封装成自己定义的错误校验集合
+        List<ValidationFieldError> validationFieldErrorList = constraintViolationSet
+                .stream()
+                .filter(Objects::nonNull)
+                .map(constraintViolation -> {
+                    return new ValidationFieldError(constraintViolation.getPropertyPath().toString(),
+                            constraintViolation.getMessage());
                 }).collect(Collectors.toList());
 
         this.setDetails(validationFieldErrorList);
