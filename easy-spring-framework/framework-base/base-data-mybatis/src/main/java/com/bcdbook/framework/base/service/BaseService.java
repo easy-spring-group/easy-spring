@@ -394,91 +394,15 @@ public interface BaseService<T> {
     Page<T> findPage(Weekend<T> weekend, Pageable pageable);
 
     /**
-     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-     * 查询出符合条件的分页对象 (包括分页信息的详情)
+     * 封装分页信息为分页详情信息对象
      *
      * @author summer
-     * @date 2018-12-03 22:18
-     * @param entity 用于封装条件的实体类
+     * @date 2018-12-03 22:22
+     * @param page 分页信息对象
      * @return com.github.pagehelper.PageInfo<T>
      * @version V1.0.0-RELEASE
      */
-    PageInfo<T> findPageInfo(T entity);
-
-    /**
-     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-     * 查询出符合条件的分页对象 (包括分页信息的详情), 不排除被标记成删除的数据
-     *
-     * @author summer
-     * @date 2018-12-05 20:26
-     * @param entity 用于封装条件的实体类
-     * @return com.github.pagehelper.PageInfo<T>
-     * @version V1.0.0-RELEASE
-     */
-    PageInfo<T> findPageInfoAll(T entity);
-
-    /**
-     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-     * 查询出符合条件的分页对象 (包括分页信息详情)
-     *
-     * @author summer
-     * @date 2018-12-03 22:19
-     * @param entity 用于封装条件的实体类
-     * @param orderBy 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
-     * @return com.github.pagehelper.PageInfo<T>
-     * @version V1.0.0-RELEASE
-     */
-    PageInfo<T> findPageInfo(T entity, String orderBy);
-
-    /**
-     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-     * 查询出符合条件的分页对象 (包括分页信息详情), 不排除被标记成删除的数据
-     *
-     * @author summer
-     * @date 2018-12-03 22:19
-     * @param entity 用于封装条件的实体类
-     * @param orderBy 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
-     * @return com.github.pagehelper.PageInfo<T>
-     * @version V1.0.0-RELEASE
-     */
-    PageInfo<T> findPageInfoAll(T entity, String orderBy);
-
-    /**
-     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-     * 查询出符合条件的分页对象
-     *
-     * @author summer
-     * @date 2017/12/29 下午3:43
-     * @param entity 用于封装条件的实体类
-     * @param pageable 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
-     * @return com.github.pagehelper.Page<T>
-     */
-    PageInfo<T> findPageInfo(T entity, Pageable pageable);
-
-    /**
-     * 根据传入的实体条件 / 页码 / 每页显示的数据量
-     * 查询出符合条件的分页对象 (包括分页信息详情), 不排除被标记成删除的数据
-     *
-     * @author summer
-     * @date 2018-12-03 22:26
-     * @param entity 用于封装条件的实体类
-     * @param pageable 分页条件 例如: "update_time desc" 这里的 orderBy 并不会自动转换大小写
-     * @return com.github.pagehelper.PageInfo<T>
-     * @version V1.0.0-RELEASE
-     */
-    PageInfo<T> findPageInfoAll(T entity, Pageable pageable);
-
-    /**
-     * 根据封装的查询条件和分页信息, 查询出符合条件的分页对象 (包括分页信息详情)
-     *
-     * @author summer
-     * @date 2019-01-10 15:28
-     * @param weekend 动态查询条件
-     * @param pageable 分页信息
-     * @return com.github.pagehelper.Page<T>
-     * @version V1.0.0-RELEASE
-     */
-    PageInfo<T> findPageInfo(Weekend<T> weekend, Pageable pageable);
+    PageInfo<T> buildPageInfo(Page<T> page);
 
     /**
      * 根据传入的查询条件, 查询出符合条件的数据的数量
