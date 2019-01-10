@@ -54,7 +54,7 @@ public class CommonExceptionHandler {
     public Object exceptionHandle(HttpServletRequest request,
                                                HttpServletResponse response,
                                                Exception exception) {
-        log.error("[异常拦截] exception: {}", exception);
+         log.error("[异常拦截] exception: {}", exception);
 
         // 封装并返回异常信息
         return getExceptionResult(request, response, exception);

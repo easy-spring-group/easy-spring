@@ -59,12 +59,16 @@ public class CommonException extends RuntimeException {
      * @param message 错误信息
      * @version V1.0.0-RELEASE
      */
-    public CommonException(String message){
+    public CommonException(String message) {
         super(message);
         this.code = ErrorResultEnum.ERROR.getCode();
     }
 
-    public void setDetails(Object details) {
+    protected void setDetails(Object details) {
         this.details = details;
+    }
+
+    protected void setCode(Integer code) {
+        this.code = code;
     }
 }

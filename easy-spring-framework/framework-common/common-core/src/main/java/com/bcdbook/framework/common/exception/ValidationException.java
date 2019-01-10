@@ -55,5 +55,6 @@ public class ValidationException extends CommonException {
      */
     public ValidationException(String message){
         super(message);
+        this.setCode(ErrorResultEnum.PARAMETER_ERROR.getCode());
     }
 }

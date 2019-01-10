@@ -1066,7 +1066,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         weekendCriteria.andEqualTo(function, value);
 
         // 查询符合条件的数据
-        return mapper.selectByExample(weekend).size() > 0;
+        return mapper.selectCountByExample(weekend) > 0;
     }
 
     /**
@@ -1100,7 +1100,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             weekendCriteria.andNotEqualTo(T::getId, id);
 
             // 查询符合条件的数据
-            return mapper.selectByExample(weekend).size() > 0;
+            return mapper.selectCountByExample(weekend) > 0;
         }
     }
 
