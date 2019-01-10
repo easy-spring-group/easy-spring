@@ -1,5 +1,6 @@
 package com.bcdbook.framework.base.service;
 
+import com.bcdbook.framework.base.dto.BasePageable;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import org.mybatis.spring.MyBatisSystemException;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import tk.mybatis.mapper.weekend.Fn;
+import tk.mybatis.mapper.weekend.Weekend;
 
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
@@ -172,6 +174,18 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     T updateSelective(T entity);
+
+    /**
+     * 恢复删除的数据
+     *
+     * @author summer
+     * @date 2019-01-10 17:06
+     * @param id 想要恢复的数据 id
+     * @param clazz 想要恢复的数据的类型
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    int recoverDeleted(Long id, Class<T> clazz) throws IllegalAccessException, InstantiationException;
 
     /**
      * 根据传入的 sql 查询出 map 对象
@@ -368,6 +382,18 @@ public interface BaseService<T> {
     Page<T> findPageAll(T entity, Pageable pageable);
 
     /**
+     * 根据封装的查询条件和分页信息, 查询符合条件的分页信息
+     *
+     * @author summer
+     * @date 2019-01-10 15:28
+     * @param weekend 动态查询条件
+     * @param pageable 分页信息
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    Page<T> findPage(Weekend<T> weekend, Pageable pageable);
+
+    /**
      * 根据传入的实体条件 / 页码 / 每页显示的数据量
      * 查询出符合条件的分页对象 (包括分页信息的详情)
      *
@@ -443,6 +469,18 @@ public interface BaseService<T> {
     PageInfo<T> findPageInfoAll(T entity, Pageable pageable);
 
     /**
+     * 根据封装的查询条件和分页信息, 查询出符合条件的分页对象 (包括分页信息详情)
+     *
+     * @author summer
+     * @date 2019-01-10 15:28
+     * @param weekend 动态查询条件
+     * @param pageable 分页信息
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    PageInfo<T> findPageInfo(Weekend<T> weekend, Pageable pageable);
+
+    /**
      * 根据传入的查询条件, 查询出符合条件的数据的数量
      *
      * @author summer
@@ -496,6 +534,17 @@ public interface BaseService<T> {
                                   Object value,
                                   Long id,
                                   @NotNull(message = "需要验证的对象实体不能为空") Class<T> clazz);
+
+    /**
+     * 封装自定义的分页信息
+     *
+     * @author summer
+     * @date 2019-01-10 15:21
+     * @param pageable spring 的 pageable 对象
+     * @return com.bcdbook.framework.base.dto.BasePageable
+     * @version V1.0.0-RELEASE
+     */
+    BasePageable getBasePageable(Pageable pageable);
 
     /**
      * 根据传入的排序对象, 获取排序结构的字符串

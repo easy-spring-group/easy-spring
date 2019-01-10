@@ -1,5 +1,6 @@
 package com.bcdbook.framework.base.service.impl;
 
+import com.bcdbook.framework.base.dto.BasePageable;
 import com.bcdbook.framework.base.mapper.BaseMapper;
 import com.bcdbook.framework.base.model.BaseModel;
 import com.bcdbook.framework.base.properties.BasePageProperties;
@@ -399,6 +400,30 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     }
 
     /**
+     * 恢复删除的数据
+     *
+     * @author summer
+     * @date 2019-01-10 17:06
+     * @param id 想要恢复的数据 id
+     * @param clazz 想要恢复的数据的类型
+     * @return int
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public int recoverDeleted(Long id, Class<T> clazz) throws IllegalAccessException, InstantiationException {
+        // 参数校验
+        if (id == null || id < 0 || clazz == null) {
+            return 0;
+        }
+
+        T entity = clazz.newInstance();
+        entity.setId(id);
+        entity.setDeleted(T.DELETED_FALSE);
+
+        return mapper.updateByPrimaryKeySelective(entity);
+    }
+
+    /**
      * 根据传入的 sql 查询出 map 对象
      *
      * @author summer
@@ -785,6 +810,39 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     }
 
     /**
+     * 根据封装的查询条件和分页信息, 查询符合条件的分页信息
+     *
+     * @author summer
+     * @date 2019-01-10 15:28
+     * @param weekend 动态查询条件
+     * @param pageable 分页信息
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public Page<T> findPage(Weekend<T> weekend, Pageable pageable){
+        // 传入参数校验
+        if (weekend == null) {
+            return null;
+        }
+
+        /*
+         * 获取分页信息, 并重新初始化值
+         */
+        BasePageable basePageable = getBasePageable(pageable);
+
+        // 封装分页信息
+        Page<T> page = PageHelper.startPage(basePageable.getPageNumber(),
+                basePageable.getPageSize(),
+                basePageable.getOrder());
+        // 执行查询
+        mapper.selectByExample(weekend);
+
+        // 返回查询后的分页信息
+        return page;
+    }
+
+    /**
      * 分页查询的封装
      *
      * @author summer
@@ -815,17 +873,12 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         /*
          * 获取分页信息, 并重新初始化值
          */
-        // 获取每页显示数量
-        int pageSize = pageable.getPageSize();
-        pageSize = pageSize <= 0 ? basePageProperties.getDefaultPageSize() : pageSize;
-        // 获取页码
-        int pageNumber = pageable.getPageNumber();
-        pageNumber = pageNumber <= 0 ? basePageProperties.getDefaultPageNumber() : pageNumber;
-        // 获取传入的排序数据
-        String orderBy = getOrderBy(pageable.getSort());
+        BasePageable basePageable = getBasePageable(pageable);
 
         // 封装分页信息
-        Page<T> page = PageHelper.startPage(pageNumber, pageSize, orderBy);
+        Page<T> page = PageHelper.startPage(basePageable.getPageNumber(),
+                basePageable.getPageSize(),
+                basePageable.getOrder());
         // 执行查询
         mapper.select(entity);
 
@@ -983,6 +1036,30 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     }
 
     /**
+     * 根据封装的查询条件和分页信息, 查询出符合条件的分页对象 (包括分页信息详情)
+     *
+     * @author summer
+     * @date 2019-01-10 15:28
+     * @param weekend 动态查询条件
+     * @param pageable 分页信息
+     * @return com.github.pagehelper.Page<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> findPageInfo(Weekend<T> weekend, Pageable pageable) {
+        // 传入参数校验
+        if (weekend == null) {
+            return null;
+        }
+
+        // 根据条件查询分页信息
+        Page<T> page = findPage(weekend, pageable);
+
+        // 封装并返回分页详情信息
+        return buildPageInfo(page);
+    }
+
+    /**
      * 封装分页信息为分页详情信息对象
      *
      * @author summer
@@ -1102,6 +1179,38 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             // 查询符合条件的数据
             return mapper.selectCountByExample(weekend) > 0;
         }
+    }
+
+    /**
+     * 封装自定义的分页信息
+     *
+     * @author summer
+     * @date 2019-01-10 15:21
+     * @param pageable spring 的 pageable 对象
+     * @return com.bcdbook.framework.base.dto.BasePageable
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public BasePageable getBasePageable(Pageable pageable) {
+        // 如果分页信息为空, 则返回默认的分页信息
+        if (pageable == null) {
+            return new BasePageable(basePageProperties.getDefaultPageNumber(),
+                    basePageProperties.getDefaultPageSize(),
+                    null);
+        }
+        /*
+         * 获取分页信息, 并重新初始化值
+         */
+        // 获取每页显示数量
+        int pageSize = pageable.getPageSize();
+        pageSize = pageSize <= 0 ? basePageProperties.getDefaultPageSize() : pageSize;
+        // 获取页码
+        int pageNumber = pageable.getPageNumber();
+        pageNumber = pageNumber <= 0 ? basePageProperties.getDefaultPageNumber() : pageNumber;
+        // 获取传入的排序数据
+        String orderBy = getOrderBy(pageable.getSort());
+
+        return new BasePageable(pageNumber, pageSize, orderBy);
     }
 
 
