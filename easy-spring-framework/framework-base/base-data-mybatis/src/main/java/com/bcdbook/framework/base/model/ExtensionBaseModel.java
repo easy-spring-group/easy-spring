@@ -1,5 +1,6 @@
 package com.bcdbook.framework.base.model;
 
+import com.bcdbook.framework.common.view.CommonJsonView;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,6 +32,6 @@ public class ExtensionBaseModel extends BaseModel {
     /**
      * 排序字段
      */
-    @JsonView(SimpleView.class)
+    @JsonView(CommonJsonView.SimpleView.class)
     private Integer iSort;
 }

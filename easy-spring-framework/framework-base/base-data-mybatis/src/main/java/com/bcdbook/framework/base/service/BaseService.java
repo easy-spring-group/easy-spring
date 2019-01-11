@@ -1,8 +1,8 @@
 package com.bcdbook.framework.base.service;
 
 import com.bcdbook.framework.base.dto.BasePageable;
+import com.bcdbook.framework.base.pagehelper.PageInfo;
 import com.github.pagehelper.Page;
-import com.github.pagehelper.PageInfo;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -399,7 +399,7 @@ public interface BaseService<T> {
      * @author summer
      * @date 2018-12-03 22:22
      * @param page 分页信息对象
-     * @return com.github.pagehelper.PageInfo<T>
+     * @return com.bcdbook.framework.base.pagehelper.PageInfo<T>
      * @version V1.0.0-RELEASE
      */
     PageInfo<T> buildPageInfo(Page<T> page);

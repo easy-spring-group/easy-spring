@@ -1,5 +1,6 @@
 package com.bcdbook.framework.base.model;
 
+import com.bcdbook.framework.common.view.CommonJsonView;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,19 +29,6 @@ public class BaseModel implements Serializable {
     private static final long serialVersionUID = -6751591121677001166L;
 
     /**
-     * 声明简单视图
-     */
-    public interface SimpleView {}
-    /**
-     * 声明详细视图
-     */
-    public interface DetailView extends SimpleView {}
-    /**
-     * 声明私密视图
-     */
-    public interface SecretView extends DetailView {}
-
-    /**
      * 删除标识 -- 已删除
      */
     public static final Boolean DELETED_TRUE = true;
@@ -53,23 +41,23 @@ public class BaseModel implements Serializable {
      * id 主键
      */
     @Id
-    @JsonView(SimpleView.class)
+    @JsonView(CommonJsonView.SimpleView.class)
     private Long id;
     /**
      * 创建时间
      */
-    @JsonView(SimpleView.class)
+    @JsonView(CommonJsonView.SimpleView.class)
     private Date createTime;
     /**
      * 修改时间
      */
-    @JsonView(SimpleView.class)
+    @JsonView(CommonJsonView.SimpleView.class)
     private Date updateTime;
     /**
      * 伪删除标记字段
      * true: 已删除
      * false: 未删除
      */
-    @JsonView(DetailView.class)
-    private Boolean deleted = DELETED_FALSE;
+    @JsonView(CommonJsonView.SimpleView.class)
+    private Boolean deleted;
 }

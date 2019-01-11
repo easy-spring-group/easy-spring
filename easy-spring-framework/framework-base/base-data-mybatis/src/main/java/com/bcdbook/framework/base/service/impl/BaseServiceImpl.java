@@ -3,13 +3,13 @@ package com.bcdbook.framework.base.service.impl;
 import com.bcdbook.framework.base.dto.BasePageable;
 import com.bcdbook.framework.base.mapper.BaseMapper;
 import com.bcdbook.framework.base.model.BaseModel;
+import com.bcdbook.framework.base.pagehelper.PageInfo;
 import com.bcdbook.framework.base.properties.BasePageProperties;
 import com.bcdbook.framework.base.service.BaseService;
 import com.bcdbook.framework.common.snowflake.SnowflakeHelp;
 import com.bcdbook.framework.common.utils.BeanUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -892,7 +892,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2018-12-03 22:22
      * @param page 分页信息对象
-     * @return com.github.pagehelper.PageInfo<T>
+     * @return com.bcdbook.framework.base.pagehelper.PageInfo<T>
      * @version V1.0.0-RELEASE
      */
     @Override
