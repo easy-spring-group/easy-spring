@@ -394,17 +394,6 @@ public interface BaseService<T> {
     Page<T> findPage(Weekend<T> weekend, Pageable pageable);
 
     /**
-     * 封装分页信息为分页详情信息对象
-     *
-     * @author summer
-     * @date 2018-12-03 22:22
-     * @param page 分页信息对象
-     * @return com.bcdbook.framework.base.pagehelper.PageInfo<T>
-     * @version V1.0.0-RELEASE
-     */
-    PageInfo<T> buildPageInfo(Page<T> page);
-
-    /**
      * 根据传入的查询条件, 查询出符合条件的数据的数量
      *
      * @author summer
@@ -426,6 +415,17 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     int countAll(T entity);
+
+    /**
+     * 封装分页信息为分页详情信息对象
+     *
+     * @author summer
+     * @date 2018-12-03 22:22
+     * @param page 分页信息对象
+     * @return com.bcdbook.framework.base.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    PageInfo<T> buildPageInfo(Page<T> page);
 
     /**
      * 验证对应的数据是否已经存在

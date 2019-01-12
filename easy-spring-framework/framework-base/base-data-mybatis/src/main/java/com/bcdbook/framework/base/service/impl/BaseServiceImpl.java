@@ -887,26 +887,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     }
 
     /**
-     * 封装分页信息为分页详情信息对象
-     *
-     * @author summer
-     * @date 2018-12-03 22:22
-     * @param page 分页信息对象
-     * @return com.bcdbook.framework.base.pagehelper.PageInfo<T>
-     * @version V1.0.0-RELEASE
-     */
-    @Override
-    public PageInfo<T> buildPageInfo(Page<T> page){
-        // 参数校验
-        if (page == null) {
-            return null;
-        }
-
-        // 创建并返回分页详情对象
-        return new PageInfo<>(page);
-    }
-
-    /**
      * 根据传入的查询条件, 查询出符合条件的数据的数量
      *
      * @author summer
@@ -948,6 +928,26 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
 
         // 执行计数查询并返回结果
         return mapper.selectCount(entity);
+    }
+
+    /**
+     * 封装分页信息为分页详情信息对象
+     *
+     * @author summer
+     * @date 2018-12-03 22:22
+     * @param page 分页信息对象
+     * @return com.bcdbook.framework.base.pagehelper.PageInfo<T>
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public PageInfo<T> buildPageInfo(Page<T> page){
+        // 参数校验
+        if (page == null) {
+            return null;
+        }
+
+        // 创建并返回分页详情对象
+        return new PageInfo<>(page);
     }
 
     /**
