@@ -1,6 +1,6 @@
 package com.bcdbook.framework.base.service;
 
-import com.bcdbook.framework.base.form.BaseSortFrom;
+import com.bcdbook.framework.base.form.BaseSortForm;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public interface ExtensionBaseService<T> extends BaseService<T> {
      * @return java.lang.String
      * @version V1.0.0-RELEASE
      */
-    int sort(BaseSortFrom baseSortFrom, Class<T> clazz) throws IllegalAccessException, InstantiationException;
+    int sort(BaseSortForm baseSortFrom, Class<T> clazz) throws IllegalAccessException, InstantiationException;
 
     /**
      * 根据传入的排序对象集合, 获取排序结构的字符串
@@ -39,5 +39,5 @@ public interface ExtensionBaseService<T> extends BaseService<T> {
      * @return java.lang.String
      * @version V1.0.0-RELEASE
      */
-    int sort(List<BaseSortFrom> baseSortFromList, Class<T> clazz) throws IllegalAccessException, InstantiationException;
+    int sort(List<BaseSortForm> baseSortFromList, Class<T> clazz) throws IllegalAccessException, InstantiationException;
 }

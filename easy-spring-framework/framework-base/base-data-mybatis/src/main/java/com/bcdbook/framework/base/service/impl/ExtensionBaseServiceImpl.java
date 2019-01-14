@@ -1,10 +1,11 @@
 package com.bcdbook.framework.base.service.impl;
 
-import com.bcdbook.framework.base.form.BaseSortFrom;
+import com.bcdbook.framework.base.form.BaseSortForm;
 import com.bcdbook.framework.base.mapper.BaseMapper;
 import com.bcdbook.framework.base.model.ExtensionBaseModel;
 import com.bcdbook.framework.base.service.ExtensionBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
      * @version V1.0.0-RELEASE
      */
     @Override
-    public int sort(BaseSortFrom baseSortFrom, Class<T> clazz) throws IllegalAccessException, InstantiationException {
+    public int sort(BaseSortForm baseSortFrom, Class<T> clazz) throws IllegalAccessException, InstantiationException {
 
         // 参数合法性校验
         if (baseSortFrom == null || clazz == null
@@ -75,7 +76,8 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
      * @version V1.0.0-RELEASE
      */
     @Override
-    public int sort(List<BaseSortFrom> baseSortFromList, Class<T> clazz)
+    @Transactional(rollbackFor = Exception.class)
+    public int sort(List<BaseSortForm> baseSortFromList, Class<T> clazz)
             throws IllegalAccessException, InstantiationException {
         // 参数合法性校验
         if (CollectionUtils.isEmpty(baseSortFromList) || clazz == null) {
@@ -89,7 +91,7 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
 
         int changeSize = 0;
         // 循环执行修改
-        for (BaseSortFrom baseSortForm : baseSortFromList) {
+        for (BaseSortForm baseSortForm : baseSortFromList) {
             // 如果参数不合法则直接跳过
             if (baseSortForm == null
                     || baseSortForm.getId() == null || baseSortForm.getId() <= 0

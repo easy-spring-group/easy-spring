@@ -2,7 +2,7 @@ package com.bcdbook.framework.base.data.mybatis.test.service.impl;
 
 import com.bcdbook.framework.base.data.mybatis.test.model.SortUser;
 import com.bcdbook.framework.base.data.mybatis.test.service.SortUserService;
-import com.bcdbook.framework.base.form.BaseSortFrom;
+import com.bcdbook.framework.base.form.BaseSortForm;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,7 +44,7 @@ public class SortUserServiceImplTest {
     @Test
     public void sort() throws InstantiationException, IllegalAccessException {
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom = new BaseSortFrom();
+        BaseSortForm baseSortFrom = new BaseSortForm();
         baseSortFrom.setId(1428117721710592L);
         baseSortFrom.setISort(10);
 
@@ -64,7 +64,7 @@ public class SortUserServiceImplTest {
     @Test
     public void sortNoChange() throws InstantiationException, IllegalAccessException {
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom = new BaseSortFrom();
+        BaseSortForm baseSortFrom = new BaseSortForm();
         baseSortFrom.setId(123L);
         baseSortFrom.setISort(10);
 
@@ -87,7 +87,7 @@ public class SortUserServiceImplTest {
 
         Long id = 1428117721710592L;
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom = new BaseSortFrom();
+        BaseSortForm baseSortFrom = new BaseSortForm();
         baseSortFrom.setId(id);
         baseSortFrom.setISort(-10);
 
@@ -108,19 +108,19 @@ public class SortUserServiceImplTest {
     public void sortList() throws InstantiationException, IllegalAccessException {
 
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom1 = new BaseSortFrom();
+        BaseSortForm baseSortFrom1 = new BaseSortForm();
         baseSortFrom1.setId(1428117721710592L);
         baseSortFrom1.setISort(1);
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom2 = new BaseSortFrom();
+        BaseSortForm baseSortFrom2 = new BaseSortForm();
         baseSortFrom2.setId(1428117721710609L);
         baseSortFrom2.setISort(1);
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom3 = new BaseSortFrom();
+        BaseSortForm baseSortFrom3 = new BaseSortForm();
         baseSortFrom3.setId(1428117721710610L);
         baseSortFrom3.setISort(1);
 
-        List<BaseSortFrom> baseSortFromList = new ArrayList<>();
+        List<BaseSortForm> baseSortFromList = new ArrayList<>();
         baseSortFromList.add(baseSortFrom1);
         baseSortFromList.add(baseSortFrom2);
         baseSortFromList.add(baseSortFrom3);
@@ -142,19 +142,19 @@ public class SortUserServiceImplTest {
     public void sortList2() throws InstantiationException, IllegalAccessException {
 
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom1 = new BaseSortFrom();
+        BaseSortForm baseSortFrom1 = new BaseSortForm();
         baseSortFrom1.setId(123L);
         baseSortFrom1.setISort(1);
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom2 = new BaseSortFrom();
+        BaseSortForm baseSortFrom2 = new BaseSortForm();
         baseSortFrom2.setId(1428117721710609L);
         baseSortFrom2.setISort(1);
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom3 = new BaseSortFrom();
+        BaseSortForm baseSortFrom3 = new BaseSortForm();
         baseSortFrom3.setId(1428117721710610L);
         baseSortFrom3.setISort(1);
 
-        List<BaseSortFrom> baseSortFromList = new ArrayList<>();
+        List<BaseSortForm> baseSortFromList = new ArrayList<>();
         baseSortFromList.add(baseSortFrom1);
         baseSortFromList.add(baseSortFrom2);
         baseSortFromList.add(baseSortFrom3);
@@ -176,19 +176,19 @@ public class SortUserServiceImplTest {
     public void sortList3() throws InstantiationException, IllegalAccessException {
 
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom1 = new BaseSortFrom();
+        BaseSortForm baseSortFrom1 = new BaseSortForm();
         baseSortFrom1.setId(1428117721710609L);
         baseSortFrom1.setISort(1);
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom2 = new BaseSortFrom();
+        BaseSortForm baseSortFrom2 = new BaseSortForm();
         baseSortFrom2.setId(1428117721710609L);
         baseSortFrom2.setISort(1);
         // 创建公共的分页对象
-        BaseSortFrom baseSortFrom3 = new BaseSortFrom();
+        BaseSortForm baseSortFrom3 = new BaseSortForm();
         baseSortFrom3.setId(1428117721710610L);
         baseSortFrom3.setISort(1);
 
-        List<BaseSortFrom> baseSortFromList = new ArrayList<>();
+        List<BaseSortForm> baseSortFromList = new ArrayList<>();
         baseSortFromList.add(baseSortFrom1);
         baseSortFromList.add(baseSortFrom2);
         baseSortFromList.add(baseSortFrom3);

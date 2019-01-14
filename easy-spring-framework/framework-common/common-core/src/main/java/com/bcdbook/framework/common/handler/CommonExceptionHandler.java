@@ -4,8 +4,8 @@ import com.bcdbook.framework.common.properties.CommonExceptionProperties;
 import com.bcdbook.framework.common.result.ErrorResultAbstract;
 import com.bcdbook.framework.common.result.ExceptionResult;
 import com.bcdbook.framework.common.result.ExceptionResultBuilder;
+import com.bcdbook.framework.common.utils.HttpRequestUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -77,7 +77,7 @@ public class CommonExceptionHandler {
         ExceptionResult exceptionResult = exceptionResultBuilder.builder(request, response, exception);
 
         // 检查是否需要返回 json
-        boolean isHtml = isHtml(request);
+        boolean isHtml = HttpRequestUtils.isHtml(request);
 
         /*
          * 如果是需要返回 json
@@ -157,24 +157,5 @@ public class CommonExceptionHandler {
 //        return exceptionResult;
 //    }
 
-    /**
-     * 校验当前请求是否是 ajax 请求
-     *
-     * @author summer
-     * @date 2019-01-07 17:34
-     * @param request 请求对象
-     * @return boolean
-     * @version V1.0.0-RELEASE
-     */
-    private boolean isHtml(HttpServletRequest request){
-        // 传入参数校验
-        if (request == null) {
-            return false;
-        }
 
-        // 从请求头中获取 内容类型
-        String accept = request.getHeader("Accept");
-        // 如果请求内容不为空, 并且包含 json 则说明是 ajax 请求
-        return !StringUtils.isEmpty(accept) && accept.contains("text/html");
-    }
 }
