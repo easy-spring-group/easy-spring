@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.bcdbook.framework</groupId>
+        <artifactId>easy-spring-dependencies</artifactId>
+        <!--suppress MavenPropertyInParent -->
+        <version>${base.version}</version>
+        <relativePath>../easy-spring-dependencies</relativePath>
+    </parent>
+
+    <groupId>com.bcdbook.security</groupId>
+    <artifactId>easy-spring-security</artifactId>
+    <!--打包方式-->
+    <packaging>pom</packaging>
+
+    <!--子项目-->
+    <modules>
+        <!--security 权限控制的核心-->
+        <module>security-core</module>
+        <!--基于浏览器的权限控制-->
+        <module>security-browser</module>
+        <!--基于 APP 的权限控制-->
+        <module>security-app</module>
+        <module>security-demo</module>
+    </modules>
+
+    <!--项目名称-->
+    <name>Security</name>
+    <!--项目简介-->
+    <description>Spring Security</description>
+    <!--项目连接地址-->
+    <url>https://easyspring.bcdbook.com/</url>
+</project>

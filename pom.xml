@@ -22,6 +22,7 @@
         <module>easy-spring-business</module>
         <module>easy-spring-samples</module>
         <module>easy-spring-test</module>
+        <module>easy-spring-security</module>
     </modules>
 
     <!--项目名称-->
@@ -40,6 +41,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--java版本-->
         <java.version>1.8</java.version>
+        <!--因为 maven 的 bug 这里需要手动指定一下源码和编译后代码的版本-->
+        <!--源码版本-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <!--编译版本-->
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <!--配置资源仓库-->
