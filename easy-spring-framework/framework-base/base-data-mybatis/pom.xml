@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>framework-base</artifactId>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>com.bcdbook.framework.base</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
@@ -27,12 +27,12 @@
         <!--引入自定义的 jar-->
         <!--全局唯一 id 生成的 jar-->
         <dependency>
-            <groupId>com.bcdbook.framework</groupId>
+            <groupId>com.bcdbook.framework.common</groupId>
             <artifactId>common-snowflake</artifactId>
         </dependency>
         <!--核心工具 jar-->
         <dependency>
-            <groupId>com.bcdbook.framework</groupId>
+            <groupId>com.bcdbook.framework.common</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
 

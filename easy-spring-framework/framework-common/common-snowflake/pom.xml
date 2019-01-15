@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>framework-common</artifactId>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>com.bcdbook.framework.common</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>

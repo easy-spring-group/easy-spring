@@ -119,7 +119,7 @@
             <!--base 模块-->
             <!--base-data-mybatis-->
             <dependency>
-                <groupId>com.bcdbook.framework</groupId>
+                <groupId>com.bcdbook.framework.base</groupId>
                 <artifactId>base-data-mybatis</artifactId>
                 <version>${base.version}</version>
                 <!--<systemPath>${basedir}/../easy-spring-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
@@ -127,13 +127,13 @@
 
             <!--common 模块-->
             <dependency>
-                <groupId>com.bcdbook.framework</groupId>
+                <groupId>com.bcdbook.framework.common</groupId>
                 <artifactId>common-snowflake</artifactId>
                 <version>${base.version}</version>
                 <!--<systemPath>${basedir}/../easy-spring-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
             </dependency>
             <dependency>
-                <groupId>com.bcdbook.framework</groupId>
+                <groupId>com.bcdbook.framework.common</groupId>
                 <artifactId>common-core</artifactId>
                 <version>${base.version}</version>
             </dependency>

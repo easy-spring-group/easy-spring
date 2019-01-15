@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>com.bcdbook.framework.common</groupId>
         <artifactId>framework-common</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
@@ -22,7 +22,7 @@
     <dependencies>
         <!--TODO 引入自己定义的 jar(测试时使用)-->
         <dependency>
-            <groupId>com.bcdbook.framework</groupId>
+            <groupId>com.bcdbook.framework.base</groupId>
             <artifactId>base-data-mybatis</artifactId>
         </dependency>
 

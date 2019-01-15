@@ -10,6 +10,7 @@
         <version>${base.version}</version>
     </parent>
 
+    <groupId>com.bcdbook.framework.base</groupId>
     <artifactId>framework-base</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
