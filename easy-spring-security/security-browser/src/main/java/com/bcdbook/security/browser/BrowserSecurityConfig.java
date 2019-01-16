@@ -1,10 +1,13 @@
 package com.bcdbook.security.browser;
 
+import com.bcdbook.security.browser.authentication.EasyAuthenticationFailureHandler;
+import com.bcdbook.security.browser.authentication.EasyAuthenticationSuccessHandler;
 import com.bcdbook.security.properties.SecurityProperties;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import javax.annotation.Resource;
 
 /**
  * 浏览器环境下安全配置主类
@@ -17,8 +20,21 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+    /**
+     * 注入配置文件类
+     */
+    @Resource
     private SecurityProperties securityProperties;
+    /**
+     * 注入登录成功的处理器
+     */
+    @Resource
+    private EasyAuthenticationSuccessHandler easyAuthenticationSuccessHandler;
+    /**
+     * 注入登录失败的处理器
+     */
+    @Resource
+    private EasyAuthenticationFailureHandler easyAuthenticationFailureHandler;
 
     /**
      * 重写 configure 方法, 用于配置登录方式
@@ -36,6 +52,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+
         // 最简单的修改默认配置的方法
         http
                 // 定义表单登录 - 身份认证的方式
@@ -44,6 +61,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/authentication/require")
                 // 自己定义用于用户名密码登录的路径(实现逻辑 Security 已经实现)
                 .loginProcessingUrl("/authentication/form")
+                // 设置登录成功的处理器
+                .successHandler(easyAuthenticationSuccessHandler)
+                // 设置登录失败的处理器
+                .failureHandler(easyAuthenticationFailureHandler)
                 .and()
                 // 对请求授权配置：注意方法名的含义，能联想到一些
                 .authorizeRequests()
