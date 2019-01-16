@@ -2,8 +2,7 @@ package com.bcdbook.security.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Security Demo 的启动类
@@ -13,8 +12,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @version V1.0.0-RELEASE
  */
 @SpringBootApplication
-@RestController
-@EnableSwagger2
+@ComponentScan(basePackages = {
+        "com.bcdbook.security.demo",
+        "com.bcdbook.framework.base",
+        "com.bcdbook.framework.common"
+})
 public class SecurityDemoApplication {
     /**
      * Security Demo 的主入口

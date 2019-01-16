@@ -1,0 +1,36 @@
+easy-spring:
+  # mysql 数据库的配置
+  mysql:
+    server-host: localhost
+    port: 3306
+    database: easy_spring_security_demo
+    username: root
+    password: 123123
+  # Redis 数据库的配置
+  redis:
+    server-host: localhost
+    port: 6379
+    passowrd: 123123
+  # 自己封装的 jar 中可配置的参数
+  framework:
+    base:
+      page:
+        # 每页最大显示数量
+        max-page-size: 1000
+        # 默认每页显示的数量
+        default-page-size: 10
+        # 默认的页码
+        default-page-number: 1
+    common:
+      # 全局唯一 id 的配置
+      snowflake:
+        # 机器码(0~31)
+        worker-id: 1
+        # 数据中心码(0~31)
+        data-center-id: 1
+      # 异常信息相关的配置
+      exception:
+        # 错误页面
+        error-page: 500
+        # 错误信息
+        exception-name: exception

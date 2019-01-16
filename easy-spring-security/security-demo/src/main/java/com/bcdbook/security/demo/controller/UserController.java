@@ -1,8 +1,7 @@
 package com.bcdbook.security.demo.controller;
 
-import com.bcdbook.security.demo.entity.User;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import com.bcdbook.security.demo.model.User;
+import com.bcdbook.security.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -12,11 +11,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.security.SignatureException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +30,8 @@ import java.util.List;
 @Slf4j
 public class UserController {
 
+    @Resource
+    private UserService userService;
 
     /**
      * 用户查询的方法
@@ -43,24 +44,13 @@ public class UserController {
      * @version V1.0.0-RELEASE
      */
     @GetMapping
-    @ApiOperation(value = "用户查询服务")
     public List<User> query(User user,
-                            @PageableDefault(page = 2, size = 17, sort = "username,asc") Pageable pageable) {
+                            @PageableDefault(page = 1, size = 12, sort = "username,asc") Pageable pageable) {
 
         // 使用反射工具, 打印对应的对象
         log.info(ReflectionToStringBuilder.toString(user, ToStringStyle.MULTI_LINE_STYLE));
 
-        log.info(String.valueOf(pageable.getPageSize()));
-        log.info(String.valueOf(pageable.getPageNumber()));
-        log.info(String.valueOf(pageable.getSort()));
-
-        // 创建用户集合
-        List<User> users = new ArrayList<>();
-        users.add(new User());
-        users.add(new User());
-        users.add(new User());
-
-        return users;
+        return userService.list(user);
     }
 
     /**
@@ -73,13 +63,11 @@ public class UserController {
      * @version V1.0.0-RELEASE
      */
     @GetMapping("/{id:\\d+}")
-    public User getInfo(@ApiParam("用户id") @PathVariable String id) {
+    public User getInfo(@PathVariable Long id) {
 
         log.info("进入 getInfo 服务, 想要获取的用户是: {}", id);
 
-        User user = new User();
-        user.setUsername("tom");
-        return user;
+        return userService.get(id);
     }
 
     /**
@@ -92,13 +80,11 @@ public class UserController {
      * @version V1.0.0-RELEASE
      */
     @PostMapping
-    @ApiOperation(value = "创建用户")
     public User create(@Valid @RequestBody User user) {
 
         log.info(ReflectionToStringBuilder.toString(user, ToStringStyle.MULTI_LINE_STYLE));
 
-        user.setId("1");
-        return user;
+        return userService.insertOrUpdateSelective(user);
     }
 
     /**
@@ -116,8 +102,7 @@ public class UserController {
 
         log.info(ReflectionToStringBuilder.toString(user, ToStringStyle.MULTI_LINE_STYLE));
 
-        user.setId("1");
-        return user;
+        return userService.updateSelective(user);
     }
 
     /**
@@ -130,8 +115,10 @@ public class UserController {
      * @version V1.0.0-RELEASE
      */
     @DeleteMapping("/{id:\\d+}")
-    public void delete(@PathVariable String id) {
+    public boolean delete(@PathVariable Long id) {
         log.info("将要删除用户: {}", id);
+
+        return userService.delete(id) > 0;
     }
 
     /**

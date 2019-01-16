@@ -25,6 +25,13 @@
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.bcdbook.framework.base</groupId>
+            <artifactId>base-data-mybatis</artifactId>
+        </dependency>
+
+        <!--Security 浏览器安全 jar-->
         <dependency>
             <groupId>com.bcdbook.security</groupId>
             <artifactId>security-browser</artifactId>
@@ -43,6 +50,51 @@
         </dependency>
          -->
 
+        <!--数据库jar-->
+        <!--阿里连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+        <!--mysql 连接驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <!--<version>${mysql.connector.version}</version>-->
+            <scope>runtime</scope>
+        </dependency>
+        <!--mybatis 支持-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <!--分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${page.helper.version}</version>
+        </dependency>
+        <!--通用 mapper-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--spring2.0集成redis所需common-pool2-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+
+        <!--引入 spring 的 commons 包, 数据校验时需要用到-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
@@ -56,20 +108,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+
+        <!--工具 jar-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.7.0</version>
-        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>com.github.tomakehurst</groupId>-->
             <!--<artifactId>wiremock</artifactId>-->
@@ -80,7 +125,7 @@
             <version>0.7.0</version>
         </dependency>
 
-        <!--工具-->
+        <!--开发工具-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
