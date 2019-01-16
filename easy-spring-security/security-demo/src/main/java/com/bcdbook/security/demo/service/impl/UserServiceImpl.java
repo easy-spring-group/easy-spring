@@ -4,9 +4,12 @@ import com.bcdbook.framework.base.service.impl.BaseServiceImpl;
 import com.bcdbook.security.demo.mapper.UserMapper;
 import com.bcdbook.security.demo.model.User;
 import com.bcdbook.security.demo.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,6 +20,8 @@ import org.springframework.stereotype.Service;
  * @version V1.0.0-RELEASE
  */
 @Service
+@Component
+@Slf4j
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements UserService, UserDetailsService {
 
     /**
@@ -30,14 +35,20 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
      * @version V1.0.0-RELEASE
      */
     @Override
-    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("登录用户名是: {}", username);
+
         User user = new User();
         user.setUsername(username);
 
         User userResult = getByParameters(user);
+        if (userResult == null) {
+            return null;
+        }
 
         userResult.setAuthorities(AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
 
+        log.info("登录时将要返回的用户是: {}", userResult);
         return userResult;
     }
 }

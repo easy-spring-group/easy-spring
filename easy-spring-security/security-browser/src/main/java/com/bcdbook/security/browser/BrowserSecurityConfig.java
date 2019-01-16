@@ -1,11 +1,10 @@
 package com.bcdbook.security.browser;
 
-import org.springframework.context.annotation.Bean;
+import com.bcdbook.security.properties.SecurityProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * 浏览器环境下安全配置主类
@@ -17,6 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private SecurityProperties securityProperties;
 
     /**
      * 重写 configure 方法, 用于配置登录方式
@@ -38,26 +40,24 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 // 定义表单登录 - 身份认证的方式
                 .formLogin()
+                // 指定登录页面
+                .loginPage("/authentication/require")
+                // 自己定义用于用户名密码登录的路径(实现逻辑 Security 已经实现)
+                .loginProcessingUrl("/authentication/form")
                 .and()
                 // 对请求授权配置：注意方法名的含义，能联想到一些
                 .authorizeRequests()
+                // 放行这个路径
+                .antMatchers("/authentication/require",
+                        securityProperties.getBrowser().getLoginPage())
+                .permitAll()
+                // 任何请求
                 .anyRequest()
                 // 对任意请求都必须是已认证才能访问
-                .authenticated();
+                .authenticated()
+                .and()
+                // 去除跨站伪造防护
+                .csrf().disable()
+        ;
     }
-
-    /**
-     * 定义加密器
-     * TODO 此处需要允许用户配置, 如果用户不配置, 当前的加密解密器
-     *
-     * @author summer
-     * @date 2019-01-16 13:35
-     * @return org.springframework.security.crypto.password.PasswordEncoder
-     * @version V1.0.0-RELEASE
-     */
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
 }

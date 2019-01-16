@@ -13,8 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "com.bcdbook.security.demo",
-        "com.bcdbook.security.browser",
+        "com.bcdbook.security",
         "com.bcdbook.framework.base",
         "com.bcdbook.framework.common"
 })

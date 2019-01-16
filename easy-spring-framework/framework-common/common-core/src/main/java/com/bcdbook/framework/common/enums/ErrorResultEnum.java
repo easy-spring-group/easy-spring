@@ -18,9 +18,12 @@ public enum ErrorResultEnum implements CodeEnumInteger{
     /**
      * 3XX 错误, 权限错误
      */
-    USER_LOGIN_ERROR(300, "登录错误", "登录失败"),
+    /** 用户登录失败 */
+    USER_LOGIN_ERROR(300, "登录错误", "登录错误"),
+    /** 用户失去登录状态 */
+    USER_NOT_LOGIN_ERROR(301, "用户未登录", "用户未登录错误"),
     /** 用户名或密码不正确 */
-    USERNAME_OR_PASSWORD_NOT_MATCHING(301, "用户名或密码不正确", "用户名或密码不正确"),
+    USERNAME_OR_PASSWORD_NOT_MATCHING(302, "用户名或密码不正确", "用户名或密码不正确"),
 
     /** 用户名不存 */
     USER_UNKNOWN_ACCOUNT(310, "用户名不存在", "用户名不存在"),

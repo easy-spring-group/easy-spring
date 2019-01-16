@@ -34,3 +34,6 @@ easy-spring:
         error-page: 500
         # 错误信息
         exception-name: exception
+  security:
+    browser:
+      login-page: /demo-signIn.html

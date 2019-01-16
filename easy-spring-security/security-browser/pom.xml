@@ -24,6 +24,12 @@
     <url>https://easyspring.bcdbook.com/</url>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.bcdbook.framework.common</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
+        
         <!--引入 security 权限控制的核心-->
         <dependency>
             <groupId>com.bcdbook.security</groupId>
@@ -33,6 +39,12 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>
