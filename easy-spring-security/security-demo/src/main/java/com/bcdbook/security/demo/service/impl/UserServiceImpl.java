@@ -9,7 +9,6 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
  * @version V1.0.0-RELEASE
  */
 @Service
-@Component
 @Slf4j
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements UserService, UserDetailsService {
 
