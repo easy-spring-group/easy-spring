@@ -32,13 +32,9 @@
         </dependency>
 
         <!--Security 浏览器安全 jar-->
-        <!--<dependency>-->
-            <!--<groupId>com.bcdbook.security</groupId>-->
-            <!--<artifactId>security-browser</artifactId>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.bcdbook.security</groupId>
-            <artifactId>security-app</artifactId>
+            <artifactId>security-browser</artifactId>
         </dependency>
 
 
@@ -46,17 +42,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--</dependency>-->
 
         <!--
         <dependency>
-            <groupId>com.easy.security</groupId>
-            <artifactId>easy-security-authorize</artifactId>
-            <version>${easy.security.version}</version>
+            <groupId>com.imooc.security</groupId>
+            <artifactId>imooc-security-authorize</artifactId>
+            <version>${imooc.security.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.easy.security</groupId>
-            <artifactId>easy-security-app</artifactId>
-            <version>${easy.security.version}</version>
+            <groupId>com.imooc.security</groupId>
+            <artifactId>imooc-security-app</artifactId>
+            <version>${imooc.security.version}</version>
         </dependency>
          -->
 

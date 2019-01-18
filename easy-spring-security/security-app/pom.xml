@@ -24,12 +24,6 @@
     <url>https://easyspring.bcdbook.com/</url>
 
     <dependencies>
-        <!--引入 Redis 服务-->
-        <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
         <!--引入 security 权限控制的核心-->
         <dependency>
             <groupId>com.bcdbook.security</groupId>
