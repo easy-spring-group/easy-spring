@@ -1,84 +1,186 @@
 package com.bcdbook.security.browser;
 
-import com.bcdbook.security.browser.authentication.EasyAuthenticationFailureHandler;
-import com.bcdbook.security.browser.authentication.EasyAuthenticationSuccessHandler;
-import com.bcdbook.security.properties.SecurityProperties;
+import com.bcdbook.security.core.authentication.FormAuthenticationConfig;
+import com.bcdbook.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.bcdbook.security.core.authorize.AuthorizeConfigManager;
+import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.validate.code.ValidateCodeSecurityConfig;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.session.InvalidSessionStrategy;
+import org.springframework.security.web.session.SessionInformationExpiredStrategy;
+import org.springframework.social.security.SpringSocialConfigurer;
 
-import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.util.Set;
 
 /**
  * 浏览器环境下安全配置主类
- * WebSecurityConfigurerAdapter 适配器类。专门用来做web应用的安全配置
  *
  * @author summer
- * @date 2019-01-16 12:56
+ * @date 2019-01-17 12:10
  * @version V1.0.0-RELEASE
  */
 @Configuration
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
+    /**
+     * 注入配置文件
+     */
+	@Autowired
+	private SecurityProperties securityProperties;
+    /**
+     * 注入数据源
+     */
+	@Autowired
+	private DataSource dataSource;
+    /**
+     * 注入用户详情的 service
+     */
+	@Autowired
+	private UserDetailsService userDetailsService;
 
     /**
-     * 注入配置文件类
+     * 注入短信验证码的配置类
      */
-    @Resource
-    private SecurityProperties securityProperties;
+	@Autowired
+	private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
     /**
-     * 注入登录成功的处理器
+     * 注入验证码主类的配置类
      */
-    @Resource
-    private EasyAuthenticationSuccessHandler easyAuthenticationSuccessHandler;
-    /**
-     * 注入登录失败的处理器
-     */
-    @Resource
-    private EasyAuthenticationFailureHandler easyAuthenticationFailureHandler;
+	@Autowired
+	private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 
     /**
-     * 重写 configure 方法, 用于配置登录方式
-     *
-     * 最简单的修改默认配置的方法
-     * 在v5+中，该配置（表单登录）应该是默认配置了
-     * basic登录（也就是弹框登录的）应该是v5-的版本默认
+     * 注入 social 的配置类
+     */
+	@Autowired
+	private SpringSocialConfigurer easySocialSecurityConfig;
+
+    /**
+     * 注入 Session 回话过期策略
+     */
+	@Autowired
+	private SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
+    /**
+     * 注入 session 失效的策略
+     */
+	@Autowired
+	private InvalidSessionStrategy invalidSessionStrategy;
+    /**
+     * 注入登录成功的控制器
+     */
+	@Autowired
+	private LogoutSuccessHandler logoutSuccessHandler;
+    /**
+     * 注入权限配置的管理器
+     */
+	@Autowired
+	private AuthorizeConfigManager authorizeConfigManager;
+    /**
+     * 注入标点验证的配置类
+     */
+	@Autowired
+	private FormAuthenticationConfig formAuthenticationConfig;
+    /**
+     * 浏览器的安全回调
+     * TODO 待处理
+     */
+	@Autowired(required = false)
+	private Set<BrowserSecurityConfigCallback> configCallbacks;
+	
+    /**
+     * web 的安全配置
+     * 所有的 get 请求, 均可以忽略的静态文件信息
      *
      * @author summer
-     * @date 2019-01-16 12:59
-     * @param http Security 的 Http 请求参数
+     * @date 2019-01-17 12:17
+     * @param web 安全控制的 web 对象
      * @return void
      * @version V1.0.0-RELEASE
      */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+	@Override
+	public void configure(WebSecurity web) {
+		web.ignoring()
+                .antMatchers(HttpMethod.GET,
+                        "/**/*.js",
+                        "/**/*.css",
+                        "/**/*.ico",
+                        "/**/*.png",
+                        "/**/*.gif",
+                        "/**/*.jpg");
+	}
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		// TODO 待处理
+		if(CollectionUtils.isNotEmpty(configCallbacks)) {
+			configCallbacks.forEach(callback -> callback.config(http));
+		}
+		
+		formAuthenticationConfig.configure(http);
+		
+		http.apply(validateCodeSecurityConfig)
+				.and()
+                // 短信验证码的配置
+			.apply(smsCodeAuthenticationSecurityConfig)
+				.and()
+//			.apply(easySocialSecurityConfig)
+//				.and()
+//			//记住我配置，如果想在'记住我'登录时记录日志，可以注册一个InteractiveAuthenticationSuccessEvent事件的监听器
+//			.rememberMe()
+//				.tokenRepository(persistentTokenRepository())
+//				.tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
+//				.userDetailsService(userDetailsService)
+//				.and()
+                // session 的配置
+			.sessionManagement()
+				.invalidSessionStrategy(invalidSessionStrategy)
+				.maximumSessions(securityProperties.getBrowser().getSession().getMaximumSessions())
+				.maxSessionsPreventsLogin(securityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())
+				.expiredSessionStrategy(sessionInformationExpiredStrategy)
+				.and()
+				.and()
+			.logout()
+				.logoutUrl("/signOut")
+				.logoutSuccessHandler(logoutSuccessHandler)
+				.deleteCookies("JSESSIONID")
+				.and()
+			.csrf().disable()
+			.headers().frameOptions().disable();
+		
+		authorizeConfigManager.config(http.authorizeRequests());
+		
+	}
 
-
-        // 最简单的修改默认配置的方法
-        http
-                // 定义表单登录 - 身份认证的方式
-                .formLogin()
-                // 指定登录页面
-                .loginPage("/authentication/require")
-                // 自己定义用于用户名密码登录的路径(实现逻辑 Security 已经实现)
-                .loginProcessingUrl("/authentication/form")
-                // 设置登录成功的处理器
-                .successHandler(easyAuthenticationSuccessHandler)
-                // 设置登录失败的处理器
-                .failureHandler(easyAuthenticationFailureHandler)
-                .and()
-                // 对请求授权配置：注意方法名的含义，能联想到一些
-                .authorizeRequests()
-                // 放行这个路径
-                .antMatchers("/authentication/require",
-                        securityProperties.getBrowser().getLoginPage())
-                .permitAll()
-                // 任何请求
-                .anyRequest()
-                // 对任意请求都必须是已认证才能访问
-                .authenticated()
-                .and()
-                // 去除跨站伪造防护
-                .csrf().disable()
-        ;
-    }
+    /**
+     * 记住我功能的 token 存取器配置
+     *
+     * @author summer
+     * @date 2019-01-17 12:20
+     * @return org.springframework.security.web.authentication.rememberme.PersistentTokenRepository
+     * @version V1.0.0-RELEASE
+     */
+	@Bean
+	public PersistentTokenRepository persistentTokenRepository() {
+		JdbcTokenRepositoryImpl jdbcTokenRepositoryImpl = new JdbcTokenRepositoryImpl();
+		/*
+		 * 设置 jdbc 的数据源
+		 * 注意: 设置此数据源的时候需要添加 jdbc 驱动, 否则会找不到 setDataSource 方法
+		 */
+        jdbcTokenRepositoryImpl.setDataSource(dataSource);
+		// 在启动的时候创建数据库
+//		tokenRepository.setCreateTableOnStartup(true);
+		return jdbcTokenRepositoryImpl;
+	}
+	
 }

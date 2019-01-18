@@ -3,6 +3,7 @@ package com.bcdbook.framework.base.pagehelper;
 import com.bcdbook.framework.common.view.CommonJsonView;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.github.pagehelper.Page;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  * @date 2019-01-11 16:16
  * @version V1.0.0-RELEASE
  */
+@NoArgsConstructor
 public class PageInfo<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -84,9 +86,6 @@ public class PageInfo<T> implements Serializable {
     @JsonView(CommonJsonView.SimpleView.class)
     private int navigateLastPage;
 
-    public PageInfo() {
-    }
-
     /**
      * 包装Page对象
      *
@@ -106,7 +105,6 @@ public class PageInfo<T> implements Serializable {
      * @date 2019-01-11 16:23
      * @param list page结果
      * @param navigatePages 页码数量
-     * @return
      * @version V1.0.0-RELEASE
      */
     public PageInfo(List<T> list, int navigatePages) {
@@ -207,14 +205,14 @@ public class PageInfo<T> implements Serializable {
      */
     private void judgePageBoudary() {
         isFirstPage = pageNum == 1;
-        isLastPage = pageNum == pages || pages == 0;;
+        isLastPage = pageNum == pages || pages == 0;
         hasPreviousPage = pageNum > 1;
         hasNextPage = pageNum < pages;
     }
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("PageInfo{");
+        StringBuffer sb = new StringBuffer("PageInfo{");
         sb.append("pageNum=").append(pageNum);
         sb.append(", pageSize=").append(pageSize);
         sb.append(", size=").append(size);
