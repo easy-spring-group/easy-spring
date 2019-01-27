@@ -1,6 +1,7 @@
 package com.bcdbook.framework.base.model;
 
 import com.bcdbook.framework.common.view.CommonJsonView;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,6 +43,7 @@ public class BaseModel implements Serializable {
      */
     @Id
     @JsonView(CommonJsonView.SimpleView.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Long id;
     /**
      * 创建时间
