@@ -46,7 +46,7 @@ public class SortUserServiceImplTest {
         // 创建公共的分页对象
         BaseSortForm baseSortFrom = new BaseSortForm();
         baseSortFrom.setId(1428117721710592L);
-        baseSortFrom.setISort(10);
+        baseSortFrom.setEasySort(10);
 
         Integer sort = sortUserService.sort(baseSortFrom, SortUser.class);
         Integer changeSize = 1;
@@ -66,7 +66,7 @@ public class SortUserServiceImplTest {
         // 创建公共的分页对象
         BaseSortForm baseSortFrom = new BaseSortForm();
         baseSortFrom.setId(123L);
-        baseSortFrom.setISort(10);
+        baseSortFrom.setEasySort(10);
 
         Integer sort = sortUserService.sort(baseSortFrom, SortUser.class);
         Integer changeSize = 0;
@@ -89,7 +89,7 @@ public class SortUserServiceImplTest {
         // 创建公共的分页对象
         BaseSortForm baseSortFrom = new BaseSortForm();
         baseSortFrom.setId(id);
-        baseSortFrom.setISort(-10);
+        baseSortFrom.setEasySort(-10);
 
         Integer sort = sortUserService.sort(baseSortFrom, SortUser.class);
         Integer changeSize = 0;
@@ -110,15 +110,15 @@ public class SortUserServiceImplTest {
         // 创建公共的分页对象
         BaseSortForm baseSortFrom1 = new BaseSortForm();
         baseSortFrom1.setId(1428117721710592L);
-        baseSortFrom1.setISort(1);
+        baseSortFrom1.setEasySort(1);
         // 创建公共的分页对象
         BaseSortForm baseSortFrom2 = new BaseSortForm();
         baseSortFrom2.setId(1428117721710609L);
-        baseSortFrom2.setISort(1);
+        baseSortFrom2.setEasySort(1);
         // 创建公共的分页对象
         BaseSortForm baseSortFrom3 = new BaseSortForm();
         baseSortFrom3.setId(1428117721710610L);
-        baseSortFrom3.setISort(1);
+        baseSortFrom3.setEasySort(1);
 
         List<BaseSortForm> baseSortFromList = new ArrayList<>();
         baseSortFromList.add(baseSortFrom1);
@@ -144,15 +144,15 @@ public class SortUserServiceImplTest {
         // 创建公共的分页对象
         BaseSortForm baseSortFrom1 = new BaseSortForm();
         baseSortFrom1.setId(123L);
-        baseSortFrom1.setISort(1);
+        baseSortFrom1.setEasySort(1);
         // 创建公共的分页对象
         BaseSortForm baseSortFrom2 = new BaseSortForm();
         baseSortFrom2.setId(1428117721710609L);
-        baseSortFrom2.setISort(1);
+        baseSortFrom2.setEasySort(1);
         // 创建公共的分页对象
         BaseSortForm baseSortFrom3 = new BaseSortForm();
         baseSortFrom3.setId(1428117721710610L);
-        baseSortFrom3.setISort(1);
+        baseSortFrom3.setEasySort(1);
 
         List<BaseSortForm> baseSortFromList = new ArrayList<>();
         baseSortFromList.add(baseSortFrom1);
@@ -178,15 +178,15 @@ public class SortUserServiceImplTest {
         // 创建公共的分页对象
         BaseSortForm baseSortFrom1 = new BaseSortForm();
         baseSortFrom1.setId(1428117721710609L);
-        baseSortFrom1.setISort(1);
+        baseSortFrom1.setEasySort(1);
         // 创建公共的分页对象
         BaseSortForm baseSortFrom2 = new BaseSortForm();
         baseSortFrom2.setId(1428117721710609L);
-        baseSortFrom2.setISort(1);
+        baseSortFrom2.setEasySort(1);
         // 创建公共的分页对象
         BaseSortForm baseSortFrom3 = new BaseSortForm();
         baseSortFrom3.setId(1428117721710610L);
-        baseSortFrom3.setISort(1);
+        baseSortFrom3.setEasySort(1);
 
         List<BaseSortForm> baseSortFromList = new ArrayList<>();
         baseSortFromList.add(baseSortFrom1);

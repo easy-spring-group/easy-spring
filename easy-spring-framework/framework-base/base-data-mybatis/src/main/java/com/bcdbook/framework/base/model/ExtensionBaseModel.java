@@ -33,5 +33,5 @@ public class ExtensionBaseModel extends BaseModel {
      * 排序字段
      */
     @JsonView(CommonJsonView.SimpleView.class)
-    private Integer iSort;
+    private Integer easySort;
 }

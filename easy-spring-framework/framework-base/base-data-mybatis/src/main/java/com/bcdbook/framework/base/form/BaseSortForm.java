@@ -36,5 +36,5 @@ public class BaseSortForm implements Serializable {
      */
     @NotNull(message = "排序值不能为空")
     @Min(value = 0, message = "排序值不能小于 0")
-    private Integer iSort;
+    private Integer easySort;
 }

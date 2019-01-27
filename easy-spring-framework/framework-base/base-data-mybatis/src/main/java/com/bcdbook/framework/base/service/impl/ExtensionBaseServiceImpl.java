@@ -46,7 +46,7 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
         // 参数合法性校验
         if (baseSortFrom == null || clazz == null
                 || baseSortFrom.getId() == null || baseSortFrom.getId() <= 0
-                || baseSortFrom.getISort() == null || baseSortFrom.getISort() < ExtensionBaseModel.MIN_SORT_SIZE) {
+                || baseSortFrom.getEasySort() == null || baseSortFrom.getEasySort() < ExtensionBaseModel.MIN_SORT_SIZE) {
             return 0;
         }
 
@@ -57,7 +57,7 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
         // 设置 id
         entity.setId(baseSortFrom.getId());
         // 设置排序值
-        entity.setISort(baseSortFrom.getISort());
+        entity.setEasySort(baseSortFrom.getEasySort());
 
         // 执行修改, 并返回影响的数据条数
         return mapper.updateByPrimaryKeySelective(entity);
@@ -95,13 +95,13 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
             // 如果参数不合法则直接跳过
             if (baseSortForm == null
                     || baseSortForm.getId() == null || baseSortForm.getId() <= 0
-                    || baseSortForm.getISort() < T.MIN_SORT_SIZE) {
+                    || baseSortForm.getEasySort() < T.MIN_SORT_SIZE) {
                 continue;
             }
 
             // 设置要修改成的数据
             entity.setId(baseSortForm.getId());
-            entity.setISort(baseSortForm.getISort());
+            entity.setEasySort(baseSortForm.getEasySort());
 
             // 执行更新, 并判断返回值是否正确
             if (mapper.updateByPrimaryKeySelective(entity) > 0){
