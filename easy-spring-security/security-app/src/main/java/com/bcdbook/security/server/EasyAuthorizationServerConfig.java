@@ -2,23 +2,28 @@ package com.bcdbook.security.server;
 
 import com.bcdbook.security.core.properties.OAuth2ClientProperties;
 import com.bcdbook.security.core.properties.SecurityProperties;
-import org.apache.commons.lang.ArrayUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,68 +36,71 @@ import java.util.List;
 @EnableAuthorizationServer
 public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-	@Autowired(required = false)
-	private TokenStore tokenStore;
+    @Autowired
+    private SecurityProperties securityProperties;
 
-	@Autowired(required = false)
-	private JwtAccessTokenConverter jwtAccessTokenConverter;
+    @Autowired(required = false)
+    public TokenStore tokenStore;
 
-	@Autowired(required = false)
-	private TokenEnhancer jwtTokenEnhancer;
+    @Autowired(required = false)
+    // 只有当使用jwt的时候才会有该对象
+    private JwtAccessTokenConverter jwtAccessTokenConverter;
+    /**
+     * @see TokenStoreConfig
+     */
+    @Autowired(required = false)
+    private TokenEnhancer jwtTokenEnhancer;
 
-	@Autowired
-	private SecurityProperties securityProperties;
+    public EasyAuthorizationServerConfig(
+            AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
+    }
 
-	/**
-	 * 认证及 token 配置
-	 */
-	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.tokenStore(tokenStore)
-				.authenticationManager(authenticationManager)
-				.userDetailsService(userDetailsService);
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        InMemoryClientDetailsServiceBuilder inMemory = clients.inMemory();
+        OAuth2ClientProperties[] clientsInCustom = securityProperties.getOauth2().getClients();
+        for (OAuth2ClientProperties p : clientsInCustom) {
+            inMemory.withClient(p.getClientId())
+                    .secret(p.getClientSecret())
+                    .redirectUris(p.getRedirectUris())
+                    .authorizedGrantTypes(p.getAuthorizedGrantTypes())
+                    .accessTokenValiditySeconds(p.getAccessTokenValidateSeconds())
+                    .scopes(p.getScopes());
+        }
+        logger.info(Arrays.toString(clientsInCustom));
+    }
 
-		if (jwtAccessTokenConverter != null && jwtTokenEnhancer != null) {
-			TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
-			List<TokenEnhancer> enhancers = new ArrayList<>();
-			enhancers.add(jwtTokenEnhancer);
-			enhancers.add(jwtAccessTokenConverter);
-			enhancerChain.setTokenEnhancers(enhancers);
-			endpoints.tokenEnhancer(enhancerChain).accessTokenConverter(jwtAccessTokenConverter);
-		}
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.authenticationManager(this.authenticationManager);
+        endpoints.tokenStore(tokenStore);
+        /**
+         * 私有方法，但是在里面调用了accessTokenEnhancer.enhance所以这里使用链
+         * @see DefaultTokenServices#createAccessToken(OAuth2Authentication, OAuth2RefreshToken)
+         */
+        if (jwtAccessTokenConverter != null && jwtTokenEnhancer != null) {
+            TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
+            List<TokenEnhancer> enhancers = new ArrayList<>();
+            enhancers.add(jwtTokenEnhancer);
+            enhancers.add(jwtAccessTokenConverter);
+            enhancerChain.setTokenEnhancers(enhancers);
+            // 一个处理链，先添加，再转换
+            endpoints
+                    .tokenEnhancer(enhancerChain)
+                    .accessTokenConverter(jwtAccessTokenConverter);
+        }
+    }
 
-	}
-
-	/**
-	 * tokenKey 的访问权限表达式配置
-	 */
-	@Override
+    @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security.tokenKeyAccess("permitAll()");
-	}
-
-	/**
-	 * 客户端配置
-	 */
-	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		InMemoryClientDetailsServiceBuilder builder = clients.inMemory();
-		if (ArrayUtils.isNotEmpty(securityProperties.getOauth2().getClients())) {
-			for (OAuth2ClientProperties client : securityProperties.getOauth2().getClients()) {
-				builder.withClient(client.getClientId())
-						.secret(client.getClientSecret())
-						.authorizedGrantTypes("refresh_token", "authorization_code", "password")
-						.accessTokenValiditySeconds(client.getAccessTokenValidateSeconds())
-						.refreshTokenValiditySeconds(2592000)
-						.scopes("all");
-			}
-		}
-	}
+        // 这里使用什么密码需要 根据上面配置client信息里面的密码类型决定
+        // 目前上面配置的是无加密的密码
+        security.passwordEncoder(NoOpPasswordEncoder.getInstance());
+    }
 
 }

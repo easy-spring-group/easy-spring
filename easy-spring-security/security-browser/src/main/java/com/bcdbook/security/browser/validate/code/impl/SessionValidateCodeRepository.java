@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.bcdbook.security.browser.validate.code.impl;
 
 import com.bcdbook.security.core.validate.code.ValidateCode;

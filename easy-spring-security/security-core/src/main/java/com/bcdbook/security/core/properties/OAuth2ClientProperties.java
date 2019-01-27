@@ -22,6 +22,12 @@ public class OAuth2ClientProperties {
 	 * 第三方应用 appSecret
 	 */
 	private String clientSecret;
+
+    private String[] authorizedGrantTypes = {};
+    // 信任的回调域
+    private String[] redirectUris = {};
+    private String[] scopes = {};
+
 	/**
 	 * 针对此应用发出的 token 的有效时间
 	 */

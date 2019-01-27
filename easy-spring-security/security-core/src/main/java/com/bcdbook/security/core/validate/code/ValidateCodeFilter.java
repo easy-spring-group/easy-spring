@@ -168,6 +168,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 		    // 获取需要拦截的请求的 key (也就是需要拦截的地址)
 			Set<String> urls = urlMap.keySet();
 			// 循环匹配
+            // TODO: 2019-01-21 此处只能拦截请求地址, 而不能区分请求方式, 需要优化
 			for (String url : urls) {
 			    // 如果当前的地址和需要验证码校验的地址匹配(使用 pathMatcher 匹配器匹配)
 				if (pathMatcher.match(url, request.getRequestURI())) {

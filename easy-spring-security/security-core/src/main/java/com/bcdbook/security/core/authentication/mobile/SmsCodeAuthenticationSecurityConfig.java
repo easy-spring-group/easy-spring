@@ -12,8 +12,6 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -36,8 +34,8 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-	@Autowired
-	private PersistentTokenRepository persistentTokenRepository;
+//	@Autowired
+//	private PersistentTokenRepository persistentTokenRepository;
 	
 	/* (non-Javadoc)
 	 * @see org.springframework.security.config.annotation.SecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.SecurityBuilder)
@@ -50,9 +48,9 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
 		smsCodeAuthenticationFilter.setAuthenticationSuccessHandler(easyAuthenticationSuccessHandler);
 		smsCodeAuthenticationFilter.setAuthenticationFailureHandler(easyAuthenticationFailureHandler);
 		String key = UUID.randomUUID().toString();
-		smsCodeAuthenticationFilter.setRememberMeServices(new PersistentTokenBasedRememberMeServices(key,
-                userDetailsService,
-                persistentTokenRepository));
+//		smsCodeAuthenticationFilter.setRememberMeServices(new PersistentTokenBasedRememberMeServices(key,
+//                userDetailsService,
+//                persistentTokenRepository));
 		
 		SmsCodeAuthenticationProvider smsCodeAuthenticationProvider = new SmsCodeAuthenticationProvider();
 		smsCodeAuthenticationProvider.setUserDetailsService(userDetailsService);
