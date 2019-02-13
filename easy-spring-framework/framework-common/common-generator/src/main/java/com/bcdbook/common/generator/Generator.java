@@ -28,24 +28,25 @@ public class Generator {
     private static final String MAPPER_XML_OUTPUT_DIR = "/Users/summer/workspace/works/yinbao/risk-management-build/risk-management/src/main/resources/mapper";
 
     /** 数据源连接地址 */
-    private static final String DATA_SOURCE_CONFIG_URL = "jdbc:mysql://localhost:3306/risk_management?useUnicode=true&characterEncoding=utf-8";
+    private static final String DATA_SOURCE_CONFIG_URL = "jdbc:mysql://47.96.126.38:3306/risk_management?useUnicode=true&characterEncoding=utf-8";
     /** 驱动器 */
     private static final String DATA_SOURCE_CONFIG_DRIVER_NAME = "com.mysql.jdbc.Driver";
     /** 用户名 */
     private static final String DATA_SOURCE_CONFIG_USERNAME = "root";
     /** 密码 */
-    private static final String DATA_SOURCE_CONFIG_PASSWORD = "123123";
+    private static final String DATA_SOURCE_CONFIG_PASSWORD = "YinbaOWang";
 
     /** 表前缀 */
-    private static final String[] STRATEGY_CONFIG_TABLE_PREFIX = {"sys", "bus"};
+    private static final String[] STRATEGY_CONFIG_TABLE_PREFIX = {"cust", "sys", "tool"};
     /** 想要生成的表 */
     private static final String[] STRATEGY_CONFIG_INCLUDE =
-            {"sys_user", "sys_role", "sys_permission", "sys_user_role", "sys_role_permission"};
+//            {"sys_user", "sys_role", "sys_permission", "sys_user_role", "sys_role_permission"};
+            {"tool_dictionary", "tool_pcc", "tool_user_file"};
 
     /** 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名 */
     private static final String PACKAGE_CONFIG_PARENT = "com.yinbaochina.management.risk";
     /** 父包模块名 */
-    private static final String PACKAGE_CONFIG_MODULE_NAME = "system";
+    private static final String PACKAGE_CONFIG_MODULE_NAME = "tools";
 
     /**
      * 启动生成的 main 方法
