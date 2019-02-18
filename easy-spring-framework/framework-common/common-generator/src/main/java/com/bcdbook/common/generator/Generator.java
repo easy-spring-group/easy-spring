@@ -40,13 +40,20 @@ public class Generator {
     private static final String[] STRATEGY_CONFIG_TABLE_PREFIX = {"cust", "sys", "tool"};
     /** 想要生成的表 */
     private static final String[] STRATEGY_CONFIG_INCLUDE =
+            {"cust_base_account", "cust_customer",
+                    "cust_customer_file", "cust_customer_project",
+                    "cust_financial_report", "cust_general_account",
+                    "cust_master", "cust_passenger_source",
+                    "cust_qualification_info", "cust_relevancy_user",
+                    "cust_subsidiary"
+            };
 //            {"sys_user", "sys_role", "sys_permission", "sys_user_role", "sys_role_permission"};
-            {"tool_dictionary", "tool_pcc", "tool_user_file"};
+//            {"tool_dictionary", "tool_pcc", "tool_user_file"};
 
     /** 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名 */
     private static final String PACKAGE_CONFIG_PARENT = "com.yinbaochina.management.risk";
     /** 父包模块名 */
-    private static final String PACKAGE_CONFIG_MODULE_NAME = "tools";
+    private static final String PACKAGE_CONFIG_MODULE_NAME = "customer";
 
     /**
      * 启动生成的 main 方法

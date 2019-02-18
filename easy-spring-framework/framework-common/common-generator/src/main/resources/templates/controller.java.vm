@@ -1,6 +1,7 @@
 package ${package.Controller};
 
 import io.swagger.annotations.Api;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 #if(${restControllerStyle})
