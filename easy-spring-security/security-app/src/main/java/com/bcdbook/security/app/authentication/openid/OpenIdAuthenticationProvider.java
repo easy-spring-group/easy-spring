@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bcdbook.security.app.authentication.openid;
+package io.easyspring.security.app.authentication.openid;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.security.authentication.AuthenticationProvider;

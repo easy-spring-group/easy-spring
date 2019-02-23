@@ -1,7 +1,7 @@
-package com.bcdbook.security.demo.service;
+package io.easyspring.security.demo.service;
 
-import com.bcdbook.framework.base.service.BaseService;
-import com.bcdbook.security.demo.model.User;
+import io.easyspring.framework.base.service.BaseService;
+import io.easyspring.security.demo.model.User;
 import org.springframework.validation.annotation.Validated;
 
 /**

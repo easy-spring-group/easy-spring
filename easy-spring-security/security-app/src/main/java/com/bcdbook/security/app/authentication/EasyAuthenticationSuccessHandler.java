@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bcdbook.security.app.authentication;
+package io.easyspring.security.app.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.collections.MapUtils;

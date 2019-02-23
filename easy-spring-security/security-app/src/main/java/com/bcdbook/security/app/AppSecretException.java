@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bcdbook.security.app;
+package io.easyspring.security.app;
 
 /**
  * @author zhailiang

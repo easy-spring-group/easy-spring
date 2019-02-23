@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.bcdbook.security.app.authentication;
+package io.easyspring.security.app.authentication;
 
-import com.bcdbook.security.core.support.SimpleResponse;
+import io.easyspring.security.core.support.SimpleResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

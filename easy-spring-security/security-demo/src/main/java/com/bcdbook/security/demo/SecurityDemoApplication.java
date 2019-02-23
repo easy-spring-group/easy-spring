@@ -1,4 +1,4 @@
-package com.bcdbook.security.demo;
+package io.easyspring.security.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +13,9 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "com.bcdbook.security",
-        "com.bcdbook.framework.base",
-        "com.bcdbook.framework.common"
+        "io.easyspring.security",
+        "io.easyspring.framework.base",
+        "io.easyspring.framework.common"
 })
 public class SecurityDemoApplication {
     /**

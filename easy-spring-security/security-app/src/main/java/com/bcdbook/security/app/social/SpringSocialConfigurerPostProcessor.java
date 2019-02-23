@@ -1,7 +1,7 @@
-package com.bcdbook.security.app.social;
+package io.easyspring.security.app.social;
 
-import com.bcdbook.security.core.properties.SecurityConstants;
-import com.bcdbook.security.core.social.support.EasySpringSocialConfigurer;
+import io.easyspring.security.core.properties.SecurityConstants;
+import io.easyspring.security.core.social.support.EasySpringSocialConfigurer;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

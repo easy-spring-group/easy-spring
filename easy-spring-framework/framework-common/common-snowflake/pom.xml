@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>framework-common</artifactId>
-        <groupId>com.bcdbook.framework.common</groupId>
+        <groupId>io.easyspring.framework.common</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
@@ -19,7 +19,7 @@
     <!--项目简介-->
     <description>Framework Common Snowflake</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 
     <dependencies>
         <!--引入 spring boot 的基础包-->

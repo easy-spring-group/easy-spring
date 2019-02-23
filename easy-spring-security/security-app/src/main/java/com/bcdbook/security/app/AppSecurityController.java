@@ -1,12 +1,12 @@
 /**
  * 
  */
-package com.bcdbook.security.app;
+package io.easyspring.security.app;
 
-import com.bcdbook.security.app.social.AppSingUpUtils;
-import com.bcdbook.security.core.properties.SecurityConstants;
-import com.bcdbook.security.core.social.SocialController;
-import com.bcdbook.security.core.social.support.SocialUserInfo;
+import io.easyspring.security.app.social.AppSingUpUtils;
+import io.easyspring.security.core.properties.SecurityConstants;
+import io.easyspring.security.core.social.SocialController;
+import io.easyspring.security.core.social.support.SocialUserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.social.connect.Connection;

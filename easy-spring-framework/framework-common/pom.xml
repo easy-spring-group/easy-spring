@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-framework</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.bcdbook.framework.common</groupId>
+    <groupId>io.easyspring.framework.common</groupId>
     <artifactId>framework-common</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
@@ -19,7 +19,7 @@
     <!--项目简介-->
     <description>Framework Common</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
     <modules>
         <module>common-snowflake</module>
         <module>common-core</module>

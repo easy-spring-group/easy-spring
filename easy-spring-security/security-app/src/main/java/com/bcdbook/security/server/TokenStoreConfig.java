@@ -1,6 +1,6 @@
-package com.bcdbook.security.server;
+package io.easyspring.security.server;
 
-import com.bcdbook.security.core.properties.SecurityProperties;
+import io.easyspring.security.core.properties.SecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

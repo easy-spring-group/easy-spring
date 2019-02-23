@@ -1,7 +1,7 @@
-package com.bcdbook.security.demo.mapper;
+package io.easyspring.security.demo.mapper;
 
-import com.bcdbook.framework.base.mapper.BaseMapper;
-import com.bcdbook.security.demo.model.User;
+import io.easyspring.framework.base.mapper.BaseMapper;
+import io.easyspring.security.demo.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 

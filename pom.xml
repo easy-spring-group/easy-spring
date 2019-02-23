@@ -6,7 +6,7 @@
 
     <!--父项目的基本信息-->
     <!--项目组名称-->
-    <groupId>com.bcdbook.framework</groupId>
+    <groupId>io.easyspring.framework</groupId>
     <!--项目标识-->
     <artifactId>easy-spring-build</artifactId>
     <!--项目版本-->

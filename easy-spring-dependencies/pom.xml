@@ -7,7 +7,7 @@
     <!--父级项目信息-->
     <parent>
         <artifactId>easy-spring-build</artifactId>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../</relativePath>
@@ -23,7 +23,7 @@
     <!--项目简介-->
     <description>Easy Spring Dependencies</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 
     <!--项目许可信息-->
     <!--<licenses>-->
@@ -44,7 +44,7 @@
             <name>LiXian</name>
             <email>xianforwork@163.com</email>
             <organization>Pivotal Software, Inc.</organization>
-            <organizationUrl>http://www.bcdbook.com</organizationUrl>
+            <organizationUrl>http://www.easyspring.io</organizationUrl>
         </developer>
     </developers>
 
@@ -128,7 +128,7 @@
             <!--base 模块-->
             <!--base-data-mybatis-->
             <dependency>
-                <groupId>com.bcdbook.framework.base</groupId>
+                <groupId>io.easyspring.framework.base</groupId>
                 <artifactId>base-data-mybatis</artifactId>
                 <version>${base.version}</version>
                 <!--<systemPath>${basedir}/../easy-spring-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
@@ -136,13 +136,13 @@
 
             <!--common 模块-->
             <dependency>
-                <groupId>com.bcdbook.framework.common</groupId>
+                <groupId>io.easyspring.framework.common</groupId>
                 <artifactId>common-snowflake</artifactId>
                 <version>${base.version}</version>
                 <!--<systemPath>${basedir}/../easy-spring-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
             </dependency>
             <dependency>
-                <groupId>com.bcdbook.framework.common</groupId>
+                <groupId>io.easyspring.framework.common</groupId>
                 <artifactId>common-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
@@ -150,26 +150,26 @@
             <!--security 模块-->
             <!--security 的核心模块-->
             <dependency>
-                <groupId>com.bcdbook.security</groupId>
+                <groupId>io.easyspring.security</groupId>
                 <artifactId>security-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
             <!--基于浏览器的 security 安全控制模块-->
             <dependency>
-                <groupId>com.bcdbook.security</groupId>
+                <groupId>io.easyspring.security</groupId>
                 <artifactId>security-browser</artifactId>
                 <version>${base.version}</version>
             </dependency>
             <!--基于 APP 的security 安全控制模块-->
             <dependency>
-                <groupId>com.bcdbook.security</groupId>
+                <groupId>io.easyspring.security</groupId>
                 <artifactId>security-app</artifactId>
                 <version>${base.version}</version>
             </dependency>
 
             
             <!--<dependency>-->
-                <!--<groupId>com.bcdbook.framework</groupId>-->
+                <!--<groupId>io.easyspring.framework</groupId>-->
                 <!--<artifactId>framework-test</artifactId>-->
                 <!--<version>${base.version}</version>-->
                 <!--<systemPath>${basedir}/../easy-spring-framework/framework-test/pom.xml</systemPath>-->

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bcdbook.security.app.authentication.openid;
+package io.easyspring.security.app.authentication.openid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

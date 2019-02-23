@@ -24,4 +24,4 @@ spring:
 
 logging:
   level:
-    com.bcdbook.framework.base.data.mybatis.plus.test.mapper: trace
+    io.easyspring.framework.base.data.mybatis.plus.test.mapper: trace

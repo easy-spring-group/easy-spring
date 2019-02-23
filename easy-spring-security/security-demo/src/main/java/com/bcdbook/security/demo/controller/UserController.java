@@ -1,7 +1,7 @@
-package com.bcdbook.security.demo.controller;
+package io.easyspring.security.demo.controller;
 
-import com.bcdbook.security.demo.model.User;
-import com.bcdbook.security.demo.service.UserService;
+import io.easyspring.security.demo.model.User;
+import io.easyspring.security.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -40,7 +40,7 @@ public class UserController {
      * @date 2018-12-18 11:06
      * @param user 查询条件
      * @param pageable 分页信息
-     * @return java.util.List<com.bcdbook.security.demo.entity.User>
+     * @return java.util.List<io.easyspring.security.demo.entity.User>
      * @version V1.0.0-RELEASE
      */
     @GetMapping
@@ -59,7 +59,7 @@ public class UserController {
      * @author summer
      * @date 2018-12-18 23:03
      * @param id 用户 id
-     * @return com.bcdbook.security.demo.entity.User
+     * @return io.easyspring.security.demo.entity.User
      * @version V1.0.0-RELEASE
      */
     @GetMapping("/{id:\\d+}")
@@ -76,7 +76,7 @@ public class UserController {
      * @author summer
      * @date 2018-12-18 23:19
      * @param user 用户对象
-     * @return com.bcdbook.security.demo.entity.User
+     * @return io.easyspring.security.demo.entity.User
      * @version V1.0.0-RELEASE
      */
     @PostMapping
@@ -94,7 +94,7 @@ public class UserController {
      * @date 2018-12-19 11:42
      * @param user 用户对象
      * @param errors 数据校验信息
-     * @return com.bcdbook.security.demo.entity.User
+     * @return io.easyspring.security.demo.entity.User
      * @version V1.0.0-RELEASE
      */
     @PutMapping

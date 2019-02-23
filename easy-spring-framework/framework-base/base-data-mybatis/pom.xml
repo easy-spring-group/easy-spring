@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>framework-base</artifactId>
-        <groupId>com.bcdbook.framework.base</groupId>
+        <groupId>io.easyspring.framework.base</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
@@ -20,19 +20,19 @@
     <!--项目简介-->
     <description>Framework Base Data MyBatis</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 
     <!--引入 jar 包依赖-->
     <dependencies>
         <!--引入自定义的 jar-->
         <!--全局唯一 id 生成的 jar-->
         <dependency>
-            <groupId>com.bcdbook.framework.common</groupId>
+            <groupId>io.easyspring.framework.common</groupId>
             <artifactId>common-snowflake</artifactId>
         </dependency>
         <!--核心工具 jar-->
         <dependency>
-            <groupId>com.bcdbook.framework.common</groupId>
+            <groupId>io.easyspring.framework.common</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
 

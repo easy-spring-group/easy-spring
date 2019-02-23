@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>easy-spring-security</artifactId>
-        <groupId>com.bcdbook.security</groupId>
+        <groupId>io.easyspring.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../</relativePath>
@@ -21,23 +21,23 @@
     <!--项目简介-->
     <description>Security Demo</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 
 
     <dependencies>
 
         <dependency>
-            <groupId>com.bcdbook.framework.base</groupId>
+            <groupId>io.easyspring.framework.base</groupId>
             <artifactId>base-data-mybatis</artifactId>
         </dependency>
 
         <!--Security 浏览器安全 jar-->
         <!--<dependency>-->
-            <!--<groupId>com.bcdbook.security</groupId>-->
+            <!--<groupId>io.easyspring.security</groupId>-->
             <!--<artifactId>security-browser</artifactId>-->
         <!--</dependency>-->
         <dependency>
-            <groupId>com.bcdbook.security</groupId>
+            <groupId>io.easyspring.security</groupId>
             <artifactId>security-app</artifactId>
         </dependency>
 

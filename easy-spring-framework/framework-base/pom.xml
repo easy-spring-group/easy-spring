@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-framework</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
 
-    <groupId>com.bcdbook.framework.base</groupId>
+    <groupId>io.easyspring.framework.base</groupId>
     <artifactId>framework-base</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
@@ -19,7 +19,7 @@
     <!--项目简介-->
     <description>Framework Base</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 
     <modules>
         <module>base-data-mybatis</module>

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>easy-spring-dependencies</artifactId>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../easy-spring-dependencies</relativePath>
@@ -20,5 +20,5 @@
     <!--项目简介-->
     <description>Easy Spring Business</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 </project>

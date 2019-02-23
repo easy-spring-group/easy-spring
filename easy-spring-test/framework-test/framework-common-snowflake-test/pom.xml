@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <artifactId>framework-test</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
@@ -19,7 +19,7 @@
     <dependencies>
         <!--引入自己的 jar-->
         <dependency>
-            <groupId>com.bcdbook.framework.common</groupId>
+            <groupId>io.easyspring.framework.common</groupId>
             <artifactId>common-snowflake</artifactId>
         </dependency>
 

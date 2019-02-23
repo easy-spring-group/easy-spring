@@ -1,6 +1,6 @@
-package com.bcdbook.security.app.social;
+package io.easyspring.security.app.social;
 
-import com.bcdbook.security.app.AppSecretException;
+import io.easyspring.security.app.AppSecretException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

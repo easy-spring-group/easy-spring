@@ -1,6 +1,6 @@
-package com.bcdbook.security.app.authentication.openid;
+package io.easyspring.security.app.authentication.openid;
 
-import com.bcdbook.security.core.properties.SecurityConstants;
+import io.easyspring.security.core.properties.SecurityConstants;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

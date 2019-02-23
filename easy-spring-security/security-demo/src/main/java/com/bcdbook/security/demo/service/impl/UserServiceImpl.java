@@ -1,9 +1,9 @@
-package com.bcdbook.security.demo.service.impl;
+package io.easyspring.security.demo.service.impl;
 
-import com.bcdbook.framework.base.service.impl.BaseServiceImpl;
-import com.bcdbook.security.demo.mapper.UserMapper;
-import com.bcdbook.security.demo.model.User;
-import com.bcdbook.security.demo.service.UserService;
+import io.easyspring.framework.base.service.impl.BaseServiceImpl;
+import io.easyspring.security.demo.mapper.UserMapper;
+import io.easyspring.security.demo.model.User;
+import io.easyspring.security.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,7 +29,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
      * @author summer
      * @date 2019-01-16 13:24
      * @param username 传入的用户名
-     * @return com.bcdbook.security.demo.model.User
+     * @return io.easyspring.security.demo.model.User
      * @version V1.0.0-RELEASE
      */
     @Override

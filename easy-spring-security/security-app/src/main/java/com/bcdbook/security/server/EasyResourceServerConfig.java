@@ -1,10 +1,10 @@
-package com.bcdbook.security.server;
+package io.easyspring.security.server;
 
-import com.bcdbook.security.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
-import com.bcdbook.security.core.authentication.FormAuthenticationConfig;
-import com.bcdbook.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
-import com.bcdbook.security.core.authorize.AuthorizeConfigManager;
-import com.bcdbook.security.core.validate.code.ValidateCodeSecurityConfig;
+import io.easyspring.security.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
+import io.easyspring.security.core.authentication.FormAuthenticationConfig;
+import io.easyspring.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import io.easyspring.security.core.authorize.AuthorizeConfigManager;
+import io.easyspring.security.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,6 +1,6 @@
-package com.bcdbook.security.demo.security;
+package io.easyspring.security.demo.security;
 
-import com.bcdbook.security.core.authorize.AuthorizeConfigProvider;
+import io.easyspring.security.core.authorize.AuthorizeConfigProvider;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;

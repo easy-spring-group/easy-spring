@@ -1,7 +1,7 @@
-package com.bcdbook.security.server;
+package io.easyspring.security.server;
 
-import com.bcdbook.security.core.properties.OAuth2ClientProperties;
-import com.bcdbook.security.core.properties.SecurityProperties;
+import io.easyspring.security.core.properties.OAuth2ClientProperties;
+import io.easyspring.security.core.properties.SecurityProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

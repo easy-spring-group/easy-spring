@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-test</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
@@ -25,7 +25,7 @@
     <!--项目简介-->
     <description>Framework Test</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 
     <dependencies>
         <!--引入 springboot start 所以, 其下的所有测试均在 springboot 环境下进行-->

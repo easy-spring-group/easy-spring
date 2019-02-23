@@ -1,7 +1,6 @@
 package ${package.Entity};
 
-import com.bcdbook.framework.base.model.BaseModel;
-import com.bcdbook.framework.common.view.CommonJsonView;
+import io.easyspring.framework.common.view.CommonJsonView;
 import com.fasterxml.jackson.annotation.JsonView;
 ###foreach($pkg in ${table.importPackages})
 ##import ${pkg};
@@ -17,7 +16,6 @@ import lombok.experimental.Accessors;
 #end
 
 import javax.persistence.Table;
-import java.util.Date;
 
 ##/**
 ## * <p>

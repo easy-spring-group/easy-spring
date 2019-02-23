@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>easy-spring-dependencies</artifactId>
-        <groupId>com.bcdbook.framework</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../easy-spring-dependencies</relativePath>
@@ -27,5 +27,5 @@
     <!--项目简介-->
     <description>Framework</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://easyspring.io/</url>
 </project>

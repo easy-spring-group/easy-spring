@@ -1,6 +1,6 @@
-package com.bcdbook.security.demo.model;
+package io.easyspring.security.demo.model;
 
-import com.bcdbook.framework.base.model.BaseModel;
+import io.easyspring.framework.base.model.BaseModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
