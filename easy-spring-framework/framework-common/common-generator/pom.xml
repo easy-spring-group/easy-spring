@@ -21,10 +21,10 @@
     <!--相关 jar 包的引用-->
     <dependencies>
         <!--TODO 引入自己定义的 jar(测试时使用)-->
-        <dependency>
-            <groupId>io.easyspring.framework.base</groupId>
-            <artifactId>base-data-mybatis</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.easyspring.framework.base</groupId>-->
+            <!--<artifactId>base-data-mybatis</artifactId>-->
+        <!--</dependency>-->
 
         <!--引入 springboot 基础 jar-->
         <dependency>

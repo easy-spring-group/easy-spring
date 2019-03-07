@@ -23,6 +23,7 @@
     <modules>
         <module>common-snowflake</module>
         <module>common-core</module>
+        <module>common-generator</module>
     </modules>
 
 </project>

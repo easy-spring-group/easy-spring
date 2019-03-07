@@ -1,0 +1,167 @@
+server:
+  port: 80
+  servlet:
+    # 设置 session 的超时时间, 时间的单位是秒, 最少要设置成 60 (1 分钟)
+    # 默认时长为 30 分钟
+    # 注意: 此值修改后, 需要清除浏览器缓存并重新登录才回生效, 被坑了很久
+    session:
+      timeout: 600s
+    # 设置 session 的最大有效数量
+spring:
+  profiles:
+    active: summer
+  session:
+    # 定义 session 的存储器, 定义后, Spring 就会自动使用对应的存储器存储 session
+    store-type: redis
+  aop:
+    proxy-target-class: false
+
+  redis:
+    host: ${easy-spring.redis.server-host}
+    port: ${easy-spring.redis.port}
+    password: ${easy-spring.redis.passowrd}
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+    timeout: 3000ms
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${easy-spring.mysql.server-host}:${easy-spring.mysql.port}/${easy-spring.mysql.database}?useUnicode=yes&characterEncode=utf-8&useSSL=false
+    username: ${easy-spring.mysql.username}
+    password: ${easy-spring.mysql.password}
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+easy-spring:
+  security:
+    # 浏览器的配置
+    browser:
+      # 登录页面的配置
+      # loginPage: /demo-signIn.html
+      # 登录时的返回方式
+      sign-in-response-type: JSON
+      # 登录成功后跳转的地址, 此配置只有在 sign-in-response-type 是 html 的时候才生效
+      # sing-in-success-url:
+      # 退出登录的配置
+      sign-out:
+        # result-type: JSON
+        # 退出登录成功后, 跳转的地址
+        # sign-out-success-url: /demo-sign-out.html
+        # 删除的 cookie
+        delete-cookies: ["JSESSIONID", "SESSION"]
+      # 退出登录的地址
+      sign-out-url: /signOut
+
+    # 验证码的配置
+    code:
+      # 图片验证码
+      image:
+        # 验证码长度
+        length: 1
+        # 验证码图片的宽度
+        width: 100
+      # 短信验证码
+      sms:
+        expire: 300
+      # 验证码的存储器
+      # 使用 APP 框架时, 必须设置存储器为 REDIS
+      repository: REDIS
+      # 需要验证码的地址(过滤的地址)
+      filterUrls[0]:
+        # 请求地址
+        url: /user/1
+        # 请求方式
+        method: GET
+        # 需要的验证码类型 SMS/IMAGE
+        validateCodeType: SMS
+      # 需要验证码的地址(过滤的地址)
+      filterUrls[1]:
+        # 请求地址
+        url: /authentication/form
+        # 请求方式
+        method: POST
+        # 需要的验证码类型 SMS/IMAGE
+        validate-code-type: IMAGE
+
+    # oauth2 认证的配置
+    oauth2:
+      # token 存储器
+      # token-store: redis
+      # 加密签名
+      jwt-signing-key: test-key
+      # 允许的认证客户
+      clients[0]:
+        # 客户 id
+        client-id: easy-spring
+        # 客户密码
+        client-secret: easy-spring-secret
+        # 支持的认证类型
+        authorized-grant-types: ["refresh_token", "password"]
+        # accessToken 的有效时长
+        access-tokenvalidate-seconds: 3600
+        # refreshToken 的有效时长
+        # refresh-token-validity-seconds: 604800
+        # 回调路径
+        redirect-uris:
+          - "http://example.com"
+          - "localhost:8080"
+        # 允许的授权范围
+        scopes: ["all", "read", "write"]
+      # 允许的认证客户
+      clients[1]:
+        # 客户 id
+        client-id: easy-spring-2
+        # 客户密码
+        client-secret: easy-spring-secret-2
+        # 支持的认证类型
+        authorized-grant-types: ["refresh_token", "password"]
+        # accessToken 的有效时长
+        access-tokenvalidate-seconds: 3600
+        # refreshToken 的有效时长
+        # refresh-token-validity-seconds: 604800
+        # 回调路径
+        redirect-uris:
+          - "http://example.com"
+          - "localhost:8080"
+        # 允许的授权范围
+        scopes: ["all", "read", "write"]
+
+    # 第三方登录的相关配置
+    social:
+      # qq 的配置
+      qq:
+        # 项目 id
+        app-id: ${easy-spring.qq.app-id}
+        # 项目密码
+        app-secret: ${easy-spring.qq.app-secret}
+        # 服务提供商的识别码
+        provider-id: callback.do
+      # 微信的配置
+      we-chat:
+        # 项目 id
+        app-id: ${easy-spring.we-chat.app-id}
+        # 项目密码
+        app-secret: ${easy-spring.we-chat.app-secret}
+        # 服务提供商的识别码
+        provider-id: weixin
+      # social 授权后, 若找不到用户, 跳转的路径
+      sign-up-url: /demo-signUp.html
+      # 配置第三方登录拦截的请求地址前缀
+      filter-processes-url: /qqLogin
+
+    # 权限的配置
+    authorize:
+      ignoreAuthorizeUrls[0]:
+        url: /user/2
+        method: GET
+      ignoreAuthorizeUrls[1]:
+        url: /user/3
+        method: GET
+      ignoreAuthorizeUrls[2]:
+        url: /user/me
+        method: GET

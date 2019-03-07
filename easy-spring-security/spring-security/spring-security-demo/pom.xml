@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>security-dependencies</artifactId>
+        <groupId>io.easyspring.security</groupId>
+        <!--suppress MavenPropertyInParent -->
+        <version>${base.version}</version>
+        <relativePath>../../security-dependencies</relativePath>
+    </parent>
+
+    <artifactId>spring-security-demo</artifactId>
+    <!--打包方式-->
+    <packaging>jar</packaging>
+
+    <!--项目名称-->
+    <name>Security Demo</name>
+    <!--项目简介-->
+    <description>Security Demo</description>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>io.easyspring.security</groupId>-->
+            <!--<artifactId>spring-security-browser</artifactId>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-security-app</artifactId>
+        </dependency>
+
+        <!--引入通过 qq 登录的自定义 jar-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-social-qq</artifactId>
+        </dependency>
+        <!--引入通过微信登录的自定义 jar-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-social-wechat</artifactId>
+        </dependency>
+
+        <!--权限校验的 jar-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-security-authorize-dynamic</artifactId>
+        </dependency>
+
+      <!--引入 jwt 的 jar-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+
+
+        <!--引入工具 jar-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--开发工具-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+</project>
