@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>easy-spring-dependencies</artifactId>
         <groupId>io.easyspring.framework</groupId>
+        <artifactId>easy-spring-dependencies</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../easy-spring-dependencies</relativePath>

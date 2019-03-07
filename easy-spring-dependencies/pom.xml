@@ -62,8 +62,6 @@
         <!--数据库-->
         <!--mybatis 版本-->
         <mybatis.version>1.3.2</mybatis.version>
-        <!--通用 mapper 版本-->
-        <!--<mybatis.mapper.version>4.0.1</mybatis.mapper.version>-->
         <!--通用 mapper 的 springboot 简化版本-->
         <mapper.spring-boot-starter.version>2.1.0</mapper.spring-boot-starter.version>
         <!--page-helper 版本-->
@@ -124,6 +122,7 @@
                 <scope>import</scope>
             </dependency>
 
+
             <!--应用本地自己封装的 jar 文件-->
             <!--base 模块-->
             <!--base-data-mybatis-->
@@ -135,12 +134,13 @@
             </dependency>
 
             <!--common 模块-->
+            <!--id 生成器-->
             <dependency>
                 <groupId>io.easyspring.framework.common</groupId>
                 <artifactId>common-snowflake</artifactId>
                 <version>${base.version}</version>
-                <!--<systemPath>${basedir}/../easy-spring-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
             </dependency>
+            <!--common 核心模块-->
             <dependency>
                 <groupId>io.easyspring.framework.common</groupId>
                 <artifactId>common-core</artifactId>
@@ -151,44 +151,56 @@
             <!--security 的核心模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
-                <artifactId>security-core</artifactId>
+                <artifactId>spring-security-authentication-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
             <!--基于浏览器的 security 安全控制模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
-                <artifactId>security-browser</artifactId>
+                <artifactId>spring-security-authentication-browser</artifactId>
                 <version>${base.version}</version>
             </dependency>
             <!--基于 APP 的security 安全控制模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
-                <artifactId>security-app</artifactId>
+                <artifactId>spring-security-authentication-app</artifactId>
                 <version>${base.version}</version>
             </dependency>
 
-            
-            <!--<dependency>-->
-                <!--<groupId>io.easyspring.framework</groupId>-->
-                <!--<artifactId>framework-test</artifactId>-->
-                <!--<version>${base.version}</version>-->
-                <!--<systemPath>${basedir}/../easy-spring-framework/framework-test/pom.xml</systemPath>-->
-            <!--</dependency>-->
-            <!--<dependency>-->
-                <!--<groupId>net.abcbook.framework</groupId>-->
-                <!--<artifactId>base-d</artifactId>-->
-                <!--<scope>system</scope>-->
-                <!--<version>0.0.1-SNAPSHOT</version>-->
-                <!--<systemPath>${basedir}/libs/base-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
-            <!--</dependency>-->
-            <!--&lt;!&ndash;common-base&ndash;&gt;-->
-            <!--<dependency>-->
-                <!--<groupId>net.abcbook.framework</groupId>-->
-                <!--<artifactId>common-base</artifactId>-->
-                <!--<scope>system</scope>-->
-                <!--<version>0.0.1-SNAPSHOT</version>-->
-                <!--<systemPath>${basedir}/libs/common-base-0.0.1-SNAPSHOT.jar</systemPath>-->
-            <!--</dependency>-->
+            <!--社交登录相关模块-->
+            <!--spring social 的基础核心-->
+            <dependency>
+                <groupId>io.easyspring.security</groupId>
+                <artifactId>spring-social-core</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+            <!--QQ 登录的相关 jar-->
+            <dependency>
+                <groupId>io.easyspring.security</groupId>
+                <artifactId>spring-social-qq</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+            <!--微信登录的相关 jar-->
+            <dependency>
+                <groupId>io.easyspring.security</groupId>
+                <artifactId>spring-social-we-chat</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+
+            <!--权限控制相关模块-->
+            <!--spring authorize 权限控制核心模块-->
+            <dependency>
+                <groupId>io.easyspring.security</groupId>
+                <artifactId>spring-security-authorize-core</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+            <!--spring authorize 权限控制动态控制模块-->
+            <dependency>
+                <groupId>io.easyspring.security</groupId>
+                <artifactId>spring-security-authorize-dynamic</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+
 
             <!--数据库jar-->
             <!--阿里连接池-->
@@ -210,11 +222,6 @@
                 <version>${page.helper.version}</version>
             </dependency>
             <!--通用 mapper-->
-            <!--通用 mapper 的版本-->
-            <!--<dependency>-->
-                <!--<groupId>tk.mybatis</groupId>-->
-                <!--<artifactId>mapper</artifactId>-->
-            <!--</dependency>-->
             <dependency>
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
