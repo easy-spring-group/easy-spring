@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>framework-base</artifactId>
         <groupId>io.easyspring.framework</groupId>
-        <!--suppress MavenPropertyInParent -->
-        <version>${base.version}</version>
+        <artifactId>framework-base</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <artifactId>base-data-mybatis</artifactId>

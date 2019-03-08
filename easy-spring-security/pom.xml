@@ -7,8 +7,7 @@
     <parent>
         <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-dependencies</artifactId>
-        <!--suppress MavenPropertyInParent -->
-        <version>${base.version}</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../easy-spring-dependencies</relativePath>
     </parent>
 

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!--父项目的基本信息-->
@@ -10,12 +8,15 @@
     <!--项目标识-->
     <artifactId>easy-spring-build</artifactId>
     <!--项目版本-->
-    <version>${base.version}</version>
+    <version>1.0.0-SNAPSHOT</version>
     <!--jar 包管理方式-->
     <packaging>pom</packaging>
+    <!--项目连接地址-->
+    <url>https://easyspring.io/</url>
 
     <!--子模块-->
     <modules>
+        <module>easy-spring-dependencies</module>
         <module>easy-spring-framework</module>
         <module>easy-spring-service</module>
         <module>easy-spring-manage</module>
@@ -30,10 +31,35 @@
     <!--项目简介-->
     <description>Easy Spring Build</description>
 
+    <!--项目许可信息-->
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!--项目代码信息-->
+    <scm>
+        <tag>master</tag>
+        <url>https://gitee.com/easyspring/spring-book</url>
+        <connection>https://gitee.com/easyspring/spring-book.git</connection>
+        <developerConnection>https://www.easyspring.io/</developerConnection>
+    </scm>
+
+    <!--项目作者-->
+    <developers>
+        <developer>
+            <name>XianLi</name>
+            <email>easyspring@163.com</email>
+            <organizationUrl>https://www.easyspring.io/</organizationUrl>
+        </developer>
+    </developers>
+
     <!--项目编码,java 及 jar 包的版本-->
     <!--编码, 版本-->
     <properties>
-        <base.version>1.0.0-SNAPSHOT</base.version>
         <!--项目编码及版本-->
         <!--源码编码-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -91,7 +117,7 @@
                                     <goal>jar</goal>
                                 </goals>
                                 <configuration>
-                                    <additionalparam>${javadoc.opts}</additionalparam>
+                                    <doclint>none</doclint>
                                 </configuration>
                             </execution>
                         </executions>
@@ -143,29 +169,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- Javadoc -->
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-javadoc-plugin</artifactId>-->
-                        <!--<version>3.0.1</version>-->
-                        <!--<configuration>-->
-                            <!--<show>private</show>-->
-                            <!--<nohelp>true</nohelp>-->
-                            <!--<charset>UTF-8</charset>-->
-                            <!--<encoding>UTF-8</encoding>-->
-                            <!--<docencoding>UTF-8</docencoding>-->
-                            <!--&lt;!&ndash; TODO 临时解决不规范的javadoc生成报错,后面要规范化后把这行去掉 &ndash;&gt;-->
-                            <!--<additionalparam>-Xdoclint:none</additionalparam>-->
-                        <!--</configuration>-->
-                        <!--<executions>-->
-                            <!--<execution>-->
-                                <!--<phase>package</phase>-->
-                                <!--<goals>-->
-                                    <!--<goal>jar</goal>-->
-                                <!--</goals>-->
-                            <!--</execution>-->
-                        <!--</executions>-->
-                    <!--</plugin>-->
                     <!-- GPG -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
