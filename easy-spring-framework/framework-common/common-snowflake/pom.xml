@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>framework-common</artifactId>
-        <groupId>io.easyspring.framework.common</groupId>
+        <groupId>io.easyspring.framework</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>

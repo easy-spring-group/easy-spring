@@ -10,7 +10,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.easyspring.framework.common</groupId>
     <artifactId>framework-common</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>

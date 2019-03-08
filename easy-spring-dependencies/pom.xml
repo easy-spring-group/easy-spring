@@ -6,8 +6,8 @@
 
     <!--父级项目信息-->
     <parent>
-        <artifactId>easy-spring-build</artifactId>
         <groupId>io.easyspring.framework</groupId>
+        <artifactId>easy-spring-build</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../</relativePath>
@@ -25,25 +25,29 @@
     <!--项目连接地址-->
     <url>https://easyspring.io/</url>
 
+
     <!--项目许可信息-->
-    <!--<licenses>-->
-        <!--<license>-->
-            <!--<name>Apache License, Version 2.0</name>-->
-            <!--<url>http://www.apache.org/licenses/LICENSE-2.0</url>-->
-        <!--</license>-->
-    <!--</licenses>-->
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <!--项目代码信息-->
     <scm>
+        <tag>master</tag>
         <url>https://gitee.com/easyspring/spring-book</url>
+        <connection>https://gitee.com/easyspring/spring-book.git</connection>
+        <developerConnection>https://www.easyspring.io/</developerConnection>
     </scm>
 
     <!--项目作者-->
     <developers>
         <developer>
-            <name>LiXian</name>
+            <name>XianLi</name>
             <email>easyspring@163.com</email>
-            <organization>Pivotal Software, Inc.</organization>
             <organizationUrl>https://www.easyspring.io/</organizationUrl>
         </developer>
     </developers>
@@ -127,7 +131,7 @@
             <!--base 模块-->
             <!--base-data-mybatis-->
             <dependency>
-                <groupId>io.easyspring.framework.base</groupId>
+                <groupId>io.easyspring.framework</groupId>
                 <artifactId>base-data-mybatis</artifactId>
                 <version>${base.version}</version>
                 <!--<systemPath>${basedir}/../easy-spring-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
@@ -136,13 +140,13 @@
             <!--common 模块-->
             <!--id 生成器-->
             <dependency>
-                <groupId>io.easyspring.framework.common</groupId>
+                <groupId>io.easyspring.framework</groupId>
                 <artifactId>common-snowflake</artifactId>
                 <version>${base.version}</version>
             </dependency>
             <!--common 核心模块-->
             <dependency>
-                <groupId>io.easyspring.framework.common</groupId>
+                <groupId>io.easyspring.framework</groupId>
                 <artifactId>common-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
@@ -304,4 +308,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
 </project>

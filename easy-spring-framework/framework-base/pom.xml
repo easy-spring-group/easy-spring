@@ -10,7 +10,6 @@
         <version>${base.version}</version>
     </parent>
 
-    <groupId>io.easyspring.framework.base</groupId>
     <artifactId>framework-base</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
