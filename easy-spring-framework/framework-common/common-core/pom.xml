@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.easyspring.framework</groupId>
         <artifactId>framework-common</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-RELEASE</version>
         <relativePath>../</relativePath>
     </parent>
 
@@ -20,7 +20,7 @@
     <!--项目简介-->
     <description>Framework Common Core</description>
     <!--项目连接地址-->
-    <url>https://easyspring.io/</url>
+    <url>https://www.easyspring.io/</url>
 
     <dependencies>
         <!--添加 spring 的核心 jar-->

@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-dependencies</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-RELEASE</version>
         <relativePath>../easy-spring-dependencies</relativePath>
     </parent>
 
@@ -18,7 +18,7 @@
     <!--项目简介-->
     <description>Easy Spring Manage</description>
     <!--项目连接地址-->
-    <url>https://easyspring.io/</url>
+    <url>https://www.easyspring.io/</url>
 
     <build>
         <plugins>

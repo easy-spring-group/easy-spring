@@ -8,11 +8,11 @@
     <!--项目标识-->
     <artifactId>easy-spring-build</artifactId>
     <!--项目版本-->
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-RELEASE</version>
     <!--jar 包管理方式-->
     <packaging>pom</packaging>
     <!--项目连接地址-->
-    <url>https://easyspring.io/</url>
+    <url>https://www.easyspring.io/</url>
 
     <!--子模块-->
     <modules>
@@ -36,6 +36,11 @@
         <license>
             <name>Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+        <license>
+            <name>The GNU General Public License, v3 with FOSS exception</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
