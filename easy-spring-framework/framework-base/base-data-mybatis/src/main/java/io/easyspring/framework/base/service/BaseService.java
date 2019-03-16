@@ -308,6 +308,32 @@ public interface BaseService<T> {
     List<T> listAll(T entity);
 
     /**
+     * 根据单个参数执行的查询
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return java.util.List<T>
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    List<T> list(Fn<T, Object> function, Object value, Class<T> clazz);
+
+    /**
+     * 根据单个参数执行的查询(查询结果中包含已删除的数据)
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return java.util.List<T>
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    List<T> listAll(Fn<T, Object> function, Object value, Class<T> clazz);
+
+    /**
      * 根据传入的实体条件 / 页码 / 每页显示的数据量
      * 查询出符合条件的分页对象
      *
@@ -415,6 +441,32 @@ public interface BaseService<T> {
      * @version V1.0.0-RELEASE
      */
     int countAll(T entity);
+
+    /**
+     * 根据单个参数执行的查询
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return int
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    int count(Fn<T, Object> function, Object value, Class<T> clazz);
+
+    /**
+     * 根据单个参数执行的查询(查询结果中包含已删除的数据)
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return int
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    int countAll(Fn<T, Object> function, Object value, Class<T> clazz);
 
     /**
      * 封装分页信息为分页详情信息对象

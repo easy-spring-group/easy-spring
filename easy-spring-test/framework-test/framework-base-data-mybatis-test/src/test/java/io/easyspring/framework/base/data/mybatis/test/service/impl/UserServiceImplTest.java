@@ -713,6 +713,22 @@ public class UserServiceImplTest {
      * @version V1.0.0-RELEASE
      */
     @Test
+    public void listUseFunction(){
+
+        List<User> userList = userService.list(User::getName, "test-get", User.class);
+        assertNotNull(userList);
+        assertEquals(2, userList.size());
+    }
+
+    /**
+     * 集合查询的测试
+     *
+     * @author summer
+     * @date 2018-12-05 18:52
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
     public void listWithOutDeleted(){
         User user = new User();
         user.setName("test-get-one-deleted-2");
@@ -755,6 +771,21 @@ public class UserServiceImplTest {
         user.setName("test-get");
 
         List<User> userList = userService.listAll(user);
+        assertNotNull(userList);
+        assertEquals(2, userList.size());
+    }
+
+    /**
+     * 集合查询的测试
+     *
+     * @author summer
+     * @date 2018-12-05 18:52
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @Test
+    public void listAllUserFunction(){
+        List<User> userList = userService.listAll(User::getName, "test-get", User.class);
         assertNotNull(userList);
         assertEquals(2, userList.size());
     }
@@ -1123,6 +1154,13 @@ public class UserServiceImplTest {
         assertTrue(!CollectionUtils.isEmpty(resultMap));
         assertNotNull(resultMap.get("name"));
         assertEquals("test-get-one", resultMap.get("name"));
+    }
+
+    @Test
+    public void valueExist(){
+        boolean valueExist = userService.valueExist(User::getName, "test-get", User.class);
+
+        assertTrue(valueExist);
     }
 
 //    /**

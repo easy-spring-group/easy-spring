@@ -1,15 +1,16 @@
 package io.easyspring.framework.base.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.easyspring.framework.base.dto.BasePageable;
 import io.easyspring.framework.base.mapper.BaseMapper;
 import io.easyspring.framework.base.model.BaseModel;
 import io.easyspring.framework.base.pagehelper.PageInfo;
 import io.easyspring.framework.base.properties.BasePageProperties;
 import io.easyspring.framework.base.service.BaseService;
+import io.easyspring.framework.base.support.WeekendParameter;
 import io.easyspring.framework.common.snowflake.SnowflakeHelp;
 import io.easyspring.framework.common.utils.BeanUtils;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 基础单表查询的 service 实现类
@@ -662,6 +664,50 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     }
 
     /**
+     * 根据单个参数执行的查询
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return java.util.List<T>
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public List<T> list(Fn<T, Object> function, Object value, Class<T> clazz){
+
+        // 创建查询条件
+        Weekend<T> weekend = weekendBuild(WeekendParameter.of(function, value),
+                null, clazz, false);
+
+        // 查询符合条件的数据
+        return mapper.selectByExample(weekend);
+    }
+
+    /**
+     * 根据单个参数执行的查询(查询结果中包含已删除的数据)
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return java.util.List<T>
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public List<T> listAll(Fn<T, Object> function, Object value, Class<T> clazz){
+
+        // 创建查询条件
+        Weekend<T> weekend = weekendBuild(WeekendParameter.of(function, value),
+                null, clazz, true);
+
+        // 查询符合条件的数据
+        return mapper.selectByExample(weekend);
+    }
+
+    /**
      * 根据传入的实体条件 / 页码 / 每页显示的数据量
      * 查询出符合条件的分页对象
      *
@@ -930,6 +976,51 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         return mapper.selectCount(entity);
     }
 
+
+    /**
+     * 根据单个参数执行的查询
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return int
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public int count(Fn<T, Object> function, Object value, Class<T> clazz){
+
+        // 创建查询条件
+        Weekend<T> weekend = weekendBuild(WeekendParameter.of(function, value),
+                null, clazz, false);
+
+        // 查询符合条件的数据
+        return mapper.selectCountByExample(weekend);
+    }
+
+    /**
+     * 根据单个参数执行的查询(查询结果中包含已删除的数据)
+     *
+     * @param function 查询参数的 function
+     * @param value 需要匹配的值
+     * @param clazz 需要检查的值对应的类
+     * @return int
+     * @author summer
+     * @date 2019-03-16 17:15
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public int countAll(Fn<T, Object> function, Object value, Class<T> clazz){
+
+        // 创建查询条件
+        Weekend<T> weekend = weekendBuild(WeekendParameter.of(function, value),
+                null, clazz, true);
+
+        // 查询符合条件的数据
+        return mapper.selectCountByExample(weekend);
+    }
+
     /**
      * 封装分页信息为分页详情信息对象
      *
@@ -964,11 +1055,8 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
     @Override
     public boolean valueExist(Fn<T, Object> function, Object value, Class<T> clazz){
         // 创建查询条件
-        Weekend<T> weekend = Weekend.of(clazz);
-        // 封装查询条件
-        WeekendCriteria<T, Object> weekendCriteria = weekend.weekendCriteria();
-        // 设置查询条件
-        weekendCriteria.andEqualTo(function, value);
+        Weekend<T> weekend = weekendBuild(WeekendParameter.of(function, value),
+                null, clazz, false);
 
         // 查询符合条件的数据
         return mapper.selectCountByExample(weekend) > 0;
@@ -996,13 +1084,8 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             return valueExist(function, value, clazz);
         } else {
             // 创建查询条件
-            Weekend<T> weekend = Weekend.of(clazz);
-            // 封装查询条件
-            WeekendCriteria<T, Object> weekendCriteria = weekend.weekendCriteria();
-            // 设置查询条件
-            weekendCriteria.andEqualTo(function, value);
-            // 设置 id 不相同
-            weekendCriteria.andNotEqualTo(T::getId, id);
+            Weekend<T> weekend = weekendBuild(WeekendParameter.of(function, value),
+                    WeekendParameter.of(T::getId, id), clazz, false);
 
             // 查询符合条件的数据
             return mapper.selectCountByExample(weekend) > 0;
@@ -1077,4 +1160,92 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         return orderBy.toString();
     }
 
+    /**
+     * 封装查询条件的方法
+     *
+     * @param equalsParameter 需要匹配的数据
+     * @param notEqualsParameter 需要排除的数据
+     * @param clazz 需要检查的值对应的类
+     * @param containDeleted 是否包含已删除信息
+     * @return tk.mybatis.mapper.weekend.Weekend<T>
+     * @author summer
+     * @date 2019-03-16 17:14
+     * @version V1.0.0-RELEASE
+     */
+    private Weekend<T> weekendBuild(WeekendParameter<T> equalsParameter,
+                                    WeekendParameter<T> notEqualsParameter,
+                                    Class<T> clazz,
+                                    boolean containDeleted){
+        // 创建匹配的参数集合
+        List<WeekendParameter<T>> equalsParameterList = null;
+        // 创建排除的参数集合
+        List<WeekendParameter<T>> notEqualsParameterList = null;
+
+        // 如果匹配的参数不为空
+        if (equalsParameter != null){
+            equalsParameterList = new ArrayList<>();
+            equalsParameterList.add(equalsParameter);
+        }
+
+        // 如果排查的参数不为空
+        if (notEqualsParameter != null) {
+            notEqualsParameterList = new ArrayList<>();
+            notEqualsParameterList.add(notEqualsParameter);
+        }
+
+        return weekendBuild(equalsParameterList, notEqualsParameterList, clazz, containDeleted);
+
+    }
+
+    /**
+     * 封装查询条件的方法
+     *
+     * @param equalsParameterList 需要匹配的数据集合
+     * @param notEqualsParameterList 需要排除的数据集合
+     * @param clazz 需要检查的值对应的类
+     * @param containDeleted 是否包含已删除信息
+     * @return tk.mybatis.mapper.weekend.Weekend<T>
+     * @author summer
+     * @date 2019-03-16 16:22
+     * @version V1.0.0-RELEASE
+     */
+    private Weekend<T> weekendBuild(List<WeekendParameter<T>> equalsParameterList,
+                                    List<WeekendParameter<T>> notEqualsParameterList,
+                                    Class<T> clazz,
+                                    boolean containDeleted) {
+        // 创建查询条件
+        Weekend<T> weekend = Weekend.of(clazz);
+        // 封装查询条件
+        WeekendCriteria<T, Object> weekendCriteria = weekend.weekendCriteria();
+        // 如果匹配数据不为空
+        if (!CollectionUtils.isEmpty(equalsParameterList)) {
+            // 封装匹配的数据
+            equalsParameterList.stream()
+                    // 过滤掉空值
+                    .filter(Objects::nonNull)
+                    .forEach(weekendParameter -> {
+                        // 添加 equal 条件到 weekendCriteria 中
+                        weekendCriteria.andEqualTo(weekendParameter.getFunction(), weekendParameter.getValue());
+                    });
+        }
+        // 如果排除数据不为空
+        if (!CollectionUtils.isEmpty(notEqualsParameterList)) {
+            // 封装排除的数据
+            notEqualsParameterList.stream()
+                    // 过滤掉空值
+                    .filter(Objects::nonNull)
+                    .forEach(weekendParameter -> {
+                        // 添加 notEqual 查询条件到 weekendCriteria 中
+                        weekendCriteria.andNotEqualTo(weekendParameter.getFunction(), weekendParameter.getValue());
+                    });
+        }
+
+        // 如果不包含已删除的数据
+        if (!containDeleted) {
+            // 设置未删除标识(只查询未被删除的)
+            weekendCriteria.andEqualTo(T::getDeleted, T.DELETED_FALSE);
+        }
+
+        return weekend;
+    }
 }
