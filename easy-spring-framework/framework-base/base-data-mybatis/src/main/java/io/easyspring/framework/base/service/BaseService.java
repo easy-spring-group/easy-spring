@@ -1,6 +1,6 @@
 package io.easyspring.framework.base.service;
 
-import io.easyspring.framework.base.dto.BasePageable;
+import io.easyspring.framework.base.support.BasePageable;
 import io.easyspring.framework.base.pagehelper.PageInfo;
 import com.github.pagehelper.Page;
 import org.mybatis.spring.MyBatisSystemException;
@@ -517,7 +517,7 @@ public interface BaseService<T> {
      * @author summer
      * @date 2019-01-10 15:21
      * @param pageable spring 的 pageable 对象
-     * @return io.easyspring.framework.base.dto.BasePageable
+     * @return io.easyspring.framework.base.support.BasePageable
      * @version V1.0.0-RELEASE
      */
     BasePageable getBasePageable(Pageable pageable);

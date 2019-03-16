@@ -2,7 +2,7 @@ package io.easyspring.framework.base.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import io.easyspring.framework.base.dto.BasePageable;
+import io.easyspring.framework.base.support.BasePageable;
 import io.easyspring.framework.base.mapper.BaseMapper;
 import io.easyspring.framework.base.model.BaseModel;
 import io.easyspring.framework.base.pagehelper.PageInfo;
@@ -1098,7 +1098,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
      * @author summer
      * @date 2019-01-10 15:21
      * @param pageable spring 的 pageable 对象
-     * @return io.easyspring.framework.base.dto.BasePageable
+     * @return io.easyspring.framework.base.support.BasePageable
      * @version V1.0.0-RELEASE
      */
     @Override

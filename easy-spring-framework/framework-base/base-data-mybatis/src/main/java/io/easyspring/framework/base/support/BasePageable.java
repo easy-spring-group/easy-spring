@@ -1,4 +1,4 @@
-package io.easyspring.framework.base.dto;
+package io.easyspring.framework.base.support;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
