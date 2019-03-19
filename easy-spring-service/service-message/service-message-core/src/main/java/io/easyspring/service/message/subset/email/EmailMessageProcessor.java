@@ -86,7 +86,7 @@ public class EmailMessageProcessor extends AbstractMessageProcessor<EmailMessage
      * 封装邮件接收者的方法
      *
      * @param emailStringReceiverList String 类型的邮件接收者集合
-     * @return java.util.List<com.yinbaochina.management.risk.message.manage.subset.email.EmailReceiver>
+     * @return java.util.List<io.easyspring.service.message.subset.email.EmailReceiver>
      * @author summer
      * @date 2019-03-15 15:45
      * @version V1.0.0-RELEASE

@@ -1,12 +1,13 @@
 package io.easyspring.service.message.subset.email;
 
+import io.easyspring.service.message.support.EasyMessageReceiver;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
 /**
  * 邮件接收者对象
@@ -15,10 +16,11 @@ import java.io.Serializable;
  * @date 2019-03-15 15:02
  * @version V1.0.0-RELEASE
  */
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class EmailReceiver implements Serializable {
+public class EmailReceiver extends EasyMessageReceiver {
 
     private static final long serialVersionUID = -5277945490935015466L;
 

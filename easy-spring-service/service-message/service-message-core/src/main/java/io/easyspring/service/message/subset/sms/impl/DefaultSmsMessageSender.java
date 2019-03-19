@@ -18,7 +18,7 @@ public class DefaultSmsMessageSender implements SmsMessageSender {
      * 短信发送方法
      *
      * @param message 短信消息对象
-     * @return com.yinbaochina.management.risk.message.manage.subset.sms.SmsMessage
+     * @return io.easyspring.service.message.subset.sms.SmsMessage
      * @author summer
      * @date 2019-03-13 13:27
      * @version V1.0.0-RELEASE

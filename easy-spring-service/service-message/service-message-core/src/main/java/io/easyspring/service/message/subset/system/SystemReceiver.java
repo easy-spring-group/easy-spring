@@ -1,12 +1,13 @@
 package io.easyspring.service.message.subset.system;
 
+import io.easyspring.service.message.support.EasyMessageReceiver;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 /**
  * 系统消息接收者对象
@@ -15,10 +16,11 @@ import java.io.Serializable;
  * @date 2019-03-15 15:02
  * @version V1.0.0-RELEASE
  */
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class SystemReceiver implements Serializable {
+public class SystemReceiver extends EasyMessageReceiver {
 
     private static final long serialVersionUID = 4325235591807634251L;
 

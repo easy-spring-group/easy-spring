@@ -29,7 +29,7 @@ public class DefaultSystemMessageBuilder implements SystemMessageBuilder {
      * @param receiverList 消息接收者集合
      * @param easyMessageTemplate 系统消息模板
      * @param extend 需要替换的值
-     * @return com.yinbaochina.management.risk.message.manage.subset.system.SystemMessage
+     * @return io.easyspring.service.message.subset.system.SystemMessage
      * @author summer
      * @date 2019-03-15 14:48
      * @version V1.0.0-RELEASE

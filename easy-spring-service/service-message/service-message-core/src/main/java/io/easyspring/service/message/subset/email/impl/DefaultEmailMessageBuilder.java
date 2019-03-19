@@ -46,7 +46,7 @@ public class DefaultEmailMessageBuilder implements EmailMessageBuilder {
      * @param receiverList 消息接收者集合
      * @param easyMessageTemplate 邮件息消息模板
      * @param extend 需要替换的值
-     * @return com.yinbaochina.management.risk.message.manage.subset.email.EmailMessage
+     * @return io.easyspring.service.message.subset.email.EmailMessage
      * @author summer
      * @date 2019-03-15 14:48
      * @version V1.0.0-RELEASE

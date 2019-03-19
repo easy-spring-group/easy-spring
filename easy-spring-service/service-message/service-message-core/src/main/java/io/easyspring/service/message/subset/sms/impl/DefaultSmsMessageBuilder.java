@@ -33,7 +33,7 @@ public class DefaultSmsMessageBuilder implements SmsMessageBuilder {
      * @param receiverList 消息接收者集合
      * @param easyMessageTemplate 短信息消息模板
      * @param extend 需要替换的值
-     * @return com.yinbaochina.management.risk.message.manage.subset.sms.SmsMessage
+     * @return io.easyspring.service.message.subset.sms.SmsMessage
      * @author summer
      * @date 2019-03-13 13:13
      * @version V1.0.0-RELEASE

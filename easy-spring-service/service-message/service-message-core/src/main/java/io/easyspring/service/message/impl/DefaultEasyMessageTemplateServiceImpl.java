@@ -18,7 +18,7 @@ public class DefaultEasyMessageTemplateServiceImpl implements EasyMessageTemplat
      * 通过模板的识别码, 获取模板对象的方法
      *
      * @param templateCode 模板识别码
-     * @return com.yinbaochina.management.risk.message.manage.support.EasyMessageTemplate
+     * @return io.easyspring.service.message.support.EasyMessageTemplate
      * @author summer
      * @date 2019-03-13 12:17
      * @version V1.0.0-RELEASE

@@ -26,7 +26,7 @@ public class MessageProcessorHolder {
      * 根据消息的通道类型, 获取对应的消息处理器
      *
      * @param messageChannelType 消息通道类型
-     * @return com.yinbaochina.management.risk.message.manage.MessageProcessor
+     * @return io.easyspring.service.message.MessageProcessor
      * @author summer
      * @date 2019-03-13 14:00
      * @version V1.0.0-RELEASE
@@ -45,7 +45,7 @@ public class MessageProcessorHolder {
      * 根据消息通道类型的字符串, 获取对应的消息处理器
      *
      * @param messageChannelType 消息通道类型的字符串
-     * @return com.yinbaochina.management.risk.message.manage.MessageProcessor
+     * @return io.easyspring.service.message.MessageProcessor
      * @author summer
      * @date 2019-03-13 14:01
      * @version V1.0.0-RELEASE

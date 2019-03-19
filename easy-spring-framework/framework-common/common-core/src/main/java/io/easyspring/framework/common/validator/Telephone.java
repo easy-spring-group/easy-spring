@@ -1,4 +1,4 @@
-package io.easyspring.framework.common.validator;//package com.yinbaochina.management.risk.system.validator;
+package io.easyspring.framework.common.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

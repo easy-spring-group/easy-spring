@@ -35,7 +35,7 @@ public class DefaultEmailMessageSender implements EmailMessageSender {
      * 邮件发送方法
      *
      * @param message 邮件消息对象
-     * @return com.yinbaochina.management.risk.message.manage.subset.email.EmailMessage
+     * @return io.easyspring.service.message.subset.email.EmailMessage
      * @author summer
      * @date 2019-03-13 13:27
      * @version V1.0.0-RELEASE

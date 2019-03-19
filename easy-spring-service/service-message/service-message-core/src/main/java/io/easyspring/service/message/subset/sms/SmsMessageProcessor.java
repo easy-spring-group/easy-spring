@@ -88,7 +88,7 @@ public class SmsMessageProcessor extends AbstractMessageProcessor<SmsMessage> {
      * 封装短信接收者的方法
      *
      * @param smsStringReceiverList String 类型的短信接收者集合
-     * @return java.util.List<com.yinbaochina.management.risk.message.manage.subset.sms.SmsReceiver>
+     * @return java.util.List<io.easyspring.service.message.subset.sms.SmsReceiver>
      * @author summer
      * @date 2019-03-15 15:45
      * @version V1.0.0-RELEASE

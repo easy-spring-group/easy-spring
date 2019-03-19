@@ -88,7 +88,7 @@ public class SystemMessageProcessor extends AbstractMessageProcessor<SystemMessa
      * 封装系统消息接收者的方法
      *
      * @param systemStringReceiverList String 类型的系统消息接收者集合
-     * @return java.util.List<com.yinbaochina.management.risk.message.manage.subset.system.SystemReceiver>
+     * @return java.util.List<io.easyspring.service.message.subset.system.SystemReceiver>
      * @author summer
      * @date 2019-03-15 15:45
      * @version V1.0.0-RELEASE

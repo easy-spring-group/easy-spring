@@ -18,7 +18,7 @@ public class DefaultSystemMessageSender implements SystemMessageSender {
      * 系统消息发送方法
      *
      * @param message 系统消息对象
-     * @return com.yinbaochina.management.risk.message.manage.subset.system.SystemMessage
+     * @return io.easyspring.service.message.subset.system.SystemMessage
      * @author summer
      * @date 2019-03-13 13:27
      * @version V1.0.0-RELEASE
