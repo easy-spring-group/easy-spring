@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-dependencies</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.3-SNAPSHOT</version>
         <relativePath>../easy-spring-dependencies</relativePath>
     </parent>
 

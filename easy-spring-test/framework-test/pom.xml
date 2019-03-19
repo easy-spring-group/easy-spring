@@ -6,7 +6,7 @@
     <parent>
         <artifactId>easy-spring-test</artifactId>
         <groupId>io.easyspring.framework</groupId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.3-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 

@@ -8,7 +8,7 @@
     <!--项目标识-->
     <artifactId>easy-spring-build</artifactId>
     <!--项目版本-->
-    <version>1.0.1-RELEASE</version>
+    <version>1.0.3-SNAPSHOT</version>
     <!--jar 包管理方式-->
     <packaging>pom</packaging>
     <!--项目连接地址-->

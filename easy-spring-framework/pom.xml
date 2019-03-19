@@ -7,25 +7,23 @@
     <parent>
         <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-dependencies</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.3-SNAPSHOT</version>
         <relativePath>../easy-spring-dependencies</relativePath>
     </parent>
 
     <artifactId>easy-spring-framework</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
+    <!--项目名称-->
+    <name>Easy Spring Framework</name>
+    <!--项目简介-->
+    <description>Easy Spring Framework</description>
+    <!--项目连接地址-->
+    <url>https://www.easyspring.io/</url>
 
     <!--子模块-->
     <modules>
         <module>framework-base</module>
         <module>framework-common</module>
     </modules>
-
-    <!--项目名称-->
-    <name>Framework</name>
-    <!--项目简介-->
-    <description>Framework</description>
-    <!--项目连接地址-->
-    <url>https://www.easyspring.io/</url>
-
 </project>

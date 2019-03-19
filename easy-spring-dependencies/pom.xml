@@ -8,7 +8,7 @@
     <parent>
         <groupId>io.easyspring.framework</groupId>
         <artifactId>easy-spring-build</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.3-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
@@ -108,7 +108,7 @@
             <dependency>
                 <groupId>io.easyspring.framework</groupId>
                 <artifactId>base-data-mybatis</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
                 <!--<systemPath>${basedir}/../easy-spring-framework/framework-base/base-data-mybatis/target/base-data-mybatis-0.0.1-SNAPSHOT.jar</systemPath>-->
             </dependency>
 
@@ -117,13 +117,13 @@
             <dependency>
                 <groupId>io.easyspring.framework</groupId>
                 <artifactId>common-snowflake</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
             <!--common 核心模块-->
             <dependency>
                 <groupId>io.easyspring.framework</groupId>
                 <artifactId>common-core</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
 
             <!--security 模块-->
@@ -131,19 +131,19 @@
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-security-authentication-core</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
             <!--基于浏览器的 security 安全控制模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-security-authentication-browser</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
             <!--基于 APP 的security 安全控制模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-security-authentication-app</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
 
             <!--社交登录相关模块-->
@@ -151,19 +151,19 @@
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-social-core</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
             <!--QQ 登录的相关 jar-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-social-qq</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
             <!--微信登录的相关 jar-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-social-we-chat</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
 
             <!--权限控制相关模块-->
@@ -171,13 +171,13 @@
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-security-authorize-core</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
             <!--spring authorize 权限控制动态控制模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-security-authorize-dynamic</artifactId>
-                <version>1.0.1-RELEASE</version>
+                <version>1.0.3-SNAPSHOT</version>
             </dependency>
 
 
