@@ -7,7 +7,6 @@ import io.easyspring.service.message.MessageSender;
 import io.easyspring.service.message.impl.AbstractMessageProcessor;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -21,7 +20,6 @@ import java.util.stream.Collectors;
  * @date 2019-03-15 14:59
  * @version V1.0.0-RELEASE
  */
-@Component("emailMessageProcessor")
 public class EmailMessageProcessor extends AbstractMessageProcessor<EmailMessage> {
 
     /**

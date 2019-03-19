@@ -3,7 +3,7 @@ package io.easyspring.service.message.subset.email.impl;
 import io.easyspring.service.message.EasyMessageException;
 import io.easyspring.service.message.MessageBuilder;
 import io.easyspring.service.message.MessageChannelType;
-import io.easyspring.service.message.properties.EmailMessageConstants;
+import io.easyspring.service.message.properties.MessageConstants;
 import io.easyspring.service.message.properties.MessageProperties;
 import io.easyspring.service.message.subset.email.EmailMessage;
 import io.easyspring.service.message.subset.email.EmailReceiver;
@@ -99,12 +99,12 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      */
     private boolean getIsHtml(Map<String, Object> extend) {
         // 获取默认的配置
-        boolean isHtml = EmailMessageConstants.DEFAULT_IS_HTML;
+        boolean isHtml = MessageConstants.Email.DEFAULT_IS_HTML;
 
         // 如果扩展数据不为空
         if (!CollectionUtils.isEmpty(extend)) {
             // 从参数中获取是否是 html
-            Object extendIsHtml = extend.get(EmailMessageConstants.IS_HTML_KEY);
+            Object extendIsHtml = extend.get(MessageConstants.Email.IS_HTML_KEY);
             // 如果对应的参数是 Boolean 类型
             if (extendIsHtml instanceof Boolean) {
                 // 执行参数修改
@@ -128,7 +128,7 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      */
     private String getEmailSubject(String templateName, Map<String, Object> extend) {
         // 设置默认的邮件主题
-        String subject = EmailMessageConstants.DEFAULT_SUBJECT;
+        String subject = MessageConstants.Email.DEFAULT_SUBJECT;
 
         // 则检查模板是否有名字, 如果有名字则替换默认主题
         if (!StringUtils.isEmpty(templateName)) {
@@ -139,7 +139,7 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
         // 如果有扩展数据传入, 并且扩展数据中有主题字段
         if (!CollectionUtils.isEmpty(extend)) {
             // 从扩展数据中获取主题字段
-            Object extendSubject = extend.get(EmailMessageConstants.SUBJECT_KEY);
+            Object extendSubject = extend.get(MessageConstants.Email.SUBJECT_KEY);
             // 如果扩展数据中的主题字段是 string 类型,
             if (extendSubject instanceof String) {
                 // 使用扩展数据中的主题为邮件的主题

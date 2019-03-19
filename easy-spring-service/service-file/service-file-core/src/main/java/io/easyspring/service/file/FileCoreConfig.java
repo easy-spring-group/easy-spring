@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 文件管理的核心的配置文件
  *
- * @annotaion @Configuration 表明这是一个配置类
- * @annotaion @EnableConfigurationProperties 此配置文件激活的配置类
+ * 注解 @Configuration 表明这是一个配置类
+ * 注解 @EnableConfigurationProperties 此配置文件激活的配置类
  *
  * @author summer
  * @date 2019-02-12 16:34

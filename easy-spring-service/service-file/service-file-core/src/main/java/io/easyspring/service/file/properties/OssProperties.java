@@ -17,15 +17,15 @@ public class OssProperties {
     /**
      * 最长缓存时间 (默认 18 小时)
      */
-    private Long maxExpiration = 64800000L;
+    private Long maxExpiration = FileConstants.Oss.MAX_EXPIRATION;
     /**
      * 默认缓存时长 (默认 2 小时)
      */
-    private Long defaultExpiration = 7200000L;
+    private Long defaultExpiration = FileConstants.Oss.DEFAULT_EXPIRATION;
     /**
      * 较短的缓存时长 (默认 10 分钟)
      */
-    private Long shortExpiration = 600000L;
+    private Long shortExpiration = FileConstants.Oss.SHORT_EXPIRATION;
 
     /**
      * 连接的服务器(对应的阿里服务域名)

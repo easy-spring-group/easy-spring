@@ -2,15 +2,19 @@ package io.easyspring.service.message;
 
 import io.easyspring.service.message.impl.DefaultEasyMessageTemplateServiceImpl;
 import io.easyspring.service.message.impl.RedisMessageDelayCacheRepository;
+import io.easyspring.service.message.properties.MessageConstants;
 import io.easyspring.service.message.subset.email.EmailMessage;
+import io.easyspring.service.message.subset.email.EmailMessageProcessor;
 import io.easyspring.service.message.subset.email.EmailReceiver;
 import io.easyspring.service.message.subset.email.impl.DefaultEmailMessageBuilder;
 import io.easyspring.service.message.subset.email.impl.DefaultEmailMessageSender;
 import io.easyspring.service.message.subset.sms.SmsMessage;
+import io.easyspring.service.message.subset.sms.SmsMessageProcessor;
 import io.easyspring.service.message.subset.sms.SmsReceiver;
 import io.easyspring.service.message.subset.sms.impl.DefaultSmsMessageBuilder;
 import io.easyspring.service.message.subset.sms.impl.DefaultSmsMessageSender;
 import io.easyspring.service.message.subset.system.SystemMessage;
+import io.easyspring.service.message.subset.system.SystemMessageProcessor;
 import io.easyspring.service.message.subset.system.SystemReceiver;
 import io.easyspring.service.message.subset.system.impl.DefaultSystemMessageBuilder;
 import io.easyspring.service.message.subset.system.impl.DefaultSystemMessageSender;
@@ -28,6 +32,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MessageBeanConfig {
 
+    /**
+     * 消息处理器的控制器
+     *
+     * @return io.easyspring.service.message.MessageProcessorHolder
+     * @author summer
+     * @date 2019-03-19 21:55
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    public MessageProcessorHolder messageProcessorHolder(){
+        // 默认创建 Redis 的存储器
+        return new MessageProcessorHolder();
+    }
 
     /**
      * 延迟发送时缓存消息的存储器
@@ -60,6 +77,21 @@ public class MessageBeanConfig {
     }
 
     /**
+     * 短信消息处理器的 Bean 的配置
+     *
+     * @return io.easyspring.service.message.MessageProcessor
+     * @author summer
+     * @date 2019-03-19 21:48
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    @ConditionalOnMissingBean(name = MessageConstants.Sms.PROCESSOR_BEAN_NAME)
+    public MessageProcessor smsMessageProcessor(){
+        // 返回默认的短信生成器
+        return new SmsMessageProcessor();
+    }
+
+    /**
      * 默认的短信消息的格式化类
      *
      * @return io.easyspring.service.message.subset.sms.impl.DefaultSmsMessageBuilder
@@ -68,7 +100,7 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "smsMessageBuilder")
+    @ConditionalOnMissingBean(name = MessageConstants.Sms.BUILDER_BEAN_NAME)
     public MessageBuilder<SmsMessage, SmsReceiver> smsMessageBuilder(){
         // 返回默认的短信生成器
         return new DefaultSmsMessageBuilder();
@@ -83,10 +115,25 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "smsMessageSender")
+    @ConditionalOnMissingBean(name = MessageConstants.Sms.SENDER_BEAN_NAME)
     public MessageSender<SmsMessage> smsMessageSender(){
         // 返回默认的短信发送器
         return new DefaultSmsMessageSender();
+    }
+
+    /**
+     * 邮件消息处理器的 Bean 的配置
+     *
+     * @return io.easyspring.service.message.MessageProcessor
+     * @author summer
+     * @date 2019-03-19 21:48
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    @ConditionalOnMissingBean(name = MessageConstants.Email.PROCESSOR_BEAN_NAME)
+    public MessageProcessor emailMessageProcessor(){
+        // 返回默认的短信生成器
+        return new EmailMessageProcessor();
     }
 
     /**
@@ -98,7 +145,7 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "emailMessageBuilder")
+    @ConditionalOnMissingBean(name = MessageConstants.Email.BUILDER_BEAN_NAME)
     public MessageBuilder<EmailMessage, EmailReceiver> emailMessageBuilder(){
         // 返回默认的邮件生成器
         return new DefaultEmailMessageBuilder();
@@ -113,10 +160,25 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "emailMessageSender")
+    @ConditionalOnMissingBean(name = MessageConstants.Email.SENDER_BEAN_NAME)
     public MessageSender<EmailMessage> emailMessageSender(){
         // 返回默认的短信发送器
         return new DefaultEmailMessageSender();
+    }
+
+    /**
+     * 系统消息处理器的 Bean 的配置
+     *
+     * @return io.easyspring.service.message.MessageProcessor
+     * @author summer
+     * @date 2019-03-19 21:48
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    @ConditionalOnMissingBean(name = MessageConstants.System.PROCESSOR_BEAN_NAME)
+    public MessageProcessor systemMessageProcessor(){
+        // 返回默认的短信生成器
+        return new SystemMessageProcessor();
     }
 
     /**
@@ -128,7 +190,7 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "systemMessageBuilder")
+    @ConditionalOnMissingBean(name = MessageConstants.System.BUILDER_BEAN_NAME)
     public MessageBuilder<SystemMessage, SystemReceiver> systemMessageBuilder(){
         // 返回默认的系统消息生成器
         return new DefaultSystemMessageBuilder();
@@ -143,7 +205,7 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "systemMessageSender")
+    @ConditionalOnMissingBean(name = MessageConstants.System.SENDER_BEAN_NAME)
     public MessageSender<SystemMessage> systemMessageSender(){
         // 返回默认的短信发送器
         return new DefaultSystemMessageSender();

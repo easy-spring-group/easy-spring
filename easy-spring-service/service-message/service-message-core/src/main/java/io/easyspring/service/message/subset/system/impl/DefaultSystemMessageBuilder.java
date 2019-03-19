@@ -1,7 +1,7 @@
 package io.easyspring.service.message.subset.system.impl;
 
 import io.easyspring.service.message.MessageBuilder;
-import io.easyspring.service.message.properties.SystemMessageConstants;
+import io.easyspring.service.message.properties.MessageConstants;
 import io.easyspring.service.message.subset.system.SystemMessage;
 import io.easyspring.service.message.subset.system.SystemReceiver;
 import io.easyspring.service.message.support.EasyMessageTemplate;
@@ -79,7 +79,7 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
      */
     private String getTitle(String templateName, String content, Map<String, Object> extend) {
         // 设置默认的系统消息标题
-        String title = SystemMessageConstants.DEFAULT_TITLE;
+        String title = MessageConstants.System.DEFAULT_TITLE;
 
         // 则检查模板是否有名字, 如果有名字则替换默认标题
         if (!StringUtils.isEmpty(templateName)) {
@@ -102,7 +102,7 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
         // 如果有扩展数据传入, 并且扩展数据中有标题字段
         if (!CollectionUtils.isEmpty(extend)) {
             // 从扩展数据中获取标题字段
-            Object extendTitle = extend.get(SystemMessageConstants.TITLE_KEY);
+            Object extendTitle = extend.get(MessageConstants.System.TITLE_KEY);
             // 如果扩展数据中的标题字段是 string 类型,
             if (extendTitle instanceof String) {
                 // 使用扩展数据中的标题为系统消息的标题
@@ -125,12 +125,12 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
      */
     private Long getSender(Map<String, Object> extend) {
         // 设置默认的系统消息发送者
-        Long sender = SystemMessageConstants.DEFAULT_SENDER;
+        Long sender = MessageConstants.System.DEFAULT_SENDER;
 
         // 如果有扩展数据传入, 并且扩展数据中有发送者字段
         if (!CollectionUtils.isEmpty(extend)) {
             // 从扩展数据中获取发送者字段
-            Object extendSender = extend.get(SystemMessageConstants.SENDER_KEY);
+            Object extendSender = extend.get(MessageConstants.System.SENDER_KEY);
             // 如果扩展数据中的发送者字段是 string 类型,
             if (extendSender instanceof Long) {
                 // 使用扩展数据中的发送者为系统消息的发送者

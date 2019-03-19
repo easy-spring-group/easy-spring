@@ -3,6 +3,7 @@ package io.easyspring.service.file;
 import io.easyspring.service.file.impl.DefaultFilePathGeneratorImpl;
 import io.easyspring.service.file.oss.OssFileDownloader;
 import io.easyspring.service.file.oss.OssFileUploader;
+import io.easyspring.service.file.properties.FileConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +42,7 @@ public class FileBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "ossFileUploader")
+    @ConditionalOnMissingBean(name = FileConstants.Oss.UPLOADER_BEAN_NAME)
     public FileUploader ossFileUploader(){
         // 创建阿里云的上传器
         return new OssFileUploader();
@@ -56,7 +57,7 @@ public class FileBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(name = "ossFileDownloader")
+    @ConditionalOnMissingBean(name = FileConstants.Oss.DOWNLOADER_BEAN_NAME)
     public FileDownloader ossFileDownloader() {
         // 创建阿里云的下载器
         return new OssFileDownloader();

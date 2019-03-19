@@ -3,6 +3,7 @@ package io.easyspring.service.file.oss;
 import io.easyspring.service.file.FileDownloader;
 import io.easyspring.service.file.FileUploader;
 import io.easyspring.service.file.impl.AbstractFileProcessor;
+import io.easyspring.service.file.properties.FileConstants;
 import io.easyspring.service.file.support.SimpleUserFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ import java.io.InputStream;
  * @date 2019-03-19 15:44
  * @version V1.0.0-RELEASE
  */
-@Component("ossFileProcessor")
+@Component(FileConstants.Oss.PROCESSOR_BEAN_NAME)
 public class OssFileProcessor extends AbstractFileProcessor {
 
     /**

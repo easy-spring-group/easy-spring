@@ -1,7 +1,6 @@
 package io.easyspring.service.message;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.Map;
@@ -13,7 +12,6 @@ import java.util.Map;
  * @date 2019-03-13 13:53
  * @version V1.0.0-RELEASE
  */
-@Component
 public class MessageProcessorHolder {
 
     /**
