@@ -5,27 +5,30 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.easyspring.framework</groupId>
-        <artifactId>easy-spring-dependencies</artifactId>
+        <artifactId>easy-spring-test</artifactId>
         <version>1.0.3-SNAPSHOT</version>
-        <relativePath>../easy-spring-dependencies</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>easy-spring-test</artifactId>
+    <!--组别 id-->
+    <groupId>io.easyspring.service</groupId>
+    <!--项目 id-->
+    <artifactId>service-test</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
 
-    <!--子模块-->
-    <modules>
-        <module>framework-test</module>
-        <module>service-test</module>
-    </modules>
 
     <!--项目名称-->
-    <name>Easy Spring Test</name>
+    <name>Service Test</name>
     <!--项目简介-->
-    <description>Easy Spring Test</description>
+    <description>Service Test</description>
     <!--项目连接地址-->
     <url>https://www.easyspring.io/</url>
+
+    <!--子模块-->
+    <modules>
+        <module>service-message-test</module>
+    </modules>
 
     <build>
         <plugins>

@@ -1,7 +1,9 @@
 package io.easyspring.service.message.subset.sms;
 
 import io.easyspring.service.message.EasyMessageException;
+import io.easyspring.service.message.MessageBuilder;
 import io.easyspring.service.message.MessageChannelType;
+import io.easyspring.service.message.MessageSender;
 import io.easyspring.service.message.impl.AbstractMessageProcessor;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +28,12 @@ public class SmsMessageProcessor extends AbstractMessageProcessor<SmsMessage> {
      * 短信消息的封装器
      */
     @Autowired
-    private SmsMessageBuilder smsMessageBuilder;
+    private MessageBuilder<SmsMessage, SmsReceiver> smsMessageBuilder;
     /**
      * 短信消息的发送器
      */
     @Autowired
-    private SmsMessageSender smsMessageSender;
+    private MessageSender<SmsMessage> smsMessageSender;
 
     /**
      * 封装用于发送的消息

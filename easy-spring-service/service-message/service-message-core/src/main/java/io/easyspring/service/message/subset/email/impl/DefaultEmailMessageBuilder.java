@@ -1,11 +1,11 @@
 package io.easyspring.service.message.subset.email.impl;
 
 import io.easyspring.service.message.EasyMessageException;
+import io.easyspring.service.message.MessageBuilder;
 import io.easyspring.service.message.MessageChannelType;
 import io.easyspring.service.message.properties.EmailMessageConstants;
 import io.easyspring.service.message.properties.MessageProperties;
 import io.easyspring.service.message.subset.email.EmailMessage;
-import io.easyspring.service.message.subset.email.EmailMessageBuilder;
 import io.easyspring.service.message.subset.email.EmailReceiver;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ import java.util.Map;
  * @version V1.0.0-RELEASE
  */
 @Slf4j
-public class DefaultEmailMessageBuilder implements EmailMessageBuilder {
+public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, EmailReceiver> {
 
     /**
      * 注入模板引擎

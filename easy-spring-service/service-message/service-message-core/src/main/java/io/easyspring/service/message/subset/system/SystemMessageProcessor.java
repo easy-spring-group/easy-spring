@@ -1,7 +1,9 @@
 package io.easyspring.service.message.subset.system;
 
 import io.easyspring.service.message.EasyMessageException;
+import io.easyspring.service.message.MessageBuilder;
 import io.easyspring.service.message.MessageChannelType;
+import io.easyspring.service.message.MessageSender;
 import io.easyspring.service.message.impl.AbstractMessageProcessor;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -28,12 +30,12 @@ public class SystemMessageProcessor extends AbstractMessageProcessor<SystemMessa
      * 系统消息的封装器
      */
     @Autowired
-    private SystemMessageBuilder systemMessageBuilder;
+    private MessageBuilder<SystemMessage, SystemReceiver> systemMessageBuilder;
     /**
      * 系统消息的发送器
      */
     @Autowired
-    private SystemMessageSender systemMessageSender;
+    private MessageSender<SystemMessage> systemMessageSender;
 
     /**
      * 封装用于发送的消息

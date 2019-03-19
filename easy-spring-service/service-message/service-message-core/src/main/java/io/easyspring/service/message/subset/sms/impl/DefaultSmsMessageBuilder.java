@@ -1,8 +1,8 @@
 package io.easyspring.service.message.subset.sms.impl;
 
 import io.easyspring.service.message.EasyMessageException;
+import io.easyspring.service.message.MessageBuilder;
 import io.easyspring.service.message.subset.sms.SmsMessage;
-import io.easyspring.service.message.subset.sms.SmsMessageBuilder;
 import io.easyspring.service.message.subset.sms.SmsReceiver;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import java.util.Map;
  * @version V1.0.0-RELEASE
  */
 @Slf4j
-public class DefaultSmsMessageBuilder implements SmsMessageBuilder {
+public class DefaultSmsMessageBuilder implements MessageBuilder<SmsMessage, SmsReceiver> {
 
     /**
      * 默认的短信发送者

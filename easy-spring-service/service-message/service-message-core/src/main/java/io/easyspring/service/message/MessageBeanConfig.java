@@ -2,16 +2,16 @@ package io.easyspring.service.message;
 
 import io.easyspring.service.message.impl.DefaultEasyMessageTemplateServiceImpl;
 import io.easyspring.service.message.impl.RedisMessageDelayCacheRepository;
-import io.easyspring.service.message.subset.email.EmailMessageBuilder;
-import io.easyspring.service.message.subset.email.EmailMessageSender;
+import io.easyspring.service.message.subset.email.EmailMessage;
+import io.easyspring.service.message.subset.email.EmailReceiver;
 import io.easyspring.service.message.subset.email.impl.DefaultEmailMessageBuilder;
 import io.easyspring.service.message.subset.email.impl.DefaultEmailMessageSender;
-import io.easyspring.service.message.subset.sms.SmsMessageBuilder;
-import io.easyspring.service.message.subset.sms.SmsMessageSender;
+import io.easyspring.service.message.subset.sms.SmsMessage;
+import io.easyspring.service.message.subset.sms.SmsReceiver;
 import io.easyspring.service.message.subset.sms.impl.DefaultSmsMessageBuilder;
 import io.easyspring.service.message.subset.sms.impl.DefaultSmsMessageSender;
-import io.easyspring.service.message.subset.system.SystemMessageBuilder;
-import io.easyspring.service.message.subset.system.SystemMessageSender;
+import io.easyspring.service.message.subset.system.SystemMessage;
+import io.easyspring.service.message.subset.system.SystemReceiver;
 import io.easyspring.service.message.subset.system.impl.DefaultSystemMessageBuilder;
 import io.easyspring.service.message.subset.system.impl.DefaultSystemMessageSender;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -68,8 +68,8 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(SmsMessageBuilder.class)
-    public SmsMessageBuilder smsMessageBuilder(){
+    @ConditionalOnMissingBean(name = "smsMessageBuilder")
+    public MessageBuilder<SmsMessage, SmsReceiver> smsMessageBuilder(){
         // 返回默认的短信生成器
         return new DefaultSmsMessageBuilder();
     }
@@ -83,8 +83,8 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(SmsMessageSender.class)
-    public SmsMessageSender smsMessageSender(){
+    @ConditionalOnMissingBean(name = "smsMessageSender")
+    public MessageSender<SmsMessage> smsMessageSender(){
         // 返回默认的短信发送器
         return new DefaultSmsMessageSender();
     }
@@ -98,8 +98,8 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(EmailMessageBuilder.class)
-    public EmailMessageBuilder emailMessageBuilder(){
+    @ConditionalOnMissingBean(name = "emailMessageBuilder")
+    public MessageBuilder<EmailMessage, EmailReceiver> emailMessageBuilder(){
         // 返回默认的邮件生成器
         return new DefaultEmailMessageBuilder();
     }
@@ -113,8 +113,8 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(EmailMessageSender.class)
-    public EmailMessageSender emailMessageSender(){
+    @ConditionalOnMissingBean(name = "emailMessageSender")
+    public MessageSender<EmailMessage> emailMessageSender(){
         // 返回默认的短信发送器
         return new DefaultEmailMessageSender();
     }
@@ -128,8 +128,8 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(SystemMessageBuilder.class)
-    public SystemMessageBuilder systemMessageBuilder(){
+    @ConditionalOnMissingBean(name = "systemMessageBuilder")
+    public MessageBuilder<SystemMessage, SystemReceiver> systemMessageBuilder(){
         // 返回默认的系统消息生成器
         return new DefaultSystemMessageBuilder();
     }
@@ -143,8 +143,8 @@ public class MessageBeanConfig {
      * @version V1.0.0-RELEASE
      */
     @Bean
-    @ConditionalOnMissingBean(SystemMessageSender.class)
-    public SystemMessageSender systemMessageSender(){
+    @ConditionalOnMissingBean(name = "systemMessageSender")
+    public MessageSender<SystemMessage> systemMessageSender(){
         // 返回默认的短信发送器
         return new DefaultSystemMessageSender();
     }

@@ -1,8 +1,8 @@
 package io.easyspring.service.message.subset.system.impl;
 
+import io.easyspring.service.message.MessageBuilder;
 import io.easyspring.service.message.properties.SystemMessageConstants;
 import io.easyspring.service.message.subset.system.SystemMessage;
-import io.easyspring.service.message.subset.system.SystemMessageBuilder;
 import io.easyspring.service.message.subset.system.SystemReceiver;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import java.util.Map;
  * @version V1.0.0-RELEASE
  */
 @Slf4j
-public class DefaultSystemMessageBuilder implements SystemMessageBuilder {
+public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage, SystemReceiver> {
 
     /**
      * 格式化系统消息的方法

@@ -1,0 +1,19 @@
+spring:
+  # 使用的配置文件
+  profiles:
+    active: summer
+  # 邮件的配置
+  mail:
+    # 服务主机
+    host: ${easy-spring.message.email.host}
+    # 用户名
+    username: ${easy-spring.message.email.username}
+    # 密码
+    password: ${easy-spring.message.email.password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true

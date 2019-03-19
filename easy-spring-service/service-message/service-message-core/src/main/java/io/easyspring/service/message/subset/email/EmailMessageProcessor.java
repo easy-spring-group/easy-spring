@@ -1,7 +1,9 @@
 package io.easyspring.service.message.subset.email;
 
 import io.easyspring.service.message.EasyMessageException;
+import io.easyspring.service.message.MessageBuilder;
 import io.easyspring.service.message.MessageChannelType;
+import io.easyspring.service.message.MessageSender;
 import io.easyspring.service.message.impl.AbstractMessageProcessor;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +28,12 @@ public class EmailMessageProcessor extends AbstractMessageProcessor<EmailMessage
      * 邮件消息的封装器
      */
     @Autowired
-    private EmailMessageBuilder emailMessageBuilder;
+    private MessageBuilder<EmailMessage, EmailReceiver> emailMessageBuilder;
     /**
      * 邮件消息的发送器
      */
     @Autowired
-    private EmailMessageSender emailMessageSender;
+    private MessageSender<EmailMessage> emailMessageSender;
 
     /**
      * 封装用于发送的消息

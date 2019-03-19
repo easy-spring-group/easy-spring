@@ -126,6 +126,14 @@
                 <version>1.0.3-SNAPSHOT</version>
             </dependency>
 
+            <!--service 模块-->
+            <!--message 核心模块-->
+            <dependency>
+                <groupId>io.easyspring.service</groupId>
+                <artifactId>service-message-core</artifactId>
+                <version>1.0.3-SNAPSHOT</version>
+            </dependency>
+
             <!--security 模块-->
             <!--security 的核心模块-->
             <dependency>

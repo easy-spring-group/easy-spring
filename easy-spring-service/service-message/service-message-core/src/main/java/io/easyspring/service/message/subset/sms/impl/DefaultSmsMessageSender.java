@@ -1,7 +1,7 @@
 package io.easyspring.service.message.subset.sms.impl;
 
+import io.easyspring.service.message.MessageSender;
 import io.easyspring.service.message.subset.sms.SmsMessage;
-import io.easyspring.service.message.subset.sms.SmsMessageSender;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version V1.0.0-RELEASE
  */
 @Slf4j
-public class DefaultSmsMessageSender implements SmsMessageSender {
+public class DefaultSmsMessageSender implements MessageSender<SmsMessage> {
 
     /**
      * 短信发送方法

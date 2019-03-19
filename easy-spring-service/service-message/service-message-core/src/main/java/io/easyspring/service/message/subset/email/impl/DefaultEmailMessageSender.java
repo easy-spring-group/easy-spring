@@ -1,8 +1,8 @@
 package io.easyspring.service.message.subset.email.impl;
 
 import io.easyspring.service.message.EasyMessageException;
+import io.easyspring.service.message.MessageSender;
 import io.easyspring.service.message.subset.email.EmailMessage;
-import io.easyspring.service.message.subset.email.EmailMessageSender;
 import io.easyspring.service.message.subset.email.EmailReceiver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import java.util.List;
  * @version V1.0.0-RELEASE
  */
 @Slf4j
-public class DefaultEmailMessageSender implements EmailMessageSender {
+public class DefaultEmailMessageSender implements MessageSender<EmailMessage> {
 
     /**
      * 注入邮件发送器
