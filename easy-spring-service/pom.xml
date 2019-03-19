@@ -26,5 +26,6 @@
     <!--子模块-->
     <modules>
         <module>service-message</module>
+        <module>service-file</module>
     </modules>
 </project>

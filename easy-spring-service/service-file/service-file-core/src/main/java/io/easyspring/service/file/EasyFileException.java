@@ -1,11 +1,11 @@
-package io.easyspring.service.message;
+package io.easyspring.service.file;
 
 import io.easyspring.framework.common.enums.ErrorResultEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * 消息的异常对象
+ * 文件的异常对象
  *
  * @author summer
  * @date 2019-03-13 12:20
@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Getter
-public class EasyMessageException extends RuntimeException {
+public class EasyFileException extends RuntimeException {
 
-    private static final long serialVersionUID = 9197475678541128054L;
+    private static final long serialVersionUID = -8705553469530386464L;
 
     /**
      * 错误码
@@ -27,20 +27,20 @@ public class EasyMessageException extends RuntimeException {
     private Object details;
 
     /**
-     * 消息的异常对象的构造方法
+     * 文件的异常对象的构造方法
      *
      * @author summer
      * @date 2019-01-07 16:54
      * @param errorResultEnum 错误信息枚举
      * @version V1.0.0-RELEASE
      */
-    public EasyMessageException(ErrorResultEnum errorResultEnum){
+    public EasyFileException(ErrorResultEnum errorResultEnum){
         super(errorResultEnum.getErrorMessage());
         this.code = errorResultEnum.getCode();
     }
 
     /**
-     * 消息的异常对象的构造方法
+     * 文件的异常对象的构造方法
      *
      * @author summer
      * @date 2019-01-07 16:54
@@ -48,7 +48,7 @@ public class EasyMessageException extends RuntimeException {
      * @param details 错误详细信息
      * @version V1.0.0-RELEASE
      */
-    public EasyMessageException(ErrorResultEnum errorResultEnum, Object details){
+    public EasyFileException(ErrorResultEnum errorResultEnum, Object details){
         super(errorResultEnum.getErrorMessage());
         this.code = errorResultEnum.getCode();
         this.details = details;
@@ -62,7 +62,7 @@ public class EasyMessageException extends RuntimeException {
      * @param message 错误信息
      * @version V1.0.0-RELEASE
      */
-    public EasyMessageException(String message) {
+    public EasyFileException(String message) {
         super(message);
         this.code = ErrorResultEnum.ERROR.getCode();
     }

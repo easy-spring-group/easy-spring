@@ -11,17 +11,18 @@
     </parent>
 
     <!--项目 id-->
-    <artifactId>service-message</artifactId>
+    <artifactId>service-file</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
     <!--项目名称-->
-    <name>Service Message</name>
+    <name>Service File</name>
     <!--项目简介-->
-    <description>Service Message</description>
+    <description>Service File</description>
     <!--项目连接地址-->
     <url>https://www.easyspring.io/</url>
 
     <modules>
-        <module>service-message-core</module>
+        <module>service-file-core</module>
     </modules>
+
 </project>

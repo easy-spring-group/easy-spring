@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.easyspring.service</groupId>
-        <artifactId>service-message</artifactId>
+        <artifactId>service-file</artifactId>
         <version>1.0.3-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <!--项目 id-->
-    <artifactId>service-message-core</artifactId>
+    <artifactId>service-file-core</artifactId>
+
     <!--打包方式-->
     <packaging>jar</packaging>
 
     <!--项目名称-->
-    <name>Service Message Core</name>
+    <name>Service File Core</name>
     <!--项目简介-->
-    <description>Service Message Core</description>
+    <description>Service File Core</description>
     <!--项目连接地址-->
     <url>https://www.easyspring.io/</url>
 
@@ -30,28 +30,21 @@
             <groupId>io.easyspring.framework</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
-
-        <!--thymeleaf页面模板引擎-->
+        <!--全局唯一 id 生成器的 jar-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <groupId>io.easyspring.framework</groupId>
+            <artifactId>common-snowflake</artifactId>
         </dependency>
 
-        <!--redis-->
+        <!--spring boot 基础包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot</artifactId>
         </dependency>
-        <!--spring2.0集成redis所需common-pool2-->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-        </dependency>
-
-        <!--邮件发送工具包-->
+        <!--spring boot 自动配置 jar-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <!--参数校验的 API-->
         <dependency>
@@ -59,12 +52,12 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
-        <!--工具-->
-        <!--基础操作-->
+        <!--阿里 oss 服务的 jar 包-->
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
         </dependency>
+
         <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
