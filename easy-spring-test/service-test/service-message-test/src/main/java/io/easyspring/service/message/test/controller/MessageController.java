@@ -2,6 +2,7 @@ package io.easyspring.service.message.test.controller;
 
 import io.easyspring.service.message.MessageChannelType;
 import io.easyspring.service.message.MessageProcessorHolder;
+import io.easyspring.service.message.properties.MessageConstants;
 import io.easyspring.service.message.test.form.MessageForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.io.File;
+import java.util.Map;
 
 /**
  * 消息 前端控制器
@@ -40,13 +43,18 @@ public class MessageController {
      */
     @PostMapping
     public String send(@RequestBody @Valid MessageForm messageForm){
+
+        Map<String, Object> extend = messageForm.getExtend();
+        File file = new File("/Users/summer/Desktop/risk_management.png");
+        extend.put(MessageConstants.Email.FILE_ATTACHMENT_KEY, file);
+
         return messageProcessorHolder
                 // 根据消息类型获取消息的处理器
                 .findMessageProcessor(messageForm.getMessageChannelType())
                 // 创建消息
                 .create(messageForm.getReceiverList(),
                         messageForm.getTemplateCode(),
-                        messageForm.getExtend(),
+                        extend,
                         messageForm.getIgnoreDelay());
     }
 

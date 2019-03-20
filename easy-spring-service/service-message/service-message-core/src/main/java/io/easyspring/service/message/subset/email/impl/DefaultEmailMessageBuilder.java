@@ -7,17 +7,24 @@ import io.easyspring.service.message.properties.MessageConstants;
 import io.easyspring.service.message.properties.MessageProperties;
 import io.easyspring.service.message.subset.email.EmailMessage;
 import io.easyspring.service.message.subset.email.EmailReceiver;
+import io.easyspring.service.message.subset.email.FileAttachmentBuilder;
+import io.easyspring.service.message.subset.email.InputStreamAttachmentBuilder;
 import io.easyspring.service.message.support.EasyMessageTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.text.StrSubstitutor;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * 默认的邮件的格式化类
@@ -78,6 +85,10 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
         emailMessage.setMessageType(easyMessageTemplate.getMessageType());
         // 设置消息内容
         emailMessage.setContent(mailContent);
+        // 设置文件类型的附件
+        emailMessage.setFileAttachmentBuilderList(builderFileAttachmentList(extend));
+        // 设置流类型的附件
+        emailMessage.setInputStreamAttachmentBuilderList(builderInputStreamAttachmentList(extend));
         // 设置消息相关数据
         emailMessage.setExtend(extend);
         // 设置消息的发送者
@@ -85,8 +96,215 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
         // 设置是否是 html 格式
         emailMessage.setIsHtml(getIsHtml(extend));
 
+
         return emailMessage;
     }
+
+    /**
+     * 封装附件信息
+     *
+     * @param extend 传入的数据对象
+     * @return java.util.List<io.easyspring.service.message.subset.email.AttachmentBuilder>
+     * @author summer
+     * @date 2019-03-20 14:40
+     * @version V1.0.0-RELEASE
+     */
+    private List<FileAttachmentBuilder> builderFileAttachmentList(Map<String, Object> extend){
+        // 参数校验
+        if (CollectionUtils.isEmpty(extend)) {
+            return null;
+        }
+
+        // 获取文件对象
+        Object attachmentObject = extend.get(MessageConstants.Email.FILE_ATTACHMENT_KEY);
+        // 参数校验
+        if (attachmentObject == null) {
+            return null;
+        }
+
+        // 创建附件对象集合
+        List<FileAttachmentBuilder> attachmentBuilderList = null;
+        // 如果是集合
+        if (attachmentObject instanceof List) {
+            // 转换成集合
+            List<Object> attachmentObjectList = (List<Object>) attachmentObject;
+            // 循环转换其中的每一个附件对象
+            attachmentBuilderList = attachmentObjectList.stream()
+                    // 过滤掉空值
+                    .filter(Objects::nonNull)
+                    // 执行转换
+                    .map(this::builderFileAttachment)
+                    // 过滤掉转换后的空值
+                    .filter(Objects::nonNull)
+                    // 封装成集合
+                    .collect(Collectors.toList());
+        }
+
+        // 执行单个的转换
+        FileAttachmentBuilder fileAttachmentBuilder = builderFileAttachment(attachmentObject);
+        // 如果可以转换成单个附件对象
+        if (fileAttachmentBuilder != null) {
+            // 创建返回对象
+            attachmentBuilderList = new ArrayList<>();
+            // 设置返回值
+            attachmentBuilderList.add(fileAttachmentBuilder);
+        }
+
+        return attachmentBuilderList;
+    }
+
+    /**
+     * 封装单个文件类型的附件信息
+     *
+     * @param attachment 附件信息对象(可以是 file 对象, 也可以是 AttachmentBuilder 对象)
+     * @return io.easyspring.service.message.subset.email.AttachmentBuilder
+     * @author summer
+     * @date 2019-03-20 14:45
+     * @version V1.0.0-RELEASE
+     */
+    private FileAttachmentBuilder builderFileAttachment(Object attachment) {
+        // 参数校验
+        if (attachment == null) {
+            return null;
+        }
+
+        // 定义用于返回的附件对象
+        FileAttachmentBuilder attachmentBuilderResult = null;
+
+        // 如果是文件类型
+        if (attachment instanceof File) {
+            // 执行类型转换
+            File fileAttachment = (File) attachment;
+
+            // 创建返回数据对象, 并封装
+            attachmentBuilderResult = new FileAttachmentBuilder();
+            // 设置名称
+            attachmentBuilderResult.setName(fileAttachment.getName());
+            // 设置文件对象
+            attachmentBuilderResult.setFile(fileAttachment);
+
+            // 如果是附件对象, 则直接进行数据类型的转换
+        } else if (attachment instanceof FileAttachmentBuilder) {
+            attachmentBuilderResult = (FileAttachmentBuilder) attachment;
+        }
+
+        return attachmentBuilderResult;
+    }
+
+    /**
+     * 封装流类型的附件
+     *
+     * @param extend 传入参数
+     * @return java.util.List<io.easyspring.service.message.subset.email.InputStreamAttachmentBuilder>
+     * @author summer
+     * @date 2019-03-20 15:48
+     * @version V1.0.0-RELEASE
+     */
+    private List<InputStreamAttachmentBuilder> builderInputStreamAttachmentList(Map<String, Object> extend){
+        // 参数校验
+        if (CollectionUtils.isEmpty(extend)) {
+            return null;
+        }
+
+        // 获取文件对象
+        Object sourceAttachmentObject = extend.get(MessageConstants.Email.INPUT_STREAM_ATTACHMENT_KEY);
+        // 参数校验
+        if (sourceAttachmentObject == null) {
+            return null;
+        }
+
+        // 创建附件对象集合
+        List<InputStreamAttachmentBuilder> attachmentBuilderList = null;
+        // 如果是集合
+        if (sourceAttachmentObject instanceof List) {
+
+            // 转换成集合
+            List<Object> sourceAttachmentObjectList = (List<Object>) sourceAttachmentObject;
+            // 如果数据不为空
+            if (!CollectionUtils.isEmpty(sourceAttachmentObjectList)) {
+                // 过滤掉空值
+                sourceAttachmentObjectList = sourceAttachmentObjectList.stream()
+                        .filter(Objects::nonNull)
+                        .collect(Collectors.toList());
+            }
+            // 如果去除空值后数据为空, 则直接返回 null
+            if (CollectionUtils.isEmpty(sourceAttachmentObjectList)) {
+                return null;
+            }
+
+            // 定义附件的数量
+            int size = 1;
+            // 创建转换后的附件对象集合
+            attachmentBuilderList = new ArrayList<>();
+            // 执行转换
+            for(Object attachmentObject : sourceAttachmentObjectList){
+                // 定义附件的名称
+                String attachmentName = MessageConstants.Email.DEFAULT_ATTACHMENT_NAME_PREFIX + size;
+                // 执行转换
+                InputStreamAttachmentBuilder inputStreamAttachmentBuilder =
+                        builderInputStreamAttachment(attachmentName, attachmentObject);
+
+                // 如果转换后数据不为空, 则加入到转换后的附件对象中
+                if (inputStreamAttachmentBuilder != null) {
+                    attachmentBuilderList.add(inputStreamAttachmentBuilder);
+                }
+            }
+        }
+
+        // 执行单个附件的转换
+        InputStreamAttachmentBuilder inputStreamAttachmentBuilder = builderInputStreamAttachment(
+                MessageConstants.Email.DEFAULT_ATTACHMENT_NAME_PREFIX + "1",
+                sourceAttachmentObject);
+        // 如果可以转换成流类型的附件
+        if (inputStreamAttachmentBuilder != null) {
+            // 创建转换后的附件对象集合
+            attachmentBuilderList = new ArrayList<>();
+            // 设置值
+            attachmentBuilderList.add(inputStreamAttachmentBuilder);
+        }
+
+        return attachmentBuilderList;
+    }
+
+    /**
+     * 转换单个流类型的附件对象
+     *
+     * @param defaultName 默认名称
+     * @param attachment 附件对象
+     * @return io.easyspring.service.message.subset.email.InputStreamAttachmentBuilder
+     * @author summer
+     * @date 2019-03-20 15:26
+     * @version V1.0.0-RELEASE
+     */
+    private InputStreamAttachmentBuilder builderInputStreamAttachment(String defaultName, Object attachment) {
+        // 参数校验
+        if (attachment == null) {
+            return null;
+        }
+
+        // 定义用于返回的附件对象
+        InputStreamAttachmentBuilder attachmentBuilderResult = null;
+
+        // 如果是文件类型
+        if (attachment instanceof InputStreamSource) {
+            // 执行类型转换
+            InputStreamSource inputStreamAttachment = (InputStreamSource) attachment;
+
+            // 创建返回数据对象, 并封装
+            attachmentBuilderResult = new InputStreamAttachmentBuilder();
+            // 设置名称
+            attachmentBuilderResult.setName(defaultName);
+            // 设置文件对象
+            attachmentBuilderResult.setInputStreamSource(inputStreamAttachment);
+
+            // 如果是附件对象, 则直接进行数据类型的转换
+        } else if (attachment instanceof InputStreamAttachmentBuilder) {
+            attachmentBuilderResult = (InputStreamAttachmentBuilder) attachment;
+        }
+
+        return attachmentBuilderResult;
+    }
+
 
     /**
      * 获取是否是 html 类型的邮件

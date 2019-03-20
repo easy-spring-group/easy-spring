@@ -43,4 +43,13 @@ public class EmailMessage extends EasyMessage {
      * 是否是 html 内容
      */
     private Boolean isHtml;
+
+    /**
+     * 文件类型的附件集合
+     */
+    private List<FileAttachmentBuilder> fileAttachmentBuilderList;
+    /**
+     * 流类型的附件集合
+     */
+    private List<InputStreamAttachmentBuilder> inputStreamAttachmentBuilderList;
 }

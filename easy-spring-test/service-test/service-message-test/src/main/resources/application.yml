@@ -17,3 +17,17 @@ spring:
           starttls:
             enable: true
             required: true
+
+  # redis 的相关配置
+  redis:
+    host: ${easy-spring.redis.server-host}
+    port: ${easy-spring.redis.port}
+    password: ${easy-spring.redis.passowrd}
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+    timeout: 3000ms

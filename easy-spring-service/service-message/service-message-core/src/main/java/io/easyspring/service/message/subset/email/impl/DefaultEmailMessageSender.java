@@ -4,6 +4,8 @@ import io.easyspring.service.message.EasyMessageException;
 import io.easyspring.service.message.MessageSender;
 import io.easyspring.service.message.subset.email.EmailMessage;
 import io.easyspring.service.message.subset.email.EmailReceiver;
+import io.easyspring.service.message.subset.email.FileAttachmentBuilder;
+import io.easyspring.service.message.subset.email.InputStreamAttachmentBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -73,6 +75,29 @@ public class DefaultEmailMessageSender implements MessageSender<EmailMessage> {
             helper.setSubject(message.getSubject());
             // 设置内容
             helper.setText(message.getContent(), isHtml);
+
+            /*
+             * 设置附件
+             */
+            // 设置文件类型的附件
+            List<FileAttachmentBuilder> fileAttachmentBuilderList = message.getFileAttachmentBuilderList();
+            // 如果文件类型的附件不为空, 则执行循环设置
+            if (!CollectionUtils.isEmpty(fileAttachmentBuilderList)) {
+                for (FileAttachmentBuilder fileAttachmentBuilder : fileAttachmentBuilderList){
+                    helper.addAttachment(fileAttachmentBuilder.getName(), fileAttachmentBuilder.getFile());
+                }
+            }
+
+            // 设置流类型的附件
+            List<InputStreamAttachmentBuilder> inputStreamAttachmentBuilderList =
+                    message.getInputStreamAttachmentBuilderList();
+            // 如果文件流类型的附件不为空, 则循环执行设置
+            if (!CollectionUtils.isEmpty(inputStreamAttachmentBuilderList)) {
+                for (InputStreamAttachmentBuilder inputStreamAttachmentBuilder : inputStreamAttachmentBuilderList){
+                    helper.addAttachment(inputStreamAttachmentBuilder.getName(),
+                            inputStreamAttachmentBuilder.getInputStreamSource());
+                }
+            }
         } catch (MessagingException e) {
             e.printStackTrace();
             throw new EasyMessageException("邮件发送出错");

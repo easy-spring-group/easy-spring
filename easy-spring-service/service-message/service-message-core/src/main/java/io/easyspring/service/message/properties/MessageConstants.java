@@ -61,6 +61,19 @@ public interface MessageConstants {
         String IS_HTML_KEY = "isHtml";
 
         /**
+         * 附件的默认名称前缀
+         */
+        String DEFAULT_ATTACHMENT_NAME_PREFIX = "附件-";
+        /**
+         * 文件类型的附件的数据集合的 key
+         */
+        String FILE_ATTACHMENT_KEY = "fileAttachmentList";
+        /**
+         * 流类型的附件数据集合的 key
+         */
+        String INPUT_STREAM_ATTACHMENT_KEY = "inputStreamAttachmentList";
+
+        /**
          * 消息处理器的 Bean 的名字
          */
         String PROCESSOR_BEAN_NAME = "emailMessageProcessor";
