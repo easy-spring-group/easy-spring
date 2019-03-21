@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * String 的工具类
  *
  * @author summer
- * @date 2018-12-06 22:29
+ * DateTime 2018-12-06 22:29
  * @version V1.0.0-RELEASE
  */
 public class StringUtils {
@@ -35,11 +35,11 @@ public class StringUtils {
     /**
      * 检查字符串是否为空
      *
-     * @author summer
-     * @date 2018-12-06 23:23
+     * Author summer
+     * DateTime 2018-12-06 23:23
      * @param str 需要检查的字符串
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static boolean isEmpty(String str){
         // 直接调用 Spring 的检查机制
@@ -49,11 +49,11 @@ public class StringUtils {
     /**
      * 驼峰形式的字符串转成下划线
      *
-     * @author summer
-     * @date 2018-12-06 23:19
+     * Author summer
+     * DateTime 2018-12-06 23:19
      * @param param 需要转换的字段
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String camelToUnderline(String param) {
         // 参数合法性校验
@@ -94,11 +94,11 @@ public class StringUtils {
     /**
      * 下划线形式的字符串转换成驼峰
      *
-     * @author summer
-     * @date 2018-12-06 23:03
+     * Author summer
+     * DateTime 2018-12-06 23:03
      * @param param 需要转换的字符串
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String underlineToCamel(String param) {
         // 参数合法性校验
@@ -135,11 +135,11 @@ public class StringUtils {
     /**
      * 将字符串的首字母转成小写
      *
-     * @author summer
-     * @date 2018-12-06 23:35
+     * Author summer
+     * DateTime 2018-12-06 23:35
      * @param str 需要转换的字符串
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String toLowerCaseFirstOne(String str){
         // 参数合法性校验
@@ -163,11 +163,11 @@ public class StringUtils {
     /**
      * 将字符串的首字母转成大写
      *
-     * @author summer
-     * @date 2018-12-06 23:35
+     * Author summer
+     * DateTime 2018-12-06 23:35
      * @param str 需要转换的字符串
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String toUpperCaseFirstOne(String str){
         // 参数合法性校验
@@ -190,11 +190,11 @@ public class StringUtils {
     /**
      * 将 getter 或 setter 方法转换成字段名称
      *
-     * @author summer
-     * @date 2018-12-07 00:15
+     * Author summer
+     * DateTime 2018-12-07 00:15
      * @param methodName 需要转换的方法名
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String getFieldNameByGetterOrSetter(String methodName) {
         // 参数合法性校验

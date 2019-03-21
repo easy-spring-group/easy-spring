@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
  * <p>  经测试，SnowFlake每秒能够产生26万ID左右。</p>
  *
  * @author summer
- * @date 2018-12-03 12:12
+ * DateTime 2018-12-03 12:12
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -70,11 +70,11 @@ public class Snowflake {
     /**
      * 全参构造方法
      *
-     * @author summer
-     * @date 2018-12-02 23:40
+     * Author summer
+     * DateTime 2018-12-02 23:40
      * @param workerId 工作ID (0~31)
      * @param dataCenterId 数据中心ID (0~31)
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private Snowflake(long workerId, long dataCenterId) {
         log.info("[id 生成器] id 生成器初始化, 机器 id: {}, 数据中心 id: {}", workerId, dataCenterId);
@@ -96,12 +96,12 @@ public class Snowflake {
     /**
      * 饿汉模式, 修改生成 Snowflake 对象
      *
-     * @author summer
-     * @date 2018-12-03 12:31
+     * Author summer
+     * DateTime 2018-12-03 12:31
      * @param workerId 机器码
      * @param dataCenterId 数据中心
      * @return io.easyspring.framework.common.snowflake.Snowflake
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     static Snowflake getInstance(long workerId, long dataCenterId){
         if (instance == null){
@@ -117,10 +117,10 @@ public class Snowflake {
     /**
      * 生成全局唯一的有序 id
      *
-     * @author summer
-     * @date 2018-12-03 12:32
+     * Author summer
+     * DateTime 2018-12-03 12:32
      * @return long
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     synchronized long nextId() {
         long timestamp = timeGen();
@@ -153,8 +153,8 @@ public class Snowflake {
     }
 
     /**
-     * @author summer
-     * @date 2017/12/29 下午1:12
+     * Author summer
+     * DateTime 2017/12/29 下午1:12
      * @param lastTimestamp 上次使用的时间戳
      * @return long
      * @description 防止产生的时间比之前的时间还要小（由于NTP回拨等问题）,保持增量的趋势.
@@ -168,8 +168,8 @@ public class Snowflake {
     }
 
     /**
-     * @author summer
-     * @date 2017/12/29 下午1:12
+     * Author summer
+     * DateTime 2017/12/29 下午1:12
      * @return long
      * @description 获取当前的时间戳
      */

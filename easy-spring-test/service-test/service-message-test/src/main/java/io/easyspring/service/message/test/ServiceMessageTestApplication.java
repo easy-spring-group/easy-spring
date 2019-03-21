@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  * 消息测试的主启动类
  *
  * @author summer
- * @date 2019-03-19 17:54
+ * DateTime 2019-03-19 17:54
  * @version V1.0.0-RELEASE
  */
 @SpringBootApplication

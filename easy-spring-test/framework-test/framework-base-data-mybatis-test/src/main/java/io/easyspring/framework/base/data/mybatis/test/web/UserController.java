@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * 用户对象的 controller
  *
  * @author summer
- * @date 2018-12-03 00:39
+ * DateTime 2018-12-03 00:39
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -26,11 +26,11 @@ public class UserController {
     /**
      * 添加用户的方法
      *
-     * @author summer
-     * @date 2018-12-03 00:40
+     * Author summer
+     * DateTime 2018-12-03 00:40
      * @param user 想要添加的用户对象
      * @return io.easyspring.framework.test.model.User
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @PostMapping
     public User add(@RequestBody User user){

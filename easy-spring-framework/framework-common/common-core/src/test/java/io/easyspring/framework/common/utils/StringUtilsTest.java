@@ -9,10 +9,9 @@ public class StringUtilsTest {
     /**
      * 非空检查的测试类
      *
-     * @author summer
-     * @date 2018-12-06 23:48
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-06 23:48
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void isEmpty(){
@@ -24,10 +23,9 @@ public class StringUtilsTest {
     /**
      * 驼峰形式的字符串转成下划线的测试类
      *
-     * @author summer
-     * @date 2018-12-06 23:48
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-06 23:48
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void camelToUnderline(){
@@ -40,10 +38,9 @@ public class StringUtilsTest {
     /**
      * 下划线命名转驼峰的测试类
      *
-     * @author summer
-     * @date 2018-12-06 23:32
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-06 23:32
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void underlineToCamel() {
@@ -57,10 +54,9 @@ public class StringUtilsTest {
     /**
      * 将字符串的首字母转成小写的测试类
      *
-     * @author summer
-     * @date 2018-12-06 23:32
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-06 23:32
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void toLowerCaseFirstOne() {
@@ -73,10 +69,9 @@ public class StringUtilsTest {
     /**
      * 将字符串的首字母转成大写的测试类
      *
-     * @author summer
-     * @date 2018-12-06 23:32
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-06 23:32
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void toUpperCaseFirstOne() {
@@ -88,10 +83,9 @@ public class StringUtilsTest {
     /**
      * 将 getter 或 setter 方法转换成字段名称的测试类
      *
-     * @author summer
-     * @date 2018-12-06 23:32
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-06 23:32
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getFieldNameByGetterOrSetter() {

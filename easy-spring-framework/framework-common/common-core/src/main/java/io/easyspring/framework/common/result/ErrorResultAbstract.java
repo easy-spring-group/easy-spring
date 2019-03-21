@@ -6,7 +6,7 @@ import lombok.Data;
  * 错误返回信息的抽象类
  *
  * @author summer
- * @date 2019-01-07 15:30
+ * DateTime 2019-01-07 15:30
  * @version V1.0.0-RELEASE
  */
 @Data

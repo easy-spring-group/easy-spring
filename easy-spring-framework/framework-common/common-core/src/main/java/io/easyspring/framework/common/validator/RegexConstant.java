@@ -4,7 +4,7 @@ package io.easyspring.framework.common.validator;
  * 用户定义正则的常量类
  *
  * @author summer
- * @date 2019-01-11 12:29
+ * DateTime 2019-01-11 12:29
  * @version V1.0.0-RELEASE
  */
 public interface RegexConstant {

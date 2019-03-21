@@ -15,7 +15,7 @@ import java.io.InputStream;
  * 阿里 oss 的文件处理器
  *
  * @author summer
- * @date 2019-03-19 15:44
+ * DateTime 2019-03-19 15:44
  * @version V1.0.0-RELEASE
  */
 @Component(FileConstants.Oss.PROCESSOR_BEAN_NAME)
@@ -39,9 +39,9 @@ public class OssFileProcessor extends AbstractFileProcessor {
      * @param objectName 文件名称
      * @param uploadFile 上传的文件对象
      * @return io.easyspring.service.file.support.SimpleUserFile
-     * @author summer
-     * @date 2019-03-19 15:43
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 15:43
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected SimpleUserFile putObject(String bucketName, String objectName, File uploadFile) {
@@ -56,9 +56,9 @@ public class OssFileProcessor extends AbstractFileProcessor {
      * @param objectName 文件名称
      * @param fileInputStream 文件流对象
      * @return io.easyspring.service.file.support.SimpleUserFile
-     * @author summer
-     * @date 2019-03-19 15:44
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 15:44
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected SimpleUserFile putObject(String bucketName, String objectName, InputStream fileInputStream) {
@@ -73,9 +73,9 @@ public class OssFileProcessor extends AbstractFileProcessor {
      * @param expiration 超时时间
      * @param style 图片样式
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-19 15:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 15:45
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected String getUrl(SimpleUserFile simpleUserFile, Long expiration, String style) {

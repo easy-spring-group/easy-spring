@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * 通用的异常的配置对象
  *
  * @author summer
- * @date 2018-12-03 20:02
+ * DateTime 2018-12-03 20:02
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

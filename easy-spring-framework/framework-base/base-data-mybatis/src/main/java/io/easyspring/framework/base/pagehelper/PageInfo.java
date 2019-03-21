@@ -13,7 +13,7 @@ import java.util.List;
  * 重写 PageHelper 的 PageInfo<T>
  *
  * @author summer
- * @date 2019-01-11 16:16
+ * DateTime 2019-01-11 16:16
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -89,10 +89,10 @@ public class PageInfo<T> implements Serializable {
     /**
      * 包装Page对象
      *
-     * @author summer
-     * @date 2019-01-11 16:23
+     * Author summer
+     * DateTime 2019-01-11 16:23
      * @param list 查询出的数据
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public PageInfo(List<T> list) {
         this(list, 8);
@@ -101,11 +101,11 @@ public class PageInfo<T> implements Serializable {
     /**
      * 包装Page对象
      *
-     * @author summer
-     * @date 2019-01-11 16:23
+     * Author summer
+     * DateTime 2019-01-11 16:23
      * @param list page结果
      * @param navigatePages 页码数量
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public PageInfo(List<T> list, int navigatePages) {
         if (list instanceof Page) {

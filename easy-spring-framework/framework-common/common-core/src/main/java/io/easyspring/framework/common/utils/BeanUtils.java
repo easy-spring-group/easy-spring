@@ -13,7 +13,7 @@ import java.util.*;
  * Java Bean 的工具类
  *
  * @author summer
- * @date 2018-12-07 21:27
+ * DateTime 2018-12-07 21:27
  * @version V1.0.0-RELEASE
  */
 public class BeanUtils {
@@ -26,12 +26,12 @@ public class BeanUtils {
     /**
      * map 对象转成 bean 的方法
      *
-     * @author summer
-     * @date 2018-12-07 21:44
+     * Author summer
+     * DateTime 2018-12-07 21:44
      * @param map 想要转换的 map 对象
      * @param clazz 想要转换成的类型
      * @return T
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static <T> T mapToBean(Map<String, Object> map, Class<T> clazz)
             throws IllegalAccessException, InstantiationException, InvocationTargetException {
@@ -70,13 +70,13 @@ public class BeanUtils {
     /**
      * map 对象转成 bean 的方法
      *
-     * @author summer
-     * @date 2018-12-07 23:25
+     * Author summer
+     * DateTime 2018-12-07 23:25
      * @param map 想要转换的 map 对象
      * @param clazz 想要转换成的类型
      * @param ignoreDataType 转换时是否忽略数据类型
      * @return T
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static <T> T mapToBean(Map<String, Object> map, Class<T> clazz, boolean ignoreDataType)
             throws IllegalAccessException, InvocationTargetException, InstantiationException, IOException {
@@ -109,11 +109,11 @@ public class BeanUtils {
     /**
      * Bean 转 map 的方法
      *
-     * @author summer
-     * @date 2018-12-07 22:30
+     * Author summer
+     * DateTime 2018-12-07 22:30
      * @param object 想要转换的 map
      * @return java.util.Map<java.lang.String,java.lang.Object>
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static Map<String, Object> beanToMap(Object object) throws IllegalAccessException {
         // 参数合法性校验

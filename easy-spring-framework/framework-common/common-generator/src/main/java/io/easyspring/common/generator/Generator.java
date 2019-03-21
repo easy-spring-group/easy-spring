@@ -17,7 +17,7 @@ import java.util.Map;
  * 代码生成器
  *
  * @author summer
- * @date 2018-12-13 14:46
+ * DateTime 2018-12-13 14:46
  * @version V1.0.0-RELEASE
  */
 public class Generator {
@@ -90,11 +90,10 @@ public class Generator {
     /**
      * 启动生成的 main 方法
      *
-     * @author summer
-     * @date 2018-12-13 16:14
+     * Author summer
+     * DateTime 2018-12-13 16:14
      * @param args main 的参数
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static void main(String[] args) {
         // 创建生成对象
@@ -106,10 +105,9 @@ public class Generator {
     /**
      * 执行生成
      *
-     * @author summer
-     * @date 2018-12-13 14:48
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-13 14:48
+     * Version V1.0.0-RELEASE
      */
     private void generator(){
         // 创建生成器对象
@@ -134,10 +132,10 @@ public class Generator {
     /**
      * 全局配置设置
      *
-     * @author summer
-     * @date 2018-12-13 14:51
+     * Author summer
+     * DateTime 2018-12-13 14:51
      * @return com.baomidou.mybatisplus.generator.config.GlobalConfig
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private GlobalConfig generateGlobalConfig(){
 
@@ -188,10 +186,10 @@ public class Generator {
     /**
      * 数据源配置
      *
-     * @author summer
-     * @date 2018-12-13 15:33
+     * Author summer
+     * DateTime 2018-12-13 15:33
      * @return com.baomidou.mybatisplus.generator.config.DataSourceConfig
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private DataSourceConfig generateDataSourceConfig(){
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
@@ -238,10 +236,10 @@ public class Generator {
     /**
      * 策略配置
      *
-     * @author summer
-     * @date 2018-12-13 15:33
+     * Author summer
+     * DateTime 2018-12-13 15:33
      * @return com.baomidou.mybatisplus.generator.config.DataSourceConfig
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private StrategyConfig generateStrategyConfig(){
         // 创建策略配置对象
@@ -305,10 +303,10 @@ public class Generator {
     /**
      * 包名配置
      *
-     * @author summer
-     * @date 2018-12-13 15:33
+     * Author summer
+     * DateTime 2018-12-13 15:33
      * @return com.baomidou.mybatisplus.generator.config.DataSourceConfig
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private PackageConfig generatePackageConfig(){
         PackageConfig packageConfig = new PackageConfig();
@@ -338,10 +336,10 @@ public class Generator {
     /**
      * 模板配置
      *
-     * @author summer
-     * @date 2018-12-13 15:33
+     * Author summer
+     * DateTime 2018-12-13 15:33
      * @return com.baomidou.mybatisplus.generator.config.DataSourceConfig
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private TemplateConfig generateTemplateConfig(){
         // 创建模板配置对象
@@ -373,10 +371,10 @@ public class Generator {
     /**
      * 注入 injectionConfig 配置
      *
-     * @author summer
-     * @date 2018-12-13 15:33
+     * Author summer
+     * DateTime 2018-12-13 15:33
      * @return com.baomidou.mybatisplus.generator.config.DataSourceConfig
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private InjectionConfig generateInjectionConfig(){
 
@@ -420,10 +418,10 @@ public class Generator {
    /**
     * 定义 mapper 文件的生成路径
     *
-    * @author summer
-    * @date 2018-12-13 17:09
+    * Author summer
+    * DateTime 2018-12-13 17:09
     * @return com.baomidou.mybatisplus.generator.config.FileOutConfig
-    * @version V1.0.0-RELEASE
+    * Version V1.0.0-RELEASE
     */
     private FileOutConfig getMapperFileOutConfig(){
         return new FileOutConfig("/templates/mapper.xml.vm") {

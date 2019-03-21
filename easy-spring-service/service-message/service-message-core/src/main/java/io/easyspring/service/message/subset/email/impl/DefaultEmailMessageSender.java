@@ -21,7 +21,7 @@ import java.util.List;
  * 邮件发送器的默认实现
  *
  * @author summer
- * @date 2019-03-13 13:28
+ * DateTime 2019-03-13 13:28
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -37,10 +37,9 @@ public class DefaultEmailMessageSender implements MessageSender<EmailMessage> {
      * 邮件发送方法
      *
      * @param message 邮件消息对象
-     * @return io.easyspring.service.message.subset.email.EmailMessage
-     * @author summer
-     * @date 2019-03-13 13:27
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 13:27
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void send(EmailMessage message) {
@@ -114,9 +113,9 @@ public class DefaultEmailMessageSender implements MessageSender<EmailMessage> {
      *
      * @param emailReceiverList 邮件接收者
      * @return java.lang.String[]
-     * @author summer
-     * @date 2019-03-15 18:14
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 18:14
+     * Version V1.0.0-RELEASE
      */
     private String[] buildReceiverArray(List<EmailReceiver> emailReceiverList) {
         // 参数校验

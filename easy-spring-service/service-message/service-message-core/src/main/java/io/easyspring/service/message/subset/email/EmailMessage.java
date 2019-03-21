@@ -13,7 +13,7 @@ import java.util.List;
  * 邮件消息实体
  *
  * @author summer
- * @date 2019-03-15 14:41
+ * DateTime 2019-03-15 14:41
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

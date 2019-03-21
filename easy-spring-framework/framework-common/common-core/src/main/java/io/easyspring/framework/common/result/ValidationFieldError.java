@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 数据校验, 用于存储错误字段的实体
  *
  * @author summer
- * @date 2019-01-08 12:42
+ * DateTime 2019-01-08 12:42
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

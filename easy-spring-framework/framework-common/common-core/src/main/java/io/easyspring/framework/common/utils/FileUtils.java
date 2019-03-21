@@ -8,7 +8,7 @@ import java.util.Calendar;
  * 文件工具类
  *
  * @author summer
- * @date 2019-02-12 18:09
+ * DateTime 2019-02-12 18:09
  * @version V1.0.0-RELEASE
  */
 public class FileUtils {
@@ -16,10 +16,10 @@ public class FileUtils {
     /**
      * 根据当前时间, 获取由年月日拼接而成的相对路径
      *
-     * @author summer
-     * @date 2019-02-12 18:14
+     * Author summer
+     * DateTime 2019-02-12 18:14
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String getDatePath() {
         // 获取系统时间的相关数据,用于动态生成文件夹的名称
@@ -34,11 +34,11 @@ public class FileUtils {
     /**
      * 根据文件名称, 获取文件后缀
      *
-     * @author summer
-     * @date 2019-02-12 18:15
+     * Author summer
+     * DateTime 2019-02-12 18:15
      * @param fileName 文件名称
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String getFileSuffix(String fileName) {
         // 参数合法性校验
@@ -56,12 +56,12 @@ public class FileUtils {
     /**
      * 根据传入的文件地址, 如果文件不存在则创建文件对象
      *
-     * @author summer
-     * @date 2019-02-12 18:17
+     * Author summer
+     * DateTime 2019-02-12 18:17
      * @param targetAbsoluteFileDir 文件的父级地址
      * @param fileName 文件名称
      * @return java.io.File
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static File checkAndCreateFile(String targetAbsoluteFileDir, String fileName) throws IOException {
         //
@@ -85,11 +85,11 @@ public class FileUtils {
     /**
      * 根据传入的文件地址, 如果文件不存在则创建文件对象
      *
-     * @author summer
-     * @date 2019-02-12 18:20
+     * Author summer
+     * DateTime 2019-02-12 18:20
      * @param targetPath 文件地址
      * @return java.io.File
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static File checkAndCreateFile(String targetPath) throws IOException {
         // 参数合法性校验
@@ -106,11 +106,11 @@ public class FileUtils {
     /**
      * 删除指定的文件
      *
-     * @author summer
-     * @date 2019-02-12 18:19
+     * Author summer
+     * DateTime 2019-02-12 18:19
      * @param filePath 文件的绝对路径
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static boolean deleteFile(String filePath) {
         // 参数合法性校验
@@ -133,11 +133,11 @@ public class FileUtils {
     /**
      * 删除文件
      *
-     * @author summer
-     * @date 2019-02-12 18:19
+     * Author summer
+     * DateTime 2019-02-12 18:19
      * @param file 需要删除的文件
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static boolean deleteFile(File file) {
         if (file != null && file.exists() && file.isFile()) {

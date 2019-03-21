@@ -4,7 +4,7 @@ package io.easyspring.service.message.properties;
  * 消息的常量配置
  *
  * @author summer
- * @date 2019-03-19 20:46
+ * DateTime 2019-03-19 20:46
  * @version V1.0.0-RELEASE
  */
 public interface MessageConstants {
@@ -13,8 +13,8 @@ public interface MessageConstants {
      * 短信消息的常量配置
      *
      * @author summer
-     * @date 2019-03-19 20:52
-     * @version V1.0.0-RELEASE
+     * DateTime 2019-03-19 20:52
+     * Version V1.0.0-RELEASE
      */
     interface Sms {
 
@@ -36,8 +36,8 @@ public interface MessageConstants {
      * 邮件的常量配置
      *
      * @author summer
-     * @date 2019-03-15 16:52
-     * @version V1.0.0-RELEASE
+     * DateTime 2019-03-15 16:52
+     * Version V1.0.0-RELEASE
      */
     interface Email {
 
@@ -91,8 +91,8 @@ public interface MessageConstants {
      * 系统消息的常量配置
      *
      * @author summer
-     * @date 2019-03-15 16:52
-     * @version V1.0.0-RELEASE
+     * DateTime 2019-03-15 16:52
+     * Version V1.0.0-RELEASE
      */
     interface System {
         /**

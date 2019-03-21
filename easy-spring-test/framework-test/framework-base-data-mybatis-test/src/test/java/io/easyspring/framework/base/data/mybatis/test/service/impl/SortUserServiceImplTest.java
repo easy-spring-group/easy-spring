@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
  * 用户的 service 测试类(分页功能)
  *
  * @author summer
- * @date 2018-12-04 22:16
+ * DateTime 2018-12-04 22:16
  * @version V1.0.0-RELEASE
  */
 @RunWith(SpringRunner.class)
@@ -36,10 +36,9 @@ public class SortUserServiceImplTest {
     /**
      * 公共的排序方法测试
      *
-     * @author summer
-     * @date 2018-12-12 17:36
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-12 17:36
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void sort() throws InstantiationException, IllegalAccessException {
@@ -56,10 +55,9 @@ public class SortUserServiceImplTest {
     /**
      * 公共的排序方法测试
      *
-     * @author summer
-     * @date 2018-12-12 17:36
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-12 17:36
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void sortNoChange() throws InstantiationException, IllegalAccessException {
@@ -77,10 +75,9 @@ public class SortUserServiceImplTest {
     /**
      * 公共的排序方法测试
      *
-     * @author summer
-     * @date 2018-12-12 17:36
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-12 17:36
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void sortNoChange2() throws InstantiationException, IllegalAccessException {
@@ -99,10 +96,9 @@ public class SortUserServiceImplTest {
     /**
      * 公共的排序方法测试(集合)
      *
-     * @author summer
-     * @date 2018-12-12 17:36
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-12 17:36
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void sortList() throws InstantiationException, IllegalAccessException {
@@ -133,10 +129,9 @@ public class SortUserServiceImplTest {
     /**
      * 公共的排序方法测试(集合-过滤无效值)
      *
-     * @author summer
-     * @date 2018-12-12 17:36
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-12 17:36
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void sortList2() throws InstantiationException, IllegalAccessException {
@@ -167,10 +162,9 @@ public class SortUserServiceImplTest {
     /**
      * 公共的排序方法测试(集合-包含重复修改)
      *
-     * @author summer
-     * @date 2018-12-12 17:36
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-12 17:36
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void sortList3() throws InstantiationException, IllegalAccessException {

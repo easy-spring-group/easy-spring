@@ -15,7 +15,7 @@ import java.util.Map;
  * 默认的文件路径生成器的实现类
  *
  * @author summer
- * @date 2019-03-19 14:22
+ * DateTime 2019-03-19 14:22
  * @version V1.0.0-RELEASE
  */
 public class DefaultFilePathGeneratorImpl implements FilePathGenerator {
@@ -36,9 +36,9 @@ public class DefaultFilePathGeneratorImpl implements FilePathGenerator {
      *
      * @param fileTypeCode 文件类型识别码
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-19 14:23
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 14:23
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String getBucketName(String fileTypeCode) {
@@ -66,9 +66,9 @@ public class DefaultFilePathGeneratorImpl implements FilePathGenerator {
      * @param fileTypeCode 文件类型识别码
      * @param fileName 文件的原名
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-19 14:23
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 14:23
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String generatorObjectName(String fileTypeCode, String fileName) {
@@ -87,9 +87,9 @@ public class DefaultFilePathGeneratorImpl implements FilePathGenerator {
      * @param fileTypeCode 文件类型识别码
      * @param sourceFileName 文件的原名
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-19 14:24
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 14:24
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String generatorNewObjectName(String fileTypeCode, String sourceFileName) {
@@ -108,9 +108,9 @@ public class DefaultFilePathGeneratorImpl implements FilePathGenerator {
      *
      * @param sourceFileName 原始的文件的名称
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-19 14:55
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 14:55
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String generatorNewFileName(String sourceFileName) {
@@ -136,9 +136,9 @@ public class DefaultFilePathGeneratorImpl implements FilePathGenerator {
      * 生成文件名称中间的路径
      *
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-19 14:25
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 14:25
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String generatorObjectIntermediatePath() {
@@ -150,9 +150,9 @@ public class DefaultFilePathGeneratorImpl implements FilePathGenerator {
      *
      * @param fileTypeCode 文件类型识别码
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-19 14:41
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 14:41
+     * Version V1.0.0-RELEASE
      */
     private String getObjectNamePrefix(String fileTypeCode){
         // 获取文件名称前缀的配置

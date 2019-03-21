@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  * 默认的邮件的格式化类
  *
  * @author summer
- * @date 2019-03-15 14:48
+ * DateTime 2019-03-15 14:48
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -54,9 +54,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      * @param easyMessageTemplate 邮件息消息模板
      * @param extend 需要替换的值
      * @return io.easyspring.service.message.subset.email.EmailMessage
-     * @author summer
-     * @date 2019-03-15 14:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 14:48
+     * Version V1.0.0-RELEASE
      */
     @Override
     public EmailMessage builder(List<EmailReceiver> receiverList,
@@ -105,9 +105,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      *
      * @param extend 传入的数据对象
      * @return java.util.List<io.easyspring.service.message.subset.email.AttachmentBuilder>
-     * @author summer
-     * @date 2019-03-20 14:40
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-20 14:40
+     * Version V1.0.0-RELEASE
      */
     private List<FileAttachmentBuilder> builderFileAttachmentList(Map<String, Object> extend){
         // 参数校验
@@ -158,9 +158,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      *
      * @param attachment 附件信息对象(可以是 file 对象, 也可以是 AttachmentBuilder 对象)
      * @return io.easyspring.service.message.subset.email.AttachmentBuilder
-     * @author summer
-     * @date 2019-03-20 14:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-20 14:45
+     * Version V1.0.0-RELEASE
      */
     private FileAttachmentBuilder builderFileAttachment(Object attachment) {
         // 参数校验
@@ -196,9 +196,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      *
      * @param extend 传入参数
      * @return java.util.List<io.easyspring.service.message.subset.email.InputStreamAttachmentBuilder>
-     * @author summer
-     * @date 2019-03-20 15:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-20 15:48
+     * Version V1.0.0-RELEASE
      */
     private List<InputStreamAttachmentBuilder> builderInputStreamAttachmentList(Map<String, Object> extend){
         // 参数校验
@@ -272,9 +272,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      * @param defaultName 默认名称
      * @param attachment 附件对象
      * @return io.easyspring.service.message.subset.email.InputStreamAttachmentBuilder
-     * @author summer
-     * @date 2019-03-20 15:26
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-20 15:26
+     * Version V1.0.0-RELEASE
      */
     private InputStreamAttachmentBuilder builderInputStreamAttachment(String defaultName, Object attachment) {
         // 参数校验
@@ -311,9 +311,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      *
      * @param extend 邮件发送时的数据
      * @return boolean
-     * @author summer
-     * @date 2019-03-15 19:24
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 19:24
+     * Version V1.0.0-RELEASE
      */
     private boolean getIsHtml(Map<String, Object> extend) {
         // 获取默认的配置
@@ -340,9 +340,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      * @param templateName 邮件的模板名称
      * @param extend 邮件内容生成时的扩展数据
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-15 17:03
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 17:03
+     * Version V1.0.0-RELEASE
      */
     private String getEmailSubject(String templateName, Map<String, Object> extend) {
         // 设置默认的邮件主题
@@ -376,9 +376,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      * @param templatePath 邮件 html 的模板地址
      * @param extend 生成时需要替换的数据
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-15 16:46
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 16:46
+     * Version V1.0.0-RELEASE
      */
     private String processEmailContent(String templateContent, String templatePath,
                                        Map<String, Object> extend) {
@@ -406,9 +406,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      * @param template 内容模板
      * @param replaceValue 需要替换的数据
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-12 15:37
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-12 15:37
+     * Version V1.0.0-RELEASE
      */
     private String processContent(String template, Map<String, Object> replaceValue) {
         // 定义取代器
@@ -423,9 +423,9 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
      * @param templatePath 模板地址
      * @param variables 替换的数据
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-15 16:27
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 16:27
+     * Version V1.0.0-RELEASE
      */
     private String processHtmlContent(String templatePath, Map<String, Object> variables) {
         // 创建 context 对象, 用于模板数据的设定

@@ -7,7 +7,7 @@ import java.util.Date;
  * 定义测试实体的父类
  *
  * @author summer
- * @date 2018-12-07 21:59
+ * DateTime 2018-12-07 21:59
  * @version V1.0.0-RELEASE
  */
 public class BaseModel implements Serializable {

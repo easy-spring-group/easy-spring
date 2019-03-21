@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * map 和 bean 之间互相转换的测试类
  *
  * @author summer
- * @date 2018-12-07 21:45
+ * DateTime 2018-12-07 21:45
  * @version V1.0.0-RELEASE
  */
 public class BeanUtilsTest {
@@ -23,10 +23,9 @@ public class BeanUtilsTest {
     /**
      * map 对象转成 bean 的方法的测试方法
      *
-     * @author summer
-     * @date 2018-12-07 21:46
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 21:46
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void mapToBean() throws IllegalAccessException, InvocationTargetException, InstantiationException {
@@ -52,10 +51,9 @@ public class BeanUtilsTest {
     /**
      * 测试 bean 转 map 的方法
      *
-     * @author summer
-     * @date 2018-12-07 22:10
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 22:10
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void beanToMap() throws IllegalAccessException {
@@ -81,10 +79,9 @@ public class BeanUtilsTest {
     /**
      * map 对象转成 bean 的方法(使用 Jackson 的方式)
      *
-     * @author summer
-     * @date 2018-12-07 23:51
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 23:51
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void mapToBeanIgnoreDataType()

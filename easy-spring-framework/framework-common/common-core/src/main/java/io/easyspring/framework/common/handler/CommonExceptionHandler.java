@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * 公共异常类的过滤处理器
  *
  * @author summer
- * @date 2019-01-07 17:06
+ * DateTime 2019-01-07 17:06
  * @version V1.0.0-RELEASE
  */
 @ControllerAdvice
@@ -41,13 +41,13 @@ public class CommonExceptionHandler {
     /**
      * 异常统一拦截的过滤器
      *
-     * @author summer
-     * @date 2019-01-07 17:05
+     * Author summer
+     * DateTime 2019-01-07 17:05
      * @param request 请求对象
      * @param response 返回对象
      * @param exception 异常
      * @return io.easyspring.framework.result.ErrorResultAbstract
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
@@ -63,13 +63,13 @@ public class CommonExceptionHandler {
     /**
      * 封装出现异常时返回的信息
      *
-     * @author summer
-     * @date 2019-01-07 18:12
+     * Author summer
+     * DateTime 2019-01-07 18:12
      * @param request 请求对象
      * @param response 返回对象
      * @param exception 异常信息
      * @return java.lang.Object
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private Object getExceptionResult(HttpServletRequest request, HttpServletResponse response, Exception exception) {
 
@@ -92,12 +92,12 @@ public class CommonExceptionHandler {
     /**
      * 封装错误返回信息对象
      *
-     * @author summer
-     * @date 2019-01-07 18:16
+     * Author summer
+     * DateTime 2019-01-07 18:16
      * @param response 返回对象
      * @param exceptionResult 异常返回对象
      * @return io.easyspring.framework.result.ErrorResultAbstract
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private ErrorResultAbstract getErrorResult(HttpServletResponse response, ExceptionResult exceptionResult){
         // 设置返回状态码
@@ -110,11 +110,11 @@ public class CommonExceptionHandler {
     /**
      * 封装错误返回信息的页面
      *
-     * @author summer
-     * @date 2019-01-07 18:17
+     * Author summer
+     * DateTime 2019-01-07 18:17
      * @param exceptionResult 异常返回对象
      * @return org.springframework.web.servlet.ModelAndView
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private ModelAndView getErrorView(ExceptionResult exceptionResult){
 
@@ -133,13 +133,13 @@ public class CommonExceptionHandler {
 //    /**
 //     * 封装异常返回对象
 //     *
-//     * @author summer
-//     * @date 2019-01-07 18:29
+//     * Author summer
+//     * DateTime 2019-01-07 18:29
 //     * @param request 请求对象
 //     * @param response 返回对象
 //     * @param exception 异常信息
 //     * @return io.easyspring.framework.result.ExceptionResult
-//     * @version V1.0.0-RELEASE
+//     * Version V1.0.0-RELEASE
 //     */
 //    private ExceptionResult buildExceptionResult(HttpServletRequest request,
 //                                                 HttpServletResponse response,

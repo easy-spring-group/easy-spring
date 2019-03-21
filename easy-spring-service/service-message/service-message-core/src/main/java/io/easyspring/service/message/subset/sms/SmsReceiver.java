@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
  * 短信接收者对象
  *
  * @author summer
- * @date 2019-03-15 15:40
+ * DateTime 2019-03-15 15:40
  * @version V1.0.0-RELEASE
  */
 @EqualsAndHashCode(callSuper = true)

@@ -9,7 +9,7 @@ import tk.mybatis.mapper.weekend.Fn;
  * 构建 weekend 查询的时候使用的参数数据
  *
  * @author summer
- * @date 2019-03-16 16:35
+ * DateTime 2019-03-16 16:35
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -32,9 +32,9 @@ public class WeekendParameter<T> {
      * @param function 查询参数对应的 function
      * @param value 查询的值
      * @return io.easyspring.framework.base.support.WeekendParameter<A>
-     * @author summer
-     * @date 2019-03-16 17:09
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-16 17:09
+     * Version V1.0.0-RELEASE
      */
     public static <A> WeekendParameter<A> of(Fn<A, Object> function, Object value) {
         return new WeekendParameter<>(function, value);

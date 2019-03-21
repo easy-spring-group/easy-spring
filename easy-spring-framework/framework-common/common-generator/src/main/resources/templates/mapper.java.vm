@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * $!{table.comment} Mapper 接口
  *
  * @author ${author}
- * @date ${date}
+ * DateTime ${date}
  * @version V1.0.0-RELEASE
  */
 #if(${kotlin})

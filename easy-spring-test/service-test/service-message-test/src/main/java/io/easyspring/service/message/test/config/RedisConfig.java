@@ -16,7 +16,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * Redis 的配置类
  *
  * @author summer
- * @date 2019-03-14 12:56
+ * DateTime 2019-03-14 12:56
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -28,9 +28,9 @@ public class RedisConfig {
      *
      * @param redisConnectionFactory Redis 连接工厂
      * @return org.springframework.data.redis.core.RedisTemplate<java.lang.String,java.lang.Object>
-     * @author summer
-     * @date 2019-03-14 12:57
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 12:57
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {

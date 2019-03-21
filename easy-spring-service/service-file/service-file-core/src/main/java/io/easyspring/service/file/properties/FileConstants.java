@@ -4,7 +4,7 @@ package io.easyspring.service.file.properties;
  * 文件的常量配置类
  *
  * @author summer
- * @date 2019-03-19 21:36
+ * DateTime 2019-03-19 21:36
  * @version V1.0.0-RELEASE
  */
 public interface FileConstants {
@@ -13,7 +13,7 @@ public interface FileConstants {
      * 阿里 oss 的常量配置
      *
      * @author summer
-     * @date 2019-03-19 21:36
+     * DateTime 2019-03-19 21:36
      * @version V1.0.0-RELEASE
      */
     interface Oss{

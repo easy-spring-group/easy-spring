@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * 注意: 在覆盖这个方法的时候, 需要设定组件的名字为 ExceptionResultBuilder.beanName
  *
  * @author summer
- * @date 2019-01-07 22:51
+ * DateTime 2019-01-07 22:51
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -23,13 +23,13 @@ public class ExceptionResultBuilderImpl implements ExceptionResultBuilder {
     /**
      * 封装异常返回对象
      *
-     * @author summer
-     * @date 2019-01-07 18:29
+     * Author summer
+     * DateTime 2019-01-07 18:29
      * @param request 请求对象
      * @param response 返回对象
      * @param exception 异常信息
      * @return io.easyspring.framework.result.ExceptionResult
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public ExceptionResult builder(HttpServletRequest request, HttpServletResponse response, Exception exception){

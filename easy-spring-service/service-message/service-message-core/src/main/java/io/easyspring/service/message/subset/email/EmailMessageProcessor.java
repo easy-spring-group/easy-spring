@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * 邮件消息的管理器
  *
  * @author summer
- * @date 2019-03-15 14:59
+ * DateTime 2019-03-15 14:59
  * @version V1.0.0-RELEASE
  */
 public class EmailMessageProcessor extends AbstractMessageProcessor<EmailMessage> {
@@ -40,9 +40,9 @@ public class EmailMessageProcessor extends AbstractMessageProcessor<EmailMessage
      * @param easyMessageTemplate 消息模板对象
      * @param extend 需要替换的参数
      * @return M
-     * @author summer
-     * @date 2019-03-15 18:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 18:01
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected EmailMessage builder(List<String> receiverList,
@@ -66,10 +66,9 @@ public class EmailMessageProcessor extends AbstractMessageProcessor<EmailMessage
      * 发送邮件的方法
      *
      * @param message 邮件信息
-     * @return void
-     * @author summer
-     * @date 2019-03-15 13:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 13:45
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void send(EmailMessage message) {
@@ -87,9 +86,9 @@ public class EmailMessageProcessor extends AbstractMessageProcessor<EmailMessage
      *
      * @param emailStringReceiverList String 类型的邮件接收者集合
      * @return java.util.List<io.easyspring.service.message.subset.email.EmailReceiver>
-     * @author summer
-     * @date 2019-03-15 15:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 15:45
+     * Version V1.0.0-RELEASE
      */
     private List<EmailReceiver> buildEmailReceiver(List<String> emailStringReceiverList) {
         // 参数校验

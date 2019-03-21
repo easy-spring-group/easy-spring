@@ -6,7 +6,7 @@ import java.util.Date;
  * 用于测试的 user 实体
  *
  * @author summer
- * @date 2018-12-07 22:01
+ * DateTime 2018-12-07 22:01
  * @version V1.0.0-RELEASE
  */
 public class User extends BaseModel {

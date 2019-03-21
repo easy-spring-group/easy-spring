@@ -6,7 +6,7 @@ import lombok.Data;
  * 消息延时发送的配置
  *
  * @author summer
- * @date 2019-03-13 16:25
+ * DateTime 2019-03-13 16:25
  * @version V1.0.0-RELEASE
  */
 @Data

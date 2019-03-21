@@ -20,7 +20,7 @@ import java.util.Map;
  * 默认的抽象消息处理器
  *
  * @author summer
- * @date 2019-03-12 16:40
+ * DateTime 2019-03-12 16:40
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -46,9 +46,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      * @param extend 需要替换的参数
      * @param ignoreDelay 是否忽略延时发送, 不填写的时候默认 false
      * @return String
-     * @author summer
-     * @date 2019-03-12 18:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-12 18:01
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String create(List<String> receiverList, String templateCode, Map<String, Object> extend, Boolean ignoreDelay) {
@@ -86,9 +86,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      * @param messageChannelType 消息通道类型
      * @param messageNo 消息编码
      * @return int
-     * @author summer
-     * @date 2019-03-13 18:31
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 18:31
+     * Version V1.0.0-RELEASE
      */
     @Override
     public int sendDelayMessageIfExpire(MessageChannelType messageChannelType, String messageNo) {
@@ -114,9 +114,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      *
      * @param messageChannelType 消息通道类型
      * @return int
-     * @author summer
-     * @date 2019-03-14 10:23
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 10:23
+     * Version V1.0.0-RELEASE
      */
     @Override
     public int sendDelayMessagesIfExpire(MessageChannelType messageChannelType) {
@@ -145,10 +145,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      *
      * @param messageChannelType 消息通道类型
      * @param messageNo 消息编码
-     * @return void
-     * @author summer
-     * @date 2019-03-14 09:44
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 09:44
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void recall(MessageChannelType messageChannelType, String messageNo){
@@ -164,9 +163,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      * @param easyMessageTemplate 消息模板对象
      * @param extend 需要替换的参数
      * @return M
-     * @author summer
-     * @date 2019-03-12 18:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-12 18:01
+     * Version V1.0.0-RELEASE
      */
     protected abstract M builder(@NotNull(message = "消息接收者不能为空")
                                  @NotEmpty(message = "消息接收者不能为空") List<String> receiverList,
@@ -180,10 +179,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      * @param message 消息对象
      * @param delayTime 延迟时长(单位是秒)
      * @param ignoreDelay 是否忽略延迟发送
-     * @return void
-     * @author summer
-     * @date 2019-03-14 13:47
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 13:47
+     * Version V1.0.0-RELEASE
      */
     protected void postBuilder(@NotNull(message = "消息对象不能为空") M message, Integer delayTime, Boolean ignoreDelay) {
         // 如果不传入忽略延迟表示, 则表示不忽略
@@ -227,10 +225,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      * 消息发送器
      *
      * @param message 需要发送的消息
-     * @return void
-     * @author summer
-     * @date 2019-03-12 18:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-12 18:01
+     * Version V1.0.0-RELEASE
      */
     protected abstract void send(@NotNull(message = "消息对象不能为空") @Valid M message);
 
@@ -239,9 +236,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      *
      * @param message 消息对象
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-14 13:59
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 13:59
+     * Version V1.0.0-RELEASE
      */
     private void cacheMessage(@NotNull(message = "消息对象不能为空") @Valid M message){
         // 保存延迟发送的消息到 缓存中
@@ -253,9 +250,9 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
      *
      * @param message 消息对象
      * @return int
-     * @author summer
-     * @date 2019-03-14 11:02
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 11:02
+     * Version V1.0.0-RELEASE
      */
     private int sendDelayMessageIfExpire(M message){
         // 定义消息发送的数量

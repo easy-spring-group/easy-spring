@@ -29,7 +29,7 @@ import static org.junit.Assert.*;
  * 用户的 service 测试类
  *
  * @author summer
- * @date 2018-12-04 22:16
+ * DateTime 2018-12-04 22:16
  * @version V1.0.0-RELEASE
  */
 @RunWith(SpringRunner.class)
@@ -52,10 +52,9 @@ public class UserServiceImplTest {
     /**
      * 测试生成全局唯一 id 的方法
      *
-     * @author summer
-     * @date 2018-12-04 22:17
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 22:17
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void perInsert() {
@@ -68,10 +67,9 @@ public class UserServiceImplTest {
     /**
      * 直接执行 sql 语句的插入方法
      *
-     * @author summer
-     * @date 2018-12-07 22:59
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 22:59
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void insertUseSql(){
@@ -85,10 +83,9 @@ public class UserServiceImplTest {
     /**
      * 插入或更新数据的测试(测试插入)
      *
-     * @author summer
-     * @date 2018-12-04 22:30
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 22:30
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void insertOrUpdateSelectiveInsert(){
@@ -108,10 +105,9 @@ public class UserServiceImplTest {
     /**
      * 插入或更新数据的测试(测试修改)
      *
-     * @author summer
-     * @date 2018-12-04 22:30
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 22:30
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void insertOrUpdateSelectiveUpdate(){
@@ -134,10 +130,9 @@ public class UserServiceImplTest {
     /**
      * 插入或更新数据的测试(测试修改)
      *
-     * @author summer
-     * @date 2018-12-04 22:30
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 22:30
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void insertOrUpdateSelectiveUpdateNull(){
@@ -155,10 +150,9 @@ public class UserServiceImplTest {
     /**
      * 测试插入数据(全插入)
      *
-     * @author summer
-     * @date 2018-12-04 22:59
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 22:59
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void insertAll(){
@@ -178,10 +172,9 @@ public class UserServiceImplTest {
     /**
      * 测试插入数据(选择性插入)
      *
-     * @author summer
-     * @date 2018-12-04 23:05
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:05
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void insertSelective(){
@@ -199,10 +192,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入的 sql 执行删除操作, 并返回影响的数据条数
      *
-     * @author summer
-     * @date 2018-12-07 23:01
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 23:01
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void deleteUseSql(){
@@ -215,10 +207,9 @@ public class UserServiceImplTest {
     /**
      * 删除测试(正常删除)
      *
-     * @author summer
-     * @date 2018-12-04 23:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void delete(){
@@ -230,10 +221,9 @@ public class UserServiceImplTest {
     /**
      * 删除测试(未找到数据)
      *
-     * @author summer
-     * @date 2018-12-04 23:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void deleteNoData(){
@@ -245,10 +235,9 @@ public class UserServiceImplTest {
     /**
      * 按照条件删除(有数据)
      *
-     * @author summer
-     * @date 2018-12-04 23:11
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:11
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void deleteSelective(){
@@ -263,10 +252,9 @@ public class UserServiceImplTest {
     /**
      * 按照条件删除(无数据)
      *
-     * @author summer
-     * @date 2018-12-04 23:11
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:11
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void deleteSelectiveNoData(){
@@ -282,10 +270,9 @@ public class UserServiceImplTest {
     /**
      * 真实删除测试(正常删除)
      *
-     * @author summer
-     * @date 2018-12-04 23:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void realDelete(){
@@ -297,10 +284,9 @@ public class UserServiceImplTest {
     /**
      * 真实删除测试(未找到数据)
      *
-     * @author summer
-     * @date 2018-12-04 23:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void realDeleteNoData(){
@@ -314,10 +300,9 @@ public class UserServiceImplTest {
     /**
      * 按照条件删除(有数据)
      *
-     * @author summer
-     * @date 2018-12-04 23:11
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:11
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void realDeleteSelective(){
@@ -331,10 +316,9 @@ public class UserServiceImplTest {
     /**
      * 按照条件删除(无数据)
      *
-     * @author summer
-     * @date 2018-12-04 23:11
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-04 23:11
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void realDeleteSelectiveNoData(){
@@ -348,10 +332,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入的 sql 执行更新操作并返回影响的数据条数
      *
-     * @author summer
-     * @date 2018-12-07 23:05
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 23:05
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void updateUseSql(){
@@ -365,10 +348,9 @@ public class UserServiceImplTest {
     /**
      * 全字段更新的测试
      *
-     * @author summer
-     * @date 2018-12-05 14:33
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 14:33
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void updateAll(){
@@ -393,10 +375,9 @@ public class UserServiceImplTest {
     /**
      * 当对应的 id 不存在时, 执行全局的修改
      *
-     * @author summer
-     * @date 2018-12-05 14:41
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 14:41
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void updateAllNotExist(){
@@ -416,10 +397,9 @@ public class UserServiceImplTest {
     /**
      * 全字段更新的测试
      *
-     * @author summer
-     * @date 2018-12-05 14:33
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 14:33
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void updateSelective(){
@@ -445,10 +425,9 @@ public class UserServiceImplTest {
     /**
      * 当对应的 id 不存在时, 执行部分的修改
      *
-     * @author summer
-     * @date 2018-12-05 14:41
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 14:41
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void updateSelectiveNotExist(){
@@ -465,10 +444,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入的 sql 查询出 map 对象
      *
-     * @author summer
-     * @date 2018-12-07 23:11
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 23:11
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void selectMapUseSql(){
@@ -483,10 +461,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入的 sql 和对象, 查询出对应的数据对象
      *
-     * @author summer
-     * @date 2018-12-07 23:11
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 23:11
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getBeanUseSql()
@@ -501,10 +478,9 @@ public class UserServiceImplTest {
     /**
      * 测试根据 id 查询
      *
-     * @author summer
-     * @date 2018-12-05 15:00
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:00
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void get(){
@@ -519,10 +495,9 @@ public class UserServiceImplTest {
     /**
      * 测试根据 id 查询(没有存在的数据)
      *
-     * @author summer
-     * @date 2018-12-05 15:00
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:00
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getNotExist(){
@@ -534,10 +509,9 @@ public class UserServiceImplTest {
     /**
      * 根据条件查询
      *
-     * @author summer
-     * @date 2018-12-05 15:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getByParameters(){
@@ -552,10 +526,9 @@ public class UserServiceImplTest {
     /**
      * 根据条件查询(没有存在的数据)
      *
-     * @author summer
-     * @date 2018-12-05 15:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getByParametersNotExist(){
@@ -570,10 +543,9 @@ public class UserServiceImplTest {
     /**
      * 根据条件查询
      *
-     * @author summer
-     * @date 2018-12-05 15:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getByParametersException(){
@@ -591,10 +563,9 @@ public class UserServiceImplTest {
     /**
      * 根据条件查询
      *
-     * @author summer
-     * @date 2018-12-05 15:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getAllByParameters(){
@@ -610,10 +581,9 @@ public class UserServiceImplTest {
     /**
      * 根据条件查询(没有存在的数据)
      *
-     * @author summer
-     * @date 2018-12-05 15:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getAllByParametersNotExist(){
@@ -628,10 +598,9 @@ public class UserServiceImplTest {
     /**
      * 根据条件查询
      *
-     * @author summer
-     * @date 2018-12-05 15:07
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 15:07
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getAllByParametersException(){
@@ -649,10 +618,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入的 sql 查询出对应的数据集合
      *
-     * @author summer
-     * @date 2018-12-07 23:56
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 23:56
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void selectListUseSql(){
@@ -669,10 +637,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入的 sql 查询出符合条件的集合对象
      *
-     * @author summer
-     * @date 2018-12-07 23:56
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-07 23:56
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listBeanUseSql() throws InvocationTargetException, IOException, InstantiationException, IllegalAccessException {
@@ -689,10 +656,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void list(){
@@ -707,10 +673,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listUseFunction(){
@@ -723,10 +688,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listWithOutDeleted(){
@@ -742,10 +706,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listNoData(){
@@ -760,10 +723,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listAll(){
@@ -778,10 +740,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listAllUserFunction(){
@@ -793,10 +754,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listAllHasDeleted(){
@@ -812,10 +772,9 @@ public class UserServiceImplTest {
     /**
      * 集合查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void listAllNoData(){
@@ -829,10 +788,9 @@ public class UserServiceImplTest {
     /**
      * 分页查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPage(){
@@ -847,10 +805,9 @@ public class UserServiceImplTest {
     /**
      * 分页查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageWithOutDeleted(){
@@ -866,10 +823,9 @@ public class UserServiceImplTest {
     /**
      * 分页查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageNoData(){
@@ -884,10 +840,9 @@ public class UserServiceImplTest {
     /**
      * 分页查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageAll(){
@@ -902,10 +857,9 @@ public class UserServiceImplTest {
     /**
      * 分页查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageAllHasDeleted(){
@@ -921,10 +875,9 @@ public class UserServiceImplTest {
     /**
      * 分页查询的测试
      *
-     * @author summer
-     * @date 2018-12-05 18:52
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 18:52
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageAllNoData(){
@@ -938,10 +891,9 @@ public class UserServiceImplTest {
     /**
      * 分页并且排序
      *
-     * @author summer
-     * @date 2018-12-05 19:06
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 19:06
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageOrder(){
@@ -964,10 +916,9 @@ public class UserServiceImplTest {
     /**
      * 分页并且排序
      *
-     * @author summer
-     * @date 2018-12-05 19:06
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 19:06
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageAllOrder(){
@@ -989,10 +940,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入条件和分页条件, 查询分页信息
      *
-     * @author summer
-     * @date 2018-12-05 19:35
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 19:35
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPagePageable(){
@@ -1029,10 +979,9 @@ public class UserServiceImplTest {
     /**
      * 根据传入条件和分页条件, 查询分页信息
      *
-     * @author summer
-     * @date 2018-12-05 19:35
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 19:35
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void findPageAllPageable(){
@@ -1072,10 +1021,9 @@ public class UserServiceImplTest {
     /**
      * 对数据进行计数
      *
-     * @author summer
-     * @date 2018-12-05 21:48
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 21:48
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void count(){
@@ -1089,10 +1037,9 @@ public class UserServiceImplTest {
     /**
      * 对数据进行计数
      *
-     * @author summer
-     * @date 2018-12-05 21:48
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 21:48
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void countNoData(){
@@ -1106,10 +1053,9 @@ public class UserServiceImplTest {
     /**
      * 对数据进行计数
      *
-     * @author summer
-     * @date 2018-12-05 21:48
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 21:48
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void countAll(){
@@ -1124,10 +1070,9 @@ public class UserServiceImplTest {
     /**
      * 对数据进行计数
      *
-     * @author summer
-     * @date 2018-12-05 21:48
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 21:48
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void countAllNoData(){
@@ -1142,10 +1087,9 @@ public class UserServiceImplTest {
     /**
      * 测试直接使用 sql 的查询(查询出 map 对象)
      *
-     * @author summer
-     * @date 2018-12-05 22:33
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-05 22:33
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void selectMap(){
@@ -1166,10 +1110,9 @@ public class UserServiceImplTest {
 //    /**
 //     * 测试直接使用 sql 的查询(查询出 Object 对象)
 //     *
-//     * @author summer
-//     * @date 2018-12-06 22:33
-//     * @return void
-//     * @version V1.0.0-RELEASE
+//     * Author summer
+//     * DateTime 2018-12-06 22:33
+//     * Version V1.0.0-RELEASE
 //     */
 //    @Test
 //    public void selectObject(){

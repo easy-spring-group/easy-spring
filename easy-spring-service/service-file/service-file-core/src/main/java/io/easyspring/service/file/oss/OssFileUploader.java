@@ -17,7 +17,7 @@ import java.io.InputStream;
  * 阿里云文件上传器
  *
  * @author summer
- * @date 2019-02-12 15:20
+ * DateTime 2019-02-12 15:20
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -34,13 +34,13 @@ public class OssFileUploader implements FileUploader {
     /**
      * 阿里云平台文件的文件上传器
      *
-     * @author summer
-     * @date 2019-02-12 16:12
+     * Author summer
+     * DateTime 2019-02-12 16:12
      * @param bucketName 文件存储区
      * @param objectName 文件名称
      * @param uploadFile 需要上传的文件对象
      * @return io.easyspring.service.file.support.SimpleUserFile
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public SimpleUserFile putObject(String bucketName, String objectName, File uploadFile) {
@@ -58,13 +58,13 @@ public class OssFileUploader implements FileUploader {
     /**
      * 阿里云平台文件的文件上传器
      *
-     * @author summer
-     * @date 2019-02-12 20:09
+     * Author summer
+     * DateTime 2019-02-12 20:09
      * @param bucketName 文件存储区
      * @param objectName 文件名称
      * @param fileInputStream 上传的文件流
      * @return io.easyspring.service.file.support.SimpleUserFile
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public SimpleUserFile putObject(String bucketName, String objectName, InputStream fileInputStream) {
@@ -83,9 +83,9 @@ public class OssFileUploader implements FileUploader {
 //     * 封装阿里云客户端对象
 //     *
 //     * @return com.aliyun.oss.OSSClient
-//     * @author summer
-//     * @date 2019-03-19 16:39
-//     * @version V1.0.0-RELEASE
+//     * Author summer
+//     * DateTime 2019-03-19 16:39
+//     * Version V1.0.0-RELEASE
 //     */
 //    private OSSClient buildOssClient(){
 //        /*
@@ -103,9 +103,9 @@ public class OssFileUploader implements FileUploader {
      * @param bucketName 存储区名称
      * @param objectName 文件对象名称
      * @return io.easyspring.service.file.support.SimpleUserFile
-     * @author summer
-     * @date 2019-03-19 16:34
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 16:34
+     * Version V1.0.0-RELEASE
      */
     private SimpleUserFile buildSimpleUserFile(String bucketName, String objectName){
         // 参数校验

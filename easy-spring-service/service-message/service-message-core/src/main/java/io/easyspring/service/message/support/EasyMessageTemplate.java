@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 消息模板
  *
  * @author summer
- * @date 2019-03-12 15:12
+ * DateTime 2019-03-12 15:12
  * @version V1.0.0-RELEASE
  */
 @AllArgsConstructor

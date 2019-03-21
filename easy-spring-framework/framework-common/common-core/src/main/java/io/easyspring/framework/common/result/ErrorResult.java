@@ -11,7 +11,7 @@ import lombok.ToString;
  * 错误返回信息的基础实现类
  *
  * @author summer
- * @date 2019-01-07 15:35
+ * DateTime 2019-01-07 15:35
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -23,11 +23,11 @@ public class ErrorResult extends ErrorResultAbstract {
     /**
      * 根据传入的异常信息对象, 创建错误返回对象的方法
      *
-     * @author summer
-     * @date 2019-01-07 16:12
+     * Author summer
+     * DateTime 2019-01-07 16:12
      * @param commonException 异常信息对象
      * @return io.easyspring.framework.result.ErrorResult
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static ErrorResult error(CommonException commonException){
         // 封装错误返回信息并返回
@@ -38,11 +38,11 @@ public class ErrorResult extends ErrorResultAbstract {
     /**
      * 根据传入的错误信息的枚举, 创建错误返回对象的方法
      *
-     * @author summer
-     * @date 2019-01-07 16:12
+     * Author summer
+     * DateTime 2019-01-07 16:12
      * @param errorResultEnum 错误信息的枚举
      * @return io.easyspring.framework.result.ErrorResult
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static ErrorResult error(ErrorResultEnum errorResultEnum){
         // 封装错误返回信息并返回
@@ -52,11 +52,11 @@ public class ErrorResult extends ErrorResultAbstract {
     /**
      * 根据传入的错误信息, 创建默认的错误返回信息
      *
-     * @author summer
-     * @date 2019-01-07 16:09
+     * Author summer
+     * DateTime 2019-01-07 16:09
      * @param errorMessage 错误消息
      * @return io.easyspring.framework.result.ErrorResult
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static ErrorResult error(String errorMessage) {
         // 创建错误返回信息
@@ -66,12 +66,12 @@ public class ErrorResult extends ErrorResultAbstract {
     /**
      * 根据传入的错误信息和错误详情, 创建默认的错误返回信息
      *
-     * @author summer
-     * @date 2019-01-07 16:09
+     * Author summer
+     * DateTime 2019-01-07 16:09
      * @param errorMessage 错误消息
      * @param details 错误详情
      * @return io.easyspring.framework.result.ErrorResult
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static ErrorResult error(String errorMessage, Object details) {
         // 创建错误返回信息
@@ -81,13 +81,13 @@ public class ErrorResult extends ErrorResultAbstract {
     /**
      * 根据传入的信息, 创建错误返回信息对象
      *
-     * @author summer
-     * @date 2019-01-07 15:50
+     * Author summer
+     * DateTime 2019-01-07 15:50
      * @param errorCode 错误码
      * @param errorMessage 错误信息
      * @param details 错误详情
      * @return R
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private static ErrorResult getErrorResult(Integer errorCode,
                                          String errorMessage,

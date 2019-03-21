@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * 全局唯一 id 生成器的工具类
  *
  * @author summer
- * @date 2018-12-03 00:42
+ * DateTime 2018-12-03 00:42
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -27,10 +27,10 @@ public class SnowflakeHelp {
     /**
      * 获取全局唯一 id
      *
-     * @author summer
-     * @date 2018-12-03 12:05
+     * Author summer
+     * DateTime 2018-12-03 12:05
      * @return long
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public long nextId(){
         return instanceSnowflake().nextId();
@@ -39,10 +39,10 @@ public class SnowflakeHelp {
     /**
      * 获取全局唯一 id 生成器
      *
-     * @author summer
-     * @date 2018-12-02 23:43
+     * Author summer
+     * DateTime 2018-12-02 23:43
      * @return io.easyspring.framework.base.utils.uuid.Snowflake
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private Snowflake instanceSnowflake(){
         /*

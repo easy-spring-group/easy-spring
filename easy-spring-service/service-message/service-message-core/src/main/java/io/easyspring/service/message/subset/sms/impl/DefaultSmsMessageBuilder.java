@@ -16,7 +16,7 @@ import java.util.Map;
  * 默认的短信消息的格式化类
  *
  * @author summer
- * @date 2019-03-13 13:12
+ * DateTime 2019-03-13 13:12
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -34,9 +34,9 @@ public class DefaultSmsMessageBuilder implements MessageBuilder<SmsMessage, SmsR
      * @param easyMessageTemplate 短信息消息模板
      * @param extend 需要替换的值
      * @return io.easyspring.service.message.subset.sms.SmsMessage
-     * @author summer
-     * @date 2019-03-13 13:13
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 13:13
+     * Version V1.0.0-RELEASE
      */
     @Override
     public SmsMessage builder(List<SmsReceiver> receiverList,
@@ -86,9 +86,9 @@ public class DefaultSmsMessageBuilder implements MessageBuilder<SmsMessage, SmsR
      * @param template 内容模板
      * @param replaceValue 需要替换的数据
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-12 15:37
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-12 15:37
+     * Version V1.0.0-RELEASE
      */
     private String processContent(String template, Map<String, Object> replaceValue) {
 

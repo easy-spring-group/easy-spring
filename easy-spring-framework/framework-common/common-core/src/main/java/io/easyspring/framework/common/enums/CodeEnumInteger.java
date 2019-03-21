@@ -4,7 +4,7 @@ package io.easyspring.framework.common.enums;
  * 枚举类的公共结构(code 为 Integer)
  *
  * @author summer
- * @date 2019-01-07 15:56
+ * DateTime 2019-01-07 15:56
  * @version V1.0.0-RELEASE
  */
 public interface CodeEnumInteger {

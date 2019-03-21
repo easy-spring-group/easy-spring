@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * 数据校验的异常类
  *
  * @author summer
- * @date 2019-01-07 16:55
+ * DateTime 2019-01-07 16:55
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -28,10 +28,10 @@ public class ValidationException extends CommonException {
     /**
      * 数据校验的异常类的构造方法
      *
-     * @author summer
-     * @date 2019-01-07 16:54
+     * Author summer
+     * DateTime 2019-01-07 16:54
      * @param bindingResult 数据校验的异常信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public ValidationException(BindingResult bindingResult){
         super(ErrorResultEnum.PARAMETER_ERROR);
@@ -51,10 +51,10 @@ public class ValidationException extends CommonException {
     /**
      * 根据传入的 ConstraintViolationException 封装自定义的数据校验异常
      *
-     * @author summer
-     * @date 2019-01-10 16:39
+     * Author summer
+     * DateTime 2019-01-10 16:39
      * @param constraintViolationException 约束不匹配的异常对象
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public ValidationException(ConstraintViolationException constraintViolationException){
         super(ErrorResultEnum.PARAMETER_ERROR);
@@ -77,10 +77,10 @@ public class ValidationException extends CommonException {
     /**
      * 数据校验的异常类的构造方法
      *
-     * @author summer
-     * @date 2019-01-08 17:04
+     * Author summer
+     * DateTime 2019-01-08 17:04
      * @param message 异常信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public ValidationException(String message){
         super(message);

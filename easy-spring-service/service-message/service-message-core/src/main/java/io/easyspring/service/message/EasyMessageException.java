@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 消息的异常对象
  *
  * @author summer
- * @date 2019-03-13 12:20
+ * DateTime 2019-03-13 12:20
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -29,10 +29,10 @@ public class EasyMessageException extends RuntimeException {
     /**
      * 消息的异常对象的构造方法
      *
-     * @author summer
-     * @date 2019-01-07 16:54
+     * Author summer
+     * DateTime 2019-01-07 16:54
      * @param errorResultEnum 错误信息枚举
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public EasyMessageException(ErrorResultEnum errorResultEnum){
         super(errorResultEnum.getErrorMessage());
@@ -42,11 +42,11 @@ public class EasyMessageException extends RuntimeException {
     /**
      * 消息的异常对象的构造方法
      *
-     * @author summer
-     * @date 2019-01-07 16:54
+     * Author summer
+     * DateTime 2019-01-07 16:54
      * @param errorResultEnum 错误信息枚举
      * @param details 错误详细信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public EasyMessageException(ErrorResultEnum errorResultEnum, Object details){
         super(errorResultEnum.getErrorMessage());
@@ -57,10 +57,10 @@ public class EasyMessageException extends RuntimeException {
     /**
      * 通过错误码和提示信息封装的异常构造方法
      *
-     * @author summer
-     * @date 2019-01-07 16:55
+     * Author summer
+     * DateTime 2019-01-07 16:55
      * @param message 错误信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public EasyMessageException(String message) {
         super(message);

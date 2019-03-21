@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
  * 消息的 Bean 的配置类
  *
  * @author summer
- * @date 2019-03-12 16:26
+ * DateTime 2019-03-12 16:26
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -36,9 +36,9 @@ public class MessageBeanConfig {
      * 消息处理器的控制器
      *
      * @return io.easyspring.service.message.MessageProcessorHolder
-     * @author summer
-     * @date 2019-03-19 21:55
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 21:55
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public MessageProcessorHolder messageProcessorHolder(){
@@ -50,9 +50,9 @@ public class MessageBeanConfig {
      * 延迟发送时缓存消息的存储器
      *
      * @return io.easyspring.service.message.MessageDelayCacheRepository
-     * @author summer
-     * @date 2019-03-13 17:18
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 17:18
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(MessageDelayCacheRepository.class)
@@ -65,9 +65,9 @@ public class MessageBeanConfig {
      * 默认的消息模板的 service 实现的 bean
      *
      * @return io.easyspring.service.message.EasyMessageTemplateService
-     * @author summer
-     * @date 2019-03-13 13:19
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 13:19
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(EasyMessageTemplateService.class)
@@ -80,9 +80,9 @@ public class MessageBeanConfig {
      * 短信消息处理器的 Bean 的配置
      *
      * @return io.easyspring.service.message.MessageProcessor
-     * @author summer
-     * @date 2019-03-19 21:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 21:48
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.Sms.PROCESSOR_BEAN_NAME)
@@ -95,9 +95,9 @@ public class MessageBeanConfig {
      * 默认的短信消息的格式化类
      *
      * @return io.easyspring.service.message.subset.sms.impl.DefaultSmsMessageBuilder
-     * @author summer
-     * @date 2019-03-13 13:21
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 13:21
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.Sms.BUILDER_BEAN_NAME)
@@ -110,9 +110,9 @@ public class MessageBeanConfig {
      * 短信发送器的 Bean 配置
      *
      * @return io.easyspring.service.message.subset.sms.SmsMessageSender
-     * @author summer
-     * @date 2019-03-13 13:32
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 13:32
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.Sms.SENDER_BEAN_NAME)
@@ -125,9 +125,9 @@ public class MessageBeanConfig {
      * 邮件消息处理器的 Bean 的配置
      *
      * @return io.easyspring.service.message.MessageProcessor
-     * @author summer
-     * @date 2019-03-19 21:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 21:48
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.Email.PROCESSOR_BEAN_NAME)
@@ -140,9 +140,9 @@ public class MessageBeanConfig {
      * 默认的邮件消息的格式化类
      *
      * @return io.easyspring.service.message.subset.email.impl.DefaultEmailMessageBuilder
-     * @author summer
-     * @date 2019-03-15 14:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 14:48
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.Email.BUILDER_BEAN_NAME)
@@ -155,9 +155,9 @@ public class MessageBeanConfig {
      * 邮件发送器的 Bean 配置
      *
      * @return io.easyspring.service.message.subset.email.EmailMessageSender
-     * @author summer
-     * @date 2019-03-15 14:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 14:48
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.Email.SENDER_BEAN_NAME)
@@ -170,9 +170,9 @@ public class MessageBeanConfig {
      * 系统消息处理器的 Bean 的配置
      *
      * @return io.easyspring.service.message.MessageProcessor
-     * @author summer
-     * @date 2019-03-19 21:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-19 21:48
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.System.PROCESSOR_BEAN_NAME)
@@ -185,9 +185,9 @@ public class MessageBeanConfig {
      * 默认的系统消息的格式化类
      *
      * @return io.easyspring.service.message.subset.system.impl.DefaultSystemMessageBuilder
-     * @author summer
-     * @date 2019-03-15 14:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 14:48
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.System.BUILDER_BEAN_NAME)
@@ -200,9 +200,9 @@ public class MessageBeanConfig {
      * 系统消息发送器的 Bean 配置
      *
      * @return io.easyspring.service.message.subset.system.SystemMessageSender
-     * @author summer
-     * @date 2019-03-15 14:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 14:48
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(name = MessageConstants.System.SENDER_BEAN_NAME)

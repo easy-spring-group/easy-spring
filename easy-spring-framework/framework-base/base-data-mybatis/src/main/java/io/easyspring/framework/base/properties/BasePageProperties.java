@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
  * 分页的配置类
  *
  * @author summer
- * @date 2018-12-03 20:02
  * @version V1.0.0-RELEASE
+ * DateTime 2018-12-03 20:02
  */
 @AllArgsConstructor
 @NoArgsConstructor

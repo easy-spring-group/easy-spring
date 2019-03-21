@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * 系统消息的管理器
  *
  * @author summer
- * @date 2019-03-15 14:59
+ * DateTime 2019-03-15 14:59
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -42,9 +42,9 @@ public class SystemMessageProcessor extends AbstractMessageProcessor<SystemMessa
      * @param easyMessageTemplate 消息模板对象
      * @param extend 需要替换的参数
      * @return M
-     * @author summer
-     * @date 2019-03-15 18:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 18:01
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected SystemMessage builder(List<String> receiverList,
@@ -68,10 +68,9 @@ public class SystemMessageProcessor extends AbstractMessageProcessor<SystemMessa
      * 发送系统消息的方法
      *
      * @param message 系统消息信息
-     * @return void
-     * @author summer
-     * @date 2019-03-15 13:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 13:45
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void send(SystemMessage message) {
@@ -89,9 +88,9 @@ public class SystemMessageProcessor extends AbstractMessageProcessor<SystemMessa
      *
      * @param systemStringReceiverList String 类型的系统消息接收者集合
      * @return java.util.List<io.easyspring.service.message.subset.system.SystemReceiver>
-     * @author summer
-     * @date 2019-03-15 15:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 15:45
+     * Version V1.0.0-RELEASE
      */
     private List<SystemReceiver> buildSystemReceiver(List<String> systemStringReceiverList) {
         // 参数校验

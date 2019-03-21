@@ -17,7 +17,7 @@ import java.util.Map;
  * 默认的系统消息的格式化类
  *
  * @author summer
- * @date 2019-03-15 14:48
+ * DateTime 2019-03-15 14:48
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -30,9 +30,9 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
      * @param easyMessageTemplate 系统消息模板
      * @param extend 需要替换的值
      * @return io.easyspring.service.message.subset.system.SystemMessage
-     * @author summer
-     * @date 2019-03-15 14:48
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 14:48
+     * Version V1.0.0-RELEASE
      */
     @Override
     public SystemMessage builder(List<SystemReceiver> receiverList,
@@ -73,9 +73,9 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
      * @param content 消息内容
      * @param extend 系统消息内容生成时的扩展数据
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-15 17:03
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 17:03
+     * Version V1.0.0-RELEASE
      */
     private String getTitle(String templateName, String content, Map<String, Object> extend) {
         // 设置默认的系统消息标题
@@ -119,9 +119,9 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
      *
      * @param extend 系统消息内容生成时的扩展数据
      * @return java.lang.Long
-     * @author summer
-     * @date 2019-03-15 17:03
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 17:03
+     * Version V1.0.0-RELEASE
      */
     private Long getSender(Map<String, Object> extend) {
         // 设置默认的系统消息发送者
@@ -148,9 +148,9 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
      * @param template 内容模板
      * @param replaceValue 需要替换的数据
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-12 15:37
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-12 15:37
+     * Version V1.0.0-RELEASE
      */
     private String processContent(String template, Map<String, Object> replaceValue) {
         // 定义取代器

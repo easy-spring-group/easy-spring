@@ -10,7 +10,7 @@ import java.util.Map;
  * 文件处理器的管理器
  *
  * @author summer
- * @date 2019-03-13 13:53
+ * DateTime 2019-03-13 13:53
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -27,9 +27,9 @@ public class FileProcessorHolder {
      *
      * @param filePlatform 文件存储平台类型
      * @return io.easyspring.service.message.FileProcessor
-     * @author summer
-     * @date 2019-03-13 14:00
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 14:00
+     * Version V1.0.0-RELEASE
      */
     public FileProcessor findFileProcessor(FilePlatformEnum filePlatform){
         // 参数校验
@@ -46,9 +46,9 @@ public class FileProcessorHolder {
      *
      * @param filePlatform 文件存储平台类型的字符串
      * @return io.easyspring.service.message.FileProcessor
-     * @author summer
-     * @date 2019-03-13 14:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 14:01
+     * Version V1.0.0-RELEASE
      */
     public FileProcessor findFileProcessor(String filePlatform) {
         // 参数校验

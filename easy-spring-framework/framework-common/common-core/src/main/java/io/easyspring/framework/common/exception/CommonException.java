@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 公共的异常类
  *
  * @author summer
- * @date 2019-01-07 16:55
+ * DateTime 2019-01-07 16:55
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -26,10 +26,10 @@ public class CommonException extends RuntimeException {
     /**
      * 公共异常类的构造方法
      *
-     * @author summer
-     * @date 2019-01-07 16:54
+     * Author summer
+     * DateTime 2019-01-07 16:54
      * @param errorResultEnum 错误信息枚举
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public CommonException(ErrorResultEnum errorResultEnum){
         super(errorResultEnum.getErrorMessage());
@@ -39,11 +39,11 @@ public class CommonException extends RuntimeException {
     /**
      * 公共异常类的构造方法
      *
-     * @author summer
-     * @date 2019-01-07 16:54
+     * Author summer
+     * DateTime 2019-01-07 16:54
      * @param errorResultEnum 错误信息枚举
      * @param details 错误详细信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public CommonException(ErrorResultEnum errorResultEnum, Object details){
         super(errorResultEnum.getErrorMessage());
@@ -54,10 +54,10 @@ public class CommonException extends RuntimeException {
     /**
      * 通过错误码和提示信息封装的异常构造方法
      *
-     * @author summer
-     * @date 2019-01-07 16:55
+     * Author summer
+     * DateTime 2019-01-07 16:55
      * @param message 错误信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public CommonException(String message) {
         super(message);

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 用户对象的 mapper
  *
  * @author summer
- * @date 2018-12-03 00:35
+ * DateTime 2018-12-03 00:35
  * @version V1.0.0-RELEASE
  */
 @Mapper

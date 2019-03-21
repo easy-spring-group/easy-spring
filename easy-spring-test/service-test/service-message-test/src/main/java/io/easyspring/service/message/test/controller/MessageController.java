@@ -17,7 +17,7 @@ import java.util.Map;
  * 消息 前端控制器
  *
  * @author summer
- * @date 2019-02-23
+ * DateTime 2019-02-23
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -37,9 +37,9 @@ public class MessageController {
      *
      * @param messageForm 消息表单
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-14 11:29
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 11:29
+     * Version V1.0.0-RELEASE
      */
     @PostMapping
     public String send(@RequestBody @Valid MessageForm messageForm){
@@ -64,9 +64,9 @@ public class MessageController {
      * @param messageChannelType 消息通道类型
      * @param messageNo 消息编号
      * @return java.lang.Integer
-     * @author summer
-     * @date 2019-03-14 11:36
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 11:36
+     * Version V1.0.0-RELEASE
      */
     @PostMapping(value = "/delay/{messageChannelType}/{messageNo}")
     public Integer sendDelayMessageIfExpire(
@@ -84,9 +84,9 @@ public class MessageController {
      *
      * @param messageChannelType 消息通道类型
      * @return java.lang.Integer
-     * @author summer
-     * @date 2019-03-14 11:36
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 11:36
+     * Version V1.0.0-RELEASE
      */
     @PostMapping(value = "/delay/{messageChannelType}")
     public Integer sendDelayMessagesIfExpire(
@@ -104,10 +104,9 @@ public class MessageController {
      *
      * @param messageChannelType 消息通道类型
      * @param messageNo 消息编号
-     * @return java.lang.Integer
-     * @author summer
-     * @date 2019-03-14 11:36
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 11:36
+     * Version V1.0.0-RELEASE
      */
     @DeleteMapping(value = "/delay/{messageChannelType}/{messageNo}")
     public void recall(@PathVariable(name = "messageChannelType") MessageChannelType messageChannelType,

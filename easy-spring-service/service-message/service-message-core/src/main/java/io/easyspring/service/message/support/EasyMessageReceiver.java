@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 消息接收者对象
  *
  * @author summer
- * @date 2019-03-19 12:51
+ * DateTime 2019-03-19 12:51
  * @version V1.0.0-RELEASE
  */
 @AllArgsConstructor

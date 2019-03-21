@@ -4,7 +4,7 @@ package io.easyspring.service.file;
  * 文件存储平台枚举类
  *
  * @author summer
- * @date 2019-02-12 15:27
+ * DateTime 2019-02-12 15:27
  * @version V1.0.0-RELEASE
  */
 public enum FilePlatformEnum {

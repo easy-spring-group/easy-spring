@@ -6,7 +6,7 @@ import lombok.Data;
  * 邮件消息的配置类
  *
  * @author summer
- * @date 2019-03-15 18:05
+ * DateTime 2019-03-15 18:05
  * @version V1.0.0-RELEASE
  */
 @Data

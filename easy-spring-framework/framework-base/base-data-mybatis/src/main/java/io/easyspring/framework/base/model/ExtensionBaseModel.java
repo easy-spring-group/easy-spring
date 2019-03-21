@@ -12,8 +12,8 @@ import lombok.experimental.Accessors;
  * 扩展后的基础实体类
  *
  * @author summer
- * @date 2018-12-02 16:12
  * @version V1.0.0-RELEASE
+ * DateTime 2018-12-02 16:12
  */
 @NoArgsConstructor
 @Data

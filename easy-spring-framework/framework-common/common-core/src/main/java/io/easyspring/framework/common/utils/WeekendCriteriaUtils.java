@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
  *
  * @author summer
  * @version V1.0.0-RELEASE
- * @date 2018/10/3 下午3:57
+ * DateTime 2018/10/3 下午3:57
  */
 public class WeekendCriteriaUtils {
 
@@ -25,9 +25,9 @@ public class WeekendCriteriaUtils {
      *
      * @param parameter 需要格式化的参数
      * @return java.lang.String
-     * @author summer
-     * @date 2018/10/3 下午3:59
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018/10/3 下午3:59
+     * Version V1.0.0-RELEASE
      */
     public static String buildLikeParameter(String parameter) {
         if (StringUtils.isEmpty(parameter)) {

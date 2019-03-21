@@ -6,7 +6,7 @@ import org.springframework.util.StringUtils;
  * 数值的工具类
  *
  * @author summer
- * @date 2019-01-12 14:06
+ * DateTime 2019-01-12 14:06
  * @version V1.0.0-RELEASE
  */
 public class NumberUtils {
@@ -14,11 +14,11 @@ public class NumberUtils {
     /**
      * 校验传入的参数是否不是正整数
      *
-     * @author summer
-     * @date 2019-01-12 14:07
+     * Author summer
+     * DateTime 2019-01-12 14:07
      * @param value 需要校验的 value
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static boolean isNotPositiveIntegerOrZero(Long value){
         return value == null || value < 0;
@@ -27,11 +27,11 @@ public class NumberUtils {
     /**
      * 校验传入的参数是否不是正整数
      *
-     * @author summer
-     * @date 2019-01-12 14:07
+     * Author summer
+     * DateTime 2019-01-12 14:07
      * @param value 需要校验的 value
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static boolean isNotPositiveIntegerOrZero(Integer value){
         return value == null || value < 0;
@@ -40,11 +40,11 @@ public class NumberUtils {
     /**
      * 校验传入的参数是否不是正整数
      *
-     * @author summer
-     * @date 2019-01-12 14:07
+     * Author summer
+     * DateTime 2019-01-12 14:07
      * @param value 需要校验的 value
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static boolean isNotPositiveIntegerOrZero(String value){
         // 如果传入的数据为空, 则直接返回 false

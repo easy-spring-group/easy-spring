@@ -16,7 +16,7 @@ import org.springframework.validation.annotation.Validated;
  * $!{table.comment} 服务类
  *
  * @author ${author}
- * @date ${date}
+ * DateTime ${date}
  * @version V1.0.0-RELEASE
  */
 #if(${kotlin})

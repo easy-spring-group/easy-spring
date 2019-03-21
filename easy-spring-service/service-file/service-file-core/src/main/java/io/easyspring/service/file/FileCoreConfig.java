@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * 注解 @EnableConfigurationProperties 此配置文件激活的配置类
  *
  * @author summer
- * @date 2019-02-12 16:34
+ * DateTime 2019-02-12 16:34
  * @version V1.0.0-RELEASE
  */
 @Configuration

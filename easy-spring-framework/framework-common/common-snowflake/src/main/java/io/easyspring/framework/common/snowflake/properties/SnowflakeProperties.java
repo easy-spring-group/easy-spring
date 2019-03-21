@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * id 生成器的配置信息
  *
  * @author summer
- * @date 2018-12-02 22:45
+ * DateTime 2018-12-02 22:45
  * @version V1.0.0-RELEASE
  */
 @AllArgsConstructor

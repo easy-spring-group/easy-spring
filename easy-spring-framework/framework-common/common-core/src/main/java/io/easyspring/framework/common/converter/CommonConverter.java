@@ -8,7 +8,7 @@ import org.springframework.beans.BeanUtils;
  * 通用的对象转换器
  *
  * @author summer
- * @date 2019-01-11 17:33
+ * DateTime 2019-01-11 17:33
  * @version V1.0.0-RELEASE
  */
 public class CommonConverter {
@@ -16,12 +16,12 @@ public class CommonConverter {
     /**
      * 通用的转换器
      *
-     * @author summer
-     * @date 2019-01-11 17:29
+     * Author summer
+     * DateTime 2019-01-11 17:29
      * @param sourceObject 原数据
      * @param clazz 想要转换成的数据的 class
      * @return T
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static <T> T simpleConvert(Object sourceObject, Class<T> clazz) {
         // 参数校验

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * 消息延迟发送的缓存信息存储器 -- Redis 实现
  *
  * @author summer
- * @date 2019-03-13 17:17
+ * DateTime 2019-03-13 17:17
  * @version V1.0.0-RELEASE
  * // TODO: 2019-03-13 Redis 缓存需要先指定配置
  */
@@ -44,10 +44,9 @@ public class RedisMessageDelayCacheRepository<T extends EasyMessage> implements 
      * 保存消息的方法
      *
      * @param message 消息对象
-     * @return void
-     * @author summer
-     * @date 2019-03-13 17:26
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 17:26
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void save(T message) {
@@ -66,9 +65,9 @@ public class RedisMessageDelayCacheRepository<T extends EasyMessage> implements 
      * @param messageChannelType 消息通道的类型
      * @param messageNo 消息编号
      * @return T
-     * @author summer
-     * @date 2019-03-13 17:30
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 17:30
+     * Version V1.0.0-RELEASE
      */
     @Override
     public T get(MessageChannelType messageChannelType, String messageNo) {
@@ -84,9 +83,9 @@ public class RedisMessageDelayCacheRepository<T extends EasyMessage> implements 
      *
      * @param messageChannelType 消息通道
      * @return java.util.List<T>
-     * @author summer
-     * @date 2019-03-14 10:16
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 10:16
+     * Version V1.0.0-RELEASE
      */
     @Override
     public List<T> listDelayMessageByMessageChannelType(MessageChannelType messageChannelType) {
@@ -116,10 +115,9 @@ public class RedisMessageDelayCacheRepository<T extends EasyMessage> implements 
      *
      * @param messageChannelType 消息通道的类型
      * @param messageNo 消息编码
-     * @return void
-     * @author summer
-     * @date 2019-03-13 17:31
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 17:31
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void remove(MessageChannelType messageChannelType, String messageNo) {
@@ -134,9 +132,9 @@ public class RedisMessageDelayCacheRepository<T extends EasyMessage> implements 
      *
      * @param messageChannelType 消息通道类型
      * @return java.util.Set<java.lang.String>
-     * @author summer
-     * @date 2019-03-14 10:03
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 10:03
+     * Version V1.0.0-RELEASE
      */
     private Set<Object> getKeySetByMessageChannelType(MessageChannelType messageChannelType){
         // 参数校验
@@ -168,9 +166,9 @@ public class RedisMessageDelayCacheRepository<T extends EasyMessage> implements 
      *
      * @param messageChannelType 通道类型
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-14 10:07
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-14 10:07
+     * Version V1.0.0-RELEASE
      */
     private String buildKeyPrefix(MessageChannelType messageChannelType) {
         // 参数校验
@@ -189,9 +187,9 @@ public class RedisMessageDelayCacheRepository<T extends EasyMessage> implements 
      * @param messageChannelType 消息通道类型
      * @param messageNo 消息编号
      * @return java.lang.String
-     * @author summer
-     * @date 2019-03-13 18:12
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 18:12
+     * Version V1.0.0-RELEASE
      */
     private String buildKey(MessageChannelType messageChannelType, String messageNo) {
         if (messageChannelType == null || StringUtils.isEmpty(messageNo)) {

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * 消息的配置类
  *
  * @author summer
- * @date 2019-03-12 16:26
+ * DateTime 2019-03-12 16:26
  * @version V1.0.0-RELEASE
  */
 @Configuration

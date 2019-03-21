@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  * 获取全局唯一 id 的测试类
  *
  * @author summer
- * @date 2018-12-03 18:52
+ * DateTime 2018-12-03 18:52
  * @version V1.0.0-RELEASE
  */
 @RunWith(SpringRunner.class)
@@ -29,10 +29,9 @@ public class SnowflakeHelpTest {
     /**
      * 测试全局唯一 id 生成
      *
-     * @author summer
-     * @date 2018-12-03 19:11
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2018-12-03 19:11
+     * Version V1.0.0-RELEASE
      */
     @Test
     public void getNextIdTest(){

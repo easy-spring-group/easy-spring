@@ -9,7 +9,7 @@ import java.util.Map;
  * 消息处理器的管理器
  *
  * @author summer
- * @date 2019-03-13 13:53
+ * DateTime 2019-03-13 13:53
  * @version V1.0.0-RELEASE
  */
 public class MessageProcessorHolder {
@@ -25,9 +25,9 @@ public class MessageProcessorHolder {
      *
      * @param messageChannelType 消息通道类型
      * @return io.easyspring.service.message.MessageProcessor
-     * @author summer
-     * @date 2019-03-13 14:00
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 14:00
+     * Version V1.0.0-RELEASE
      */
     public MessageProcessor findMessageProcessor(MessageChannelType messageChannelType){
         // 参数校验
@@ -44,9 +44,9 @@ public class MessageProcessorHolder {
      *
      * @param messageChannelType 消息通道类型的字符串
      * @return io.easyspring.service.message.MessageProcessor
-     * @author summer
-     * @date 2019-03-13 14:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 14:01
+     * Version V1.0.0-RELEASE
      */
     public MessageProcessor findMessageProcessor(String messageChannelType) {
         // 参数校验

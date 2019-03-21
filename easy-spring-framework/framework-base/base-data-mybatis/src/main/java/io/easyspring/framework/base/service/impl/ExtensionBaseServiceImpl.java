@@ -14,7 +14,7 @@ import java.util.List;
  * 扩展的单表查询的 service 实现类
  *
  * @author summer
- * @date 2018-12-03 20:22
+ * DateTime 2018-12-03 20:22
  * @version V1.0.0-RELEASE
  */
 public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends ExtensionBaseModel>
@@ -31,14 +31,14 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
     /**
      * 通用的排序方法
      *
-     * @author summer
-     * @date 2018-12-09 15:14
+     * Author summer
+     * DateTime 2018-12-09 15:14
      * @param baseSortFrom 需要排序的对象
      * @param clazz 排序时对应的实体的类型
      * @throws IllegalAccessException 反射异常
      * @throws InstantiationException 实例化异常
      * @return int
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public int sort(BaseSortForm baseSortFrom, Class<T> clazz) throws IllegalAccessException, InstantiationException {
@@ -66,14 +66,14 @@ public class ExtensionBaseServiceImpl<M extends BaseMapper<T>, T extends Extensi
     /**
      * 根据传入的排序对象集合, 获取排序结构的字符串
      *
-     * @author summer
-     * @date 2018/8/21 上午2:04
+     * Author summer
+     * DateTime 2018/8/21 上午2:04
      * @param baseSortFromList 排序时提交的表单集合
      * @param clazz 排序时对应的实体的类型
      * @throws IllegalAccessException 反射异常
      * @throws InstantiationException 实例化异常
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     @Transactional(rollbackFor = Exception.class)

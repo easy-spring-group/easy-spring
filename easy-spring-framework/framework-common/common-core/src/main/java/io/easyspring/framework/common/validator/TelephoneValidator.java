@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  * 注意: 这里不需要自己注入, 当他实现了 ConstraintValidator 后, spring 会实现自动注入
  *
  * @author summer
- * @date 2018-12-19 13:21
+ * DateTime 2018-12-19 13:21
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -23,11 +23,10 @@ public class TelephoneValidator implements ConstraintValidator<Telephone, String
     /**
      * 校验器初始化
      *
-     * @author summer
-     * @date 2018-12-19 13:23
+     * Author summer
+     * DateTime 2018-12-19 13:23
      * @param telephone 要初始化的校验注解
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public void initialize(Telephone telephone) {
@@ -37,12 +36,12 @@ public class TelephoneValidator implements ConstraintValidator<Telephone, String
     /**
      * 校验逻辑
      *
-     * @author summer
-     * @date 2018-12-19 13:23
+     * Author summer
+     * DateTime 2018-12-19 13:23
      * @param value 需要校验的数据
      * @param constraintValidatorContext 校验的上下文(包含校验的返回信息)
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {

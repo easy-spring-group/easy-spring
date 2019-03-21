@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
  * oss 客户端的工具类
  *
  * @author summer
- * @date 2019-02-13 11:37
+ * DateTime 2019-02-13 11:37
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -27,10 +27,10 @@ public class OssClientUtils {
     /**
      * 创建OSSClient实例。
      *
-     * @author summer
-     * @date 2019-02-12 20:31
+     * Author summer
+     * DateTime 2019-02-12 20:31
      * @return com.aliyun.oss.OSSClient
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public OSSClient getOssClient() {
 
@@ -49,11 +49,11 @@ public class OssClientUtils {
     /**
      * 校验 oss 的配置参数的合法性
      *
-     * @author summer
-     * @date 2019-02-13 11:31
+     * Author summer
+     * DateTime 2019-02-13 11:31
      * @param ossProperties oss 的配置参数
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private static boolean ossClientPropertiesValid(OssProperties ossProperties) {
         // 执行校验

@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 文件类型的附件对象
  *
  * @author summer
- * @date 2019-03-20 14:35
+ * DateTime 2019-03-20 14:35
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

@@ -7,7 +7,7 @@ import io.easyspring.service.message.support.EasyMessageTemplate;
  * 消息模板的 service
  *
  * @author summer
- * @date 2019-03-12 16:30
+ * DateTime 2019-03-12 16:30
  * @version V1.0.0-RELEASE
  */
 public interface EasyMessageTemplateService {
@@ -17,9 +17,9 @@ public interface EasyMessageTemplateService {
      *
      * @param templateCode 模板识别码
      * @return io.easyspring.service.message.support.EasyMessageTemplate
-     * @author summer
-     * @date 2019-03-13 12:17
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 12:17
+     * Version V1.0.0-RELEASE
      */
     EasyMessageTemplate getByCode(String templateCode);
 

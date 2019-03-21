@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * 短信消息的管理器
  *
  * @author summer
- * @date 2019-03-12 14:59
+ * DateTime 2019-03-12 14:59
  * @version V1.0.0-RELEASE
  */
 public class SmsMessageProcessor extends AbstractMessageProcessor<SmsMessage> {
@@ -40,9 +40,9 @@ public class SmsMessageProcessor extends AbstractMessageProcessor<SmsMessage> {
      * @param easyMessageTemplate 消息模板对象
      * @param extend 需要替换的参数
      * @return M
-     * @author summer
-     * @date 2019-03-12 18:01
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-12 18:01
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected SmsMessage builder(List<String> receiverList,
@@ -68,10 +68,9 @@ public class SmsMessageProcessor extends AbstractMessageProcessor<SmsMessage> {
      * 发送短信的方法
      *
      * @param message 短信信息
-     * @return void
-     * @author summer
-     * @date 2019-03-13 13:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 13:45
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void send(SmsMessage message) {
@@ -89,9 +88,9 @@ public class SmsMessageProcessor extends AbstractMessageProcessor<SmsMessage> {
      *
      * @param smsStringReceiverList String 类型的短信接收者集合
      * @return java.util.List<io.easyspring.service.message.subset.sms.SmsReceiver>
-     * @author summer
-     * @date 2019-03-15 15:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 15:45
+     * Version V1.0.0-RELEASE
      */
     private List<SmsReceiver> buildSmsReceiver(List<String> smsStringReceiverList) {
         // 参数校验

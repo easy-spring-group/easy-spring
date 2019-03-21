@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
  * 阿里云文件存储的配置类
  *
  * @author summer
- * @date 2019-02-12 16:37
+ * DateTime 2019-02-12 16:37
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * 用户实体对象(含排序)
  *
  * @author summer
- * @date 2018-12-04 22:09
+ * DateTime 2018-12-04 22:09
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  * 系统消息发送器的默认实现
  *
  * @author summer
- * @date 2019-03-13 13:28
+ * DateTime 2019-03-13 13:28
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -18,10 +18,9 @@ public class DefaultSystemMessageSender implements MessageSender<SystemMessage> 
      * 系统消息发送方法
      *
      * @param message 系统消息对象
-     * @return io.easyspring.service.message.subset.system.SystemMessage
-     * @author summer
-     * @date 2019-03-13 13:27
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 13:27
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void send(SystemMessage message) {

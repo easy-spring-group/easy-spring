@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 消息的配置参数类
  *
  * @author summer
- * @date 2019-03-12 16:26
+ * DateTime 2019-03-12 16:26
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

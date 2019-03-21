@@ -4,7 +4,7 @@ package io.easyspring.service.message.properties;
  * 消息的 Redis key 前缀配置类
  *
  * @author summer
- * @date 2019-03-13 18:04
+ * DateTime 2019-03-13 18:04
  * @version V1.0.0-RELEASE
  */
 public interface MessageRedisKeyPrefixConstants {

@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  * 默认的消息模板 service
  *
  * @author summer
- * @date 2019-03-13 12:17
+ * DateTime 2019-03-13 12:17
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -19,9 +19,9 @@ public class DefaultEasyMessageTemplateServiceImpl implements EasyMessageTemplat
      *
      * @param templateCode 模板识别码
      * @return io.easyspring.service.message.support.EasyMessageTemplate
-     * @author summer
-     * @date 2019-03-13 12:17
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-13 12:17
+     * Version V1.0.0-RELEASE
      */
     @Override
     public EasyMessageTemplate getByCode(String templateCode) {

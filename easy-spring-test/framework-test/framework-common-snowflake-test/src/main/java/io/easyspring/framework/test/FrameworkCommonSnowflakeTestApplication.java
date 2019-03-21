@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  * TODO
  *
  * @author summer
- * @date 2018-12-03 00:34
+ * DateTime 2018-12-03 00:34
  * @version V1.0.0-RELEASE
  */
 @SpringBootApplication

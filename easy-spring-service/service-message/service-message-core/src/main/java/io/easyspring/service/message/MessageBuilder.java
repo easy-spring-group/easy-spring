@@ -15,7 +15,7 @@ import java.util.Map;
  * 消息的封装器
  *
  * @author summer
- * @date 2019-03-15 14:44
+ * DateTime 2019-03-15 14:44
  * @version V1.0.0-RELEASE
  */
 @Validated
@@ -28,9 +28,9 @@ public interface MessageBuilder<M extends EasyMessage, R extends EasyMessageRece
      * @param easyMessageTemplate 模板对象
      * @param extend 需要替换的参数
      * @return M
-     * @author summer
-     * @date 2019-03-15 14:44
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-15 14:44
+     * Version V1.0.0-RELEASE
      */
     M builder(@NotNull(message = "消息接收者不能为空")
                           @NotEmpty(message = "消息接收者不能为空") List<R> receiverList,
