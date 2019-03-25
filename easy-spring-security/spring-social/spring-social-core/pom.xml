@@ -57,6 +57,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!--spring-social 的相关 jar, 用于集成第三方登录的操作-->
