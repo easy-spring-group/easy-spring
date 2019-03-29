@@ -30,4 +30,5 @@
         <module>spring-social-qq</module>
         <module>spring-social-we-chat</module>
     </modules>
+
 </project>
