@@ -206,9 +206,9 @@
                 </repository>
             </distributionManagement>
         </profile>
-        
+
         <profile>
-            <id>nexus-release</id>
+            <id>risk-release</id>
             <build>
                 <plugins>
                     <!-- Source -->
@@ -248,18 +248,18 @@
             <!--发布信息配置-->
             <distributionManagement>
                 <snapshotRepository>
-                    <id>nexus-snapshot</id>
-                    <url>http://121.43.170.103:8081/repository/maven-snapshots/</url>
+                    <id>risk-snapshot</id>
+                    <url>http://oss.yinbaochina.com/repository/maven-snapshots/</url>
                 </snapshotRepository>
                 <repository>
-                    <id>nexus-release</id>
-                    <url>http://121.43.170.103:8081/repository/maven-releases/</url>
+                    <id>risk-release</id>
+                    <url>http://oss.yinbaochina.com/repository/maven-releases/</url>
                 </repository>
             </distributionManagement>
         </profile>
 
         <profile>
-            <id>nexus-snapshot</id>
+            <id>risk-snapshot</id>
             <build>
                 <plugins>
                     <!-- Source -->
@@ -281,12 +281,12 @@
             <!--发布信息配置-->
             <distributionManagement>
                 <snapshotRepository>
-                    <id>nexus-snapshot</id>
-                    <url>http://121.43.170.103:8081/repository/maven-snapshots/</url>
+                    <id>risk-snapshot</id>
+                    <url>http://oss.yinbaochina.com/repository/maven-snapshots/</url>
                 </snapshotRepository>
                 <repository>
-                    <id>nexus-release</id>
-                    <url>http://121.43.170.103:8081/repository/maven-releases/</url>
+                    <id>risk-release</id>
+                    <url>http://oss.yinbaochina.com/repository/maven-releases/</url>
                 </repository>
             </distributionManagement>
         </profile>
