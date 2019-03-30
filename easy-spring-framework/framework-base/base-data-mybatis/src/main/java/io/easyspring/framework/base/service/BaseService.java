@@ -1,11 +1,9 @@
 package io.easyspring.framework.base.service;
 
-import io.easyspring.framework.base.support.BasePageable;
-import io.easyspring.framework.base.pagehelper.PageInfo;
 import com.github.pagehelper.Page;
+import io.easyspring.framework.base.pagehelper.PageInfo;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import tk.mybatis.mapper.weekend.Fn;
@@ -509,26 +507,4 @@ public interface BaseService<T> {
                                   Object value,
                                   Long id,
                                   @NotNull(message = "需要验证的对象实体不能为空") Class<T> clazz);
-
-    /**
-     * 封装自定义的分页信息
-     *
-     * Author summer
-     * DateTime 2019-01-10 15:21
-     * @param pageable spring 的 pageable 对象
-     * @return io.easyspring.framework.base.support.BasePageable
-     * Version V1.0.0-RELEASE
-     */
-    BasePageable getBasePageable(Pageable pageable);
-
-    /**
-     * 根据传入的排序对象, 获取排序结构的字符串
-     *
-     * Author summer
-     * DateTime 2018/8/21 上午2:04
-     * @param sort 排序对象
-     * @return java.lang.String
-     * Version V1.0.0-RELEASE
-     */
-    String getOrderBy(Sort sort);
 }

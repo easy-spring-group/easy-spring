@@ -2,19 +2,18 @@ package io.easyspring.framework.base.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import io.easyspring.framework.base.support.BasePageable;
 import io.easyspring.framework.base.mapper.BaseMapper;
 import io.easyspring.framework.base.model.BaseModel;
 import io.easyspring.framework.base.pagehelper.PageInfo;
 import io.easyspring.framework.base.properties.BasePageProperties;
 import io.easyspring.framework.base.service.BaseService;
+import io.easyspring.framework.base.support.BasePageable;
 import io.easyspring.framework.base.support.WeekendParameter;
 import io.easyspring.framework.common.snowflake.SnowflakeHelp;
 import io.easyspring.framework.common.utils.BeanUtils;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.weekend.Fn;
@@ -874,7 +873,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         /*
          * 获取分页信息, 并重新初始化值
          */
-        BasePageable basePageable = getBasePageable(pageable);
+        BasePageable basePageable = BasePageable.of(basePageProperties, pageable);
 
         // 封装分页信息
         Page<T> page = PageHelper.startPage(basePageable.getPageNumber(),
@@ -918,7 +917,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
         /*
          * 获取分页信息, 并重新初始化值
          */
-        BasePageable basePageable = getBasePageable(pageable);
+        BasePageable basePageable = BasePageable.of(basePageProperties, pageable);
 
         // 封装分页信息
         Page<T> page = PageHelper.startPage(basePageable.getPageNumber(),
@@ -1089,74 +1088,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseModel> imple
             // 查询符合条件的数据
             return mapper.selectCountByExample(weekend) > 0;
         }
-    }
-
-    /**
-     * 封装自定义的分页信息
-     *
-     * Author summer
-     * DateTime 2019-01-10 15:21
-     * @param pageable spring 的 pageable 对象
-     * @return io.easyspring.framework.base.support.BasePageable
-     * Version V1.0.0-RELEASE
-     */
-    @Override
-    public BasePageable getBasePageable(Pageable pageable) {
-        // 如果分页信息为空, 则返回默认的分页信息
-        if (pageable == null) {
-            return new BasePageable(basePageProperties.getDefaultPageNumber(),
-                    basePageProperties.getDefaultPageSize(),
-                    null);
-        }
-        /*
-         * 获取分页信息, 并重新初始化值
-         */
-        // 获取每页显示数量
-        int pageSize = pageable.getPageSize();
-        pageSize = pageSize <= 0 ? basePageProperties.getDefaultPageSize() : pageSize;
-        // 获取页码
-        int pageNumber = pageable.getPageNumber();
-        pageNumber = pageNumber <= 0 ? basePageProperties.getDefaultPageNumber() : pageNumber;
-        // 获取传入的排序数据
-        String orderBy = getOrderBy(pageable.getSort());
-
-        return new BasePageable(pageNumber, pageSize, orderBy);
-    }
-
-
-    /**
-     * 根据传入的排序对象, 获取排序结构的字符串
-     *
-     * Author summer
-     * DateTime 2018-12-03 22:32
-     * @param sort 排序对象
-     * @return java.lang.String
-     * Version V1.0.0-RELEASE
-     */
-    @Override
-    public String getOrderBy(Sort sort){
-        // 参数合法性校验
-        if(sort == null || sort.isUnsorted()){
-            return null;
-        }
-
-        StringBuilder orderBy = new StringBuilder(" ");
-        int count = 0;
-        // 拼接排序条件
-        for(Sort.Order order : sort){
-            String property = order.getProperty();
-            String direction = order.getDirection().name();
-            if(count > 0){
-                orderBy.append(", ");
-            }
-            orderBy.append(property);
-            orderBy.append(" ");
-            orderBy.append(direction);
-
-            count++;
-        }
-
-        return orderBy.toString();
     }
 
     /**
