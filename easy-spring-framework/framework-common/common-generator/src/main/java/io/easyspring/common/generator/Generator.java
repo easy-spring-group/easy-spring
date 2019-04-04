@@ -38,11 +38,12 @@ public class Generator {
 
     /** 表前缀 */
     private static final String[] STRATEGY_CONFIG_TABLE_PREFIX =
-            {"credit", "cust", "loan", "log", "msg", "post", "prov", "sys", "tool"};
+            {"credit", "cust", "loan", "log", "msg", "post", "prov", "sys", "tool", "activiti"};
             //{"credit", "customer", "loan", "logger", "message", "post", "provider", "system", "tools"};
 
     /** 想要生成的表 */
     private static final String[] STRATEGY_CONFIG_INCLUDE =
+            {"activiti_task_form"};
 
             // 授信模块
 //            {"credit_credit_capacity", "credit_credit_check_file",
@@ -74,7 +75,7 @@ public class Generator {
 //            "post_post_loan", "post_settlement"};
 
             // 供应者模块
-            {"prov_capital", "prov_capital_rule", "prov_enhancement_agency"};
+//            {"prov_capital", "prov_capital_rule", "prov_enhancement_agency"};
 
             // 系统模块
 //            {"sys_user", "sys_role", "sys_permission", "sys_user_role", "sys_role_permission"};
@@ -85,7 +86,7 @@ public class Generator {
     /** 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名 */
     private static final String PACKAGE_CONFIG_PARENT = "com.yinbaochina.management.risk";
     /** 父包模块名 */
-    private static final String PACKAGE_CONFIG_MODULE_NAME = "provider";
+    private static final String PACKAGE_CONFIG_MODULE_NAME = "activiti";
 
     /**
      * 启动生成的 main 方法

@@ -4,26 +4,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>io.easyspring.framework</groupId>
-        <artifactId>easy-spring-dependencies</artifactId>
+        <groupId>io.easyspring.tools</groupId>
+        <artifactId>easy-spring-tools</artifactId>
         <version>1.1.1-SNAPSHOT</version>
-        <relativePath>../easy-spring-dependencies</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
-    <!--组别 id-->
-    <groupId>io.easyspring.service</groupId>
     <!--项目 id-->
-    <artifactId>easy-spring-service</artifactId>
+    <artifactId>tools-file</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
     <!--项目名称-->
-    <name>Easy Spring Service</name>
+    <name>Tools File</name>
     <!--项目简介-->
-    <description>Easy Spring Service</description>
+    <description>Tools File</description>
     <!--项目连接地址-->
     <url>https://www.easyspring.io/</url>
 
-    <!--子模块-->
     <modules>
+        <module>tools-file-support</module>
     </modules>
+
 </project>

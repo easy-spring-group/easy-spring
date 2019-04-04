@@ -24,6 +24,8 @@
         <module>easy-spring-samples</module>
         <module>easy-spring-test</module>
         <module>easy-spring-security</module>
+        <module>easy-spring-tools</module>
+        <module>easy-spring-message</module>
     </modules>
 
     <!--项目名称-->
