@@ -336,6 +336,26 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+
+        <!--maven nexus snapshot 库-->
+        <repository>
+            <id>nexus-snapshot</id>
+            <name>Nexus Snapshot</name>
+            <url>http://oss.yinbaochina.com/repository/maven-snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <!--maven nexus release 库-->
+        <repository>
+            <id>nexus-release </id>
+            <name>Nexus Release</name>
+            <url>http://oss.yinbaochina.com/repository/maven-release</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
     </repositories>
     <!--配置插件仓库-->
     <pluginRepositories>
