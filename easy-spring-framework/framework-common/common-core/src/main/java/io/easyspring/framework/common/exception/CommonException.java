@@ -64,6 +64,22 @@ public class CommonException extends RuntimeException {
         this.code = ErrorResultEnum.ERROR.getCode();
     }
 
+    /**
+     * 可以设定错误详情的构建方法
+     *
+     * @param message 错误消息
+     * @param details 错误详情
+     * @return
+     * Author summer
+     * Version V1.0.0-RELEASE
+     * DateTime 2019-04-13 18:39
+     */
+    public CommonException(String message, Object details){
+        super(message);
+        this.code = ErrorResultEnum.ERROR.getCode();
+        this.details = details;
+    }
+
     protected void setCode(Integer code) {
         this.code = code;
     }
