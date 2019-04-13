@@ -216,7 +216,7 @@ public abstract class AbstractMessageProcessor<M extends EasyMessage> implements
          * 设置消息编码
          */
         // 生成新的消息编码
-        String messageNo = RandomStringUtils.randomNumeric(20);
+        String messageNo = RandomStringUtils.randomAlphabetic(20);
         // 设置消息编码
         message.setMessageNo(messageNo);
     }
