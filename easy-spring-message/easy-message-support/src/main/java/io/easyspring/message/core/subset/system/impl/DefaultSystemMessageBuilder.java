@@ -62,6 +62,8 @@ public class DefaultSystemMessageBuilder implements MessageBuilder<SystemMessage
         systemMessage.setContent(content);
         // 设置系统消息的发送的数据
         systemMessage.setExtend(extend);
+        // 设置消息模板识别码
+        systemMessage.setTemplateCode(easyMessageTemplate.getTemplateCode());
 
         return systemMessage;
     }

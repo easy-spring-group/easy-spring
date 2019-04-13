@@ -57,4 +57,9 @@ public class EasyMessage implements Serializable {
      * 需要替换的参数
      */
     private Map<String, Object> extend;
+    /**
+     * 模板的识别码
+     */
+    @NotBlank(message = "模板的识别码 不能为空")
+    private String templateCode;
 }

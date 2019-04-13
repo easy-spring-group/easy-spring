@@ -41,7 +41,7 @@ public class EasyMessageTemplate implements Serializable {
      * 模板识别码
      */
     @NotBlank(message = "模板识别码不能为空")
-    private String code;
+    private String templateCode;
     /**
      * 模板路径
      */

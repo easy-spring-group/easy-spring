@@ -95,7 +95,8 @@ public class DefaultEmailMessageBuilder implements MessageBuilder<EmailMessage, 
         emailMessage.setSender(messageProperties.getEmail().getSender());
         // 设置是否是 html 格式
         emailMessage.setIsHtml(getIsHtml(extend));
-
+        // 设置消息模板识别码
+        emailMessage.setTemplateCode(easyMessageTemplate.getTemplateCode());
 
         return emailMessage;
     }

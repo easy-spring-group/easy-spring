@@ -72,6 +72,8 @@ public class DefaultSmsMessageBuilder implements MessageBuilder<SmsMessage, SmsR
         smsMessage.setContent(content);
         // 设置消息的发送者
         smsMessage.setSender(DEFAULT_SMS_SENDER);
+        // 设置消息模板的识别码
+        smsMessage.setTemplateCode(easyMessageTemplate.getTemplateCode());
 
         // 设置数据信息
         smsMessage.setExtend(extend);
