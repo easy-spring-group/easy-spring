@@ -161,6 +161,7 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
                         .scopes(client.getScopes());
             }
 
+            // 日志输出
             log.info("OAuth2 的授权信息: {}", Arrays.toString(clientsInCustom));
         }
     }
