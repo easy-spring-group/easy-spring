@@ -22,5 +22,6 @@
 
     <modules>
         <module>base-data-mybatis</module>
+        <module>framework-base-model</module>
     </modules>
 </project>

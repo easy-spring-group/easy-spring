@@ -25,6 +25,10 @@
     <!--引入 jar 包依赖-->
     <dependencies>
         <!--引入自定义的 jar-->
+        <dependency>
+            <groupId>io.easyspring.framework</groupId>
+            <artifactId>framework-base-model</artifactId>
+        </dependency>
         <!--全局唯一 id 生成的 jar-->
         <dependency>
             <groupId>io.easyspring.framework</groupId>
