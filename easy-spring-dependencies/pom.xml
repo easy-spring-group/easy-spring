@@ -109,7 +109,7 @@
             <dependency>
                 <groupId>io.easyspring.framework</groupId>
                 <artifactId>framework-base-model</artifactId>
-                <version>1.1.1-SNAPSHOT</version>
+                <version>1.1.2-SNAPSHOT</version>
             </dependency>
             <!--base-data-mybatis-->
             <dependency>
